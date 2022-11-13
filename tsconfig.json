@@ -6,7 +6,8 @@
     "paths": {
       "@components/*": ["components/*"],
       "@typing": ["typing/index.d.ts"],
-      "@utils/*": ["utils/*"]
+      "@utils/*": ["utils/*"],
+      "@contexts/*": ["contexts/*"],
     },
     "allowJs": true,
     "skipLibCheck": true,

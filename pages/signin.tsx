@@ -1,6 +1,47 @@
+import GoBack from '@components/GoBack'
+import Head from 'next/head'
+import { getAuth, OAuthProvider, signInWithPopup } from 'firebase/auth'
+import app from '@utils/firebase'
+import { useRouter } from 'next/router'
+
+const provider = new OAuthProvider('microsoft.com')
+provider.setCustomParameters({
+  // Force re-consent.
+  prompt: 'consent',
+  // Target specific email with login hint.
+  // login_hint: 'james.mcgill@mail.mcgill.ca',
+  login_hint: 'james.mcgill@mail.mcgill.ca',
+})
+
 const SignIn = () => {
+  const auth = getAuth(app)
+
+  const router = useRouter()
+
+  const signIn = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // User is signed in.
+        // IdP data available in result.additionalUserInfo.profile.
+
+        // Get the OAuth access token and ID Token
+        const credential = OAuthProvider.credentialFromResult(result)
+        const accessToken = credential.accessToken
+        const idToken = credential.idToken
+        console.log(credential, accessToken, idToken)
+
+        router.push('/')
+      })
+      .catch((error) => {
+        // Handle error.
+        console.log(error)
+      })
+  }
   return (
     <div className="w-screen h-screen flex pt-40 justify-center select-none">
+      <Head>
+        <title>Sign In | Cloudberry</title>
+      </Head>
       <div className="w-1/3 flex flex-col items-center">
         <div>
           <svg
@@ -15,12 +56,17 @@ const SignIn = () => {
           </svg>
         </div>
         <p className="text-center text-3xl font-bold">
-          Build your dream schedule today
+          Build your dream degree today
         </p>
-        <p className="text-center text-xl mt-4">
+        <p className="text-center text-xl mt-6">
           Sign in with your McGill email
         </p>
-        <img src="/ms-signin.svg" className="mt-10" />
+
+        <button onClick={signIn}>
+          <img src="/ms-signin.svg" className="mt-14" />
+        </button>
+
+        {/* <p>I'm just looking through courses for now.</p> */}
         {/* <div className="border rounded-xl flex items-center justify-center p-20 bg-white mt-10 w-full">
           <img src="/ms-signin.svg" />
         </div> */}

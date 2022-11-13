@@ -1,6 +1,10 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { ArrowRightIcon, BookmarkIcon } from '@heroicons/react/24/outline'
+import { getAuth } from 'firebase/auth'
+import app from '@utils/firebase'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { useEffect } from 'react'
 
 const NavItem = ({
   title,
@@ -27,7 +31,15 @@ const NavItem = ({
 
 const Navbar = () => {
   const { pathname } = useRouter()
-  console.log(pathname)
+
+  const auth = getAuth(app)
+
+  const [user, loading, error] = useAuthState(auth)
+
+  useEffect(() => {
+    console.log(user)
+    console.log(auth.currentUser)
+  }, [user])
 
   const path = pathname.split('/')
 
@@ -56,7 +68,7 @@ const Navbar = () => {
         <NavItem
           title="Course Search"
           href="/"
-          active={pathname === '/' || path[1] === '/courses'}
+          active={pathname === '/' || path[1] === 'courses'}
         />
         <NavItem
           title="Schedule Builder"
@@ -70,14 +82,18 @@ const Navbar = () => {
         />
       </div>
 
-      <Link href="/signin">
-        <div className="flex flex-row items-center">
-          <div className="text-lg font-medium rounded-full cursor-pointer bg-yellow-100 hover:bg-yellow-200 transition px-6 py-2 text-yellow-700 flex flex-row items-center">
-            <ArrowRightIcon className="w-5 h-5 mr-4" />
-            <p>Build your dream schedule</p>
+      <div className="flex flex-row items-center">
+        <Link href="/signin">
+          <div className="flex flex-row items-center">
+            <div className="text-lg font-medium rounded-full cursor-pointer bg-yellow-100 hover:bg-yellow-200 transition px-6 py-2 text-yellow-700 flex flex-row items-center">
+              <ArrowRightIcon className="w-5 h-5 mr-4" />
+              <p>Build your dream schedule</p>
+            </div>
           </div>
-        </div>
-      </Link>
+        </Link>
+
+        {/* {auth.currentUser && <div className="ml-4">Sign out</div>} */}
+      </div>
     </div>
   )
 }

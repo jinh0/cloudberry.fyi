@@ -1,7 +1,7 @@
 import Main from '../components/Main'
 
 const Schedule = () => {
-  return <Main>Schedule</Main>
+  return <Main>Under construction!</Main>
 }
 
 export default Schedule
