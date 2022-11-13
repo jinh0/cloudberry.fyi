@@ -2,6 +2,9 @@ import { CourseType } from '@typing'
 import Course from './Course'
 
 import data from '@utils/courses.json'
+import Fuse from 'fuse.js'
+import { useContext, useEffect } from 'react'
+import SearchContext from '@contexts/SearchContext'
 
 const courses: CourseType[] = [
   {
@@ -58,16 +61,26 @@ const courses: CourseType[] = [
   },
 ]
 
+const fuse = new Fuse(courses, { keys: ['code', 'name'] })
+
 const CourseList = () => {
+  const { query } = useContext(SearchContext)
+
+  const results = fuse.search(query)
+
   return (
     <div className="w-2/3 mt-10">
-      <p className="text-gray-600 text-sm border-b pb-4">
-        Found 69 results in 7ms.
+      <p className="text-gray-600 text-sm pb-4">
+        Found {query === '' ? 3 : results.length} result
+        {query !== '' && results.length > 1 ? 's' : ''} in 1ms.
       </p>
+      <p className="border-b"></p>
 
-      {courses.map((course, ind) => (
-        <Course course={course} key={ind} />
-      ))}
+      {query === ''
+        ? courses.map((c, ind) => <Course course={c} key={ind} />)
+        : fuse
+            .search(query)
+            .map((item, ind) => <Course course={item.item} key={ind} />)}
     </div>
   )
 }

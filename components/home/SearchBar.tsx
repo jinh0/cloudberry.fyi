@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid'
+import SearchContext from '@contexts/SearchContext'
 
 const SearchBar = () => {
-  const [query, setQuery] = useState('')
+  const { query, setQuery } = useContext(SearchContext)
 
   return (
     <form className="w-2/3 mb-2 text-3xl py-2 flex flex-row items-center text-gray-600">

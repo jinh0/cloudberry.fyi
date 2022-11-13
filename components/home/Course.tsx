@@ -4,17 +4,21 @@ import { faPagelines } from '@fortawesome/free-brands-svg-icons'
 import { CourseType } from 'typing'
 import Link from 'next/link'
 import Semester from '@components/Semester'
+import { BookmarkIcon } from '@heroicons/react/24/outline'
 
 const Course = ({ course }: { course: CourseType }) => {
   return (
-    <div className="border-b py-6 text-lg">
+    <div className="border-b py-6 text-lg group">
       <div className="mb-4">
         <Link href={`/courses/${course.code.replace(' ', '-').toLowerCase()}`}>
-          <h1 className="text-2xl mb-4 cursor-pointer">
-            <span className="font-medium">{course.code}: </span>
-            <span className="font-medium">{course.name}</span>
-          </h1>
+          <div className="mb-4 flex flex-row items-center">
+            <h1 className="text-2xl cursor-pointer w-full">
+              <span className="font-medium">{course.code}: </span>
+              <span className="font-medium">{course.name}</span>
+            </h1>
+          </div>
         </Link>
+        {/* <BookmarkIcon className="transition opacity-0 group-hover:opacity-100 group-hover:inline-block w-6 h-6 ml-2 cursor-pointer text-gray-600" /> */}
 
         <div className="flex flex-row text-base">
           {course.terms.map((sem, ind) => (
