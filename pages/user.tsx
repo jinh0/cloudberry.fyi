@@ -48,7 +48,7 @@ const User = () => {
 
       {loggedIn && <UserInfo uid={loggedIn.uid} />}
 
-      <div>
+      <div className='mt-4'>
         <button onClick={signOut} className='border rounded-full px-6 py-2'>
           Sign out
         </button>

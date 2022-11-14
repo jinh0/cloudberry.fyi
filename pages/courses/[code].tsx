@@ -6,7 +6,11 @@ import { useRouter } from 'next/router'
 import courses from '@utils/courses.json'
 import { CourseType } from '@typing'
 import Semester from '@components/Semester'
-import { TEMPORARY_REDIRECT_STATUS } from 'next/dist/shared/lib/constants'
+import { BookmarkIcon } from '@heroicons/react/24/outline'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { auth } from '@utils/firebase'
+import { useContext } from 'react'
+import UserContext from '@contexts/UserContext'
 
 export async function getStaticPaths() {
   return {
@@ -27,33 +31,43 @@ export async function getStaticProps({ params }: { params: { code: string } }) {
 }
 
 const Course = ({ course }: { course: CourseType }) => {
-  // console.log(courses)
   const router = useRouter()
   const { code } = router.query as { code: string }
 
+  const { user } = useContext(UserContext)
+  console.log('courses', user)
+
   const parse = (code: string) => code?.replace('-', ' ').toUpperCase()
+  const saveCourse = () => {
+    if (user) {
+      console.log(user)
+    }
+  }
 
   return (
     <Main>
       <GoBack />
       <Title>
         {parse(code)}: {course.name}
+        <button onClick={saveCourse}>
+          <BookmarkIcon className='w-8 h-8 ml-3 text-gray-400' />
+        </button>
       </Title>
 
-      <div className="w-3/5 text-lg">
-        <div className="flex flex-row text-base">
+      <div className='w-3/5 text-lg'>
+        <div className='flex flex-row text-base'>
           {course.terms.map((term, ind) => (
             <Semester sem={term.term} key={ind} />
           ))}
         </div>
 
-        <div className="mt-4">
+        <div className='mt-4'>
           <p>{course.description}</p>
         </div>
 
-        <div className="mt-4">
+        <div className='mt-4'>
           <p>
-            <span className="font-bold">Prerequisites: </span>
+            <span className='font-bold'>Prerequisites: </span>
             {course.prerequisites.join(', ')}
           </p>
         </div>
