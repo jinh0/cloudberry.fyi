@@ -16,7 +16,7 @@ const UserInfo = ({ uid }: { uid: string }) => {
     return <div>Something went wrong.</div>
   }
 
-  const { name, email } = user.data() as UserType
+  const { name, email, saved } = user.data() as UserType
 
   return (
     <div>
@@ -26,6 +26,8 @@ const UserInfo = ({ uid }: { uid: string }) => {
       <p>
         <span className='font-bold'>Email:</span> {email}
       </p>
+
+      <p>{saved && saved.map((x) => <span>{x}</span>)}</p>
     </div>
   )
 }

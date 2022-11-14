@@ -4,13 +4,14 @@ import Title from '@components/Title'
 import { useRouter } from 'next/router'
 
 import courses from '@utils/courses.json'
-import { CourseType } from '@typing'
+import { CourseType, UserType } from '@typing'
 import Semester from '@components/Semester'
 import { BookmarkIcon } from '@heroicons/react/24/outline'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import { auth } from '@utils/firebase'
+import { auth, db } from '@utils/firebase'
 import { useContext } from 'react'
 import UserContext from '@contexts/UserContext'
+import { doc, DocumentReference, updateDoc } from 'firebase/firestore'
 
 export async function getStaticPaths() {
   return {
@@ -35,12 +36,14 @@ const Course = ({ course }: { course: CourseType }) => {
   const { code } = router.query as { code: string }
 
   const { user } = useContext(UserContext)
-  console.log('courses', user)
 
   const parse = (code: string) => code?.replace('-', ' ').toUpperCase()
-  const saveCourse = () => {
+  const saveCourse = async () => {
     if (user) {
-      console.log(user)
+      console.log(user.saved)
+      await updateDoc(doc(db, 'users', user.id), {
+        saved: !user.saved ? [code] : user.saved.concat(code),
+      })
     }
   }
 
