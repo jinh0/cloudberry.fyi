@@ -12,9 +12,9 @@ const Main = ({
         <title>Cloudberry</title>
       </Head>
 
-      <div className="w-screen">
+      <div className='w-screen'>
         <Navbar />
-        <div className="px-20 py-6">{children}</div>
+        <div className='px-20 py-6'>{children}</div>
       </div>
     </>
   )

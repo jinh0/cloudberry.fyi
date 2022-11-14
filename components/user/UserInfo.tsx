@@ -1,11 +1,7 @@
+import { UserType } from '@typing'
 import app from '@utils/firebase'
-import { doc, DocumentData, getFirestore } from 'firebase/firestore'
+import { doc, getFirestore } from 'firebase/firestore'
 import { useDocument } from 'react-firebase-hooks/firestore'
-
-type User = {
-  name: string
-  email: string
-}
 
 const UserInfo = ({ uid }: { uid: string }) => {
   const [user, loading, error] = useDocument(
@@ -16,16 +12,20 @@ const UserInfo = ({ uid }: { uid: string }) => {
     return <div>Loading...</div>
   }
 
-  if (error) {
+  if (error || !user) {
     return <div>Something went wrong.</div>
   }
 
-  const { name, email } = user.data() as User
+  const { name, email } = user.data() as UserType
 
   return (
     <div>
-      <p>Name: {name}</p>
-      <p>Email: {email}</p>
+      <p>
+        <span className='font-bold'>Name:</span> {name}
+      </p>
+      <p>
+        <span className='font-bold'>Email:</span> {email}
+      </p>
     </div>
   )
 }

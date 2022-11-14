@@ -5,9 +5,16 @@ export type CourseType = {
   prerequisites: string[]
   extra?: string[]
   terms: Array<{
-    term: 'fall' | 'winter',
+    term: 'fall' | 'winter'
     instructors: string[]
   }>
+}
+
+export type UserType = {
+  id: string
+  name: string
+  email: string
+  saved: string[] | null
 }
 
 declare module 'utils/courses' {

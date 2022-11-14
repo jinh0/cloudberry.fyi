@@ -1,7 +1,13 @@
-const Title = ({ children }: { children: string | string[] }) => {
+const Title = ({
+  children,
+}: {
+  children: string | Array<string | JSX.Element>
+}) => {
   return (
     <div>
-      <p className="text-4xl font-semibold mt-4 mb-4">{children}</p>
+      <div className='text-4xl font-semibold mt-4 mb-4 flex flex-row items-center'>
+        {children}
+      </div>
     </div>
   )
 }
