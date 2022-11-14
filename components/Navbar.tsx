@@ -1,10 +1,13 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { ArrowRightIcon, BookmarkIcon } from '@heroicons/react/24/outline'
+import {
+  ArrowRightIcon,
+  BookmarkIcon,
+  UserCircleIcon,
+} from '@heroicons/react/24/solid'
 import { getAuth } from 'firebase/auth'
 import app from '@utils/firebase'
 import { useAuthState } from 'react-firebase-hooks/auth'
-import { useEffect } from 'react'
 
 const NavItem = ({
   title,
@@ -31,20 +34,13 @@ const NavItem = ({
 
 const Navbar = () => {
   const { pathname } = useRouter()
-
   const auth = getAuth(app)
-
   const [user, loading, error] = useAuthState(auth)
-
-  useEffect(() => {
-    console.log(user)
-    console.log(auth.currentUser)
-  }, [user])
 
   const path = pathname.split('/')
 
   return (
-    <div className="w-full px-20 py-4 border-b flex flex-row items-center select-none justify-between">
+    <div className="sticky top-0 z-50 bg-white w-full px-20 py-4 border-b flex flex-row items-center select-none justify-between">
       <div className="flex flex-row items-center">
         <Link href="/">
           <div className="flex flex-row items-center cursor-pointer">
@@ -83,14 +79,24 @@ const Navbar = () => {
       </div>
 
       <div className="flex flex-row items-center">
-        <Link href="/signin">
-          <div className="flex flex-row items-center">
-            <div className="text-lg font-medium rounded-full cursor-pointer bg-yellow-100 hover:bg-yellow-200 transition px-6 py-2 text-yellow-700 flex flex-row items-center">
-              <ArrowRightIcon className="w-5 h-5 mr-4" />
-              <p>Build your dream schedule</p>
+        {loading ? (
+          <></>
+        ) : user ? (
+          <Link href="/user">
+            <div>
+              <UserCircleIcon className="w-8 h-8" />
             </div>
-          </div>
-        </Link>
+          </Link>
+        ) : (
+          <Link href="/signin">
+            <div className="flex flex-row items-center">
+              <div className="text-lg font-medium rounded-full cursor-pointer bg-yellow-100 hover:bg-yellow-200 transition px-6 py-2 text-yellow-700 flex flex-row items-center">
+                <ArrowRightIcon className="w-5 h-5 mr-4" />
+                <p>Build your dream schedule</p>
+              </div>
+            </div>
+          </Link>
+        )}
 
         {/* {auth.currentUser && <div className="ml-4">Sign out</div>} */}
       </div>
