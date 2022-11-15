@@ -14,7 +14,7 @@ const Main = ({
 
       <div className='w-screen'>
         <Navbar />
-        <div className='px-10 lg:px-20 py-6'>{children}</div>
+        <div className='px-6 lg:px-20 py-6'>{children}</div>
       </div>
     </>
   )

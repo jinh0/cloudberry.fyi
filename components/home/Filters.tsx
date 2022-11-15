@@ -6,14 +6,14 @@ const Filter = ({ name, options }: { name: string; options: string[] }) => {
   const [opened, setOpened] = useState(false)
 
   return (
-    <div className="relative inline-block text-left mr-2 outline-none">
+    <div className='relative inline-block text-left mr-2 outline-none'>
       <div>
         <button
           onClick={() => setOpened(!opened)}
-          className="inline-flex w-full justify-center rounded-full border bg-white px-3 py-1 text-gray-700 focus:outline-none mr-2"
+          className='inline-flex w-full justify-center rounded-full border bg-white px-3 py-1 text-gray-700 focus:outline-none mr-2'
         >
           {name}
-          <ChevronDownIcon className="w-6 h-6 ml-2" />
+          <ChevronDownIcon className='w-6 h-6 ml-2' />
         </button>
       </div>
 
@@ -58,9 +58,9 @@ const Filter = ({ name, options }: { name: string; options: string[] }) => {
 
 const Filters = () => {
   return (
-    <div className="flex flex-row">
-      <Filter name="Subject" options={[]} />
-      <Filter name="Semester" options={[]} />
+    <div className='flex flex-row'>
+      <Filter name='Subject' options={[]} />
+      <Filter name='Semester' options={[]} />
     </div>
   )
 }
