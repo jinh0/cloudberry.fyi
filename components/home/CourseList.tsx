@@ -69,12 +69,12 @@ const CourseList = () => {
   const results = fuse.search(query)
 
   return (
-    <div className="w-2/3 mt-10">
-      <p className="text-gray-600 text-sm pb-4">
+    <div className='lg:w-2/3 mt-10'>
+      <p className='text-gray-600 text-sm pb-4'>
         Found {query === '' ? 3 : results.length} result
         {query !== '' && results.length > 1 ? 's' : ''} in 1ms.
       </p>
-      <p className="border-b"></p>
+      <p className='border-b'></p>
 
       {query === ''
         ? courses.map((c, ind) => <Course course={c} key={ind} />)

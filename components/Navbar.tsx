@@ -18,7 +18,7 @@ const NavItem = ({
     <Link href={href}>
       <div
         className={
-          'first:pl-0 text-lg font-medium px-6 cursor-pointer py-2 hover:text-black transition duration-200 rounded-full ' +
+          'first:pl-0 text-base lg:text-lg font-medium px-4 lg:px-6 cursor-pointer py-2 hover:text-black transition duration-200 rounded-full ' +
           (active ? 'text-black' : 'text-slate-600')
         }
       >
@@ -36,7 +36,7 @@ const Navbar = () => {
   const path = pathname.split('/')
 
   return (
-    <div className='sticky top-0 z-50 bg-white w-full px-20 py-4 border-b flex flex-row items-center select-none justify-between'>
+    <div className='hidden md:flex md:flex-row sticky top-0 z-50 bg-white w-full px-10 lg:px-20 py-4 border-b items-center select-none justify-between truncate'>
       <div className='flex flex-row items-center'>
         <Link href='/'>
           <div className='flex flex-row items-center cursor-pointer'>
@@ -51,7 +51,7 @@ const Navbar = () => {
               <path d='M4.462 19.462c.42-.419.753-.89 1-1.394.453.213.902.434 1.347.661a6.743 6.743 0 01-1.286 1.794.75.75 0 11-1.06-1.06z' />
             </svg>
 
-            <p className='text-xl font-bold text-mcgill pr-4 border-r mr-4'>
+            <p className='hidden lg:inline-block text-xl font-bold text-mcgill pr-4 border-r mr-4'>
               CloudBerry
             </p>
           </div>
@@ -74,7 +74,7 @@ const Navbar = () => {
         />
       </div>
 
-      <div className='flex flex-row items-center'>
+      <div className='w-fit flex flex-row items-center'>
         {loading ? (
           <></>
         ) : user ? (

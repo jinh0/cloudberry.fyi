@@ -9,8 +9,6 @@ const provider = new OAuthProvider('microsoft.com')
 provider.setCustomParameters({
   // Force re-consent.
   prompt: 'consent',
-  // Target specific email with login hint.
-  // login_hint: 'james.mcgill@mail.mcgill.ca',
   login_hint: 'james.mcgill@mail.mcgill.ca',
 })
 
