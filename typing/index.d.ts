@@ -15,7 +15,10 @@ export type UserType = {
   name: string
   email: string
   saved: string[] | null
+  completed: string[] | null
 }
+
+export type Children = JSX.Element | string | Array<JSX.Element | string>
 
 declare module 'utils/courses' {
   const value: Map<string, CourseType[]>

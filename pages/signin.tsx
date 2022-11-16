@@ -29,6 +29,8 @@ const SignIn = () => {
           await setDoc(doc(db, 'users', user.uid), {
             name: user.displayName,
             email: user.email,
+            completed: [],
+            saved: [],
           })
         }
 

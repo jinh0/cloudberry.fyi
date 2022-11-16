@@ -1,12 +1,9 @@
+import UserContext from '@contexts/UserContext'
 import { UserType } from '@typing'
-import app from '@utils/firebase'
-import { doc, getFirestore } from 'firebase/firestore'
-import { useDocument } from 'react-firebase-hooks/firestore'
+import { useContext } from 'react'
 
-const UserInfo = ({ uid }: { uid: string }) => {
-  const [user, loading, error] = useDocument(
-    doc(getFirestore(app), 'users', uid)
-  )
+const UserInfo = () => {
+  const { user, loading, error } = useContext(UserContext)
 
   if (loading) {
     return <div>Loading...</div>
@@ -27,7 +24,10 @@ const UserInfo = ({ uid }: { uid: string }) => {
         <span className='font-bold'>Email:</span> {email}
       </p>
 
-      <p>{saved && saved.map((x) => <span>{x}</span>)}</p>
+      <p>
+        <span className='font-bold'>Saved:</span>{' '}
+        {saved && saved.map((x) => <span>{x}</span>)}
+      </p>
     </div>
   )
 }
