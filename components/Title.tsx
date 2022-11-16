@@ -5,7 +5,7 @@ const Title = ({
 }) => {
   return (
     <div>
-      <div className='text-4xl font-semibold mt-4 mb-4 flex flex-row items-center'>
+      <div className='text-2xl md:text-4xl font-semibold mt-4 mb-4 flex flex-row items-center'>
         {children}
       </div>
     </div>

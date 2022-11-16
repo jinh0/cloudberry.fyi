@@ -49,7 +49,7 @@ const Course = ({ course }: { course: CourseType }) => {
         {parse(rawCode)}: {course.name}
       </Title>
 
-      <div className='lg:w-3/5 text-lg'>
+      <div className='lg:w-3/5 text-base lg:text-lg'>
         <div className='flex flex-col md:flex-row text-base'>
           {course.terms.map((term, ind) => (
             <Semester key={ind} sem={term} showInstructor={true} />

@@ -1,5 +1,5 @@
 import { Transition } from '@headlessui/react'
-import { ChevronDownIcon } from '@heroicons/react/24/outline'
+import { BookmarkIcon, ChevronDownIcon } from '@heroicons/react/24/outline'
 import { Fragment, useState } from 'react'
 
 const Filter = ({ name, options }: { name: string; options: string[] }) => {
@@ -56,11 +56,24 @@ const Filter = ({ name, options }: { name: string; options: string[] }) => {
   )
 }
 
+const Toggle = ({ name }: { name: string }) => {
+  return (
+    <div className='rounded-lg flex justify-center items-center'>{name}</div>
+  )
+}
+
 const Filters = () => {
   return (
     <div className='flex flex-row'>
       <Filter name='Subject' options={[]} />
       <Filter name='Semester' options={[]} />
+
+      {/*
+      <div className='flex flex-row items-center gap-1 border rounded-full px-4 py-1 text-gray-600'>
+        <BookmarkIcon className='w-6 h-6' />
+        <div>Saved</div>
+      </div>
+      */}
     </div>
   )
 }
