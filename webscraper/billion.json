@@ -1,0 +1,646 @@
+[
+  {
+    "code": "ACCT 351",
+    "name": "Intermediate Financial Accounting 1",
+    "description": "An examination of the theoretical foundation for financial reporting and revenue recognition. The tools of accounting, including a review of the accounting process and compound interest concepts. Asset recognition, measurement and disclosure. Partnership accounting.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [
+      {
+        "term": "fall",
+        "instructors": [
+          "Cecere, Ralph"
+        ]
+      },
+      {
+        "term": "winter",
+        "instructors": [
+          "Marginson, Melissa"
+        ]
+      }
+    ],
+    "credits": 3
+  },
+  {
+    "code": "ACCT 352",
+    "name": "Intermediate Financial Accounting 2",
+    "description": "A continuation of Intermediate Financial Accounting 1. An examination of liability recognition, measurement and disclosure, including leases, pension costs and corporate income tax. Shareholders' equity, dilutive securities and earnings per share. The statement of changes in financial position, basic financial statement analysis and full disclosure in financial reporting.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [
+      {
+        "term": "fall",
+        "instructors": [
+          "Abrams, Amanda"
+        ]
+      },
+      {
+        "term": "winter",
+        "instructors": [
+          "Abrams, Amanda"
+        ]
+      }
+    ],
+    "credits": 3
+  },
+  {
+    "code": "ACCT 354",
+    "name": "Financial Statement Analysis",
+    "description": "Interpretative nature of the conceptual framework underlying a multitude of financial reporting standards, including the impact of alternative accounting methods, management biases and stakeholder interests in the analysis and valuation of the firm.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [
+      {
+        "term": "fall",
+        "instructors": [
+          "Cote, Matthew"
+        ]
+      },
+      {
+        "term": "winter",
+        "instructors": [
+          "Cote, Matthew"
+        ]
+      }
+    ],
+    "credits": 3
+  },
+  {
+    "code": "ACCT 361",
+    "name": "Management Accounting",
+    "description": "The role of management accounting information to support internal management decisions and to provide performance incentives.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [
+      {
+        "term": "fall",
+        "instructors": [
+          "Cecere, Ralph"
+        ]
+      },
+      {
+        "term": "winter",
+        "instructors": [
+          "Cecere, Ralph"
+        ]
+      }
+    ],
+    "credits": 3
+  },
+  {
+    "code": "ACCT 362",
+    "name": "Cost Accounting",
+    "description": "An examination of a number of recurring issues in the area of decision-making and control, including cost allocation, alternative costing systems, and innovations in costing and performance measurement.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [
+      {
+        "term": "fall",
+        "instructors": [
+          "Levy, Philippe"
+        ]
+      },
+      {
+        "term": "winter",
+        "instructors": [
+          "Levy, Philippe"
+        ]
+      }
+    ],
+    "credits": 3
+  },
+  {
+    "code": "ACCT 385",
+    "name": "Principles of Taxation",
+    "description": "An introduction to the concepts underlying the Canadian tax system and how they are applied in relation to the taxation of individuals and businesses.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [
+      {
+        "term": "fall",
+        "instructors": [
+          "Joshi, Preetika"
+        ]
+      },
+      {
+        "term": "winter",
+        "instructors": [
+          "Wenzel, Brian"
+        ]
+      }
+    ],
+    "credits": 3
+  },
+  {
+    "code": "ACCT 401",
+    "name": "Sustainability and Environmental Accounting",
+    "description": "Developing measures of corporate environmental performance, assessing their reliability and reporting to external stakeholders. Using sustainability metrics in strategic and operational business decisions. Implementing and utilizing\nEnvironmental management systems and standards. Managing corporate environmental risks and accounting for environmental costs. Environmental auditing.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [
+      {
+        "term": "fall",
+        "instructors": [
+          "Eddine, Halima"
+        ]
+      }
+    ],
+    "credits": 3
+  },
+  {
+    "code": "ACCT 434",
+    "name": "Topics in Accounting 1",
+    "description": "Topics will be selected from current issues in the Accounting Area.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [],
+    "credits": 3
+  },
+  {
+    "code": "ACCT 451",
+    "name": "Data Analytics in Capital Market",
+    "description": "Exploration of how financial and non-financial metrics can be linked to business performance through experiential learning, with a focus on financial statement analysis, earnings and return predictability, textural analysis, earnings management and fraud detection. Introduction to SAS software and financial accounting databases such as CRSP, Compustat, and I/B/E/S, and alternative data sources such as SEC Edgar that enables work across different database to make better financial statement  analysis and decisions.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [
+      {
+        "term": "winter",
+        "instructors": [
+          "Tan, Hongping"
+        ]
+      }
+    ],
+    "credits": 3
+  },
+  {
+    "code": "ACCT 452",
+    "name": "Financial Reporting Valuation",
+    "description": "Models to determine firm value from accounting information and a broader perspective on key sources of information, key value drivers, in a setting where evaluating firm value is the ultimate purpose.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [
+      {
+        "term": "winter",
+        "instructors": [
+          "Tan, Hongping"
+        ]
+      }
+    ],
+    "credits": 3
+  },
+  {
+    "code": "ACCT 453",
+    "name": "Advanced Financial Accounting",
+    "description": "Reporting relevant financial information subsequent to long term intercorporate investments. The preparation of consolidated financial statements with emphasis on their economic substance rather than legal form.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [
+      {
+        "term": "fall",
+        "instructors": [
+          "Cote, Matthew"
+        ]
+      },
+      {
+        "term": "winter",
+        "instructors": [
+          "Cote, Matthew"
+        ]
+      }
+    ],
+    "credits": 3
+  },
+  {
+    "code": "ACCT 455",
+    "name": "Development of Accounting Thought",
+    "description": "The conceptual underpinning of accounting thought, including its historical development and the modifications that have occurred over time. A review of accounting literature and its relevance to practice.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [
+      {
+        "term": "winter",
+        "instructors": [
+          "Ma, Guang"
+        ]
+      }
+    ],
+    "credits": 3
+  },
+  {
+    "code": "ACCT 463",
+    "name": "Management Control",
+    "description": "The theoretical frameworks for the examination and evaluation of management accounting and control systems. The technical aspects of accounting along with behavioural issues of management control.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [
+      {
+        "term": "fall",
+        "instructors": [
+          "Levy, Philippe"
+        ]
+      },
+      {
+        "term": "winter",
+        "instructors": [
+          "Levy, Philippe"
+        ]
+      }
+    ],
+    "credits": 3
+  },
+  {
+    "code": "ACCT 475",
+    "name": "Principles of Auditing",
+    "description": "An introduction to basic auditing concepts and internal controls of an accounting system. Topics include current auditing standards, ethical conduct, legal liability, planning of an audit, sampling techniques, non-audit engagements, the study and evaluation of internal controls in an accounting system.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [
+      {
+        "term": "fall",
+        "instructors": [
+          "Cecere, Ralph"
+        ]
+      },
+      {
+        "term": "winter",
+        "instructors": [
+          "Cecere, Ralph"
+        ]
+      }
+    ],
+    "credits": 3
+  },
+  {
+    "code": "ACCT 486",
+    "name": "Business Taxation 2",
+    "description": "A study of the Income Tax Act as it applies to the taxation of individuals and corporations, including capital cost allowances, capital gains, corporate reorganisations, trusts and partnerships and administrative regulations. A review of consumption taxes.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [
+      {
+        "term": "fall",
+        "instructors": [
+          "Marginson, Melissa"
+        ]
+      },
+      {
+        "term": "winter",
+        "instructors": [
+          "Marginson, Melissa"
+        ]
+      }
+    ],
+    "credits": 3
+  },
+  {
+    "code": "ACCT 604",
+    "name": "Financial Statements 1",
+    "description": "Introduction to financial accounting, including the objectives of financial statement analysis. Discussion of the limitations of the financial information used in financial statement analysis.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [],
+    "credits": 3
+  },
+  {
+    "code": "ACCT 605",
+    "name": "Financial Statements 2",
+    "description": "The company valuation process. Establish frameworks using public data.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [],
+    "credits": 3
+  },
+  {
+    "code": "ACCT 618",
+    "name": "Financial Reporting: Structure and Analysis",
+    "description": "An in-depth analysis of corporate financial reporting principles and practices, with emphasis on developing the abilities of the student to discriminate between the form and substance of corporate financial reports. Analysis of all components of the financial statements with the effect of reference to alternative practices on financial reports.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [
+      {
+        "term": "winter",
+        "instructors": [
+          "Wenzel, Brian"
+        ]
+      }
+    ],
+    "credits": 3
+  },
+  {
+    "code": "ACCT 622",
+    "name": "Intermediate Financial Reporting 1",
+    "description": "Theoretical foundation for financial reporting concepts such as asset measurement, revenue recognition and disclosure of financial information.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [],
+    "credits": 3
+  },
+  {
+    "code": "ACCT 623",
+    "name": "Intermediate Financial Reporting 2",
+    "description": "Theoretical foundation for financial reporting concepts such as liability and equity measurement, intercorporate investments.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [],
+    "credits": 3
+  },
+  {
+    "code": "ACCT 624",
+    "name": "Management Accounting: Planning and Control",
+    "description": "Preparation and analysis of management accounting information, effective design and implementation of management accounting systems.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [],
+    "credits": 3
+  },
+  {
+    "code": "ACCT 625",
+    "name": "Canadian Taxation",
+    "description": "An overview of the income tax system; emphasis on its impact on selected business decisions.  Topics include",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [],
+    "credits": 3
+  },
+  {
+    "code": "ACCT 626",
+    "name": "Data Analytics in Accounting",
+    "description": "Exploration of how financial and non-financial metrics can be linked to business performance through practica application learning. Examination of mandatory and\nvoluntary corporate disclosure, financial statement analysis, return predictability, and fraud detection.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [
+      {
+        "term": "winter",
+        "instructors": [
+          "Tan, Hongping"
+        ]
+      }
+    ],
+    "credits": 1
+  },
+  {
+    "code": "ACCT 645",
+    "name": "Financial Management in Healthcare",
+    "description": "Concepts of financial accounting to the non-accountant user of financial information. Fundamental knowledge of financial accounting, including financial statements, accounting \u201crules\u201d, assets, liabilities and equity, the income statements as well as the financial statement analysis.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [
+      {
+        "term": "winter",
+        "instructors": [
+          "Breitner, Leslie"
+        ]
+      }
+    ],
+    "credits": 2
+  },
+  {
+    "code": "ACCT 645",
+    "name": "1 Financial Management in Healthcare",
+    "description": "Concepts of financial accounting to the non-accountant user of financial information. Fundamental knowledge of financial accounting, including financial statements, accounting \u201crules\u201d, assets, liabilities and equity, the income statements as well as the financial statement analysis.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [],
+    "credits": 1
+  },
+  {
+    "code": "ACCT 645",
+    "name": "2 Financial Management in Healthcare",
+    "description": "For description see ACCT 645D1.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [],
+    "credits": 1
+  },
+  {
+    "code": "ACCT 653",
+    "name": "Issues in Professional Accounting 1",
+    "description": "How fundamental concepts in financial accounting and reporting, including technically complex accounting issues and their audit, performance management, tax and finance implications, are integrated into decision-making.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [],
+    "credits": 3
+  },
+  {
+    "code": "ACCT 653",
+    "name": "1 Issues in Professional Accounting 1",
+    "description": "How fundamental concepts in financial accounting and reporting, including technically complex accounting issues and their audit, performance management, tax and finance implications, are integrated into decision-making.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [],
+    "credits": 1
+  },
+  {
+    "code": "ACCT 653",
+    "name": "2 Issues in Professional Accounting 1",
+    "description": "How fundamental concepts in financial accounting and reporting, including technically complex accounting issues and their audit, performance management, tax and finance implications, are integrated into decision-making.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [],
+    "credits": 1
+  },
+  {
+    "code": "ACCT 654",
+    "name": "Issues in Professional Accounting 2",
+    "description": "Fundamental concepts in financial accounting and reporting, including technically complex accounting issues and their audit, performance management, tax and finance implications, are integrated into decision-making and strategies through case scenarios.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [],
+    "credits": 3
+  },
+  {
+    "code": "ACCT 654",
+    "name": "1 Issues in Professional Accounting 2",
+    "description": "Fundamental concepts in financial accounting and reporting, including technically complex accounting issues and their audit, performance management, tax and finance implications, are integrated into decision-making and strategies through case scenarios.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [],
+    "credits": 1
+  },
+  {
+    "code": "ACCT 654",
+    "name": "2 Issues in Professional Accounting 2",
+    "description": "Fundamental concepts in financial accounting and reporting, including technically complex accounting issues and their audit, performance management, tax and finance implications, are integrated into decision-making and strategies through case scenarios.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [],
+    "credits": 1
+  },
+  {
+    "code": "ACCT 663",
+    "name": "Strategic Aspects of Accounting 1",
+    "description": "Corporate governance, strategy, risk management, and management reporting needs, with a particular emphasis on their integration with accounting practice, finance and taxation.  Formulating deliberate and emergent strategies, and translating those strategies into specific objectives and actions which are used in decision-making.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [],
+    "credits": 3
+  },
+  {
+    "code": "ACCT 663",
+    "name": "1 Strategic Aspects of Accounting 1",
+    "description": "Corporate governance, strategy, risk management, and management reporting needs, with a particular emphasis on their integration with accounting practice, finance and taxation.  Formulating deliberate and emergent strategies, and translating those strategies into specific objectives and actions which are used in decision-making.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [],
+    "credits": 1
+  },
+  {
+    "code": "ACCT 663",
+    "name": "2 Strategic Aspects of Accounting 1",
+    "description": "Corporate governance, strategy, risk management, and management reporting needs, with a particular emphasis on their integration with accounting practice, finance and taxation.  Formulating deliberate and emergent strategies, and translating those strategies into specific objectives and actions which are used in decision-making.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [],
+    "credits": 1
+  },
+  {
+    "code": "ACCT 664",
+    "name": "Strategic Aspects of Accounting 2",
+    "description": "Corporate governance, strategy, risk management, and management reporting needs, with a particular emphasis on their integration with accounting practice, finance and taxation. Emphasis is also placed on competence required to build good monitoring and control systems and perform financial analysis for different types of entities. Case scenarios are used to integrate these concepts into decision-making.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [],
+    "credits": 3
+  },
+  {
+    "code": "ACCT 664",
+    "name": "1 Strategic Aspects of Accounting 2",
+    "description": "Corporate governance, strategy, risk management, and management reporting needs, with a particular emphasis on their integration with accounting practice, finance and taxation. Emphasis is also placed on competence required to build good monitoring and control systems and perform financial analysis for different types of entities. Case scenarios are used to integrate these concepts into decision-making.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [],
+    "credits": 1
+  },
+  {
+    "code": "ACCT 664",
+    "name": "2 Strategic Aspects of Accounting 2",
+    "description": "Corporate governance, strategy, risk management, and management reporting needs, with a particular emphasis on their integration with accounting practice, finance and taxation. Emphasis is also placed on competence required to build good monitoring and control systems and perform financial analysis for different types of entities. Case scenarios are used to integrate these concepts into decision-making.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [],
+    "credits": 1
+  },
+  {
+    "code": "ACCT 683",
+    "name": "Practice of Taxation",
+    "description": "Providing taxation services and guidance, including assisting individual and corporate entities to minimize taxes and meet their objectives while complying with tax laws and regulations.  Addressing compliance and tax-planning issues for both individuals and corporate entities, as well as, to a lesser extent, partnerships and trusts. Recognizing the interrelationship between financial reporting decisions and taxation, and the importance of taking taxes into account when making business and investment decisions.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [
+      {
+        "term": "fall",
+        "instructors": [
+          "Marginson, Melissa"
+        ]
+      }
+    ],
+    "credits": 4
+  },
+  {
+    "code": "ACCT 687",
+    "name": "Assurance Services",
+    "description": "Performing both internal audit projects and external assurance engagements; from understanding how governance plays a key role, assessing the need for an engagement, to developing and performing the procedures, through to documenting and reporting results.  While this course is primarily designed for students who wish to practise public accounting or to work in internal audit, it would be beneficial to a wide range of students because it focuses on the key concepts of auditing, such as risk, materiality, and internal control, which are concepts that have broad application.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [
+      {
+        "term": "fall",
+        "instructors": [
+          "Cote, Matthew"
+        ]
+      }
+    ],
+    "credits": 4
+  },
+  {
+    "code": "ACCT 689",
+    "name": "Financial Business Analysis",
+    "description": "Developing overall finance policies and identifying, analyzing, evaluating, and recommending investment and financing decisions.  Applying appropriate finance principles and conceptual approaches to determine appropriate courses of action.  Providing finance-related services for an entity, either individually or as part of a larger team, understanding when the advice of a finance specialist is required, and understanding and communicating with other finance professionals.",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Management",
+    "faculty": "Desautels Faculty of Management",
+    "terms": [],
+    "credits": 4
+  }
+]
