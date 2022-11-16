@@ -72,7 +72,13 @@ const Actions = ({ code }: { code: string }) => {
           completed: !completed ? [code] : [...new Set(completed.concat(code))],
           current: [...new Set(current.filter(x => x !== code))],
         })
+
+        return
       }
+
+      await updateDoc(user.ref, {
+        completed: !completed ? [code] : [...new Set(completed.concat(code))],
+      })
     }
   }
 
@@ -84,7 +90,13 @@ const Actions = ({ code }: { code: string }) => {
           current: !current ? [code] : [...new Set(current.concat(code))],
           completed: [...new Set(completed.filter(x => x !== code))],
         })
+
+        return
       }
+
+      await updateDoc(user.ref, {
+        current: !current ? [code] : [...new Set(current.concat(code))],
+      })
     }
   }
 
