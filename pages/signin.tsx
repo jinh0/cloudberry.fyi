@@ -19,7 +19,7 @@ const SignIn = () => {
 
   const signIn = () => {
     signInWithPopup(auth, provider)
-      .then(async (result) => {
+      .then(async result => {
         // User is signed in.
         const { user } = result
 
@@ -29,12 +29,15 @@ const SignIn = () => {
           await setDoc(doc(db, 'users', user.uid), {
             name: user.displayName,
             email: user.email,
+            saved: [],
+            completed: [],
+            current: [],
           })
         }
 
         router.push('/')
       })
-      .catch((error) => {
+      .catch(error => {
         // Handle error.
         console.log(error)
       })

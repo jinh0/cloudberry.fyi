@@ -62,6 +62,11 @@ const Navbar = () => {
           href='/'
           active={pathname === '/' || path[1] === 'courses'}
         />
+        {/* <NavItem
+          title='My Courses'
+          href='/my-courses'
+          active={pathname === '/my-courses'}
+        /> */}
         <NavItem
           title='Schedule Builder'
           href='/schedule'

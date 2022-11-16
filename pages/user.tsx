@@ -46,7 +46,7 @@ const User = () => {
     <Main>
       <Title>User Info</Title>
 
-      {loggedIn && <UserInfo uid={loggedIn.uid} />}
+      {loggedIn && <UserInfo />}
 
       <div className='mt-4'>
         <button onClick={signOut} className='border rounded-full px-6 py-2'>

@@ -1,9 +1,14 @@
-import { UserType } from '@typing'
-import { createContext, Dispatch, SetStateAction } from 'react'
+import {
+  DocumentData,
+  DocumentSnapshot,
+  FirestoreError,
+} from 'firebase/firestore'
+import { createContext } from 'react'
 
 const UserContext = createContext<{
-  user: UserType | null
-  setUser: Dispatch<SetStateAction<UserType>>
+  user: DocumentSnapshot<DocumentData>
+  loading: boolean
+  error: FirestoreError
 } | null>(null)
 
 export default UserContext
