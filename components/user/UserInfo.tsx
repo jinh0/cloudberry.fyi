@@ -13,7 +13,7 @@ const UserInfo = () => {
     return <div>Something went wrong.</div>
   }
 
-  const { name, email, saved } = user.data() as UserType
+  const { name, email, saved, completed } = user.data() as UserType
 
   return (
     <div>
@@ -27,6 +27,11 @@ const UserInfo = () => {
       <p>
         <span className='font-bold'>Saved:</span>{' '}
         {saved && saved.map((x) => <span>{x}</span>)}
+      </p>
+
+      <p>
+        <span className='font-bold'>Completed:</span>{' '}
+        {completed && completed.map((x) => <span>{x}</span>)}
       </p>
     </div>
   )
