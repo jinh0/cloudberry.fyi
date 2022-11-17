@@ -4,6 +4,9 @@ import { getAuth, OAuthProvider, signInWithPopup } from 'firebase/auth'
 import app from '@utils/firebase'
 import { useRouter } from 'next/router'
 import { doc, getDoc, getFirestore, setDoc } from 'firebase/firestore'
+import Image from 'next/image'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMicrosoft } from '@fortawesome/free-brands-svg-icons'
 
 const provider = new OAuthProvider('microsoft.com')
 provider.setCustomParameters({
@@ -43,11 +46,11 @@ const SignIn = () => {
       })
   }
   return (
-    <div className='w-screen h-screen flex pt-40 justify-center select-none'>
+    <div className='w-screen h-screen flex pt-40 justify-center select-none bg-white md:bg-gray-50'>
       <Head>
         <title>Sign In | Cloudberry</title>
       </Head>
-      <div className='w-1/3 flex flex-col items-center'>
+      <div className='lg:w-2/5 flex flex-col items-center md:border rounded-xl p-10 md:p-20 h-fit bg-white'>
         <div>
           <svg
             xmlns='http://www.w3.org/2000/svg'
@@ -67,8 +70,13 @@ const SignIn = () => {
           Sign in with your McGill email
         </p>
 
-        <button onClick={signIn}>
-          <img src='/ms-signin.svg' className='mt-14' />
+        <button
+          onClick={signIn}
+          className='mt-6 rounded-full border items-center flex flex-row px-6 py-2'
+        >
+          {/* <FontAwesomeIcon icon={faMicrosoft} className='w-6 h-6' /> */}
+          <img src='/ms-logo.svg' />
+          <div className='ml-4'>Sign in with Microsoft</div>
         </button>
 
         {/* <p>I'm just looking through courses for now.</p> */}
