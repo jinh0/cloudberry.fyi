@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import json
 import re
+import sys
 
 course_list = []
 
@@ -52,11 +53,20 @@ def get_course(code: str):
     code_title_credits = []
     course_code_name = doc.title.get_text()
     course_code_list = re.split("[|()]", course_code_name)
-    course_code = course_code_list[0][0:8]
+    new_credits = course_code_list[1].replace("credits", "")
+    course_code = code
     code_title_credits.append(str(course_code))
     code_title_credits.append(str(course_code_list[0][9:]))
-    code_title_credits.append(str(course_code_list[1][0]))
+    code_title_credits.append(new_credits)
     code_title_credits = [word.strip() for word in code_title_credits]
+
+    # float test function
+    def isfloat(num):
+        try:
+            float(num)
+            return True
+        except ValueError:
+            return False
 
     # finding extra info restrictions and others
 
@@ -137,7 +147,12 @@ def get_course(code: str):
 
     full_course["prerequisites"]
     full_course["extra"]
-    full_course["credits"] = int(code_title_credits[2])
+    if code_title_credits[2].isdigit() == True:
+        full_course["credits"] = int(code_title_credits[2])
+    elif isfloat(code_title_credits[2]) == True:
+        full_course["credits"] = float(code_title_credits[2])
+    else:
+        full_course["credits"] = 0
     full_course["department"] = dep_faculty[0]
     full_course["faculty"] = dep_faculty[1]
     full_course["terms"] = dict_list
@@ -146,21 +161,32 @@ def get_course(code: str):
     # adding course dictionary to list of all courses
     course_list.append(full_course)
 
+def get_all_courses():
+    # open course crawler json file
+    with open("output-coursetitles.json") as f:
+        course_titles = json.load(f)
+        for idx, code in enumerate(course_titles):
+            try:
+                get_course(code)
+                # print(course_list)
+                print(code)
 
-# open course crawler json file
-with open("output-coursetitles.json") as f:
-    course_titles = json.load(f)
-    for idx, code in enumerate(course_titles):
-        print(code)
-        get_course(code)
-        # print(course_list)
-        # print(idx)
+                if idx % 10 == 0:
+                    print(f"Course {idx}: ", code)
 
-        if idx % 10 == 0:
-            # print(f"Course {idx}: ", code)
+                    with open("billion.json", "w") as outfile:
+                        json.dump(course_list, outfile, indent=2)
+            except Exception as e:
+                print(e)
 
-            with open("billion.json", "w") as outfile:
-                json.dump(course_list, outfile, indent=2)
+    with open("billion.json", "w") as outfile:
+        json.dump(course_list, outfile, indent=2)
 
-        # with open("billion.json", "w") as outfile:
-        # json.dump(course_list, outfile, indent=2)
+
+get_all_courses()
+
+# try:
+#     get_course("DENT-101J2")
+# except Exception as e:
+#     print(e.__class__, "fuck you")
+# print(course_list)
