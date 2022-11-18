@@ -31,7 +31,7 @@ const Semester = ({
             <FontAwesomeIcon icon={faSnowflake} className='w-4 h-4' />
           )}
         </div>
-        <div className={showInstructor && 'font-semibold'}>
+        <div className={showInstructor ? 'font-semibold' : ''}>
           {convert[sem.term]}{' '}
         </div>
         {showInstructor && (

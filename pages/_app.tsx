@@ -7,6 +7,9 @@ import { doc } from 'firebase/firestore'
 import UserContext from '@contexts/UserContext'
 import { useDocument } from 'react-firebase-hooks/firestore'
 import Script from 'next/script'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
+const queryClient = new QueryClient()
 
 export default function App({ Component, pageProps }: AppProps) {
   const [loggedIn] = useAuthState(auth)
@@ -15,24 +18,26 @@ export default function App({ Component, pageProps }: AppProps) {
   )
 
   return (
-    <UserContext.Provider value={{ user, loading, error }}>
-      <Head>
-        <link rel='icon' href='/favicon.ico' />
-      </Head>
-      <Script
-        strategy='lazyOnload'
-        src='https://www.googletagmanager.com/gtag/js?id=G-4HB680742L'
-      ></Script>
-      <Script strategy='lazyOnload' id='analytics'>
-        {`
+    <QueryClientProvider client={queryClient}>
+      <UserContext.Provider value={{ user, loading, error }}>
+        <Head>
+          <link rel='icon' href='/favicon.ico' />
+        </Head>
+        <Script
+          strategy='lazyOnload'
+          src='https://www.googletagmanager.com/gtag/js?id=G-4HB680742L'
+        ></Script>
+        <Script strategy='lazyOnload' id='analytics'>
+          {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
 
             gtag('config', 'G-4HB680742L');
           `}
-      </Script>
-      <Component {...pageProps} />
-    </UserContext.Provider>
+        </Script>
+        <Component {...pageProps} />
+      </UserContext.Provider>
+    </QueryClientProvider>
   )
 }

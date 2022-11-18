@@ -13,7 +13,9 @@ const Course = ({ course }: { course: CourseType }) => {
         <Link href={`/courses/${course.code.replace(' ', '-').toLowerCase()}`}>
           <div className='mb-4 flex flex-row items-center'>
             <h1 className='text-2xl cursor-pointer w-full'>
-              <span className='font-medium'>{course.code}: </span>
+              <span className='font-medium'>
+                {course.code.replace('-', ' ')}:{' '}
+              </span>
               <span className='font-medium'>{course.name}</span>
             </h1>
           </div>

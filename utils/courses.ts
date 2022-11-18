@@ -1,6 +1,6 @@
+// import { CourseType } from '@typing'
 import { CourseType } from '@typing'
-import data from './courses.json'
+import data from './course-data.json'
 
-const courses = data as unknown as CourseType[]
-
-export const find = (code: string) => courses.find(x => x.code === code)
+const courses = data as CourseType[]
+export default courses
