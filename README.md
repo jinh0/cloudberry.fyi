@@ -1,7 +1,8 @@
-# 🐿 cloudberry: the all-in-one schedule builder
+# 🐿 cloudberry: the all-in-one course catalog
 
-WIP: Nothing to see here.
+### Contributing
 
+Commit messages follow the [conventional commits standard](https://www.conventionalcommits.org/en/v1.0.0/).
 
 ### Course API:
 
