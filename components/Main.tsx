@@ -25,6 +25,10 @@ const Main = ({
         <meta property='og:image:width' content='300'></meta>
         <meta property='og:image:height' content='300'></meta>
         <meta
+          name='og:image'
+          content='https://www.mcgill.ca/sites/all/themes/moriarty/images/mcgill_crest.png'
+        ></meta>
+        <meta
           name='twitter:image'
           content='https://www.mcgill.ca/sites/all/themes/moriarty/images/mcgill_crest.png'
         ></meta>
