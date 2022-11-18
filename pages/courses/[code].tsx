@@ -10,18 +10,13 @@ import { CourseType, UserType } from '@typing'
 import Semester from '@components/Semester'
 import { useContext } from 'react'
 import UserContext from '@contexts/UserContext'
-
-// TODO: Better method of storing data
-import courses from '@utils/courses.json'
 import Actions from '@components/course/Actions'
+
+import courses from 'utils/courses'
 
 export async function getStaticPaths() {
   return {
-    paths: [
-      { params: { code: 'comp-330' } },
-      { params: { code: 'comp-250' } },
-      { params: { code: 'math-235' } },
-    ],
+    paths: courses.map(({ code }) => ({ params: { code } })),
     fallback: false, // can also be true or 'blocking'
   }
 }
@@ -29,7 +24,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }: { params: { code: string } }) {
   return {
     // Passed to the page component as props
-    props: { course: courses[params.code] },
+    props: { course: courses.find(course => course.code === params.code) },
   }
 }
 
