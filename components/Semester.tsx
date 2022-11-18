@@ -41,7 +41,7 @@ const Semester = ({
               (sem.term === 'fall' ? 'border-red-200' : 'border-sky-200')
             }
           >
-            {sem.instructors.join(', ')}
+            {sem.instructors.join('; ')}
           </div>
         )}
       </div>
