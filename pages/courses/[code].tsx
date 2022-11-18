@@ -43,7 +43,7 @@ const Course = ({ course }: { course: CourseType }) => {
   const parse = (code: string) => code?.replace('-', ' ').toUpperCase()
 
   return (
-    <Main>
+    <Main title={parse(rawCode) + ' | Cloudberry'} content={course.description}>
       <GoBack />
       <Title>
         {parse(rawCode)}: {course.name}

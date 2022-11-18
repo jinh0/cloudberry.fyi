@@ -2,14 +2,32 @@ import Head from 'next/head'
 import Navbar from './Navbar'
 
 const Main = ({
+  title = '',
+  content = '',
   children,
 }: {
+  title?: string
+  content?: string
   children?: JSX.Element | JSX.Element[] | string
 }) => {
   return (
     <>
       <Head>
-        <title>Cloudberry</title>
+        <title>{title === '' ? 'Cloudberry' : title}</title>
+        <meta
+          name='description'
+          content={
+            content === ''
+              ? 'Cloudberry is the modern all-in-one course catalog for McGill University.'
+              : content
+          }
+        />
+        <meta property='og:image:width' content='300'></meta>
+        <meta property='og:image:height' content='300'></meta>
+        <meta
+          name='twitter:image'
+          content='https://www.mcgill.ca/sites/all/themes/moriarty/images/mcgill_crest.png'
+        ></meta>
       </Head>
 
       <div className='w-screen'>
