@@ -60,12 +60,14 @@ const Course = ({ course }: { course: CourseType }) => {
           <p>{course.description}</p>
         </div>
 
-        <div className='mt-4'>
-          <p>
-            <span className='font-bold'>Prerequisites: </span>
-            {course.prerequisites.join(', ')}
-          </p>
-        </div>
+        {course.prerequisites.length > 0 && (
+          <div className='mt-4'>
+            <p>
+              <span className='font-bold'>Prerequisites: </span>
+              {course.prerequisites.join(', ')}
+            </p>
+          </div>
+        )}
 
         {userData && <Actions code={rawCode} />}
       </div>
