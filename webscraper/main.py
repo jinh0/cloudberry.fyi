@@ -83,10 +83,8 @@ def get_course(code: str):
 
     # determine the overview of a particular course
     terms_for_description = doc.find("p", "catalog-terms")
-
     description = terms_for_description.find_previous("p").get_text()
-    description = description.split(":")
-    description = [word.strip() for word in description]
+    description = description.lstrip()
 
     # determine instructors for each term
     instruct = str(doc.find("p", "catalog-instructors").get_text())
@@ -143,7 +141,7 @@ def get_course(code: str):
     full_course["name"] = code_title_credits[1]
 
     if len(description) > 1:
-        full_course["description"] = description[1]
+        full_course["description"] = description
 
     full_course["prerequisites"]
     full_course["extra"]
@@ -171,7 +169,7 @@ def get_all_courses():
                 # print(course_list)
                 print(code)
 
-                if idx % 10 == 0:
+                if idx % 100 == 0:
                     print(f"Course {idx}: ", code)
 
                     with open("billion.json", "w") as outfile:
