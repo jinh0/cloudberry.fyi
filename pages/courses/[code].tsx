@@ -15,21 +15,20 @@ import Actions from '@components/course/Actions'
 import courses from 'utils/courses'
 
 export async function getStaticPaths() {
-  // console.log(courses.map(({ code }) => ({ params: { code } })))
   return {
     paths: courses.map(({ code }) => ({
       params: { code: code.toLowerCase() },
     })),
-    fallback: true, // can also be true or 'blocking'
+    fallback: false,
   }
 }
 
 export async function getStaticProps({ params }: { params: { code: string } }) {
-  console.log(courses.find(course => course.code === params.code))
   return {
-    // Passed to the page component as props
     props: {
-      course: courses.find(course => course.code.toLowerCase() === params.code),
+      course: courses.find(
+        course => course.code.toLowerCase() === params.code.toLowerCase()
+      ),
     },
   }
 }

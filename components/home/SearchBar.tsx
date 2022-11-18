@@ -1,4 +1,4 @@
-import { FormEvent, useContext, useState } from 'react'
+import { FormEvent, useContext, useEffect, useState } from 'react'
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid'
 import SearchContext from '@contexts/SearchContext'
 import { useQuery } from '@tanstack/react-query'
