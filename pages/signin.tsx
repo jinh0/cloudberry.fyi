@@ -12,7 +12,7 @@ const provider = new OAuthProvider('microsoft.com')
 provider.setCustomParameters({
   // Force re-consent.
   prompt: 'consent',
-  login_hint: 'james.mcgill@mail.mcgill.ca',
+  login_hint: 'john.doe@mail.mcgill.ca',
 })
 
 const SignIn = () => {
