@@ -1,5 +1,7 @@
 # 🐿 cloudberry: the all-in-one course catalog
 
+It'll be ready when it's ready.
+
 ### Contributing
 
 Commit messages follow the [conventional commits standard](https://www.conventionalcommits.org/en/v1.0.0/).
