@@ -6,6 +6,7 @@ import SearchContext from '@contexts/SearchContext'
 import { useState } from 'react'
 import { CourseType } from '@typing'
 import { useQuery } from '@tanstack/react-query'
+import Saved from '@components/home/Saved'
 
 export default function Home() {
   const [search, setSearch] = useState('')
@@ -25,12 +26,18 @@ export default function Home() {
 
   return (
     <Main>
-      <SearchContext.Provider
-        value={{ search, setSearch, isLoading, error, data, refetch }}
-      >
-        <Search />
-        <CourseList />
-      </SearchContext.Provider>
+      <div className='w-full flex flex-row'>
+        <div className='lg:w-2/3'>
+          <SearchContext.Provider
+            value={{ search, setSearch, isLoading, error, data, refetch }}
+          >
+            <Search />
+            <CourseList />
+          </SearchContext.Provider>
+        </div>
+
+        <Saved />
+      </div>
     </Main>
   )
 }

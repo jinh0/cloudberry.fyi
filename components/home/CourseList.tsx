@@ -2,24 +2,23 @@ import { CourseType } from '@typing'
 import Course from './Course'
 import { useContext, useEffect } from 'react'
 import SearchContext from '@contexts/SearchContext'
-import { useQuery } from '@tanstack/react-query'
 
 const CourseList = () => {
   const { search, isLoading, error, data } = useContext(SearchContext)
 
   if (isLoading)
     return (
-      <div className='lg:w-2/3 mt-10'>
+      <div className='mt-10'>
         <p className='text-gray-600 text-sm pb-4'>Searching...</p>
         <p className='border-b'></p>
       </div>
     )
-  if (error) return <div className='lg:w-2/3 mt-10'>Something went wrong.</div>
+  if (error) return <div className='mt-10'>Something went wrong.</div>
 
   const { results } = data
 
   return (
-    <div className='lg:w-2/3 mt-10'>
+    <div className='mt-10'>
       <p className='text-gray-600 text-sm pb-4'>Found 69 results in 7 ms.</p>
       <p className='border-b'></p>
 

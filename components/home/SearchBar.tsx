@@ -1,8 +1,6 @@
 import { FormEvent, useContext, useEffect, useState } from 'react'
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid'
 import SearchContext from '@contexts/SearchContext'
-import { useQuery } from '@tanstack/react-query'
-import { CourseType } from '@typing'
 
 const SearchBar = () => {
   const { setSearch } = useContext(SearchContext)
@@ -15,7 +13,7 @@ const SearchBar = () => {
 
   return (
     <form
-      className='w-full md:w-2/3 mb-2 text-xl md:text-3xl py-2 flex flex-row items-center text-gray-600'
+      className='mb-2 text-xl md:text-3xl py-2 flex flex-row items-center text-gray-600'
       onSubmit={handleSubmit}
     >
       <MagnifyingGlassIcon className='w-6 h-6 mr-2 text-gray-400' />

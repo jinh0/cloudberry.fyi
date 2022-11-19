@@ -2,24 +2,13 @@ import requests
 from bs4 import BeautifulSoup
 import json
 import re
-import sys
 
 course_list = []
 
-# defining dictionary for a course
-
 
 def get_course(code: str):
+    # defining dictionary for a course
     full_course = {
-        # "code": "",
-        # "name": "",
-        # "description": [],
-        # "prerequisites": [],
-        # "extra": [],
-        # "department": "",
-        # "faculty": "",
-        # "terms": [],
-        # "credits": -1
         key: []
         for key in [
             "code",
@@ -159,6 +148,7 @@ def get_course(code: str):
     # adding course dictionary to list of all courses
     course_list.append(full_course)
 
+
 def get_all_courses():
     # open course crawler json file
     with open("output-coursetitles.json") as f:
@@ -182,9 +172,3 @@ def get_all_courses():
 
 
 get_all_courses()
-
-# try:
-#     get_course("DENT-101J2")
-# except Exception as e:
-#     print(e.__class__, "fuck you")
-# print(course_list)
