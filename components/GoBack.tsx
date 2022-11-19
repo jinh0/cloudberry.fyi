@@ -3,7 +3,9 @@ import { useRouter } from 'next/router'
 
 const GoBack = () => {
   const router = useRouter()
-  const goBack = () => router.back()
+  const goBack = () => {
+    router.push('/')
+  }
 
   return (
     <button
