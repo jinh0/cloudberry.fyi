@@ -1,5 +1,5 @@
 /**
- * SearchContext.tsx: Search context
+ * @file Search context for homepage
  */
 
 import {
@@ -10,6 +10,9 @@ import {
 import { CourseType } from '@typing'
 import { createContext, Dispatch, SetStateAction } from 'react'
 
+/**
+ * Context containing search string, fetch data, etc.
+ */
 const SearchContext = createContext<{
   search: string
   setSearch: Dispatch<SetStateAction<string>>

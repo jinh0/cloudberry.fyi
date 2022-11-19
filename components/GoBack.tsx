@@ -1,11 +1,12 @@
 import { ArrowLeftIcon } from '@heroicons/react/24/outline'
 import { useRouter } from 'next/router'
 
+/**
+ * "Go Back" Button
+ */
 const GoBack = () => {
   const router = useRouter()
-  const goBack = () => {
-    router.push('/')
-  }
+  const goBack = () => router.push('/')
 
   return (
     <button

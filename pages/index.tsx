@@ -1,5 +1,5 @@
 /**
- * index.tsx: Homepage
+ * @file Homepage
  */
 
 import CourseList from '@components/home/CourseList'

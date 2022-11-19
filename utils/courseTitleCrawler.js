@@ -1,9 +1,8 @@
 /**
- * /utils/courseTitleCrawler.js:
- * Web scraper that goes through eCalendar to
- * retrieve all the course codes for a specified year.
+ * @file Web scraper that goes through eCalendar to
+ *   retrieve all the course codes for a specified year.
  * 
- * Credit: McGill Enhanced
+ * @author McGill Enhanced
  */
 
 const fs = require('fs')

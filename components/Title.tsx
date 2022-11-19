@@ -1,5 +1,8 @@
 import { Children } from '@typing'
 
+/**
+ * Generic title component
+ */
 const Title = ({ children }: { children: Children }) => {
   return (
     <div>

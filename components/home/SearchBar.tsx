@@ -1,10 +1,10 @@
-import { FormEvent, useContext, useEffect, useState } from 'react'
+import { FormEvent, useContext, useState } from 'react'
 import { MagnifyingGlassIcon } from '@heroicons/react/24/solid'
 import SearchContext from '@contexts/SearchContext'
 
 const SearchBar = () => {
-  const { setSearch } = useContext(SearchContext)
   const [query, setQuery] = useState('')
+  const { setSearch } = useContext(SearchContext)
 
   const handleSubmit = (evt: FormEvent) => {
     evt.preventDefault()

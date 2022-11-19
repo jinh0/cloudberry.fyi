@@ -2,6 +2,10 @@ import { faPagelines } from '@fortawesome/free-brands-svg-icons'
 import { faSnowflake } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+/**
+ * Semester component: pill-shaped label with
+ * optional setting to show instructor
+ */
 const Semester = ({
   sem,
   showInstructor = false,
@@ -31,9 +35,11 @@ const Semester = ({
             <FontAwesomeIcon icon={faSnowflake} className='w-4 h-4' />
           )}
         </div>
+
         <div className={showInstructor ? 'font-semibold' : ''}>
           {convert[sem.term]}{' '}
         </div>
+
         {showInstructor && (
           <div
             className={

@@ -1,5 +1,5 @@
 /**
- * UserContext.tsx: User data context
+ * @file User data context
  */
 
 import {
@@ -9,6 +9,9 @@ import {
 } from 'firebase/firestore'
 import { createContext } from 'react'
 
+/**
+ * Context containing Firebase user data
+ */
 const UserContext = createContext<{
   user: DocumentSnapshot<DocumentData>
   loading: boolean

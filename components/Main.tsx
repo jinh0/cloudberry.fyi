@@ -1,6 +1,9 @@
 import Head from 'next/head'
 import Navbar from './Navbar'
 
+/**
+ * Wrapper container for every page. Contains <title>, <meta> data, and Navbar.
+ */
 const Main = ({
   title = '',
   content = '',
@@ -14,6 +17,8 @@ const Main = ({
     <>
       <Head>
         <title>{title === '' ? 'Cloudberry' : title}</title>
+
+        {/* Metadata for link previews */}
         <meta
           name='description'
           content={

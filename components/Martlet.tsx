@@ -1,3 +1,6 @@
+/**
+ * McGill Martlet (Bird) icon
+ */
 const Martlet = () => {
   return (
     <svg
