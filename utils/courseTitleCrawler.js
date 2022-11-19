@@ -1,3 +1,11 @@
+/**
+ * /utils/courseTitleCrawler.js:
+ * Web scraper that goes through eCalendar to
+ * retrieve all the course codes for a specified year.
+ * 
+ * Credit: McGill Enhanced
+ */
+
 const fs = require('fs')
 const request = require('request')
 const cheerio = require('cheerio')

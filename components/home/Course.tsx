@@ -1,10 +1,6 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSnowflake } from '@fortawesome/free-solid-svg-icons'
-import { faPagelines } from '@fortawesome/free-brands-svg-icons'
 import { CourseType } from 'typing'
 import Link from 'next/link'
 import Semester from '@components/Semester'
-import { BookmarkIcon } from '@heroicons/react/24/outline'
 
 const Course = ({ course }: { course: CourseType }) => {
   return (

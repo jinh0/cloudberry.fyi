@@ -1,6 +1,5 @@
-import { CourseType } from '@typing'
 import Course from './Course'
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import SearchContext from '@contexts/SearchContext'
 
 const CourseList = () => {

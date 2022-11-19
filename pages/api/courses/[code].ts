@@ -1,3 +1,7 @@
+/**
+ * [code].ts: Get individual course data by code
+ */
+
 import { CourseType } from '@typing'
 import fuse from 'fuse.js'
 import { NextApiRequest, NextApiResponse } from 'next'

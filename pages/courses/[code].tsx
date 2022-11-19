@@ -35,18 +35,18 @@ export async function getStaticProps({ params }: { params: { code: string } }) {
 
 const Course = ({ course }: { course: CourseType }) => {
   const router = useRouter()
-  const { code: rawCode } = router.query as { code: string }
+  const { code } = router.query as { code: string }
 
   const { user } = useContext(UserContext)
   const userData = user?.data() as UserType
 
-  const parse = (code: string) => code?.replace('-', ' ').toUpperCase()
+  const format = (code: string) => code?.replace('-', ' ').toUpperCase()
 
   return (
-    <Main title={parse(rawCode) + ' | Cloudberry'} content={course.description}>
+    <Main title={format(code) + ' | Cloudberry'} content={course.description}>
       <GoBack />
       <Title>
-        {parse(rawCode)}: {course.name}
+        {format(code)}: {course.name}
       </Title>
 
       <div className='lg:w-3/5 text-base lg:text-lg'>
@@ -69,7 +69,7 @@ const Course = ({ course }: { course: CourseType }) => {
           </div>
         )}
 
-        {userData && <Actions code={rawCode} />}
+        {userData && <Actions code={code} />}
       </div>
     </Main>
   )

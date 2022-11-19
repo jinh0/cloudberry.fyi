@@ -1,18 +1,17 @@
-import GoBack from '@components/GoBack'
+/**
+ * signin.tsx: Sign In page
+ */
+
 import Head from 'next/head'
 import { getAuth, OAuthProvider, signInWithPopup } from 'firebase/auth'
 import app from '@utils/firebase'
 import { useRouter } from 'next/router'
 import { doc, getDoc, getFirestore, setDoc } from 'firebase/firestore'
-import Image from 'next/image'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMicrosoft } from '@fortawesome/free-brands-svg-icons'
 
 const provider = new OAuthProvider('microsoft.com')
 provider.setCustomParameters({
-  // Force re-consent.
   prompt: 'consent',
-  login_hint: 'john.doe@mail.mcgill.ca',
+  login_hint: 'john.doe@mail.mcgill.ca', // Restricts sign-in's to McGill emails
 })
 
 const SignIn = () => {
@@ -26,8 +25,11 @@ const SignIn = () => {
         // User is signed in.
         const { user } = result
 
+        // Get document associated with user
         const docRef = await getDoc(doc(db, 'users', user.uid))
-        console.log(docRef, docRef.exists())
+
+        // If document doesn't exist, i.e., first time signing in,
+        // create a document for the user
         if (!docRef.exists()) {
           await setDoc(doc(db, 'users', user.uid), {
             name: user.displayName,
@@ -38,6 +40,7 @@ const SignIn = () => {
           })
         }
 
+        // Redirect to homepage
         router.push('/')
       })
       .catch(error => {
@@ -63,6 +66,7 @@ const SignIn = () => {
             <path d='M4.462 19.462c.42-.419.753-.89 1-1.394.453.213.902.434 1.347.661a6.743 6.743 0 01-1.286 1.794.75.75 0 11-1.06-1.06z' />
           </svg>
         </div>
+
         <p className='text-center text-3xl font-bold'>
           Build your dream degree today
         </p>
@@ -78,11 +82,6 @@ const SignIn = () => {
           <img src='/ms-logo.svg' />
           <div className='ml-4'>Sign in with Microsoft</div>
         </button>
-
-        {/* <p>I'm just looking through courses for now.</p> */}
-        {/* <div className="border rounded-xl flex items-center justify-center p-20 bg-white mt-10 w-full">
-          <img src="/ms-signin.svg" />
-        </div> */}
       </div>
     </div>
   )

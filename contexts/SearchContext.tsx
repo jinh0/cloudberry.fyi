@@ -1,3 +1,7 @@
+/**
+ * SearchContext.tsx: Search context
+ */
+
 import {
   RefetchOptions,
   RefetchQueryFilters,

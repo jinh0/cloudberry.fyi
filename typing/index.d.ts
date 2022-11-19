@@ -19,6 +19,7 @@ export type UserType = {
   current: string[] | null
 }
 
+/** Helper type for React children prop */
 export type Children = JSX.Element | string | Array<JSX.Element | string>
 
 declare module 'utils/courses' {

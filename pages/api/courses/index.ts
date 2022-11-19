@@ -1,3 +1,7 @@
+/**
+ * /api/courses/index.ts: get course list with optional query
+ */
+
 import { CourseType } from '@typing'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import courses from 'utils/courses'

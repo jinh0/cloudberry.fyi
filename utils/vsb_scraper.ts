@@ -26,7 +26,7 @@ const getTime = (minutes: number) => {
 }
 
 // Get course data from VSB
-const getCourse = async courseCode => {
+const getCourse = async (courseCode: string) => {
   // Converts current time to milliseconds
   let currTime = new Date().getTime()
   let term = 202301

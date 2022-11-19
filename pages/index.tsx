@@ -1,16 +1,20 @@
+/**
+ * index.tsx: Homepage
+ */
+
 import CourseList from '@components/home/CourseList'
 import Main from '@components/Main'
 import Search from '@components/home/Search'
-import Title from '@components/Title'
 import SearchContext from '@contexts/SearchContext'
 import { useState } from 'react'
 import { CourseType } from '@typing'
 import { useQuery } from '@tanstack/react-query'
 import Saved from '@components/home/Saved'
 
-export default function Home() {
+const Home = () => {
   const [search, setSearch] = useState('')
 
+  // TODO: Reorganize getCourses/query
   const getCourses = async () => {
     const res = await fetch(`/api/courses?search=${search}`)
     return res.json()
@@ -41,3 +45,5 @@ export default function Home() {
     </Main>
   )
 }
+
+export default Home

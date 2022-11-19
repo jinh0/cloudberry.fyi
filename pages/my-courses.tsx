@@ -1,5 +1,6 @@
-/*
+/**
  * my-courses.tsx: Page to view user's courses (NOT MYCOURSES)
+ * TODO: is this even worth it?
  */
 
 import Main from '@components/Main'

@@ -1,3 +1,7 @@
+/**
+ * UserContext.tsx: User data context
+ */
+
 import {
   DocumentData,
   DocumentSnapshot,
