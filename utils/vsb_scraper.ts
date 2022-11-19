@@ -1,7 +1,8 @@
 /**
- * vsb_scraper.ts: Scrapes VSB API for course data
+ * @file vsb_scraper.ts: Scrapes VSB API for course data
  */
 
+import { VSBType } from '@typing'
 import { load } from 'cheerio'
 
 // Weird time anti-bot thing VSB does
@@ -25,8 +26,10 @@ const getTime = (minutes: number) => {
   return `${hours}:${mins}`
 }
 
-// Get course data from VSB
-const getCourse = async (courseCode: string) => {
+/**
+ * Get course data from VSB
+ */
+export const getCourse = async (courseCode: string): Promise<VSBType> => {
   // Converts current time to milliseconds
   let currTime = new Date().getTime()
   let term = 202301
@@ -74,9 +77,5 @@ const getCourse = async (courseCode: string) => {
     t2: Number(block.t2),
   }))
 
-  console.log(courseData)
+  return courseData
 }
-
-getCourse('MATH-251')
-
-export {}

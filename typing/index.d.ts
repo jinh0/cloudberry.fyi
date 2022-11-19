@@ -19,7 +19,18 @@ export type UserType = {
   current: string[] | null
 }
 
-/** Helper type for React children prop */
+export type VSBType = {
+  code: string
+  type: string
+  section: string
+  location: string
+  remainingSeats: number
+  waitlistRem: number
+  waitlistCap: number
+  schedule: Array<{ day: string; t1: number; t2: number }>
+}
+
+/** React prop.children type */
 export type Children = JSX.Element | string | Array<JSX.Element | string>
 
 declare module 'utils/courses' {
