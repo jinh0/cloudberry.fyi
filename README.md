@@ -6,6 +6,10 @@ It'll be ready when it's ready.
 
 Commit messages follow the [conventional commits standard](https://www.conventionalcommits.org/en/v1.0.0/).
 
+### Libraries Used
+
+- Search is powered by [fuse.js](https://fusejs.io).
+
 ### Course API:
 
 Every course should look like this:
