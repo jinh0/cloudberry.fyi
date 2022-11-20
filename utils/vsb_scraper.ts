@@ -50,7 +50,6 @@ export const getCourse = async (courseCode: string): Promise<VSBType> => {
   const course = $('course').attr() // course div
   const courseInfo = $('block').attr() // block div
   const courseTime = $('timeblock').attr() //timeblock div
-  console.log($.html())
 
   // Create a dictionary with course data
   let courseData = {
