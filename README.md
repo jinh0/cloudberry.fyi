@@ -1,16 +1,27 @@
 # 🐿 cloudberry: the all-in-one course catalog
 
-It'll be ready when it's ready.
+## Contributing
 
-### Contributing
+When you first clone the repository, you have to install all the dependencies. We use `npm` because `yarn` sucks.
+```
+npm install
+```
 
-Commit messages follow the [conventional commits standard](https://www.conventionalcommits.org/en/v1.0.0/).
+And then, to start the website, do
+```
+npm run dev
+```
 
-### Libraries Used
+Commit messages follow the [conventional commits standard](https://www.conventionalcommits.org/en/v1.0.0/). [Helpful info](https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13).
+
+## Libraries Used
+
+Tech stack: React, Next.js, TailwindCSS, Firebase
 
 - Search is powered by [fuse.js](https://fusejs.io).
+- Styling is done with the best CSS library [TailwindCSS](https://tailwindcss.com).
 
-### Course API:
+## Course API:
 
 Every course should look like this:
 ```json
