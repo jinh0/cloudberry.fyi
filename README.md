@@ -21,6 +21,16 @@ Tech stack: React, Next.js, TailwindCSS, Firebase
 - Search is powered by [fuse.js](https://fusejs.io).
 - Styling is done with the best CSS library [TailwindCSS](https://tailwindcss.com).
 
+## Project Hierarchy
+
+```
+/components: Components
+/pages: Pages
+└── /api/courses: Search algorithm API
+
+```
+
+
 ## Course API:
 
 Every course should look like this:
