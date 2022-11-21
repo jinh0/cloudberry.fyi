@@ -1,19 +1,10 @@
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
-import subjectsData from '@utils/subjects.json'
 import { Combobox } from '@headlessui/react'
 import Fuse from 'fuse.js'
 import { ChevronDownIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import subjectsData, { Subject } from '@utils/subjects'
 
-type Course = {
-  code: string
-  title: string
-}
-
-const subjects: Course[] = Object.entries(
-  subjectsData as Record<string, string>
-).map(([code, title]) => ({ code, title }))
-
-const fuse = new Fuse(subjects, {
+const fuse = new Fuse(subjectsData, {
   keys: ['code', 'title'],
   isCaseSensitive: false,
 })
@@ -22,8 +13,8 @@ const Subjects = ({
   subjects,
   setSubjects,
 }: {
-  subjects: Course[]
-  setSubjects: Dispatch<SetStateAction<Course[]>>
+  subjects: Subject[]
+  setSubjects: Dispatch<SetStateAction<Subject[]>>
 }) => {
   return (
     <div className='flex flex-row'>
@@ -46,48 +37,21 @@ const Subjects = ({
 }
 
 const AutoFilter = () => {
-  const [opened, setOpened] = useState(false)
-  const [subjects, setSubjects] = useState<Course[]>([])
-  const [selectedSubject, setSelectedSubject] = useState<Course>(null)
+  const [subjects, setSubjects] = useState<Subject[]>([])
+  const [selectedSubject, setSelectedSubject] = useState<Subject>(null)
   const [query, setQuery] = useState('')
 
   const filteredSubjects =
     query === ''
-      ? subjects.slice(0, 10)
+      ? subjectsData.slice(0, 10)
       : fuse.search(query, { limit: 10 }).map(res => res.item)
 
   useEffect(() => {
-    setOpened(false)
-
     if (selectedSubject) {
       setSubjects(subjects.concat(selectedSubject))
       setSelectedSubject(null)
     }
   }, [selectedSubject])
-
-  if (!opened) {
-    return (
-      <>
-        <div className='relative inline-block text-left mr-2 outline-none'>
-          <div>
-            <button
-              onClick={() => {
-                setSelectedSubject(null)
-                setOpened(!opened)
-              }}
-              className='inline-flex w-full justify-between rounded-full border bg-white px-4 py-1 text-gray-700 focus:outline-none mr-2'
-            >
-              Subject
-              <ChevronDownIcon className='w-6 h-6' />
-            </button>
-          </div>
-        </div>
-
-        <Subjects subjects={subjects} setSubjects={setSubjects} />
-      </>
-    )
-  }
-  console.log('asdf')
 
   return (
     <>
@@ -101,31 +65,26 @@ const AutoFilter = () => {
             <>
               <Combobox.Input
                 onChange={event => setQuery(event.target.value)}
-                onBlur={() => {
-                  if (query === '') {
-                    console.log('wtf')
-                    setOpened(false)
-                  }
-                }}
-                className='border rounded-full px-4 py-1 w-fit outline-none'
+                className='border rounded-full px-4 py-1 outline-none placeholder-gray-600 w-48'
                 autoFocus={true}
                 autoCorrect='off'
                 autoComplete='off'
                 placeholder='Subject Code'
-                displayValue={(item: Course) => item && item.code}
+                displayValue={(item: Subject) => item && item.code}
               />
-              <Combobox.Options className='absolute bg-white border rounded-xl p-1 mt-3 w-96 h-56 overflow-auto'>
+              <Combobox.Button className='absolute flex items-center right-0 inset-y-0 pr-4'>
+                <ChevronDownIcon className='w-6 h-6 text-gray-500' />
+              </Combobox.Button>
+              <Combobox.Options className='absolute bg-white border rounded-xl p-1 mt-3 w-72 h-56 overflow-auto shadow'>
                 {filteredSubjects.map(({ code, title }, idx) => (
-                  <Combobox.Option
-                    key={idx}
-                    value={{ code, title }}
-                    onClick={() => {
-                      setSelectedSubject({ code, title })
-                      setQuery('')
-                    }}
-                  >
-                    {() => (
-                      <div className='cursor-pointer hover:bg-violet-500 hover:text-white p-2 rounded-xl'>
+                  <Combobox.Option key={idx} value={{ code, title }}>
+                    {({ active }) => (
+                      <div
+                        className={
+                          'cursor-pointer hover:bg-violet-500 hover:text-white p-2 rounded-xl' +
+                          (active ? ' bg-violet-500 text-white' : '')
+                        }
+                      >
                         <span className='font-bold mr-1'>{code}</span> {title}
                       </div>
                     )}
