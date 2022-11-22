@@ -21,7 +21,7 @@ const Subjects = ({
       {subjects.map((subject, idx) => (
         <div key={idx} className='mr-2'>
           <div className='inline-flex w-full justify-between rounded-full px-4 py-1 border border-transparent bg-violet-100 text-violet-700 focus:outline-none mr-2'>
-            {subject.code}: {subject.title}
+            <span className='font-bold'>{subject.code}:</span> {subject.title}
             <button
               onClick={() =>
                 setSubjects(subjects.filter(x => x.code !== subject.code))
@@ -61,37 +61,33 @@ const AutoFilter = () => {
           onChange={setSelectedSubject}
           nullable
         >
-          {({ activeOption }) => (
-            <>
-              <Combobox.Input
-                onChange={event => setQuery(event.target.value)}
-                className='border rounded-full px-4 py-1 outline-none placeholder-gray-600 w-48'
-                autoCorrect='off'
-                autoComplete='off'
-                placeholder='Subject Code'
-                displayValue={(item: Subject) => item && item.code}
-              />
-              <Combobox.Button className='absolute flex items-center right-0 inset-y-0 pr-4'>
-                <ChevronDownIcon className='w-6 h-6 text-gray-500' />
-              </Combobox.Button>
-              <Combobox.Options className='absolute bg-white border rounded-xl p-1 mt-3 w-72 h-56 overflow-auto shadow'>
-                {filteredSubjects.map(({ code, title }, idx) => (
-                  <Combobox.Option key={idx} value={{ code, title }}>
-                    {({ active }) => (
-                      <div
-                        className={
-                          'cursor-pointer hover:bg-violet-500 hover:text-white p-2 rounded-xl' +
-                          (active ? ' bg-violet-500 text-white' : '')
-                        }
-                      >
-                        <span className='font-bold mr-1'>{code}</span> {title}
-                      </div>
-                    )}
-                  </Combobox.Option>
-                ))}
-              </Combobox.Options>
-            </>
-          )}
+          <Combobox.Input
+            onChange={event => setQuery(event.target.value)}
+            className='border rounded-full px-4 py-1 outline-none placeholder-gray-600 w-48'
+            autoCorrect='off'
+            autoComplete='off'
+            placeholder='Subject Code'
+            displayValue={(item: Subject) => item && item.code}
+          />
+          <Combobox.Button className='absolute flex items-center right-0 inset-y-0 pr-4'>
+            <ChevronDownIcon className='w-6 h-6 text-gray-500' />
+          </Combobox.Button>
+          <Combobox.Options className='absolute bg-white border rounded-xl p-1 mt-3 w-72 h-56 overflow-auto shadow'>
+            {filteredSubjects.map(({ code, title }, idx) => (
+              <Combobox.Option key={idx} value={{ code, title }}>
+                {({ selected, active }) => (
+                  <div
+                    className={
+                      'cursor-pointer hover:bg-violet-500 hover:text-white p-2 rounded-xl' +
+                      (!selected && active ? ' bg-violet-500 text-white' : '')
+                    }
+                  >
+                    <span className='font-bold mr-1'>{code}</span> {title}
+                  </div>
+                )}
+              </Combobox.Option>
+            ))}
+          </Combobox.Options>
         </Combobox>
       </div>
 
