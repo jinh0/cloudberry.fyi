@@ -3,7 +3,6 @@
  */
 
 import { CourseType } from '@typing'
-import fuse from 'fuse.js'
 import { NextApiRequest, NextApiResponse } from 'next'
 import courses from 'utils/courses'
 
