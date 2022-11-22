@@ -66,7 +66,6 @@ const AutoFilter = () => {
               <Combobox.Input
                 onChange={event => setQuery(event.target.value)}
                 className='border rounded-full px-4 py-1 outline-none placeholder-gray-600 w-48'
-                autoFocus={true}
                 autoCorrect='off'
                 autoComplete='off'
                 placeholder='Subject Code'
