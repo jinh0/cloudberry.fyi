@@ -15,24 +15,14 @@ const fuse = new Fuse<CourseType>(courses, {
 
 export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse<
-    | { status: number; results: CourseType[] }
-    | { status: number; error: string }
-  >
+  res: NextApiResponse<{ results: CourseType[] } | { error: string }>
 ) {
-  if (req.query.search) {
-    const { search } = req.query as { search: string }
+  const { search } = req.query as { search: string }
 
-    if (search === '')
-      return res
-        .status(200)
-        .json({ status: 200, results: courses.slice(0, 100) })
+  if (!search || search === '')
+    return res.status(200).json({ results: courses.slice(0, 100) })
 
-    return res.status(200).json({
-      status: 200,
-      results: fuse.search(search, { limit: 20 }).map(x => x.item),
-    })
-  }
-
-  return res.status(200).json({ status: 200, results: courses.slice(0, 100) })
+  return res.status(200).json({
+    results: fuse.search(search, { limit: 20 }).map(x => x.item),
+  })
 }
