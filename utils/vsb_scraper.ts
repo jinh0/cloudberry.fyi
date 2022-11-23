@@ -76,5 +76,9 @@ export const getCourse = async (courseCode: string): Promise<VSBType> => {
     t2: Number(block.t2),
   }))
 
+  console.log(courseData)
+
   return courseData
 }
+
+export {}
