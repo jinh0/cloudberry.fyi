@@ -19,6 +19,8 @@ export type UserType = {
   current: string[] | null
 }
 
+export type BlockType = { day: string; t1: number; t2: number }
+
 export type VSBType = {
   code: string
   type: string
@@ -27,7 +29,7 @@ export type VSBType = {
   remainingSeats: number
   waitlistRem: number
   waitlistCap: number
-  schedule: Array<{ day: string; t1: number; t2: number }>
+  schedule: Array<BlockType>
 }
 
 /**
