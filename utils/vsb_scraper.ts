@@ -2,7 +2,7 @@
  * @file vsb_scraper.ts: Scrapes VSB API for course data
  */
 
-import { VSBType } from '@typing'
+import { Safe, VSBType } from '@typing'
 import { load } from 'cheerio'
 
 // Weird time anti-bot thing VSB does
@@ -29,7 +29,7 @@ const getTime = (minutes: number) => {
 /**
  * Get course data from VSB
  */
-export const getCourse = async (courseCode: string): Promise<VSBType> => {
+export const getCourse = async (courseCode: string): Promise<Safe<VSBType>> => {
   // Converts current time to milliseconds
   let currTime = new Date().getTime()
   let term = 202301
@@ -46,6 +46,9 @@ export const getCourse = async (courseCode: string): Promise<VSBType> => {
   const text = await response.text()
 
   const $ = load(text)
+
+  // If there is an error, early return error
+  if ($('errors').children().length > 0) return { status: false }
 
   const course = $('course').attr() // course div
   const courseInfo = $('block').attr() // block div
@@ -76,5 +79,7 @@ export const getCourse = async (courseCode: string): Promise<VSBType> => {
     t2: Number(block.t2),
   }))
 
-  return courseData
+  return { status: true, ...courseData }
 }
+
+export {}

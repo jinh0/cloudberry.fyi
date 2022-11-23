@@ -16,16 +16,6 @@ import courses from 'utils/courses'
 import VSBData from '@components/course/VSBData'
 import { getCourse } from '@utils/vsb_scraper'
 
-async function fetchVSB(code: string): Promise<Safe<VSBType>> {
-  try {
-    const vsbData = await getCourse(code)
-    return { status: true, ...vsbData }
-  } catch (err) {
-    console.log(err)
-    return { status: false }
-  }
-}
-
 export async function getStaticPaths() {
   return {
     paths: courses.map(({ code }) => ({
@@ -36,7 +26,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }: { params: { code: string } }) {
-  const vsbData = await fetchVSB(params.code.toUpperCase())
+  const vsbData = await getCourse(params.code.toUpperCase())
 
   const eCalendarData = courses.find(
     course => course.code.toLowerCase() === params.code.toLowerCase()
