@@ -48,7 +48,7 @@ export const getCourse = async (courseCode: string): Promise<Safe<VSBType>> => {
   const $ = load(text)
 
   // If there is an error, early return error
-  if ($('errors').children().length > 0) return { status: false }
+  if ($('errors').children().length > 0) return { isOk: false }
 
   const course = $('course').attr() // course div
   const courseInfo = $('block').attr() // block div
@@ -79,7 +79,7 @@ export const getCourse = async (courseCode: string): Promise<Safe<VSBType>> => {
     t2: Number(block.t2),
   }))
 
-  return { status: true, ...courseData }
+  return { isOk: true, result: courseData }
 }
 
 export {}

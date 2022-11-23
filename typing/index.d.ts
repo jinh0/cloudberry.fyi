@@ -36,11 +36,7 @@ export type VSBType = {
  * "Safe" type: Forces you to check whether
  * the object exists or not (like strict null check)
  */
-export type Safe<T extends Record> =
-  | ({
-      [K in keyof T]: T[K]
-    } & { status: true })
-  | { status: false }
+export type Safe<T extends Record> = { isOk: true; result: T } | { isOk: false }
 
 /** React prop.children type */
 export type Children = JSX.Element | string | Array<JSX.Element | string>

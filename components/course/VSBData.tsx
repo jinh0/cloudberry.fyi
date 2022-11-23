@@ -29,23 +29,23 @@ const Block = ({ day, t1, t2 }: BlockType) => {
 }
 
 const VSBData = ({ data }: { data: Safe<VSBType> }) => {
-  if (!data.status) return <></>
+  if (!data.isOk) return <></>
 
-  console.log(data)
+  const course = data.result
 
   return (
     <div className='mt-4'>
       <p>
-        <span className='font-bold'>Location:</span> {data.location}
+        <span className='font-bold'>Location:</span> {course.location}
       </p>
       <p>
-        {data.remainingSeats} {data.remainingSeats === 1 ? 'seat' : 'seats'}{' '}
+        {course.remainingSeats} {course.remainingSeats === 1 ? 'seat' : 'seats'}{' '}
         remaining
-        {data.waitlistCap === 0 && '; there is no waitlist for this course.'}
+        {course.waitlistCap === 0 && '; there is no waitlist for this course.'}
       </p>
 
       <div className='mt-2'>
-        {data.schedule.map((block, idx) => (
+        {course.schedule.map((block, idx) => (
           <Block key={idx} {...block} />
         ))}
       </div>
