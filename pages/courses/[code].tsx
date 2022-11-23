@@ -20,7 +20,8 @@ async function fetchVSB(code: string): Promise<Safe<VSBType>> {
   try {
     const vsbData = await getCourse(code)
     return { status: true, ...vsbData }
-  } catch {
+  } catch (err) {
+    console.log(err)
     return { status: false }
   }
 }
