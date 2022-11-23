@@ -1,6 +1,4 @@
-import { useQuery } from '@tanstack/react-query'
 import { BlockType, Safe, VSBType } from '@typing'
-import { getCourse } from '@utils/vsb_scraper'
 
 const minToStr = (time: number) => {
   const hours = Math.floor(time / 60)
