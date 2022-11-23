@@ -45,8 +45,8 @@ const VSBData = ({ data }: { data: Safe<VSBType> }) => {
       </p>
 
       <div className='mt-2'>
-        {data.schedule.map(block => (
-          <Block {...block} />
+        {data.schedule.map((block, idx) => (
+          <Block key={idx} {...block} />
         ))}
       </div>
     </div>
