@@ -55,31 +55,42 @@ export const getCourse = async (courseCode: string): Promise<Safe<VSBType>> => {
   const courseTime = $('timeblock').attr() //timeblock div
 
   // Create a dictionary with course data
-  let courseData = {
-    code: course.key,
-    type: courseInfo.type,
-    section: courseInfo.secno,
-    location: courseInfo.location,
-    remainingSeats: Number(courseInfo.os),
-    waitlistRem: Number(courseInfo.ws),
-    waitlistCap: Number(courseInfo.wc),
-    schedule: [],
+  try {
+    let courseData = {
+      code: course.key,
+      type: courseInfo.type,
+      section: courseInfo.secno,
+      location: courseInfo.location,
+      remainingSeats: Number(courseInfo.os),
+      waitlistRem: Number(courseInfo.ws),
+      waitlistCap: Number(courseInfo.wc),
+      schedule: [],
+    }
+
+    // Get day and time in mins
+    $('timeblock').each((_, element) => {
+      const { day, t1, t2 } = $(element).attr()
+      const times = { day, t1, t2 }
+      courseData.schedule.push(times)
+    })
+
+    courseData.schedule = courseData.schedule.map(block => ({
+      ...block,
+      t1: Number(block.t1),
+      t2: Number(block.t2),
+    }))
+
+    return { status: true, ...courseData }
+  } catch (err) {
+    // console.log('something went wrong')
+    console.log(courseCode)
+    console.log($('errors').text())
+
+    return { status: false }
   }
-
-  // Get day and time in mins
-  $('timeblock').each((_, element) => {
-    const { day, t1, t2 } = $(element).attr()
-    const times = { day, t1, t2 }
-    courseData.schedule.push(times)
-  })
-
-  courseData.schedule = courseData.schedule.map(block => ({
-    ...block,
-    t1: Number(block.t1),
-    t2: Number(block.t2),
-  }))
-
-  return { status: true, ...courseData }
 }
+// ;(async () => {
+//   console.log(await getCourse('isla-325'))
+// })()
 
 export {}
