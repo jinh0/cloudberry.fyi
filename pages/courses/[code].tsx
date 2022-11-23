@@ -28,6 +28,8 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }: { params: { code: string } }) {
   const vsbData = await getCourse(params.code.toUpperCase())
 
+  // console.log(vsbData)
+
   const eCalendarData = courses.find(
     course => course.code.toLowerCase() === params.code.toLowerCase()
   )
