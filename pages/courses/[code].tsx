@@ -6,13 +6,24 @@ import GoBack from '@components/GoBack'
 import Main from '@components/Main'
 import Title from '@components/Title'
 import { useRouter } from 'next/router'
-import { CourseType, UserType } from '@typing'
+import { CourseType, Safe, UserType, VSBType } from '@typing'
 import Semester from '@components/Semester'
 import { useContext } from 'react'
 import UserContext from '@contexts/UserContext'
 import Actions from '@components/course/Actions'
 
 import courses from 'utils/courses'
+import VSBData from '@components/course/VSBData'
+import { getCourse } from '@utils/vsb_scraper'
+
+async function fetchVSB(code: string): Promise<Safe<VSBType>> {
+  try {
+    const vsbData = await getCourse(code)
+    return { status: true, ...vsbData }
+  } catch {
+    return { status: false }
+  }
+}
 
 export async function getStaticPaths() {
   return {
@@ -24,16 +35,27 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }: { params: { code: string } }) {
+  const vsbData = await fetchVSB(params.code.toUpperCase())
+
+  const eCalendarData = courses.find(
+    course => course.code.toLowerCase() === params.code.toLowerCase()
+  )
+
   return {
     props: {
-      course: courses.find(
-        course => course.code.toLowerCase() === params.code.toLowerCase()
-      ),
+      course: {
+        ...eCalendarData,
+        vsb: vsbData,
+      },
     },
   }
 }
 
-const Course = ({ course }: { course: CourseType }) => {
+const Course = ({
+  course,
+}: {
+  course: CourseType & { vsb: Safe<VSBType> }
+}) => {
   const router = useRouter()
   const { code } = router.query as { code: string }
 
@@ -68,6 +90,8 @@ const Course = ({ course }: { course: CourseType }) => {
             </p>
           </div>
         )}
+
+        <VSBData data={course.vsb} />
 
         {userData && <Actions code={code} />}
       </div>
