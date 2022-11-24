@@ -75,6 +75,15 @@ def get_course(code: str):
     description = terms_for_description.find_previous("p").get_text()
     description = description.lstrip()
 
+    # determine extra info and restrictions
+    try:
+        extra = str(doc.find_all('ul', {'class': "catalog-notes"})[-1].get_text())
+        extra = re.split("\n\n", extra)
+        extra = [word.strip() for word in extra]
+        extra = list(filter(None, extra))
+    except IndexError:
+        extra = []
+
     # determine instructors for each term
     instruct = str(doc.find("p", "catalog-instructors").get_text())
     instruct = re.split("[:;()]", instruct)
@@ -133,7 +142,7 @@ def get_course(code: str):
         full_course["description"] = description
 
     full_course["prerequisites"]
-    full_course["extra"]
+    full_course["extra"] = extra
     if code_title_credits[2].isdigit() == True:
         full_course["credits"] = int(code_title_credits[2])
     elif isfloat(code_title_credits[2]) == True:
