@@ -2,7 +2,9 @@
 
 ## Contributing
 
-When you first clone the repository, you have to install all the dependencies. We use `npm` because `yarn` sucks.
+`node` version: 18.12.1; `npm` rather than `yarn`.
+
+When you first clone the repository, you have to install all the dependencies.
 ```
 npm install
 ```

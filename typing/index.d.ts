@@ -19,6 +19,8 @@ export type UserType = {
   current: string[] | null
 }
 
+export type BlockType = { day: string; t1: number; t2: number }
+
 export type VSBType = {
   code: string
   type: string
@@ -27,8 +29,14 @@ export type VSBType = {
   remainingSeats: number
   waitlistRem: number
   waitlistCap: number
-  schedule: Array<{ day: string; t1: number; t2: number }>
+  schedule: Array<BlockType>
 }
+
+/**
+ * "Safe" type: Forces you to check whether
+ * the object exists or not (like strict null check)
+ */
+export type Safe<T extends Record> = { isOk: true; result: T } | { isOk: false }
 
 /** React prop.children type */
 export type Children = JSX.Element | string | Array<JSX.Element | string>
