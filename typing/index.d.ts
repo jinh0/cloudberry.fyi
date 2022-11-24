@@ -26,17 +26,45 @@ export type VSBType = {
   type: string
   section: string
   location: string
+  crn: string
   remainingSeats: number
   waitlistRem: number
   waitlistCap: number
   schedule: Array<BlockType>
 }
 
+export type VSBTime = {
+  day: string
+  t1: number
+  t2: number
+}
+
+export type VSBBlock = {
+  type: string
+  teachers: string[]
+  locations: string[]
+  section: string
+  crn: string
+  campus: string
+  remainingSeats: number
+  waitlistRem: number
+  waitlistCap: number
+  schedule: VSBTime[]
+}
+
+export type VSBCourse = {
+  code: string
+  blocks: VSBBlock[]
+}
+
 /**
  * "Safe" type: Forces you to check whether
  * the object exists or not (like strict null check)
  */
-export type Safe<T extends Record> = { isOk: true; result: T } | { isOk: false }
+export type Ok<T> = { isOk: true; result: T }
+export type Err<T> = { isOk: false }
+
+export type Safe<T> = Ok<T> | Err<T>
 
 /** React prop.children type */
 export type Children = JSX.Element | string | Array<JSX.Element | string>
