@@ -23,7 +23,13 @@ const CourseList = () => {
 
   return (
     <div className='mt-10'>
-      <p className='text-gray-600 text-sm pb-4'>Found 69 results in 7 ms.</p>
+      <p className='text-gray-600 text-sm pb-4'>
+        {search && (
+          <>
+            Results for <span className='font-semibold'>{search}</span>.
+          </>
+        )}
+      </p>
       <p className='border-b'></p>
 
       {results.map((item, ind) => (

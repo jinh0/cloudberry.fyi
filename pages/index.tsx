@@ -2,7 +2,7 @@ import CourseList from '@components/home/CourseList'
 import Main from '@components/Main'
 import Search from '@components/home/Search'
 import SearchContext from '@contexts/SearchContext'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { CourseType } from '@typing'
 import { useQuery } from '@tanstack/react-query'
 import Saved from '@components/home/Saved'
@@ -23,6 +23,14 @@ const Home = () => {
     queryKey: ['search', search],
     queryFn: getCourses,
   })
+
+  useEffect(() => {
+    const storedSearch = localStorage.getItem('search')
+
+    if (storedSearch) {
+      setSearch(storedSearch)
+    }
+  }, [setSearch])
 
   return (
     <Main>
