@@ -6,8 +6,9 @@ import { useEffect, useState } from 'react'
 import { CourseType } from '@typing'
 import { useQuery } from '@tanstack/react-query'
 import Saved from '@components/home/Saved'
+import { initCourses } from 'utils/courses'
 
-const Home = () => {
+const Home = ({ initCourses }: { initCourses: CourseType[] }) => {
   const [search, setSearch] = useState('')
 
   // TODO: Reorganize getCourses/query
@@ -17,11 +18,11 @@ const Home = () => {
   }
 
   const { isLoading, error, data, refetch } = useQuery<{
-    status: number
     results: CourseType[]
   }>({
     queryKey: ['search', search],
     queryFn: getCourses,
+    initialData: { results: initCourses },
   })
 
   useEffect(() => {
@@ -48,6 +49,14 @@ const Home = () => {
       </div>
     </Main>
   )
+}
+
+export async function getStaticProps() {
+  return {
+    props: {
+      initCourses,
+    },
+  }
 }
 
 export default Home

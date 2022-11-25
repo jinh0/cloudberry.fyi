@@ -10,4 +10,7 @@ import { CourseType } from '@typing'
 import data from './course-data.json'
 
 const courses = data as CourseType[]
+
+export const initCourses = courses.slice(0, 100)
+
 export default courses

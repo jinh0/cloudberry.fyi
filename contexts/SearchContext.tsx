@@ -18,17 +18,9 @@ const SearchContext = createContext<{
   setSearch: Dispatch<SetStateAction<string>>
   isLoading: boolean
   error: unknown
-  data: { status: number; results: CourseType[] }
+  data: { results: CourseType[] }
   refetch: <TPageData>(
     options?: RefetchOptions & RefetchQueryFilters<TPageData>
-  ) => Promise<
-    QueryObserverResult<
-      {
-        status: number
-        results: CourseType[]
-      },
-      unknown
-    >
-  >
+  ) => Promise<QueryObserverResult<{ results: CourseType[] }, unknown>>
 } | null>(null)
 export default SearchContext
