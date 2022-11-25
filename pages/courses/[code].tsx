@@ -81,8 +81,9 @@ const Course = ({ course }: { course: CourseType & { vsb: VSBCourse } }) => {
           </div>
         )}
 
-        <ul className='list-disc mt-4'>
-          {course.extra && course.extra.map((point, idx) => <li>{point}</li>)}
+        <ul className='list-disc mt-4 pl-6'>
+          {course.extra &&
+            course.extra.map((point, idx) => <li className='mb-1'>{point}</li>)}
         </ul>
 
         <VSBData data={course.vsb} />
