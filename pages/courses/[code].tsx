@@ -38,7 +38,7 @@ export async function getStaticProps({ params }: { params: { code: string } }) {
     props: {
       course: {
         ...eCalendarData,
-        vsb: vsbData,
+        vsb: vsbData ? vsbData : null,
       },
     },
   }
