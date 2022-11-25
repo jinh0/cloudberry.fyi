@@ -12,7 +12,11 @@ export default async function handler(
 ) {
   const { code } = req.query
 
+  console.log('code', code)
+
   const vsbData = await getCourse(code as string)
+
+  console.log('vsbData', vsbData)
 
   if (!vsbData.isOk) return res.status(400)
 
