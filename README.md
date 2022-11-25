@@ -1,5 +1,7 @@
 # 🐿 cloudberry: the all-in-one course catalog
 
+[https://www.cloudberry.fyi](https://www.cloudberry.fyi)
+
 ## Contributing
 
 `node` version: 18.12.1; `npm` rather than `yarn`.
