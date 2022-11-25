@@ -12,17 +12,17 @@ const Saved = () => {
   const { user, loading, error } = useContext(UserContext)
 
   if (loading || error) {
-    return <div className='hidden lg:w-1/3'></div>
+    return <div className='hidden lg:w-1/3 lg:pl-12'></div>
   }
 
   if (!user) {
-    return <div className='hidden lg:w-1/3'></div>
+    return <div className='hidden lg:w-1/3 lg:pl-12'></div>
   }
 
   const { saved } = user.data() as UserType
 
   return (
-    <div className='hidden lg:block lg:w-1/3 lg:ml-12'>
+    <div className='hidden lg:block lg:w-1/3 lg:pl-12'>
       <div className='text-2xl font-medium flex flex-row items-center mb-4'>
         <div>Your Saved Courses</div>
       </div>
