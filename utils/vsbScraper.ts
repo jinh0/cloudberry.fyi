@@ -5,20 +5,32 @@
 import { Safe, VSBBlock, VSBCourse } from '@typing'
 import { JSDOM } from 'jsdom'
 
-// Weird time anti-bot thing VSB does
-const nWindow = () => {
-  let f8b0 = ['\x26\x74\x3D', '\x26\x65\x3D']
-  let t = Math.floor(new Date().getTime() / 60000) % 1000
-  let e = (t % 3) + (t % 19) + (t % 42)
-  return f8b0[0] + t + f8b0[1] + e
-}
-
 /**
  * Get course data from VSB
  */
-export const getCourse = async (
-  courseCode: string
-): Promise<Safe<VSBCourse>> => {
+export const getCourse = async (code: string): Promise<Safe<VSBCourse>> => {
+  try {
+    const response = await fetchFromVSB(code)
+    const blocks = await parse(response)
+
+    return {
+      isOk: true,
+      result: { code, blocks: getUnique(blocks) },
+    }
+  } catch {
+    return { isOk: false }
+  }
+}
+
+const fetchFromVSB = async (courseCode: string) => {
+  // Weird time anti-bot thing VSB does
+  const nWindow = () => {
+    let f8b0 = ['\x26\x74\x3D', '\x26\x65\x3D']
+    let t = Math.floor(new Date().getTime() / 60000) % 1000
+    let e = (t % 3) + (t % 19) + (t % 42)
+    return f8b0[0] + t + f8b0[1] + e
+  }
+
   // Converts current time to milliseconds
   let currTime = new Date().getTime()
   let term = 202301
@@ -33,18 +45,17 @@ export const getCourse = async (
   })
 
   const text = await response.text()
+  return text
+}
 
-  const dom = new JSDOM(text, { contentType: 'text/xml' })
+const parse = async (response: string): Promise<VSBBlock[]> => {
+  const dom = new JSDOM(response, { contentType: 'text/xml' })
   const doc = dom.window.document
 
   // If there exists at least one error, then early return not ok
-  if (doc.querySelectorAll('error').length > 0) {
-    return { isOk: false }
-  }
+  if (doc.querySelectorAll('error').length > 0) return null
 
   // Parsing starts here:
-  const code = doc.querySelector('course').getAttribute('key')
-
   const uselections = Array.from(doc.querySelectorAll('uselection'))
   const parsedBlocks: VSBBlock[] = uselections.flatMap(uselection => {
     const selection = uselection.querySelector('selection')
@@ -102,9 +113,13 @@ export const getCourse = async (
     return finalBlocks
   })
 
+  return parsedBlocks
+}
+
+const getUnique = (blocks: VSBBlock[]) => {
   const uniqueBlocks: VSBBlock[] = []
   const crns = new Set()
-  parsedBlocks.forEach(block => {
+  blocks.forEach(block => {
     if (!crns.has(block.crn)) {
       uniqueBlocks.push(block)
     }
@@ -112,12 +127,7 @@ export const getCourse = async (
     crns.add(block.crn)
   })
 
-  const course = {
-    code: code,
-    blocks: uniqueBlocks,
-  }
-
-  return { isOk: true, result: course }
+  return uniqueBlocks
 }
 
 async function main() {
@@ -127,6 +137,6 @@ async function main() {
   else console.log('not found')
 }
 
-main()
+// main()
 
 export {}
