@@ -14,7 +14,7 @@ import Actions from '@components/course/Actions'
 
 import courses from 'utils/courses'
 import VSBData from '@components/course/VSBData'
-import { getCourse } from '@utils/vsb_scraper'
+import { getCourse } from '@utils/vsbScraper'
 
 export async function getStaticPaths() {
   return {
