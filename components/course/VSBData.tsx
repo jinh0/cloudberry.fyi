@@ -1,5 +1,3 @@
-import { faCouch } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   ArrowLeftIcon,
   ArrowRightIcon,
@@ -9,15 +7,15 @@ import {
   UserIcon,
   UserPlusIcon,
 } from '@heroicons/react/24/outline'
-import { BlockType, Safe, VSBBlock, VSBCourse } from '@typing'
+import { VSBBlock, VSBCourse } from '@typing'
 import { useState } from 'react'
 
-const VSBData = ({ data }: { data: Safe<VSBCourse> }) => {
+const VSBData = ({ data }: { data: VSBCourse }) => {
   const [idx, setIdx] = useState(0)
 
-  if (!data.isOk) return <></>
+  if (!data) return <></>
 
-  const course = data.result
+  const course = data
 
   if (!course.blocks || course.blocks.length === 0) return <></>
 

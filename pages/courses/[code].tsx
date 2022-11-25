@@ -6,7 +6,7 @@ import GoBack from '@components/GoBack'
 import Main from '@components/Main'
 import Title from '@components/Title'
 import { useRouter } from 'next/router'
-import { CourseType, Safe, UserType, VSBCourse } from '@typing'
+import { CourseType, UserType, VSBCourse } from '@typing'
 import Semester from '@components/Semester'
 import { useContext } from 'react'
 import UserContext from '@contexts/UserContext'
@@ -14,8 +14,7 @@ import Actions from '@components/course/Actions'
 
 import courses from 'utils/courses'
 import VSBData from '@components/course/VSBData'
-import { getCourse } from '@utils/vsbScraper'
-import { useQuery } from '@tanstack/react-query'
+import vsbCourses from '@utils/vsb'
 
 export async function getStaticPaths() {
   return {
@@ -27,7 +26,9 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }: { params: { code: string } }) {
-  const vsbData = await getCourse(params.code.toUpperCase())
+  const vsbData = vsbCourses.find(
+    course => course.code.toLowerCase() === params.code.toLowerCase()
+  )
 
   const eCalendarData = courses.find(
     course => course.code.toLowerCase() === params.code.toLowerCase()
@@ -43,11 +44,7 @@ export async function getStaticProps({ params }: { params: { code: string } }) {
   }
 }
 
-const Course = ({
-  course,
-}: {
-  course: CourseType & { vsb: Safe<VSBCourse> }
-}) => {
+const Course = ({ course }: { course: CourseType & { vsb: VSBCourse } }) => {
   const router = useRouter()
   const { code } = router.query as { code: string }
 
