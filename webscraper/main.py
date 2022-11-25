@@ -81,7 +81,7 @@ def get_course(code: str):
         extra = re.split("\n\n", extra)
         extra = [word.strip() for word in extra]
         extra = list(filter(None, extra))
-    except IndexError:
+    except:
         extra = []
 
     # determine instructors for each term
@@ -168,7 +168,7 @@ def get_all_courses():
                 # print(course_list)
                 print(code)
 
-                if idx % 100 == 0:
+                if idx % 1000 == 0:
                     print(f"Course {idx}: ", code)
 
                     with open("billion.json", "w") as outfile:

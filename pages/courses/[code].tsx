@@ -84,6 +84,12 @@ const Course = ({
           </div>
         )}
 
+        <ul className="list-disc mt-4">
+          {course.extra && (
+            course.extra.map((point, idx) => <li>{point}</li>)
+          )}
+        </ul>
+
         <VSBData data={course.vsb} />
 
         {userData && <Actions code={code} />}

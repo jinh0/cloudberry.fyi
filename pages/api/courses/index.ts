@@ -26,3 +26,4 @@ export default function handler(
     results: fuse.search(search, { limit: 20 }).map(x => x.item),
   })
 }
+let message
