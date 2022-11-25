@@ -11,11 +11,11 @@ import { JSDOM } from 'jsdom'
 export const getCourse = async (code: string): Promise<Safe<VSBCourse>> => {
   try {
     const response = await fetchFromVSB(code)
-    const blocks = await parse(response)
+    const { blocks, combos } = await parse(response)
 
     return {
       isOk: true,
-      result: { code, blocks: getUnique(blocks) },
+      result: { blocks: getUnique(blocks), code, combos },
     }
   } catch {
     return { isOk: false }
@@ -48,7 +48,9 @@ const fetchFromVSB = async (courseCode: string) => {
   return text
 }
 
-const parse = async (response: string): Promise<VSBBlock[]> => {
+const parse = async (
+  response: string
+): Promise<{ blocks: VSBBlock[]; combos: string[][] }> => {
   const dom = new JSDOM(response, { contentType: 'text/xml' })
   const doc = dom.window.document
 
@@ -57,63 +59,71 @@ const parse = async (response: string): Promise<VSBBlock[]> => {
 
   // Parsing starts here:
   const uselections = Array.from(doc.querySelectorAll('uselection'))
-  const parsedBlocks: VSBBlock[] = uselections.flatMap(uselection => {
-    const selection = uselection.querySelector('selection')
-    const blocks = Array.from(selection.querySelectorAll('block'))
+  const parsed: Array<{ blocks: VSBBlock[]; combo: string[] }> =
+    uselections.map(uselection => {
+      const selection = uselection.querySelector('selection')
+      const blocks = Array.from(selection.querySelectorAll('block'))
 
-    const blockData: Array<VSBBlock & { timeblockids: string[] }> = blocks.map(
-      block => ({
-        type: block.getAttribute('type'),
-        teachers: block.getAttribute('teacher').split(';'),
-        locations: block.getAttribute('location').split(';'),
-        campus: block.getAttribute('campus'),
-        section: block.getAttribute('secNo'),
-        crn: block.getAttribute('key'),
-        timeblockids: block.getAttribute('timeblockids').split(','),
-        remainingSeats: Number(block.getAttribute('os')),
-        waitlistRem: Number(block.getAttribute('ws')),
-        waitlistCap: Number(block.getAttribute('wc')),
-        schedule: [],
+      const blockData: Array<VSBBlock & { timeblockids: string[] }> =
+        blocks.map(block => ({
+          type: block.getAttribute('type'),
+          display: block.getAttribute('disp'),
+          teachers: block.getAttribute('teacher').split(';'),
+          locations: block.getAttribute('location').split(';'),
+          campus: block.getAttribute('campus'),
+          section: block.getAttribute('secNo'),
+          crn: block.getAttribute('key'),
+          timeblockids: block.getAttribute('timeblockids').split(','),
+          remainingSeats: Number(block.getAttribute('os')),
+          waitlistRem: Number(block.getAttribute('ws')),
+          waitlistCap: Number(block.getAttribute('wc')),
+          schedule: [],
+        }))
+
+      const combo = blockData.map(block => block.crn)
+
+      // Fill in the schedule data
+      const timeblocks = Array.from(uselection.querySelectorAll('timeblock'))
+
+      timeblocks.forEach(timeblock => {
+        const timeblockId = timeblock.getAttribute('id')
+
+        const formattedTime = {
+          id: timeblockId,
+          day: timeblock.getAttribute('day'),
+          t1: Number(timeblock.getAttribute('t1')),
+          t2: Number(timeblock.getAttribute('t2')),
+        }
+
+        // Find the block for which this timeblock is a part of
+        const matchingBlock = blockData.find(block =>
+          block.timeblockids.includes(timeblockId)
+        )
+
+        // Remove the ID of the timeblock before adding it into our block
+        matchingBlock.schedule.push({
+          day: formattedTime.day,
+          t1: formattedTime.t1,
+          t2: formattedTime.t2,
+        })
       })
-    )
 
-    // Fill in the schedule data
-    const timeblocks = Array.from(uselection.querySelectorAll('timeblock'))
+      // Add CRN combinations
 
-    timeblocks.forEach(timeblock => {
-      const timeblockId = timeblock.getAttribute('id')
-
-      const formattedTime = {
-        id: timeblockId,
-        day: timeblock.getAttribute('day'),
-        t1: Number(timeblock.getAttribute('t1')),
-        t2: Number(timeblock.getAttribute('t2')),
-      }
-
-      // Find the block for which this timeblock is a part of
-      const matchingBlock = blockData.find(block =>
-        block.timeblockids.includes(timeblockId)
-      )
-
-      // Remove the ID of the timeblock before adding it into our block
-      matchingBlock.schedule.push({
-        day: formattedTime.day,
-        t1: formattedTime.t1,
-        t2: formattedTime.t2,
+      // Remove timeblockids from every block (since it's unnecessary data)
+      // before returning them
+      const finalBlocks = blockData.map(data => {
+        const { timeblockids, ...block } = data
+        return block
       })
+
+      return { blocks: finalBlocks, combo }
     })
 
-    // Remove timeblockids from every block (since it's unnecessary data)
-    // before returning them
-    const finalBlocks = blockData.map(data => {
-      const { timeblockids, ...block } = data
-      return block
-    })
-
-    return finalBlocks
-  })
-
-  return parsedBlocks
+  return {
+    blocks: parsed.flatMap(data => data.blocks),
+    combos: parsed.map(data => data.combo),
+  }
 }
 
 const getUnique = (blocks: VSBBlock[]) => {

@@ -43,6 +43,7 @@ export type VSBBlock = {
   type: string
   teachers: string[]
   locations: string[]
+  display: string
   section: string
   crn: string
   campus: string
@@ -55,6 +56,7 @@ export type VSBBlock = {
 export type VSBCourse = {
   code: string
   blocks: VSBBlock[]
+  combos: string[][]
 }
 
 /**
