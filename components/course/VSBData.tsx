@@ -7,15 +7,29 @@ import {
   UserIcon,
   UserPlusIcon,
 } from '@heroicons/react/24/outline'
-import { VSBBlock, VSBCourse } from '@typing'
+import { useQuery } from '@tanstack/react-query'
+import { Safe, VSBBlock, VSBCourse } from '@typing'
 import { useState } from 'react'
 
 const VSBData = ({ data }: { data: VSBCourse }) => {
+  const fetchVSB = async () => {
+    const res = await fetch(`/api/vsb/${data.code}`)
+    return res.json()
+  }
+
+  const {
+    data: course,
+    isLoading,
+    isError,
+  } = useQuery<VSBCourse>({
+    queryKey: ['vsb', data && data.code],
+    queryFn: fetchVSB,
+    initialData: data,
+  })
+
   const [idx, setIdx] = useState(0)
 
   if (!data) return <></>
-
-  const course = data
 
   if (!course.blocks || course.blocks.length === 0) return <></>
 
