@@ -17,7 +17,8 @@ export const getCourse = async (code: string): Promise<Safe<VSBCourse>> => {
       isOk: true,
       result: { blocks: getUnique(blocks), code, combos },
     }
-  } catch {
+  } catch (error) {
+    console.log('VSB error:', error)
     return { isOk: false }
   }
 }

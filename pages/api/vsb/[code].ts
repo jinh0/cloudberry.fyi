@@ -8,7 +8,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<VSBCourse>
+  res: NextApiResponse<VSBCourse | { error: string }>
 ) {
   const { code } = req.query
 
@@ -18,7 +18,8 @@ export default async function handler(
 
   console.log('vsbData', vsbData)
 
-  if (!vsbData.isOk) return res.status(400)
+  if (!vsbData.isOk)
+    return res.status(400).json({ error: 'VSB data not found' })
 
   return res.status(200).json(vsbData.result)
 }
