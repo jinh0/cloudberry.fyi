@@ -10,11 +10,7 @@ const VSBData = ({ data }: { data: VSBCourse }) => {
     return res.json()
   }
 
-  const {
-    data: course,
-    isLoading,
-    isError,
-  } = useQuery<VSBCourse>({
+  const { data: course } = useQuery<VSBCourse>({
     queryKey: ['vsb', data && data.code],
     queryFn: fetchVSB,
     initialData: data,
