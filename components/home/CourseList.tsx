@@ -5,8 +5,9 @@
 import Course from './Course'
 import { useContext } from 'react'
 import SearchContext from '@contexts/SearchContext'
+import { CourseType } from '@typing'
 
-const CourseList = () => {
+const CourseList = ({ initCourses }: { initCourses: CourseType[] }) => {
   const { search, isLoading, error, data } = useContext(SearchContext)
 
   if (isLoading)
@@ -18,6 +19,17 @@ const CourseList = () => {
     )
 
   if (error) return <div className='mt-10'>Something went wrong.</div>
+
+  if (search === '') {
+    return (
+      <div className='mt-10'>
+        <p className='border-b'></p>
+        {initCourses.map((item, ind) => (
+          <Course course={item} key={ind} />
+        ))}
+      </div>
+    )
+  }
 
   const { results } = data
 

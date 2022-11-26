@@ -11,27 +11,17 @@ import { initCourses } from 'utils/courses'
 const Home = ({ initCourses }: { initCourses: CourseType[] }) => {
   const [search, setSearch] = useState('')
 
-  // TODO: Reorganize getCourses/query
-  const getCourses = async () => {
-    const res = await fetch(`/api/courses?search=${search}`)
-    return res.json()
-  }
+  useEffect(() => {
+    const storedSearch = localStorage.getItem('search')
+    if (storedSearch) setSearch(storedSearch)
+  }, [setSearch])
 
   const { isLoading, error, data, refetch } = useQuery<{
     results: CourseType[]
   }>({
     queryKey: ['search', search],
-    queryFn: getCourses,
-    initialData: { results: initCourses },
+    queryFn: () => getCourses(search),
   })
-
-  useEffect(() => {
-    const storedSearch = localStorage.getItem('search')
-
-    if (storedSearch) {
-      setSearch(storedSearch)
-    }
-  }, [setSearch])
 
   return (
     <Main>
@@ -41,7 +31,7 @@ const Home = ({ initCourses }: { initCourses: CourseType[] }) => {
             value={{ search, setSearch, isLoading, error, data, refetch }}
           >
             <Search />
-            <CourseList />
+            <CourseList initCourses={initCourses} />
           </SearchContext.Provider>
         </div>
 
@@ -49,6 +39,11 @@ const Home = ({ initCourses }: { initCourses: CourseType[] }) => {
       </div>
     </Main>
   )
+}
+
+const getCourses = async (search: string) => {
+  const res = await fetch(`/api/courses?search=${search}`)
+  return res.json()
 }
 
 export async function getStaticProps() {
