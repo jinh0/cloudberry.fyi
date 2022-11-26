@@ -39,7 +39,8 @@ const Actions = ({ code }: { code: string }) => {
   const { user } = useContext(UserContext)
   const userData = user?.data() as UserType
 
-  // I like currying
+  // TODO: Clean up this mess
+
   const add = (key: 'saved' | 'completed' | 'current') => async () => {
     if (user) {
       const data = {
@@ -101,7 +102,7 @@ const Actions = ({ code }: { code: string }) => {
   }
 
   return (
-    <div className=''>
+    <div className='mt-2'>
       <div className='flex flex-row gap-0 text-base'>
         {userData.saved && userData.saved.find(x => x === code) ? (
           <Button onClick={remove('saved')}>

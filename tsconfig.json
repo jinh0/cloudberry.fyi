@@ -7,7 +7,8 @@
       "@components/*": ["components/*"],
       "@typing": ["typing/index.d.ts"],
       "@utils/*": ["utils/*"],
-      "@contexts/*": ["contexts/*"]
+      "@contexts/*": ["contexts/*"],
+      "@hooks/*": ["hooks/*"]
     },
     "allowJs": true,
     "skipLibCheck": true,
