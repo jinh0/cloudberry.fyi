@@ -1,6 +1,7 @@
 import { faPagelines } from '@fortawesome/free-brands-svg-icons'
 import { faSnowflake } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Pill from './Pill'
 
 /**
  * Semester component: pill-shaped label with
@@ -20,12 +21,11 @@ const Semester = ({
 
   return (
     <div className='flex flex-row mb-2 items-center'>
-      <div
+      <Pill
         className={
-          'flex flex-row w-fit items-center px-4 py-1 rounded-full mr-2 ' +
-          (sem.term === 'fall'
+          sem.term === 'fall'
             ? 'bg-red-50 text-red-600'
-            : 'bg-sky-50 text-sky-600')
+            : 'bg-sky-50 text-sky-600'
         }
       >
         <div className='mr-2'>
@@ -50,7 +50,7 @@ const Semester = ({
             {sem.instructors.join('; ')}
           </div>
         )}
-      </div>
+      </Pill>
     </div>
   )
 }
