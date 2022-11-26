@@ -72,7 +72,9 @@ const Course = ({ course }: { course: CourseType & { vsb: VSBCourse } }) => {
           )}
         </div>
 
-        <div className='mt-8'>
+        <div className='mt-2'>{userData && <Actions code={code} />}</div>
+
+        <div className='mt-10'>
           <p className='text-2xl mb-4'>Overview</p>
           <p>{course.description}</p>
         </div>
@@ -96,8 +98,6 @@ const Course = ({ course }: { course: CourseType & { vsb: VSBCourse } }) => {
         </ul>
 
         <VSBData data={course.vsb} />
-
-        {userData && <Actions code={code} />}
       </div>
     </Main>
   )

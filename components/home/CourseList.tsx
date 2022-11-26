@@ -11,7 +11,8 @@ import LoadingCourse from './LoadingCourse'
 const CourseList = ({ initCourses }: { initCourses: CourseType[] }) => {
   const { search, isLoading, error, data } = useContext(SearchContext)
 
-  if (error) return <div className='mt-10'>Something went wrong.</div>
+  if (error)
+    return <div className='mt-10 text-gray-600'>Something went wrong.</div>
 
   if (isLoading)
     return (

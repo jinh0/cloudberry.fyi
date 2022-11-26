@@ -39,9 +39,11 @@ const Main = ({
         ></meta>
       </Head>
 
-      <div className='w-screen'>
+      <div className='w-screen h-full'>
         <Navbar />
         <div className='px-6 lg:px-20 py-4 md:py-6'>{children}</div>
+
+        {/* <div className='px-6 lg:px-20'>Something</div> */}
       </div>
     </>
   )

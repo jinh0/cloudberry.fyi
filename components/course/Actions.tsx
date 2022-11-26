@@ -101,8 +101,8 @@ const Actions = ({ code }: { code: string }) => {
   }
 
   return (
-    <div className='mt-8 pt-3 border-t'>
-      <div className='flex flex-row gap-1'>
+    <div className=''>
+      <div className='flex flex-row gap-0 text-base'>
         {userData.saved && userData.saved.find(x => x === code) ? (
           <Button onClick={remove('saved')}>
             <BookmarkSolidIcon className='w-6 h-6 text-red-600' />
