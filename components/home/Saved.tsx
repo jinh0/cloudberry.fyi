@@ -29,14 +29,14 @@ const Saved = () => {
 
       <div>
         {saved.map((code, idx) => (
-          <Course code={code} key={idx} />
+          <SavedCourse code={code} key={idx} />
         ))}
       </div>
     </div>
   )
 }
 
-const Course = ({ code }) => {
+const SavedCourse = ({ code }) => {
   const getCourse = async () => {
     const res = await fetch(`/api/courses/${code}`)
     return res.json()
@@ -52,16 +52,16 @@ const Course = ({ code }) => {
   if (isLoading)
     return (
       <div className='border border-inherit rounded-lg p-2 mb-4'>
-        <div className='w-full h-5 bg-gray-100 rounded-full animate-pulse'></div>
+        <div className='w-full bg-gray-100 text-transparent select-none rounded-full animate-pulse'>
+          XXX
+        </div>
       </div>
     )
 
   return (
     <Link href={`/courses/${code}`}>
       <div className='border border-inherit rounded-lg p-2 mb-4'>
-        <div className=''>
-          {format(code)}: {data && data.result.name}
-        </div>
+        {format(code)}: {data && data.result.name}
       </div>
     </Link>
   )

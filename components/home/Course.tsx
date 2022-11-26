@@ -3,9 +3,9 @@
  */
 
 import { CourseType } from 'typing'
-import Link from 'next/link'
 import Semester from '@components/Semester'
 import NotOffered from '@components/NotOffered'
+import CourseHeading from './CourseHeading'
 
 const Course = ({ course }: { course: CourseType }) => {
   return (
@@ -42,19 +42,6 @@ const Course = ({ course }: { course: CourseType }) => {
         )}
       </div>
     </div>
-  )
-}
-
-const CourseHeading = ({ code, name }) => {
-  return (
-    <Link href={`/courses/${code.replace(' ', '-').toLowerCase()}`}>
-      <div className='mb-4 flex flex-row items-center'>
-        <h1 className='text-2xl cursor-pointer w-full'>
-          <span className='font-medium'>{code.replace('-', ' ')}: </span>
-          <span className='font-medium'>{name}</span>
-        </h1>
-      </div>
-    </Link>
   )
 }
 
