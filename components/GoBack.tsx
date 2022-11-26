@@ -10,7 +10,7 @@ const GoBack = () => {
 
   return (
     <button
-      className='flex flex-row items-center text-gray-600 mb-6 text-sm'
+      className='flex flex-row items-center text-gray-600 mb-6 text-sm mt-2'
       onClick={goBack}
     >
       <div className='mr-2'>

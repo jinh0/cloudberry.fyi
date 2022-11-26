@@ -61,7 +61,7 @@ const Course = ({ course }: { course: CourseType & { vsb: VSBCourse } }) => {
         {format(code)}: {course.name}
       </Title>
 
-      <div className='lg:w-3/5 text-base lg:text-lg'>
+      <div className='lg:w-3/5 text-base lg:text-lg mt-6'>
         <div className='flex flex-col md:flex-row text-base flex-wrap gap-y-1'>
           {course.terms.length > 0 ? (
             course.terms.map((term, ind) => (
