@@ -2,6 +2,7 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Head from 'next/head'
 import Link from 'next/link'
+import Footer from './Footer'
 import Navbar from './Navbar'
 
 /**
@@ -49,18 +50,8 @@ const Main = ({
             {children}
           </div>
         </div>
-        <footer className='flex flex-row items-center w-full -mt-16 h-16 px-6 lg:px-20 border-t bg-gray-50 text-gray-700 opacity-100 clear-both gap-6'>
-          <div>@ 2022 Cloudberry Inc.</div>
 
-          <Link href='https://www.github.com/jinh0/cloudberry'>
-            <div className='flex flex-row items-center'>
-              <FontAwesomeIcon icon={faGithub} className='w-6 h-6 mr-3' />
-              GitHub
-            </div>
-          </Link>
-        </footer>
-
-        {/* <div className='px-6 lg:px-20'>Something</div> */}
+        <Footer />
       </div>
     </>
   )

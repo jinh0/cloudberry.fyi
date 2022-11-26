@@ -12,6 +12,7 @@ import {
 import { updateDoc } from 'firebase/firestore'
 import { Children, UserType } from '@typing'
 import { useContext } from 'react'
+import useUser from '@hooks/useUser'
 
 const Button = ({
   children,
@@ -36,8 +37,7 @@ const Button = ({
 }
 
 const Actions = ({ code }: { code: string }) => {
-  const { user } = useContext(UserContext)
-  const userData = user?.data() as UserType
+  const { user, data: userData } = useUser()
 
   // TODO: Clean up this mess
 
