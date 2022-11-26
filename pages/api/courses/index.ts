@@ -20,10 +20,9 @@ export default function handler(
   const { search } = req.query as { search: string }
 
   if (!search || search === '')
-    return res.status(200).json({ results: courses.slice(0, 100) })
+    return res.status(200).json({ results: courses.slice(0, 20) })
 
   return res.status(200).json({
-    results: fuse.search(search, { limit: 20 }).map(x => x.item),
+    results: fuse.search(search, { limit: 10 }).map(x => x.item),
   })
 }
-let message
