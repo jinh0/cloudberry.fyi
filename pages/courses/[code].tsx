@@ -15,6 +15,7 @@ import Actions from '@components/course/Actions'
 import courses from 'utils/courses'
 import VSBData from '@components/course/VSBData'
 import vsbCourses from '@utils/vsb'
+import NotOffered from '@components/NotOffered'
 
 export async function getStaticPaths() {
   return {
@@ -62,9 +63,13 @@ const Course = ({ course }: { course: CourseType & { vsb: VSBCourse } }) => {
 
       <div className='lg:w-3/5 text-base lg:text-lg'>
         <div className='flex flex-col md:flex-row text-base flex-wrap gap-y-1'>
-          {course.terms.map((term, ind) => (
-            <Semester key={ind} sem={term} showInstructor={true} />
-          ))}
+          {course.terms.length > 0 ? (
+            course.terms.map((term, ind) => (
+              <Semester key={ind} sem={term} showInstructor={true} />
+            ))
+          ) : (
+            <NotOffered />
+          )}
         </div>
 
         <div className='mt-8'>
@@ -83,7 +88,11 @@ const Course = ({ course }: { course: CourseType & { vsb: VSBCourse } }) => {
 
         <ul className='list-disc mt-4 pl-6'>
           {course.extra &&
-            course.extra.map((point, idx) => <li className='mb-1'>{point}</li>)}
+            course.extra.map((point, idx) => (
+              <li className='mb-1' key={idx}>
+                {point}
+              </li>
+            ))}
         </ul>
 
         <VSBData data={course.vsb} />

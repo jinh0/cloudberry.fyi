@@ -27,6 +27,7 @@ const Semester = ({
             ? 'bg-red-50 text-red-600'
             : 'bg-sky-50 text-sky-600'
         }
+        hasBorder={false}
       >
         <div className='mr-2'>
           {sem.term === 'fall' ? (
