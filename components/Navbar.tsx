@@ -36,7 +36,7 @@ const Navbar = () => {
   const path = pathname.split('/')
 
   return (
-    <div className='flex flex-row sticky top-0 z-50 bg-white bg-opacity-60 backdrop-blur-md w-full px-6 lg:px-20 py-3 border-b items-center select-none justify-between truncate transition-all'>
+    <div className='flex flex-row sticky top-0 z-50 bg-white bg-opacity-60 backdrop-blur-md w-full px-6 lg:px-20 py-2.5 border-b items-center select-none justify-between truncate transition-all'>
       <div className='flex flex-row items-center'>
         <Link href='/'>
           <div className='flex flex-row items-center cursor-pointer'>

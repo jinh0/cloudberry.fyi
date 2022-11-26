@@ -7,6 +7,7 @@ import {
   ClipboardIcon,
   UserIcon,
   UserPlusIcon,
+  UserGroupIcon,
 } from '@heroicons/react/24/outline'
 import { VSBBlock } from '@typing'
 
@@ -14,7 +15,7 @@ const Block = ({ block }: { block: VSBBlock }) => {
   return (
     <div className='mb-8'>
       <p className='mb-4 flex flex-row items-center'>
-        <span className='text-xl font-semibold mr-3'>{block.display}</span>
+        <span className='text-xl font-medium mr-3'>{block.display}</span>
         <span className='text-lg text-gray-700'>
           {block.teachers.join('; ')}
         </span>
@@ -28,17 +29,28 @@ const Block = ({ block }: { block: VSBBlock }) => {
           <ClipboardIcon className='w-5 h-5 mr-2' />
           <div>CRN: {block.crn}</div>
         </div>
-        {block.remainingSeats > 0 ? (
+
+        {block.remainingSeats > 0 && (
           <div className='flex flex-row items-center text-gray-800 pr-3 mr-3 border-r last:border-none'>
             <UserIcon className='w-5 h-5 mr-2' />
             <div>Remaining: {block.remainingSeats}</div>
           </div>
-        ) : (
+        )}
+
+        {block.remainingSeats === 0 && (
           <div className='flex flex-row items-center text-red-700 pr-3 mr-3 border-r last:border-none'>
             <UserIcon className='w-5 h-5 mr-2' />
             <div>Remaining: {block.remainingSeats}</div>
           </div>
         )}
+
+        {block.remainingSeats < 0 && (
+          <div className='flex flex-row items-center text-red-700 pr-3 mr-3 border-r last:border-none'>
+            <UserGroupIcon className='w-5 h-5 mr-2' />
+            <div>Full: +{-block.remainingSeats}</div>
+          </div>
+        )}
+
         {block.waitlistCap > 0 && (
           <div className='flex flex-row items-center mr-4 text-gray-800'>
             <UserPlusIcon className='w-5 h-5 mr-2' />
@@ -49,7 +61,6 @@ const Block = ({ block }: { block: VSBBlock }) => {
           </div>
         )}
       </div>
-      {/* <p className='mb-2'>{block.teachers.join('; ')}</p> */}
 
       <div className='mt-4'>
         {block.schedule.map((timeblock, idx) => (
