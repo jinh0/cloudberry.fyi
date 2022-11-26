@@ -52,8 +52,8 @@ const Block = ({ block }: { block: VSBBlock }) => {
       {/* <p className='mb-2'>{block.teachers.join('; ')}</p> */}
 
       <div className='mt-4'>
-        {block.schedule.map(timeblock => (
-          <div>
+        {block.schedule.map((timeblock, idx) => (
+          <div key={idx}>
             <span className='font-medium'>{NUM_TO_DAY[timeblock.day]}:</span>{' '}
             {minToStr(timeblock.t1)} - {minToStr(timeblock.t2)}
           </div>

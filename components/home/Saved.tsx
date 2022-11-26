@@ -49,11 +49,16 @@ const Course = ({ code }) => {
     queryFn: getCourse,
   })
 
-  if (isLoading) return <div>Loading...</div>
+  if (isLoading)
+    return (
+      <div className='border border-inherit rounded-lg p-2 mb-4'>
+        <div className='w-full h-5 bg-gray-100 rounded-full animate-pulse'></div>
+      </div>
+    )
 
   return (
     <Link href={`/courses/${code}`}>
-      <div className='border rounded-lg p-2 mb-4'>
+      <div className='border border-inherit rounded-lg p-2 mb-4'>
         <div className=''>
           {format(code)}: {data && data.result.name}
         </div>

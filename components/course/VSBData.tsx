@@ -7,6 +7,8 @@ import Block from './Block'
 const VSBData = ({ data }: { data: VSBCourse }) => {
   const fetchVSB = async () => {
     const res = await fetch(`/api/vsb/${data.code}`)
+
+    if (res.status === 400) throw new Error('Something went wrong.')
     return res.json()
   }
 
@@ -18,14 +20,13 @@ const VSBData = ({ data }: { data: VSBCourse }) => {
 
   const [idx, setIdx] = useState(0)
 
-  if (!data) return <></>
-
-  if (!course.blocks || course.blocks.length === 0) return <></>
+  if (!data || !course.blocks || course.blocks.length === 0) return <></>
 
   return (
     <div className='mt-12 mb-4'>
       <div className='mb-6 flex flex-row items-center gap-4'>
         <div className='text-2xl flex items-center'>Schedule</div>
+
         {course.blocks.length > 1 && (
           <div className='flex flex-row items-center gap-4'>
             <button
@@ -55,7 +56,7 @@ const VSBData = ({ data }: { data: VSBCourse }) => {
         {course.blocks
           .filter(block => course.combos[idx].includes(block.crn))
           .map(block => (
-            <Block block={block} />
+            <Block block={block} key={block.crn} />
           ))}
       </div>
     </div>
