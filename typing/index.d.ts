@@ -1,3 +1,8 @@
+export type Term = {
+  term: 'fall' | 'winter'
+  instructors: string[]
+}
+
 export type CourseType = {
   code: string
   name: string

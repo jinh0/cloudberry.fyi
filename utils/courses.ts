@@ -11,6 +11,6 @@ import data from './course-data.json'
 
 const courses = data as CourseType[]
 
-export const initCourses = courses.slice(0, 20)
+export const initCourses = courses.slice(0, 10)
 
 export default courses

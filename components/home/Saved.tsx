@@ -61,7 +61,8 @@ const SavedCourse = ({ code }) => {
   return (
     <Link href={`/courses/${code}`}>
       <div className='border border-inherit rounded-lg p-2 mb-4'>
-        {format(code)}: {data && data.result.name}
+        <span className='font-semibold mr-1'>{format(code)}</span>{' '}
+        {data && data.result.name}
       </div>
     </Link>
   )

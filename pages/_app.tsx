@@ -31,6 +31,17 @@ const GoogleAnalytics = () => {
             gtag('config', 'G-4HB680742L');
           `}
       </Script>
+      <style global jsx>{`
+        html,
+        body,
+        body > div:first-child,
+        div#__next,
+        div#__next > div {
+          margin: 0;
+          padding: 0;
+          height: 100%;
+        }
+      `}</style>
     </>
   )
 }

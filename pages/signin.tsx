@@ -3,53 +3,14 @@
  */
 
 import Head from 'next/head'
-import { getAuth, OAuthProvider, signInWithPopup } from 'firebase/auth'
-import app from '@utils/firebase'
+import { signIn } from '@utils/signIn'
 import { useRouter } from 'next/router'
-import { doc, getDoc, getFirestore, setDoc } from 'firebase/firestore'
-
-const provider = new OAuthProvider('microsoft.com')
-provider.setCustomParameters({
-  prompt: 'consent',
-  login_hint: 'john.doe@mail.mcgill.ca', // Restricts sign-in's to McGill emails
-})
 
 const SignIn = () => {
-  const db = getFirestore(app)
-  const auth = getAuth(app)
   const router = useRouter()
 
-  const signIn = () => {
-    signInWithPopup(auth, provider)
-      .then(async result => {
-        // User is signed in.
-        const { user } = result
-
-        // Get document associated with user
-        const docRef = await getDoc(doc(db, 'users', user.uid))
-
-        // If document doesn't exist, i.e., first time signing in,
-        // create a document for the user
-        if (!docRef.exists()) {
-          await setDoc(doc(db, 'users', user.uid), {
-            name: user.displayName,
-            email: user.email,
-            saved: [],
-            completed: [],
-            current: [],
-          })
-        }
-
-        // Redirect to homepage
-        router.push('/')
-      })
-      .catch(error => {
-        // Handle error.
-        console.log(error)
-      })
-  }
   return (
-    <div className='w-screen h-screen flex pt-40 justify-center select-none bg-white md:bg-gray-50'>
+    <div className='w-screen h-screen flex pt-40 items-center justify-center select-none bg-white md:bg-gray-50'>
       <Head>
         <title>Sign In | Cloudberry</title>
       </Head>
@@ -75,10 +36,9 @@ const SignIn = () => {
         </p>
 
         <button
-          onClick={signIn}
+          onClick={() => signIn(router)}
           className='mt-6 rounded-full border items-center flex flex-row px-6 py-2'
         >
-          {/* <FontAwesomeIcon icon={faMicrosoft} className='w-6 h-6' /> */}
           <img src='/ms-logo.svg' />
           <div className='ml-4'>Sign in with Microsoft</div>
         </button>

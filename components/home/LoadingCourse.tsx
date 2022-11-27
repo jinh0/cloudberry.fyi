@@ -6,7 +6,7 @@ const LoadingCourse = () => {
   return (
     <div className='border-b py-6 text-lg group text-transparent select-none animate-pulse duration-100'>
       <div className='mb-4 flex flex-row items-center'>
-        <h1 className='text-2xl cursor-pointer w-fit bg-gray-100 rounded-lg'>
+        <h1 className='text-2xl cursor-pointer w-fit bg-gray-100 rounded-xl'>
           <span className='font-medium'>
             COMP 250: Intro to Computer Science
           </span>

@@ -12,6 +12,7 @@ import {
 import { updateDoc } from 'firebase/firestore'
 import { Children, UserType } from '@typing'
 import { useContext } from 'react'
+import useUser from '@hooks/useUser'
 
 const Button = ({
   children,
@@ -36,10 +37,10 @@ const Button = ({
 }
 
 const Actions = ({ code }: { code: string }) => {
-  const { user } = useContext(UserContext)
-  const userData = user?.data() as UserType
+  const { user, data: userData } = useUser()
 
-  // I like currying
+  // TODO: Clean up this mess
+
   const add = (key: 'saved' | 'completed' | 'current') => async () => {
     if (user) {
       const data = {
@@ -101,8 +102,8 @@ const Actions = ({ code }: { code: string }) => {
   }
 
   return (
-    <div className='mt-8 pt-3 border-t'>
-      <div className='flex flex-row gap-1'>
+    <div className='mt-2'>
+      <div className='flex flex-row gap-0 text-base'>
         {userData.saved && userData.saved.find(x => x === code) ? (
           <Button onClick={remove('saved')}>
             <BookmarkSolidIcon className='w-6 h-6 text-red-600' />

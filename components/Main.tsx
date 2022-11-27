@@ -1,4 +1,8 @@
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Head from 'next/head'
+import Link from 'next/link'
+import Footer from './Footer'
 import Navbar from './Navbar'
 
 /**
@@ -39,9 +43,15 @@ const Main = ({
         ></meta>
       </Head>
 
-      <div className='w-screen'>
-        <Navbar />
-        <div className='px-6 lg:px-20 py-4 md:py-6'>{children}</div>
+      <div className='w-screen h-full'>
+        <div className='min-h-screen pb-16'>
+          <Navbar />
+          <div className='px-6 lg:px-20 py-4 md:py-6 overflow-auto'>
+            {children}
+          </div>
+        </div>
+
+        <Footer />
       </div>
     </>
   )

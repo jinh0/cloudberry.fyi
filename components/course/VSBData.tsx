@@ -30,9 +30,10 @@ const VSBData = ({ data }: { data: VSBCourse }) => {
         {course.blocks.length > 1 && (
           <div className='flex flex-row items-center gap-4'>
             <button
-              className='p-2 rounded-xl bg-gray-100'
+              className='p-2 rounded-xl bg-gray-50'
               onClick={() => {
                 if (idx > 0) setIdx(idx - 1)
+                else setIdx(course.combos.length - 1)
               }}
             >
               <ArrowLeftIcon className='w-4 h-4' />
@@ -41,9 +42,10 @@ const VSBData = ({ data }: { data: VSBCourse }) => {
               {idx + 1} of {course.combos.length}
             </div>
             <button
-              className='p-2 rounded-xl bg-gray-100'
+              className='p-2 rounded-xl bg-gray-50'
               onClick={() => {
                 if (idx < course.combos.length - 1) setIdx(idx + 1)
+                else setIdx(0)
               }}
             >
               <ArrowRightIcon className='w-4 h-4' />
