@@ -16,6 +16,7 @@ import courses from 'utils/courses'
 import VSBData from '@components/course/VSBData'
 import vsbCourses from '@utils/vsb'
 import NotOffered from '@components/NotOffered'
+import ShareButton from '@components/course/ShareButton'
 
 export async function getStaticPaths() {
   return {
@@ -56,10 +57,14 @@ const Course = ({ course }: { course: CourseType & { vsb: VSBCourse } }) => {
 
   return (
     <Main title={format(code) + ' | Cloudberry'} content={course.description}>
-      <GoBack />
-      <Title>
-        {format(code)}: {course.name}
-      </Title>
+      <GoBack />  
+
+      <div className="mb-6 flex flex-row items-center gap-2">
+        <Title>
+          {format(code)}: {course.name}
+        </Title>
+        <ShareButton />
+      </div>
 
       <div className='lg:w-3/5 text-base lg:text-lg'>
         <div className='flex flex-col md:flex-row text-base flex-wrap gap-y-1'>
