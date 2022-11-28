@@ -34,16 +34,25 @@ Tech stack: React, Next.js, TailwindCSS, Firebase
 
 ```
 ## Course to Test:
-Math-314\n
-Math-133\n
-Math-140\n
-Acct-699\n
-Cprl-610\n
-Dent-101J2\n
-Comp-204\n
-Bio-112\n
-Wcom-333\n
-Phil-375\n
+- Math-314
+
+- Math-133
+
+- Math-140
+
+- Acct-699
+
+- Cprl-610
+
+- Dent-101J2
+
+- Comp-204
+
+- Bio-112
+
+- Wcom-333
+
+- Phil-375
 
 
 ## Course API:
