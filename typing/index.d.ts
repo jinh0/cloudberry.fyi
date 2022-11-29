@@ -3,16 +3,20 @@ export type Term = {
   instructors: string[]
 }
 
+export type Note = {
+  content: string
+  links: Array<{ href: string; text: string }>
+}
+
 export type CourseType = {
   code: string
   name: string
   description: string
   prerequisites: string[]
-  extra?: string[]
-  terms: Array<{
-    term: 'fall' | 'winter'
-    instructors: string[]
-  }>
+  credits: number
+  extra: string[]
+  notes: Note[]
+  terms: Term[]
 }
 
 export type UserType = {

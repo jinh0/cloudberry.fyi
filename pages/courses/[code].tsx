@@ -18,6 +18,7 @@ import Semesters from '@components/course/Semesters'
 import Extra from '@components/course/Extra'
 import useUser from '@hooks/useUser'
 import ShareButton from '@components/course/ShareButton'
+import Notes from '@components/course/Notes'
 
 const Course = ({ course }: { course: CourseType & { vsb: VSBCourse } }) => {
   const router = useRouter()
@@ -34,7 +35,7 @@ const Course = ({ course }: { course: CourseType & { vsb: VSBCourse } }) => {
         <ShareButton />
       </Title>
 
-      <div className='lg:w-3/5 text-base lg:text-lg mt-6'>
+      <div className='lg:w-3/5 text-base lg:text-lg mt-4'>
         <Semesters terms={course.terms} />
 
         {user && <Actions code={code} />}
@@ -44,7 +45,9 @@ const Course = ({ course }: { course: CourseType & { vsb: VSBCourse } }) => {
           <p>{course.description}</p>
         </div>
 
-        <Extra course={course} />
+        {/* <Extra course={course} /> */}
+        <Notes notes={course.notes} />
+
         <VSBData data={course.vsb} />
       </div>
     </Main>
