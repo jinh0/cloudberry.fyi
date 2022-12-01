@@ -4,7 +4,7 @@
 
 ## Contributing
 
-`node` version: 18.12.1; `npm` rather than `yarn`.
+`node` version: 18.12.1; we use `npm` instead of `yarn`.
 
 When you first clone the repository, you have to install all the dependencies.
 ```
@@ -18,64 +18,32 @@ npm run dev
 
 Commit messages follow the [conventional commits standard](https://www.conventionalcommits.org/en/v1.0.0/). [Helpful info](https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13).
 
-## Libraries Used
+## Tech Stack
 
-Tech stack: React, Next.js, TailwindCSS, Firebase
+Main libraries: React, Next.js, Firebase, TailwindCSS
 
 - Search is powered by [fuse.js](https://fusejs.io).
+- We use the [react-firebase-hooks](https://github.com/CSFrequency/react-firebase-hooks) library to simplify working with Firebase in React.
+- React Query for general fetching data
 - Styling is done with the best CSS library [TailwindCSS](https://tailwindcss.com).
 
 ## Project Hierarchy
 
 ```
-/components: Components
 /pages: Pages
-└── /api/courses: Search algorithm API
-
+├── /index.tsx: Homepage
+├── /courses/[code].tsx: Individual course page
+└── /api/courses: Course search algorithm API
+/components: Components
+├── /course: Components for the course page
+├── /home: Components for the home page
+└── /user: Components for the user page
+/webscraper: Webscrapers for eCalendar, VSB, etc.
+/utils: General utility functions for the front-end
+/typing: TypeScript types
+/hooks: React hooks
+/contexts: React contexts
 ```
-## Course to Test:
-- Math-314
 
-- Math-133
-
-- Math-140
-
-- Acct-699
-
-- Cprl-610
-
-- Dent-101J2
-
-- Comp-204
-
-- Bio-112
-
-- Wcom-333
-
-- Phil-375
-
-
-## Course API:
-
-Every course should look like this:
-```json
-{
-    "code": "COMP 330",
-    "name": "Theory of Computation",
-    "description": "This course covers the theory of computation, including finite automata, regular expressions, context-free grammars, pushdown automata, and Turing machines.",
-    "prerequisites": [
-      "COMP 251"
-    ],
-    "extra": ["Extra information goes here"],
-    "terms": [
-      {
-        "term": "fall",
-        "instructors": ["Prakash Panangaden"]
-      },
-      {
-        "term": "winter",
-        "instructors": ["Claude Crepeau"]
-      }
-    ]
-  }
-```
+## Good Courses to Test On
+- Math-314, Math-133, Math-140, Acct-699, Cprl-610, Dent-101J2, Comp-204, Biol-112, Wcom-333, Phil-375
