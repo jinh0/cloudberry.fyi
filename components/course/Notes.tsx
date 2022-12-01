@@ -1,16 +1,8 @@
 import { Note } from '@typing'
 import Link from 'next/link'
 
-const NotesLink = ({ href, text }: { href: string; text: string }) => {
-  return (
-    <Link href={href}>
-      <span className='underline'>{text}</span>
-    </Link>
-  )
-}
-
 const Notes = ({ notes }: { notes: Note[] }) => {
-  // TODO: Add comments
+  // Adds links to a bullet point
   const withLinks = (point: Note) => {
     return point.links.reduce(
       (acc, link) =>
@@ -39,6 +31,7 @@ const Notes = ({ notes }: { notes: Note[] }) => {
     )
   }
 
+  // Add bold to "Prerequisites:" in the bullet point
   const format = (words: Array<string | JSX.Element>) => {
     if (words.length === 0) return []
 
@@ -62,6 +55,14 @@ const Notes = ({ notes }: { notes: Note[] }) => {
           </li>
         ))}
     </ul>
+  )
+}
+
+const NotesLink = ({ href, text }: { href: string; text: string }) => {
+  return (
+    <Link href={href}>
+      <span className='underline'>{text}</span>
+    </Link>
   )
 }
 

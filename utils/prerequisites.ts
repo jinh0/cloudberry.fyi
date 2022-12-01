@@ -42,7 +42,8 @@ async function fetchCourse(code: string): Promise<{
       if (!link.href.startsWith('/study/2022-2023/courses/')) {
         appendFileSync('errors.txt', `${code},${link.text},${link.href}`)
       } else {
-        prerequisites.push(link.href.split('/study/2022-2023/courses/')[1])
+        if (point.textContent.startsWith('Prerequisite'))
+          prerequisites.push(link.href.split('/study/2022-2023/courses/')[1])
       }
 
       return {

@@ -6,19 +6,17 @@ import GoBack from '@components/GoBack'
 import Main from '@components/Main'
 import Title from '@components/Title'
 import { useRouter } from 'next/router'
-import { CourseType, UserType, VSBCourse } from '@typing'
-import { useContext } from 'react'
-import UserContext from '@contexts/UserContext'
+import { CourseType, VSBCourse } from '@typing'
 import Actions from '@components/course/Actions'
 
 import courses from 'utils/courses'
 import VSBData from '@components/course/VSBData'
 import vsbCourses from '@utils/vsb'
 import Semesters from '@components/course/Semesters'
-import Extra from '@components/course/Extra'
 import useUser from '@hooks/useUser'
 import ShareButton from '@components/course/ShareButton'
 import Notes from '@components/course/Notes'
+import { Tab } from '@headlessui/react'
 
 const Course = ({ course }: { course: CourseType & { vsb: VSBCourse } }) => {
   const router = useRouter()
@@ -29,26 +27,51 @@ const Course = ({ course }: { course: CourseType & { vsb: VSBCourse } }) => {
 
   return (
     <Main title={`${format(code)} | Cloudberry`} content={course.description}>
-      <GoBack />
-      <Title>
-        {format(code)}: {course.name}
-        <ShareButton />
-      </Title>
+      <div className='flex flex-row'>
+        <div className='lg:w-3/5 text-base lg:text-lg mt-4'>
+          <GoBack />
+          <Title>
+            {format(code)}: {course.name}
+            <ShareButton />
+          </Title>
 
-      <div className='lg:w-3/5 text-base lg:text-lg mt-4'>
-        <Semesters terms={course.terms} />
+          <Semesters terms={course.terms} />
 
-        {user && <Actions code={code} />}
+          {user && <Actions code={code} />}
 
-        <div className='mt-10'>
-          <p className='text-2xl mb-4'>Overview</p>
-          <p>{course.description}</p>
+          <div className='mt-10'>
+            <p className='text-2xl mb-4'>Overview</p>
+            <p>{course.description}</p>
+          </div>
+
+          <Notes notes={course.notes} />
+
+          <VSBData data={course.vsb} />
+
+          {/* <div className='mt-10 outline-none outline-0'>
+            <Tab.Group>
+              <Tab.List>
+                <Tab className='outline-none text-xl mr-8'>Overview</Tab>
+                <Tab className='outline-none text-xl mr-8'>
+                  Winter 2023 Schedule
+                </Tab>
+              </Tab.List>
+              <Tab.Panels>
+                <Tab.Panel className='outline-none'>
+                  <div className='mt-10'>
+                    <p className='text-2xl mb-4'>Overview</p>
+                    <p>{course.description}</p>
+                  </div>
+
+                  <Notes notes={course.notes} />
+                </Tab.Panel>
+                <Tab.Panel className='outline-none'>
+                  <VSBData data={course.vsb} />
+                </Tab.Panel>
+              </Tab.Panels>
+            </Tab.Group>
+          </div> */}
         </div>
-
-        {/* <Extra course={course} /> */}
-        <Notes notes={course.notes} />
-
-        <VSBData data={course.vsb} />
       </div>
     </Main>
   )
