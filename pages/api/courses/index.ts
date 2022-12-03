@@ -19,13 +19,9 @@ export default function handler(
 ) {
   const { search, subjects } = req.query as { search: string; subjects: string }
 
-  if (!search || search === '')
+  // If there is no query
+  if ((!search || search === '') && (!subjects || subjects === ''))
     return res.status(200).json({ results: courses.slice(0, 10) })
-
-  if (!subjects || subjects === '')
-    return res
-      .status(200)
-      .json({ results: fuse.search(search, { limit: 10 }).map(x => x.item) })
 
   return res.status(200).json({
     results: fuse
@@ -33,14 +29,14 @@ export default function handler(
         {
           $and: [
             // subjects filter
-            {
+            subjects && {
               $or: subjects
                 .split(',')
-                .map(subject => ({ code: `^${subject}` })),
+                .map(subject => ({ code: `^="${subject}"` })),
             },
-            // search=
-            { $or: [{ code: search }, { name: search }] },
-          ],
+            // search text
+            search && { $or: [{ code: search }, { name: search }] },
+          ].filter(x => x),
         },
         { limit: 10 }
       )

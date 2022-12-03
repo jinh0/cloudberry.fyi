@@ -8,6 +8,11 @@ export type Note = {
   links: Array<{ href: string; text: string }>
 }
 
+export type Search = {
+  query: string
+  subjects: string[]
+}
+
 export type CourseType = {
   code: string
   name: string

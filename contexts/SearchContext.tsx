@@ -7,15 +7,15 @@ import {
   RefetchQueryFilters,
   QueryObserverResult,
 } from '@tanstack/react-query'
-import { CourseType } from '@typing'
+import { CourseType, Search } from '@typing'
 import { createContext, Dispatch, SetStateAction } from 'react'
 
 /**
  * Context containing search string, fetch data, etc.
  */
 const SearchContext = createContext<{
-  search: string
-  setSearch: Dispatch<SetStateAction<string>>
+  search: Search
+  setSearch: Dispatch<SetStateAction<Search>>
   isLoading: boolean
   error: unknown
   data: { results: CourseType[] }

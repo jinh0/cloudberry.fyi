@@ -1,14 +1,16 @@
 import { useQuery } from '@tanstack/react-query'
-import { CourseType } from '@typing'
+import { CourseType, Search } from '@typing'
 import { useEffect, useState } from 'react'
 
-async function getCourses(search: string) {
-  const res = await fetch(`/api/courses?search=${search}`)
+async function getCourses(search: Search) {
+  const res = await fetch(
+    `/api/courses?search=${search.query}&subjects=${search.subjects.join(',')}`
+  )
   return res.json()
 }
 
 function useSearch() {
-  const [search, setSearch] = useState('')
+  const [search, setSearch] = useState({ query: '', subjects: [] })
 
   const { data, isLoading, error, refetch } = useQuery<{
     results: CourseType[]
@@ -19,7 +21,19 @@ function useSearch() {
 
   useEffect(() => {
     const storedSearch = localStorage.getItem('search')
-    if (storedSearch) setSearch(storedSearch)
+    if (storedSearch) {
+      try {
+        setSearch(JSON.parse(storedSearch))
+      } catch (err) {
+        localStorage.setItem(
+          'search',
+          JSON.stringify({
+            query: '',
+            subjects: [],
+          })
+        )
+      }
+    }
   }, [setSearch])
 
   return { search, setSearch, data, isLoading, error, refetch }

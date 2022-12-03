@@ -22,9 +22,10 @@ const SearchResult = ({ initCourses }: { initCourses: CourseType[] }) => {
     )
 
   // If search is empty, then return the default course list
-  if (search === '') {
+  if (search.query === '' && search.subjects.length === 0) {
     return (
       <div className='mt-10'>
+        <p className='text-gray-600 text-sm pb-4'></p>
         <p className='border-b'></p>
 
         <CourseList courses={initCourses} />
@@ -37,9 +38,9 @@ const SearchResult = ({ initCourses }: { initCourses: CourseType[] }) => {
   return (
     <div className='mt-10'>
       <p className='text-gray-600 text-sm pb-4'>
-        {search && (
+        {search.query && (
           <>
-            Results for <span className='font-semibold'>{search}</span>.
+            Results for <span className='font-semibold'>{search.query}</span>.
           </>
         )}
       </p>
