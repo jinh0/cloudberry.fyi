@@ -17,12 +17,33 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<{ results: CourseType[] } | { error: string }>
 ) {
-  const { search } = req.query as { search: string }
+  const { search, subjects } = req.query as { search: string; subjects: string }
 
   if (!search || search === '')
     return res.status(200).json({ results: courses.slice(0, 10) })
 
+  if (!subjects || subjects === '')
+    return res
+      .status(200)
+      .json({ results: fuse.search(search, { limit: 10 }).map(x => x.item) })
+
   return res.status(200).json({
-    results: fuse.search(search, { limit: 10 }).map(x => x.item),
+    results: fuse
+      .search(
+        {
+          $and: [
+            // subjects filter
+            {
+              $or: subjects
+                .split(',')
+                .map(subject => ({ code: `^${subject}` })),
+            },
+            // search=
+            { $or: [{ code: search }, { name: search }] },
+          ],
+        },
+        { limit: 10 }
+      )
+      .map(x => x.item),
   })
 }
