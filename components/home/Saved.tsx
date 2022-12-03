@@ -7,15 +7,12 @@ import { useQuery } from '@tanstack/react-query'
 import { CourseType, UserType } from '@typing'
 import Link from 'next/link'
 import { useContext } from 'react'
+import Unsave from './Unsave'
 
 const Saved = () => {
   const { user, loading, error } = useContext(UserContext)
 
-  if (loading || error) {
-    return <div className='hidden lg:w-1/3 lg:pl-12'></div>
-  }
-
-  if (!user) {
+  if (loading || error || !user) {
     return <div className='hidden lg:w-1/3 lg:pl-12'></div>
   }
 
@@ -60,9 +57,16 @@ const SavedCourse = ({ code }) => {
 
   return (
     <Link href={`/courses/${code}`}>
-      <div className='border border-inherit rounded-lg p-2 mb-4'>
-        <span className='font-semibold mr-1'>{format(code)}</span>{' '}
-        {data && data.result.name}
+      <div className='group border border-inherit rounded-lg p-2 mb-4'>
+        <div className='flex flex-row items-center justify-between'>
+          <div className='text-lg font-medium'>{format(data.result.code)}</div>
+          <div className='opacity-0 group-hover:opacity-100 transition duration-150'>
+            <Unsave code={code} />
+          </div>
+        </div>
+        <div className='text-base font-normal text-gray-700'>
+          {data.result.name}
+        </div>
       </div>
     </Link>
   )
