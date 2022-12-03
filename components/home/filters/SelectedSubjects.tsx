@@ -10,11 +10,14 @@ const SelectedSubjects = ({
   setSubjects: Dispatch<SetStateAction<Subject[]>>
 }) => {
   return (
-    <div className='flex flex-row'>
+    <div className='flex flex-row flex-wrap gap-y-2'>
       {subjects.map((subject, idx) => (
         <div key={idx} className='mr-2'>
-          <div className='inline-flex w-full justify-between rounded-full px-4 py-1 border border-transparent bg-violet-100 text-violet-700 focus:outline-none mr-2'>
-            <span className='font-bold'>{subject.code}:</span> {subject.title}
+          <div className='inline-flex w-full justify-between rounded-full px-4 py-1 border border-transparent bg-violet-100 text-violet-700 focus:outline-none mr-2 flex-wrap'>
+            <span className='font-bold'>{subject.code}</span>
+            <span className='hidden md:ml-1 md:inline-block'>
+              {subject.title}
+            </span>
             <button
               onClick={() =>
                 setSubjects(subjects.filter(x => x.code !== subject.code))

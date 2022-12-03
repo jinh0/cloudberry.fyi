@@ -8,14 +8,17 @@ import {
   QueryObserverResult,
 } from '@tanstack/react-query'
 import { CourseType, Search } from '@typing'
+import { Subject } from '@utils/subjects'
 import { createContext, Dispatch, SetStateAction } from 'react'
 
 /**
  * Context containing search string, fetch data, etc.
  */
 const SearchContext = createContext<{
-  search: Search
-  setSearch: Dispatch<SetStateAction<Search>>
+  query: string
+  setQuery: Dispatch<SetStateAction<string>>
+  subjects: Subject[]
+  setSubjects: Dispatch<SetStateAction<Subject[]>>
   isLoading: boolean
   error: unknown
   data: { results: CourseType[] }

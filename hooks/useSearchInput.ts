@@ -2,13 +2,19 @@ import SearchContext from '@contexts/SearchContext'
 import { useState, useContext, useEffect, FormEvent } from 'react'
 
 function useSearchInput() {
-  const { search, setSearch } = useContext(SearchContext)
-  const [input, setInput] = useState(search ? search.query : '')
+  const { setQuery } = useContext(SearchContext)
+  const [input, setInput] = useState('')
+
+  useEffect(() => {
+    const stored = localStorage.getItem('query')
+    setInput(stored ? stored : '')
+  }, [setInput])
 
   const onSubmit = (evt: FormEvent) => {
     evt.preventDefault()
-    setSearch({ ...search, query: input })
-    localStorage.setItem('search', JSON.stringify({ ...search, query: input }))
+
+    setQuery(input)
+    localStorage.setItem('query', input)
   }
 
   return { input, setInput, onSubmit }

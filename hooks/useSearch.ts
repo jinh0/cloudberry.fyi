@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { CourseType, Search } from '@typing'
+import { Subject } from '@utils/subjects'
 import { useEffect, useState } from 'react'
 
 async function getCourses(search: Search) {
@@ -10,33 +11,29 @@ async function getCourses(search: Search) {
 }
 
 function useSearch() {
-  const [search, setSearch] = useState({ query: '', subjects: [] })
-
+  const [query, setQuery] = useState('')
+  const [subjects, setSubjects] = useState<Subject[]>([])
   const { data, isLoading, error, refetch } = useQuery<{
     results: CourseType[]
   }>({
-    queryKey: ['search', search],
-    queryFn: () => getCourses(search),
+    queryKey: ['search'],
+    queryFn: () => getCourses({ query, subjects: subjects.map(x => x.code) }),
   })
 
   useEffect(() => {
-    const storedSearch = localStorage.getItem('search')
-    if (storedSearch) {
-      try {
-        setSearch(JSON.parse(storedSearch))
-      } catch (err) {
-        localStorage.setItem(
-          'search',
-          JSON.stringify({
-            query: '',
-            subjects: [],
-          })
-        )
-      }
-    }
-  }, [setSearch])
+    refetch()
+  }, [subjects, query])
 
-  return { search, setSearch, data, isLoading, error, refetch }
+  return {
+    query,
+    setQuery,
+    subjects,
+    setSubjects,
+    data,
+    isLoading,
+    error,
+    refetch,
+  }
 }
 
 export default useSearch
