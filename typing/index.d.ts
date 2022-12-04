@@ -1,3 +1,18 @@
+export type SearchContextType = {
+  query: string
+  setQuery: Dispatch<SetStateAction<string>>
+  subjects: Subject[]
+  setSubjects: Dispatch<SetStateAction<Subject[]>>
+  semester: any
+  setSemester: any
+  isLoading: boolean
+  error: unknown
+  data: { results: CourseType[] }
+  refetch: <TPageData>(
+    options?: RefetchOptions & RefetchQueryFilters<TPageData>
+  ) => Promise<QueryObserverResult<{ results: CourseType[] }, unknown>>
+}
+
 export type Term = {
   term: 'fall' | 'winter'
   instructors: string[]
@@ -6,11 +21,6 @@ export type Term = {
 export type Note = {
   content: string
   links: Array<{ href: string; text: string }>
-}
-
-export type Search = {
-  query: string
-  subjects: string[]
 }
 
 export type CourseType = {

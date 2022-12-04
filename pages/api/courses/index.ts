@@ -9,7 +9,7 @@ import Fuse from 'fuse.js'
 
 const fuse = new Fuse<CourseType>(courses, {
   includeScore: true,
-  keys: ['code', 'name'],
+  keys: ['code', 'name', { name: 'terms.term', weight: 0.1 }],
   isCaseSensitive: false,
 })
 
@@ -17,7 +17,11 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<{ results: CourseType[] } | { error: string }>
 ) {
-  const { search, subjects } = req.query as { search: string; subjects: string }
+  const { search, subjects, semester } = req.query as {
+    search: string
+    subjects: string
+    semester: string
+  }
 
   // If there is no query
   if ((!search || search === '') && (!subjects || subjects === ''))
@@ -28,6 +32,8 @@ export default function handler(
       .search(
         {
           $and: [
+            // semesters filter
+            semester && { 'terms.term': `^"${semester}"` },
             // subjects filter
             subjects && {
               $or: subjects

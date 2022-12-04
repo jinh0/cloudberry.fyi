@@ -1,28 +1,44 @@
 import { useQuery } from '@tanstack/react-query'
-import { CourseType, Search } from '@typing'
+import { CourseType, SearchContextType } from '@typing'
 import { Subject } from '@utils/subjects'
 import { useEffect, useState } from 'react'
 
+type Search = {
+  query: string
+  subjects: string[]
+  semester: string
+}
+
 async function getCourses(search: Search) {
   const data = await fetch(
-    `/api/courses?search=${search.query}&subjects=${search.subjects.join(',')}`
+    `/api/courses?search=${search.query}&subjects=${search.subjects.join(
+      ','
+    )}&semester=${search.semester}`
   )
   return data.json()
 }
 
-function useSearch() {
+function useSearch(): SearchContextType {
   const [query, setQuery] = useState('')
   const [subjects, setSubjects] = useState<Subject[]>([])
+  const [semester, setSemester] = useState(null)
+
   const { data, isLoading, error, refetch } = useQuery<{
     results: CourseType[]
   }>({
     queryKey: ['search', { query, subjects }],
-    queryFn: () => getCourses({ query, subjects: subjects.map(x => x.code) }),
+    queryFn: () =>
+      getCourses({
+        query,
+        semester: semester.value,
+        subjects: subjects.map(x => x.code),
+      }),
   })
 
+  // Refetch course data when any part of the search changes
   useEffect(() => {
     refetch()
-  }, [subjects, query])
+  }, [subjects, query, semester])
 
   useEffect(() => {
     try {
@@ -38,6 +54,8 @@ function useSearch() {
     setQuery,
     subjects,
     setSubjects,
+    semester,
+    setSemester,
     data,
     isLoading,
     error,

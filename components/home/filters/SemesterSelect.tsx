@@ -1,49 +1,115 @@
-import { useState, Fragment } from 'react'
-import { Listbox } from '@headlessui/react'
-import { CheckIcon } from '@heroicons/react/20/solid'
+// TODO: Cleanup
 
-const people = [
-  { id: 0, name: 'All Semesters' },
-  { id: 1, name: 'Fall 2022' },
-  { id: 2, name: 'Winter 2023' },
-  { id: 3, name: 'Not Offered' },
+import { useState, Fragment, useEffect, useContext } from 'react'
+import { Listbox } from '@headlessui/react'
+import { faPagelines } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { CheckIcon, ChevronDownIcon } from '@heroicons/react/24/solid'
+import { faSnowflake } from '@fortawesome/free-solid-svg-icons'
+import { XCircleIcon } from '@heroicons/react/24/outline'
+import SearchContext from '@contexts/SearchContext'
+
+const semesters = [
+  { id: 0, name: 'All Semesters', value: 'fall|winter' },
+  { id: 1, name: 'Fall 2022', value: 'fall' },
+  { id: 2, name: 'Winter 2023', value: 'winter' },
 ]
 
+const classNames = (...args: string[]) => args.join(' ')
+
+const semesterStyles = {
+  0: (
+    <Listbox.Button
+      className={classNames(
+        'border rounded-full px-4 py-1 outline-none placeholder-gray-600 w-fit flex flex-row items-start text-gray-600 whitespace-nowrap',
+        'flex flex-row items-center'
+      )}
+    >
+      All Semesters
+      <ChevronDownIcon className='w-6 h-6 ml-4' />
+    </Listbox.Button>
+  ),
+  1: (
+    <Listbox.Button
+      className={classNames(
+        'border rounded-full px-4 py-1 outline-none placeholder-gray-600 w-fit flex flex-row items-start text-gray-600',
+        'flex flex-row items-center'
+      )}
+    >
+      <FontAwesomeIcon icon={faPagelines} className='w-4 h-4 mr-2' />
+      Fall 2022
+      <ChevronDownIcon className='w-6 h-6 ml-4' />
+    </Listbox.Button>
+  ),
+  2: (
+    <Listbox.Button
+      className={classNames(
+        'border rounded-full px-4 py-1 outline-none placeholder-gray-600 w-fit flex flex-row items-start text-gray-600',
+        'flex flex-row items-center'
+      )}
+    >
+      <FontAwesomeIcon icon={faSnowflake} className='w-4 h-4 mr-2' />
+      Winter 2023
+      <ChevronDownIcon className='w-6 h-6 ml-4' />
+    </Listbox.Button>
+  ),
+  3: (
+    <Listbox.Button
+      className={classNames(
+        'border rounded-full px-4 py-1 outline-none placeholder-gray-600 w-fit flex flex-row items-start text-gray-600',
+        'flex flex-row items-center'
+      )}
+    >
+      <XCircleIcon className='w-5 h-5 mr-2' />
+      Not Offered
+      <ChevronDownIcon className='w-6 h-6 ml-4' />
+    </Listbox.Button>
+  ),
+}
+
 const SemesterSelect = () => {
-  const [selectedPerson, setSelectedPerson] = useState(people[0])
+  const { semester, setSemester } = useContext(SearchContext)
 
   return (
     <div className='relative mr-2'>
-      <Listbox value={selectedPerson} onChange={setSelectedPerson}>
+      <Listbox value={semester} onChange={setSemester}>
         <div className='flex flex-row items-start'>
-          <Listbox.Button
-            className='border rounded-full px-4 py-1 outline-none placeholder-gray-600 w-fit flex flex-row items-start text-gray-600'
-            placeholder='Semester'
-          >
-            {selectedPerson.name}
-          </Listbox.Button>
+          {semester && semesterStyles[semester.id]}
+          {!semester && (
+            <Listbox.Button
+              className={classNames(
+                'border rounded-full px-4 py-1 outline-none placeholder-gray-600 w-fit flex flex-row items-start text-gray-600 whitespace-nowrap',
+                'flex flex-row items-center'
+              )}
+            >
+              All Semesters
+              <ChevronDownIcon className='w-6 h-6 ml-4' />
+            </Listbox.Button>
+          )}
         </div>
 
         <Listbox.Options className='absolute bg-white border rounded-xl py-2 mt-2 w-72 overflow-auto shadow outline-none'>
-          {people.map(person => (
+          {semesters.map(option => (
             /* Use the `active` state to conditionally style the active option. */
             /* Use the `selected` state to conditionally style the selected option. */
-            <Listbox.Option key={person.id} value={person} as={Fragment}>
+            <Listbox.Option key={option.id} value={option} as={Fragment}>
               {({ active, selected }) => (
                 <div
-                  className={
-                    'px-4 py-2 flex flex-row items-center outline-none ' +
-                    `${
-                      active
-                        ? 'cursor-pointer bg-yellow-50 text-yellow-700'
-                        : 'bg-white text-black'
-                    }`
-                  }
+                  className={classNames(
+                    'px-4 py-2 flex flex-row items-center outline-none cursor-pointer hover:bg-yellow-50 hover:text-yellow-800',
+                    `${active ? '' : 'bg-white text-black'}`,
+                    selected || (semester === null && option.id === 0)
+                      ? 'bg-yellow-50 text-yellow-800'
+                      : ''
+                  )}
                 >
-                  {/*
-                    {selected && <CheckIcon className='w-4 h-4 mr-2' />}
-                  */}
-                  <span>{person.name}</span>
+                  {selected || (semester === null && option.id === 0) ? (
+                    <CheckIcon className='w-4 h-4 mr-2 text-orange-400' />
+                  ) : (
+                    <span className='w-4 mr-2'></span>
+                  )}
+
+                  <span>{option.name}</span>
                 </div>
               )}
             </Listbox.Option>
