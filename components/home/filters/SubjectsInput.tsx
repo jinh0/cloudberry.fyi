@@ -25,12 +25,16 @@ const SubjectsInput = ({
 }) => {
   const [selectedSubject, setSelectedSubject] = useState<Subject>(null)
 
-  useEffect(() => {
-    if (selectedSubject) {
-      setSubjects(subjects.concat(selectedSubject))
+  const onChange = (selected: Subject) => {
+    if (selected) {
+      localStorage.setItem(
+        'subjects',
+        JSON.stringify(subjects.concat(selected))
+      )
+      setSubjects(subjects.concat(selected))
       setSelectedSubject(null)
     }
-  }, [selectedSubject])
+  }
 
   const [query, setQuery] = useState('')
 
@@ -41,7 +45,7 @@ const SubjectsInput = ({
 
   return (
     <div className='relative mr-2'>
-      <Combobox value={selectedSubject} onChange={setSelectedSubject} nullable>
+      <Combobox value={selectedSubject} onChange={onChange} nullable>
         <div className='flex flex-row items-start'>
           <Combobox.Input
             onChange={event => setQuery(event.target.value)}

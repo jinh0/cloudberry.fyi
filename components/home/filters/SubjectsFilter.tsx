@@ -8,10 +8,10 @@ const SubjectsFilter = () => {
   const { subjects, setSubjects } = useContext(SearchContext)
 
   return (
-    <div className='flex flex-row flex-wrap gap-y-2'>
+    <>
       <SubjectsInput subjects={subjects} setSubjects={setSubjects} />
       <SelectedSubjects subjects={subjects} setSubjects={setSubjects} />
-    </div>
+    </>
   )
 }
 

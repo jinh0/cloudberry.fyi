@@ -4,10 +4,10 @@ import { Subject } from '@utils/subjects'
 import { useEffect, useState } from 'react'
 
 async function getCourses(search: Search) {
-  const res = await fetch(
+  const data = await fetch(
     `/api/courses?search=${search.query}&subjects=${search.subjects.join(',')}`
   )
-  return res.json()
+  return data.json()
 }
 
 function useSearch() {
@@ -16,13 +16,22 @@ function useSearch() {
   const { data, isLoading, error, refetch } = useQuery<{
     results: CourseType[]
   }>({
-    queryKey: ['search'],
+    queryKey: ['search', { query, subjects }],
     queryFn: () => getCourses({ query, subjects: subjects.map(x => x.code) }),
   })
 
   useEffect(() => {
     refetch()
   }, [subjects, query])
+
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem('subjects')
+      const parsed = JSON.parse(stored)
+
+      if (parsed) setSubjects(parsed)
+    } catch {}
+  }, [])
 
   return {
     query,

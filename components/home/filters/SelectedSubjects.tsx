@@ -19,9 +19,13 @@ const SelectedSubjects = ({
               {subject.title}
             </span>
             <button
-              onClick={() =>
+              onClick={() => {
+                localStorage.setItem(
+                  'subjects',
+                  JSON.stringify(subjects.filter(x => x.code !== subject.code))
+                )
                 setSubjects(subjects.filter(x => x.code !== subject.code))
-              }
+              }}
             >
               <XMarkIcon className='w-6 h-6' />
             </button>
