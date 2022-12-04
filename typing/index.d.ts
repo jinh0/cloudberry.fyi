@@ -1,10 +1,16 @@
+export type SemesterOption = {
+  id: number
+  name: string
+  value: 'fall' | 'winter' | 'fall|winter'
+}
+
 export type SearchContextType = {
   query: string
   setQuery: Dispatch<SetStateAction<string>>
   subjects: Subject[]
   setSubjects: Dispatch<SetStateAction<Subject[]>>
-  semester: any
-  setSemester: any
+  semester: SemesterOption
+  setSemester: Dispatch<SetStateAction<SemesterOption>>
   isLoading: boolean
   error: unknown
   data: { results: CourseType[] }

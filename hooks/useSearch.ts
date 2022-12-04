@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { CourseType, SearchContextType } from '@typing'
+import { CourseType, SearchContextType, SemesterOption } from '@typing'
 import { Subject } from '@utils/subjects'
 import { useEffect, useState } from 'react'
 
@@ -21,16 +21,19 @@ async function getCourses(search: Search) {
 function useSearch(): SearchContextType {
   const [query, setQuery] = useState('')
   const [subjects, setSubjects] = useState<Subject[]>([])
-  const [semester, setSemester] = useState(null)
+  const [semester, setSemester] = useState<SemesterOption>(null)
 
   const { data, isLoading, error, refetch } = useQuery<{
     results: CourseType[]
   }>({
-    queryKey: ['search', { query, subjects }],
+    queryKey: [
+      'search',
+      { query, subjects, semester: semester ? semester.value : null },
+    ],
     queryFn: () =>
       getCourses({
         query,
-        semester: semester.value,
+        semester: semester ? semester.value : '',
         subjects: subjects.map(x => x.code),
       }),
   })
