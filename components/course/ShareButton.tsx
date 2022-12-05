@@ -44,25 +44,6 @@ const ShareButton = () => {
       </Tooltip>
     </div>
   )
-
-  //   <div className='flex flex-row items-center'>
-  //     <button
-  //       className='border-none rounded px-2.5 py-1 flex flex-row items-center gap-2'
-  //       onClick={() => { navigator.clipboard.writeText(window.location.href);  setcopied(true) }}
-  //     >
-  //       <div className=''>
-  //         {copied ? (
-  //           <CheckIcon className='w-5 h-5 text-green-500' />
-  //         ) : (
-  //           <LinkIcon className='w-5 h-5 text-black' />
-  //         )}
-  //       </div>
-  //     </button>
-  //     <p className='text-sm font-medium text-gray-500'>
-  //       {copied ? 'Copied' : ''}
-  //     </p>
-  //   </div>
-  // )
 }
 
 export default ShareButton
