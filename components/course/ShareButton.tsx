@@ -2,7 +2,6 @@ import { LinkIcon } from '@heroicons/react/24/outline'
 import { CheckIcon } from '@heroicons/react/24/outline'
 import { useEffect, useState } from 'react'
 import { Tooltip, Button } from '@mantine/core'
-import { contents } from 'cheerio/lib/api/traversing'
 
 /**
  * Copy Link Button
