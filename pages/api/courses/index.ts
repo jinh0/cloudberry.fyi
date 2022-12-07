@@ -9,7 +9,7 @@ import Fuse from 'fuse.js'
 
 const fuse = new Fuse<CourseType>(courses, {
   includeScore: true,
-  keys: ['code', 'name', { name: 'terms.term', weight: 0.1 }],
+  keys: ['code', 'name', 'terms.term'],
   isCaseSensitive: false,
 })
 
@@ -24,8 +24,13 @@ export default function handler(
   }
 
   // If there is no query
-  if ((!search || search === '') && (!subjects || subjects === ''))
+  if (
+    (!search || search === '') &&
+    (!subjects || subjects === '') &&
+    (!semester || semester === '')
+  ) {
     return res.status(200).json({ results: courses.slice(0, 10) })
+  }
 
   return res.status(200).json({
     results: fuse
@@ -33,7 +38,12 @@ export default function handler(
         {
           $and: [
             // semesters filter
-            semester && { 'terms.term': `^"${semester}"` },
+            semester &&
+              semester !== 'fall|winter' && {
+                $or: semester
+                  .split('|')
+                  .map(x => ({ 'terms.term': `="${x}"` })),
+              },
             // subjects filter
             subjects && {
               $or: subjects
