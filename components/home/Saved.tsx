@@ -3,6 +3,7 @@
  */
 
 import UserContext from '@contexts/UserContext'
+import useCourse from '@hooks/useCourse'
 import { useQuery } from '@tanstack/react-query'
 import { CourseType, UserType } from '@typing'
 import Link from 'next/link'
@@ -34,17 +35,9 @@ const Saved = () => {
 }
 
 const SavedCourse = ({ code }) => {
-  const getCourse = async () => {
-    const res = await fetch(`/api/courses/${code}`)
-    return res.json()
-  }
+  const { data, isLoading } = useCourse(code)
 
   const format = (code: string) => code.toUpperCase().replace('-', ' ')
-
-  const { isLoading, data } = useQuery<{ status: number; result: CourseType }>({
-    queryKey: [`${code}`],
-    queryFn: getCourse,
-  })
 
   if (isLoading)
     return (

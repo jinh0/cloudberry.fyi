@@ -10,7 +10,7 @@ const SignOut = () => {
   }
 
   return (
-    <div className='mt-4'>
+    <div className='mt-8'>
       <button onClick={signOut} className='border rounded-full px-6 py-2'>
         Sign out
       </button>
