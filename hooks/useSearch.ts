@@ -23,17 +23,19 @@ function useSearch(): SearchContextType {
   const [subjects, setSubjects] = useState<Subject[]>([])
   const [semester, setSemester] = useState<SemesterOption>(null)
 
+  // console.log({ query, subjects, semester: semester ? semester.id : -1 })
+
   const { data, isLoading, error, refetch } = useQuery<{
     results: CourseType[]
   }>({
     queryKey: [
       'search',
-      { query, subjects, semester: semester ? semester.value : null },
+      { query, subjects, semester: semester ? semester.id : -1 },
     ],
     queryFn: () =>
       getCourses({
         query,
-        semester: semester ? semester.value : '',
+        semester: semester ? semester.value : 'fall|winter',
         subjects: subjects.map(x => x.code),
       }),
   })
