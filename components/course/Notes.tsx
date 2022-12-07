@@ -40,7 +40,7 @@ const Notes = ({ notes }: { notes: Note[] }) => {
         [<span className='font-semibold mr-1'>Prerequisites: </span>] as Array<
           string | JSX.Element
         >
-      ).concat(words.slice(1))
+      ).concat(words)
     }
 
     return words
@@ -49,11 +49,13 @@ const Notes = ({ notes }: { notes: Note[] }) => {
   return (
     <ul className='list-disc mt-4 pl-6'>
       {notes &&
-        notes.map((point, idx) => (
-          <li className='mb-1' key={idx}>
-            {format(withLinks(point))}
-          </li>
-        ))}
+        notes.map((point, idx) => {
+          return (
+            <li className='mb-1' key={idx}>
+              {withLinks(point)}
+            </li>
+          )
+        })}
     </ul>
   )
 }
