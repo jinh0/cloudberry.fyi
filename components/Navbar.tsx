@@ -43,7 +43,7 @@ const Navbar = () => {
             {/* <AcademicCapIcon className='w-8 h-8 text-mcgill mr-4 lg:mr-2' /> */}
             <img
               src='/cloudberry.svg'
-              className='w-11 h-11 -translate-y-0.5 mr-4 lg:mr-2'
+              className='w-11 h-11 -translate-y-1 mr-4 lg:mr-2'
             />
             <p className='hidden lg:inline-block text-xl font-bold text-mcgill pr-4 border-r mr-4'>
               CloudBerry
