@@ -12,13 +12,18 @@ import Actions from '@components/course/Actions'
 import courses from 'utils/courses'
 import VSBData from '@components/course/VSBData'
 import vsbCourses from '@utils/vsb'
+import prereqsOf from '@utils/prereqsOf'
 import Semesters from '@components/course/Semesters'
 import useUser from '@hooks/useUser'
 import ShareButton from '@components/course/ShareButton'
 import Notes from '@components/course/Notes'
-import { Tab } from '@headlessui/react'
+import PrereqsOf from '@components/course/PrereqsOf'
 
-const Course = ({ course }: { course: CourseType & { vsb: VSBCourse } }) => {
+const Course = ({
+  course,
+}: {
+  course: CourseType & { vsb: VSBCourse; prereqsOf: string[] }
+}) => {
   const router = useRouter()
   const { code } = router.query as { code: string }
   const { user } = useUser()
@@ -45,6 +50,8 @@ const Course = ({ course }: { course: CourseType & { vsb: VSBCourse } }) => {
           </div>
 
           <Notes notes={course.notes} />
+
+          <PrereqsOf prereqsOf={course.prereqsOf} />
 
           <VSBData data={course.vsb} />
 
@@ -95,11 +102,16 @@ export async function getStaticProps({ params }: { params: { code: string } }) {
     course => course.code.toLowerCase() === params.code.toLowerCase()
   )
 
+  const prereqsOfData = prereqsOf.find(
+    course => course.code.toLowerCase() === params.code.toLowerCase()
+  )
+
   return {
     props: {
       course: {
         ...eCalendarData,
         vsb: vsbData ? vsbData : null,
+        prereqsOf: prereqsOfData.prereqOfs,
       },
     },
   }
