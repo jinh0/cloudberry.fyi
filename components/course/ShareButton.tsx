@@ -8,17 +8,17 @@ import { Tooltip, Button } from '@mantine/core'
  */
 
 const ShareButton = () => {
-  const [copied, setcopied] = useState(false)
+  const [copied, setCopied] = useState(false)
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      if (copied) setcopied(false)
-    }, 250)
+      if (copied) setCopied(false)
+    }, 275)
     return () => clearTimeout(timeout)
   }, [copied])
 
   return (
-    <div className='flex flex-row items-center'>
+    <div className='flex flex-row items-center ml-2'>
       <Tooltip
         label={copied ? 'Copied!' : 'Copy link'}
         color='black'
@@ -30,12 +30,12 @@ const ShareButton = () => {
           className='border-none rounded px-2.5 py-1 flex flex-row items-center gap-2'
           onClick={() => {
             navigator.clipboard.writeText(window.location.href)
-            setcopied(true)
+            setCopied(true)
           }}
         >
           <div className=''>
             {copied ? (
-              <CheckIcon className='w-5 h-5 text-green-500' />
+              <CheckIcon className='w-5 h-5 text-green-700' />
             ) : (
               <LinkIcon className='w-5 h-5 text-black' />
             )}
