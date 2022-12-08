@@ -84,13 +84,13 @@ const minToStr = (time: number) => {
 }
 
 const NUM_TO_DAY = {
-  2: 'Monday',
-  3: 'Tuesday',
-  4: 'Wednesday',
-  5: 'Thursday',
-  6: 'Friday',
-  0: 'Saturday',
-  1: 'Sunday',
+  2: 'Mon',
+  3: 'Tue',
+  4: 'Wed',
+  5: 'Thu',
+  6: 'Fri',
+  0: 'Sat',
+  1: 'Sun',
 }
 
 export default Block
