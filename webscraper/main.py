@@ -3,9 +3,6 @@ from bs4 import BeautifulSoup
 import json
 import re
 
-course_list = []
-
-
 def get_course(code: str):
     # defining dictionary for a course
     full_course = {
@@ -148,17 +145,20 @@ def get_course(code: str):
     # print(json.dumps(full_course, indent=2))
 
     # adding course dictionary to list of all courses
-    course_list.append(full_course)
+    return full_course
 
 
 def get_all_courses():
+    course_list = []
+
     # open course crawler json file
     with open("output-coursetitles.json") as f:
         course_titles = json.load(f)
+
         for idx, code in enumerate(course_titles):
             try:
-                get_course(code)
-                # print(course_list)
+                course_list.append(get_course(code))
+
                 print(code)
 
                 if idx % 1000 == 0:
