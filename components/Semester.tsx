@@ -39,7 +39,7 @@ const Semester = ({
     const lookup = {
       fall: <FontAwesomeIcon icon={faPagelines} className='w-4 h-4' />,
       winter: <FontAwesomeIcon icon={faSnowflake} className='w-4 h-4' />,
-      summer: <FontAwesomeIcon icon={faUmbrellaBeach} className='w-4 h-4' />,
+      summer: <FontAwesomeIcon icon={faSun} className='w-4 h-4' />,
     }
 
     return lookup[term]
