@@ -167,6 +167,9 @@ def get_all_courses():
                     with open("billion.json", "w") as outfile:
                         json.dump(course_list, outfile, indent=2)
             except Exception as e:
+                with open("errors-courses.txt", "a+") as outfile:
+                    outfile.write(f"{code},{str(e)}\n")
+                    
                 print(e)
 
     with open("billion.json", "w") as outfile:
