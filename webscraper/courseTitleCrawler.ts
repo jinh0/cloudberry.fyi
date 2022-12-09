@@ -9,9 +9,13 @@
 import fs from 'fs'
 import { load } from 'cheerio'
 
+// DISCLAIMER: You need to make the year folder before running the script
+
 async function main() {
-  const data = await getCourses(2022)
-  saveCourseData(2022, data)
+  let year = 2022 // Change this year
+
+  const data = await getCourses(year)
+  saveCourseData(year, data)
 }
 
 main()

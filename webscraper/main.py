@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import json
 import re
 
+
 def get_course(code: str, year: int):
     # defining dictionary for a course
     full_course = {
@@ -33,7 +34,8 @@ def get_course(code: str, year: int):
     req = requests.get(url, headers)
     doc = BeautifulSoup(req.content, "html.parser")
 
-    label = doc.find(text="Overview").findNext("p").text
+    # Offered by:
+    label = doc.find(class_="meta").findChild("p").text
 
     # finding course code, course name, and credits
     code_title_credits = []
@@ -70,7 +72,7 @@ def get_course(code: str, year: int):
 
     # determine extra info and restrictions
     try:
-        extra = str(doc.find_all('ul', {'class': "catalog-notes"})[-1].get_text())
+        extra = str(doc.find_all("ul", {"class": "catalog-notes"})[-1].get_text())
         extra = re.split("\n\n", extra)
         extra = [word.strip() for word in extra]
         extra = list(filter(None, extra))
@@ -105,7 +107,6 @@ def get_course(code: str, year: int):
         dict = {"term": "summer", "instructors": []}
         dict_list.append(dict)
 
-
     curr_instructors = []
     # terms = ['fall', 'winter', 'summer']
 
@@ -115,7 +116,7 @@ def get_course(code: str, year: int):
         terms_dict[term] = []
 
     for token in instruct:
-        if token not in ['Fall', 'Winter', 'Summer']:
+        if token not in ["Fall", "Winter", "Summer"]:
             curr_instructors.append(token)
         else:
             # token.lower() == term
@@ -154,26 +155,26 @@ def get_all_courses(year: int):
     # open course crawler json file
     with open(f"{year}/course-titles.json") as f:
         course_titles = json.load(f)
-        print(len(course_titles))
 
         for idx, code in enumerate(course_titles):
-           try:
-                course_list.append(get_course(code, year))
+            # try:
+            course_list.append(get_course(code, year))
 
-                print(code)
+            print(code)
 
-                if idx % 1000 == 0:
-                    print(f"Course {idx}: ", code)
+            if idx % 1000 == 0:
+                print(f"Course {idx}: ", code)
 
-                    with open(f"{year}/course-data.json", "w") as outfile:
-                        json.dump(course_list, outfile, indent=2)
-            except Exception as e:
-                with open(f"{year}/errors-courses.txt", "a+") as outfile:
-                    outfile.write(f"{code},{str(e)}\n")
-                    
-                print('error', e)
+                with open(f"{year}/course-data.json", "w") as outfile:
+                    json.dump(course_list, outfile, indent=2)
+            # except Exception as e:
+            #     with open(f"{year}/errors-courses.txt", "a+") as outfile:
+            #         outfile.write(f"{code},{str(e)}\n")
+
+            #     print("error", e)
 
     with open(f"{year}/course-data.json", "w") as outfile:
         json.dump(course_list, outfile, indent=2)
+
 
 get_all_courses(2021)
