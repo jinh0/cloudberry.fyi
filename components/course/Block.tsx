@@ -14,7 +14,6 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 
 const Block = ({ block }: { block: VSBBlock }) => {
-  console.log(block.locations)
 
   return (
     <div className='mb-8'>
