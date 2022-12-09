@@ -10,8 +10,12 @@ import {
   UserGroupIcon,
 } from '@heroicons/react/24/outline'
 import { VSBBlock } from '@typing'
+import { useState } from 'react'
+import { useEffect } from 'react'
 
 const Block = ({ block }: { block: VSBBlock }) => {
+  console.log(block.locations)
+
   return (
     <div className='mb-8'>
       <p className='mb-4 flex flex-row items-center'>
@@ -23,7 +27,13 @@ const Block = ({ block }: { block: VSBBlock }) => {
       <div className='flex flex-row items-center flex-wrap mb-4 text-base lg:text-lg gap-y-2'>
         <div className='flex flex-row items-center text-gray-800 pr-3 mr-3 border-r'>
           <MapPinIcon className='w-5 h-5 mr-2' />
-          <div>{block.locations.join('; ')}</div>
+
+          <div className=''>
+            {block.locations.length === 1 && block.locations[0] === ''
+              ? 'No Location'
+              : block.locations.join('; ')}
+          </div>
+
         </div>
         <div className='flex flex-row items-center text-gray-800 pr-3 mr-3 border-r'>
           <ClipboardIcon className='w-5 h-5 mr-2' />
