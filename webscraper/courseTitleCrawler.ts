@@ -74,7 +74,7 @@ async function retrievePage(
         const urlMatch = url.match(/courses\/([a-zA-Z0-9]+-[a-zA-Z0-9]+)/)
         if (urlMatch) {
           const urlCourseName = urlMatch[1].toUpperCase()
-          results[urlCourseName] = el.text()
+          results[urlCourseName] = el.text().replaceAll('\n', '')
         }
       }
     })
