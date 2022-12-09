@@ -60,12 +60,18 @@ const Semester = ({
       <Pill className={color(sem.term)} hasBorder={false}>
         <div className='mr-2'>{icon(sem.term)}</div>
 
-        <div className={showInstructor ? 'font-semibold' : ''}>
+        <div
+          className={
+            showInstructor
+              ? 'font-semibold pr-2 mr-2 border-r ' + border(sem.term)
+              : ''
+          }
+        >
           {convert[sem.term]}{' '}
         </div>
 
         {showInstructor && (
-          <div className={'ml-2 pl-2 border-l ' + border(sem.term)}>
+          <div className={'' + border(sem.term)}>
             {sem.instructors.length > 0
               ? sem.instructors.join('; ')
               : 'No instructors assigned'}
