@@ -3,9 +3,6 @@ from bs4 import BeautifulSoup
 import json
 import re
 
-course_list = []
-
-
 def get_course(code: str):
     # defining dictionary for a course
     full_course = {
@@ -50,17 +47,13 @@ def get_course(code: str):
     code_title_credits = [word.strip() for word in code_title_credits]
 
     # float test function
+    # float test function
     def isfloat(num):
         try:
             float(num)
             return True
         except ValueError:
             return False
-
-    # finding extra info restrictions and others
-
-    # if not doc.find(text='Prerequisites: ').findNext("p").text is None:
-    #     extra = doc.find(text='Prerequisites: ').findNext("p").text
 
     # determine department and faculty
     info = str(label)
@@ -81,7 +74,7 @@ def get_course(code: str):
         extra = re.split("\n\n", extra)
         extra = [word.strip() for word in extra]
         extra = list(filter(None, extra))
-    except:
+    except IndexError:
         extra = []
 
     # determine instructors for each term
@@ -91,48 +84,45 @@ def get_course(code: str):
     instruct = [word.strip() for word in instruct]
     instruct = list(filter(None, instruct))
 
+    # find terms:
+    term_types = str(doc.find("p", "catalog-terms").get_text())
+    term_types = term_types.split(" ")
+    term_types = list(filter(None, term_types))
+
     # determine terms from list of instructor
     terms = []
-    if "Fall" in instruct:
-        terms.append("Fall")
-    if "Winter" in instruct:
-        terms.append("Winter")
-
-    # defining list of dictionaries for each term
     dict_list = []
-    if "Fall" in instruct:
+    if "Fall" in term_types:
+        terms.append("fall")
         dict = {"term": "fall", "instructors": []}
         dict_list.append(dict)
-    if "Winter" in instruct:
+    if "Winter" in term_types:
+        terms.append("winter")
         dict = {"term": "winter", "instructors": []}
         dict_list.append(dict)
+    if "Summer" in term_types:
+        terms.append("summer")
+        dict = {"term": "summer", "instructors": []}
+        dict_list.append(dict)
 
-    # Account for cases where a course is offered in 1,2,3 semesters (Summer is the third case)
 
-    N = "Fall"
-    W = "Winter"
+    curr_instructors = []
+    # terms = ['fall', 'winter', 'summer']
 
-    if "Fall" in terms and not "Winter" in terms:
-        fall_instruct = instruct.index(N)
-        fall_instruct = instruct[:fall_instruct]
-        dict_list[0]["instructors"] = fall_instruct
+    # terms_dict = { fall: [], winter: [], summer: [] }
+    terms_dict = {}
+    for term in terms:
+        terms_dict[term] = []
 
-    if "Winter" in terms and not "Fall" in terms:
-        if not "Fall" in terms:
-            dict_list[0]["instructors"] = instruct[:-1]
+    for token in instruct:
+        if token not in ['Fall', 'Winter', 'Summer']:
+            curr_instructors.append(token)
         else:
-            wint_instruct = instruct.index(N)
-            wint_instruct = instruct[:wint_instruct]
-            dict_list[0]["instructors"] = wint_instruct
+            # token.lower() == term
+            terms_dict[token.lower()] = curr_instructors
 
-    if "Fall" in terms and "Winter" in terms:
-        fall_instruct = instruct.index(N)
-        fall_instruct = instruct[:fall_instruct]
-        dict_list[0]["instructors"] = fall_instruct
-
-        wint_instruct = instruct.index(W)
-        wint_instruct = instruct[instruct.index(N) + 1 : wint_instruct]
-        dict_list[1]["instructors"] = wint_instruct
+    # convert terms_dict into our preferred list format
+    dict_list = [{"term": term, "instructors": terms_dict[term]} for term in terms_dict]
 
     # adding data to final dictionary for a particular course
     full_course["code"] = code_title_credits[0]
@@ -155,17 +145,20 @@ def get_course(code: str):
     # print(json.dumps(full_course, indent=2))
 
     # adding course dictionary to list of all courses
-    course_list.append(full_course)
+    return full_course
 
 
 def get_all_courses():
+    course_list = []
+
     # open course crawler json file
     with open("output-coursetitles.json") as f:
         course_titles = json.load(f)
+
         for idx, code in enumerate(course_titles):
             try:
-                get_course(code)
-                # print(course_list)
+                course_list.append(get_course(code))
+
                 print(code)
 
                 if idx % 1000 == 0:
@@ -174,6 +167,9 @@ def get_all_courses():
                     with open("billion.json", "w") as outfile:
                         json.dump(course_list, outfile, indent=2)
             except Exception as e:
+                with open("errors-courses.txt", "a+") as outfile:
+                    outfile.write(f"{code},{str(e)}\n")
+                    
                 print(e)
 
     with open("billion.json", "w") as outfile:
