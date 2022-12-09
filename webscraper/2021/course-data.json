@@ -1,0 +1,42 @@
+[
+  {
+    "code": "AAAA-100",
+    "name": "",
+    "description": "AAAA    ",
+    "prerequisites": [],
+    "extra": [],
+    "department": "Student Services",
+    "faculty": "00",
+    "terms": [
+      {
+        "term": "fall",
+        "instructors": [
+          "Emami, Heidi",
+          "Lisi, Fiorella",
+          "Frixione, Pauline",
+          "Spadafora, Clara",
+          "Burns, Charli",
+          "Emami, Heidi",
+          "Lisi, Fiorella",
+          "Spadafora, Clara",
+          "Burns, Charli"
+        ]
+      },
+      {
+        "term": "winter",
+        "instructors": [
+          "Emami, Heidi",
+          "Lisi, Fiorella",
+          "Frixione, Pauline",
+          "Spadafora, Clara",
+          "Burns, Charli",
+          "Emami, Heidi",
+          "Lisi, Fiorella",
+          "Spadafora, Clara",
+          "Burns, Charli"
+        ]
+      }
+    ],
+    "credits": 0
+  }
+]

@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import json
 import re
 
-def get_course(code: str):
+def get_course(code: str, year: int):
     # defining dictionary for a course
     full_course = {
         key: []
@@ -29,7 +29,7 @@ def get_course(code: str):
         "User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0",
     }
 
-    url = f"https://www.mcgill.ca/study/2022-2023/courses/{code}"
+    url = f"https://www.mcgill.ca/study/{year}-{year + 1}/courses/{code}"
     req = requests.get(url, headers)
     doc = BeautifulSoup(req.content, "html.parser")
 
@@ -148,32 +148,32 @@ def get_course(code: str):
     return full_course
 
 
-def get_all_courses():
+def get_all_courses(year: int):
     course_list = []
 
     # open course crawler json file
-    with open("output-coursetitles.json") as f:
+    with open(f"{year}/course-titles.json") as f:
         course_titles = json.load(f)
+        print(len(course_titles))
 
         for idx, code in enumerate(course_titles):
-            try:
-                course_list.append(get_course(code))
+           try:
+                course_list.append(get_course(code, year))
 
                 print(code)
 
                 if idx % 1000 == 0:
                     print(f"Course {idx}: ", code)
 
-                    with open("billion.json", "w") as outfile:
+                    with open(f"{year}/course-data.json", "w") as outfile:
                         json.dump(course_list, outfile, indent=2)
             except Exception as e:
-                with open("errors-courses.txt", "a+") as outfile:
+                with open(f"{year}/errors-courses.txt", "a+") as outfile:
                     outfile.write(f"{code},{str(e)}\n")
                     
-                print(e)
+                print('error', e)
 
-    with open("billion.json", "w") as outfile:
+    with open(f"{year}/course-data.json", "w") as outfile:
         json.dump(course_list, outfile, indent=2)
 
-
-get_all_courses()
+get_all_courses(2021)
