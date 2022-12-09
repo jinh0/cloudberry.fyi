@@ -3,7 +3,7 @@ import courseData from './course-data.json'
 import { JSDOM } from 'jsdom'
 import { appendFileSync, writeFileSync } from 'fs'
 
-const courses = courseData as CourseType[]
+const courses = courseData as unknown as CourseType[]
 
 async function fetchCourse(code: string): Promise<{
   prerequisites: string[]
