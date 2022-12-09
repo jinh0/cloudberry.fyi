@@ -102,7 +102,7 @@ const Actions = ({ code }: { code: string }) => {
   }
 
   return (
-    <div className='mt-4'>
+    <div className='mt-2'>
       <div className='flex flex-row gap-0 text-base'>
         {userData.saved && userData.saved.find(x => x === code) ? (
           <Button onClick={remove('saved')}>

@@ -20,7 +20,7 @@ export type SearchContextType = {
 }
 
 export type Term = {
-  term: 'fall' | 'winter'
+  term: 'fall' | 'winter' | 'summer'
   instructors: string[]
 }
 

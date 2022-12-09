@@ -18,6 +18,7 @@ import useUser from '@hooks/useUser'
 import ShareButton from '@components/course/ShareButton'
 import Notes from '@components/course/Notes'
 import PrereqsOf from '@components/course/PrereqsOf'
+import ReportForm from '@components/course/ReportForm'
 
 const Course = ({
   course,
@@ -33,7 +34,7 @@ const Course = ({
   return (
     <Main title={`${format(code)} | Cloudberry`} content={course.description}>
       <div className='flex flex-row'>
-        <div className='lg:w-3/5 text-base lg:text-lg mt-4'>
+        <div className='lg:w-3/5 text-base lg:text-lg'>
           <GoBack />
           <Title>
             {format(code)}: {course.name}
@@ -55,6 +56,7 @@ const Course = ({
 
           <VSBData data={course.vsb} />
 
+          {/* <ReportForm /> */}
           {/* <div className='mt-10 outline-none outline-0'>
             <Tab.Group>
               <Tab.List>
