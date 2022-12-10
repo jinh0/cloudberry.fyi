@@ -157,21 +157,21 @@ def get_all_courses(year: int):
         course_titles = json.load(f)
 
         for idx, code in enumerate(course_titles):
-            # try:
-            course_list.append(get_course(code, year))
+            try:
+              course_list.append(get_course(code, year))
 
-            print(code)
+              print(code)
 
-            if idx % 1000 == 0:
-                print(f"Course {idx}: ", code)
+              if idx % 1000 == 0:
+                  print(f"Course {idx}: ", code)
 
-                with open(f"{year}/course-data.json", "w") as outfile:
-                    json.dump(course_list, outfile, indent=2)
-            # except Exception as e:
-            #     with open(f"{year}/errors-courses.txt", "a+") as outfile:
-            #         outfile.write(f"{code},{str(e)}\n")
+                  with open(f"{year}/course-data.json", "w") as outfile:
+                      json.dump(course_list, outfile, indent=2)
+            except Exception as e:
+                with open(f"{year}/errors-courses.txt", "a+") as outfile:
+                    outfile.write(f"{code},{str(e)}\n")
 
-            #     print("error", e)
+                print("error", e)
 
     with open(f"{year}/course-data.json", "w") as outfile:
         json.dump(course_list, outfile, indent=2)
