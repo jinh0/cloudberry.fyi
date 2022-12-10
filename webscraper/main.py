@@ -107,7 +107,6 @@ def get_course(code: str, year: int):
         dict = {"term": "summer", "instructors": []}
         dict_list.append(dict)
 
-    curr_instructors = []
     # terms = ['fall', 'winter', 'summer']
 
     # terms_dict = { fall: [], winter: [], summer: [] }
@@ -115,12 +114,13 @@ def get_course(code: str, year: int):
     for term in terms:
         terms_dict[term] = []
 
+    curr_instructors = []
     for token in instruct:
         if token not in ["Fall", "Winter", "Summer"]:
             curr_instructors.append(token)
         else:
-            # token.lower() == term
             terms_dict[token.lower()] = curr_instructors
+            curr_instructors = []
 
     # convert terms_dict into our preferred list format
     dict_list = [{"term": term, "instructors": terms_dict[term]} for term in terms_dict]
@@ -177,4 +177,10 @@ def get_all_courses(year: int):
         json.dump(course_list, outfile, indent=2)
 
 
-get_all_courses(2021)
+course = input("Course code (or 'all'): ")
+year = int(input("Year: "))
+
+if course == 'all':
+    get_all_courses(year)
+else:
+    print(json.dumps(get_course(course, year), indent=2))

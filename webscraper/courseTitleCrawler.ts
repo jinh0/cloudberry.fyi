@@ -8,11 +8,15 @@
 
 import fs from 'fs'
 import { load } from 'cheerio'
+import prompt from 'prompt-sync'
+
+const input = prompt()
+
 
 // DISCLAIMER: You need to make the year folder before running the script
 
 async function main() {
-  let year = 2022 // Change this year
+  const year = Number(input("What year?: "))
 
   const data = await getCourses(year)
   saveCourseData(year, data)
@@ -70,6 +74,8 @@ async function retrievePage(
     const $ = load(text)
     const results = {}
 
+    let success = false
+
     // Find all links that match the course URL
     $('a').each((index, value) => {
       const el = $(value)
@@ -79,9 +85,14 @@ async function retrievePage(
         if (urlMatch) {
           const urlCourseName = urlMatch[1].toUpperCase()
           results[urlCourseName] = el.text().replaceAll('\n', '')
+
+          success = true
         }
       }
     })
+
+    if (!success)
+      return [false, results]
 
     return [true, results]
   } catch (err) {
