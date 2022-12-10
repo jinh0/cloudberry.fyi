@@ -123,7 +123,6 @@ def get_course(code: str, year: int):
             curr_instructors = []
 
     # convert terms_dict into our preferred list format
-    print(terms_dict)
     dict_list = [{"term": term, "instructors": terms_dict[term]} for term in terms_dict]
 
     # adding data to final dictionary for a particular course
