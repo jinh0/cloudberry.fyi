@@ -13,10 +13,14 @@ const fuse = new Fuse<CourseType>(courses, {
   isCaseSensitive: false,
 })
 
+console.log('create fuse instance')
+
 export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<{ results: CourseType[] } | { error: string }>
 ) {
+  console.log('query')
+
   const { search, subjects, semester } = req.query as {
     search: string
     subjects: string
