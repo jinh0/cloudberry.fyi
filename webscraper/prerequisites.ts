@@ -86,4 +86,4 @@ async function fetchCourses(year: number) {
   writeFileSync(`${year}/updated-courses.json`, JSON.stringify(updatedCourses, null, 2))
 }
 
-fetchCourses(2022)
+fetchCourses(2020)
