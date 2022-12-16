@@ -24,9 +24,11 @@ const PrereqsOf = ({ prereqsOf }: { prereqsOf: string[] }) => {
       {opened && (
         <div className='mt-2 flex flex-col gap-y-2'>
           {prereqsOf.map(code => (
-            <div>
-              <span className='font-semibold'>{format(code)}:</span>{' '}
-              {lookup.get(code)}
+            <div className='hover:underline w-fit'>
+              <Link href={`/courses/${code}`}>
+                <span className='font-semibold'>{format(code)}:</span>{' '}
+                {lookup.get(code)}
+              </Link>
             </div>
           ))}
         </div>

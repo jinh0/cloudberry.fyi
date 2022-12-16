@@ -37,7 +37,10 @@ const Course = ({
         <div className='lg:w-3/5 text-base lg:text-lg'>
           <GoBack />
           <Title>
-            {format(code)}: {course.name}
+            <span>
+              {format(code)}: {course.name} ({String(course.credits)}{' '}
+              {course.credits !== 1 ? 'credits' : 'credit'})
+            </span>
             <ShareButton />
           </Title>
 

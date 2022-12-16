@@ -23,7 +23,7 @@ const VSBData = ({ data }: { data: VSBCourse }) => {
   if (!data || !course.blocks || course.blocks.length === 0) return <></>
 
   return (
-    <div className='mt-12 mb-4'>
+    <div className='mt-10 mb-4'>
       <div className='mb-6 flex flex-row items-center gap-4'>
         <div className='text-2xl flex items-center'>Schedule</div>
 

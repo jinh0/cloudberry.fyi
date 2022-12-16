@@ -6,7 +6,7 @@ import { CourseType } from '@typing'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import courses from 'utils/courses'
 import Fuse from 'fuse.js'
-import { create, insert, search as searchDb } from '@lyrasearch/lyra'
+// import { create, insert, search as searchDb } from '@lyrasearch/lyra'
 
 const fuse = new Fuse<CourseType>(courses, {
   includeScore: true,
