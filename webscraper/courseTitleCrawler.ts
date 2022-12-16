@@ -12,11 +12,10 @@ import prompt from 'prompt-sync'
 
 const input = prompt()
 
-
 // DISCLAIMER: You need to make the year folder before running the script
 
 async function main() {
-  const year = Number(input("What year?: "))
+  const year = Number(input('What year?: '))
 
   const data = await getCourses(year)
   saveCourseData(year, data)
@@ -91,8 +90,7 @@ async function retrievePage(
       }
     })
 
-    if (!success)
-      return [false, results]
+    if (!success) return [false, results]
 
     return [true, results]
   } catch (err) {

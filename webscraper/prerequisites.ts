@@ -3,7 +3,10 @@ import { appendFileSync, writeFileSync } from 'fs'
 import { readFile } from 'fs/promises'
 import { CourseType } from '@typing'
 
-async function fetchCourse(code: string, year: number): Promise<{
+async function fetchCourse(
+  code: string,
+  year: number
+): Promise<{
   prerequisites: string[]
   notes: Array<{
     content: string
@@ -41,7 +44,9 @@ async function fetchCourse(code: string, year: number): Promise<{
         appendFileSync('errors.txt', `${code},${link.text},${link.href}`)
       } else {
         if (point.textContent.startsWith('Prerequisite'))
-          prerequisites.push(link.href.split(`/study/${year}-${year + 1}/courses/`)[1])
+          prerequisites.push(
+            link.href.split(`/study/${year}-${year + 1}/courses/`)[1]
+          )
       }
 
       return {
@@ -83,7 +88,10 @@ async function fetchCourses(year: number) {
     }
   }
 
-  writeFileSync(`${year}/updated-courses.json`, JSON.stringify(updatedCourses, null, 2))
+  writeFileSync(
+    `${year}/updated-courses.json`,
+    JSON.stringify(updatedCourses, null, 2)
+  )
 }
 
 fetchCourses(2020)

@@ -1,12 +1,28 @@
 import { CourseType } from '@typing'
 import { readFileSync, writeFileSync } from 'fs'
+import prompt from 'prompt-sync'
 
-const year = 2022
+const input = prompt()
 
-const file = readFileSync(`${year}/course-data.json`)
-const courses = JSON.parse(file.toString()) as CourseType[]
+main()
 
-function genPrereqsOf(courses: CourseType[]) {
+async function main() {
+  const year = Number(input('What year?: '))
+  generate(year)
+}
+
+function generate(year: number) {
+  const file = readFileSync(`${year}/updated-courses.json`)
+  const courses = JSON.parse(file.toString()) as CourseType[]
+
+  const prereqsOf = getPrereqs(courses)
+  prereqsOf.sort((a, b) => (a.code < b.code ? -1 : 1))
+  writeFileSync(`${year}/prereqs-of.json`, JSON.stringify(prereqsOf, null, 2))
+
+  console.log('Done!')
+}
+
+function getPrereqs(courses: CourseType[]) {
   const backedges = new Map<string, string[]>(
     courses.map(({ code }) => [code.toLowerCase(), []])
   )
@@ -23,8 +39,7 @@ function genPrereqsOf(courses: CourseType[]) {
     ([code, prereqOfs]) => ({ code, prereqOfs })
   )
 
-  writeFileSync(`${year}/prereqs-of.json`, JSON.stringify(prereqOfsList, null, 2))
-
+  return prereqOfsList
 }
 
 export {}
