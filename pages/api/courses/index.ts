@@ -13,14 +13,10 @@ const fuse = new Fuse<CourseType>(courses, {
   isCaseSensitive: false,
 })
 
-console.log('create fuse instance')
-
 export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<{ results: CourseType[] } | { error: string }>
 ) {
-  console.log('query')
-
   const { search, subjects, semester } = req.query as {
     search: string
     subjects: string
@@ -36,7 +32,9 @@ export default function handler(
     return res.status(200).json({ results: courses.slice(0, 10) })
   }
 
-  return res.status(200).json({
+  console.time('query')
+
+  const results = {
     results: fuse
       .search(
         {
@@ -61,5 +59,9 @@ export default function handler(
         { limit: 10 }
       )
       .map(x => x.item),
-  })
+  }
+
+  console.timeEnd('query')
+
+  return res.status(200).json(results)
 }
