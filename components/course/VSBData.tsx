@@ -1,26 +1,16 @@
+import WeeklyView from '@components/schedule/WeeklyView'
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline'
-import { useQuery } from '@tanstack/react-query'
+import useVSB from '@hooks/useVSB'
 import { VSBCourse } from '@typing'
 import { useState } from 'react'
 import Block from './Block'
+import Schedule from './Schedule'
 
-const VSBData = ({ data }: { data: VSBCourse }) => {
-  const fetchVSB = async () => {
-    const res = await fetch(`/api/vsb/${data.code}`)
-
-    if (res.status === 400) throw new Error('Something went wrong.')
-    return res.json()
-  }
-
-  const { data: course } = useQuery<VSBCourse>({
-    queryKey: ['vsb', data && data.code],
-    queryFn: fetchVSB,
-    initialData: data,
-  })
-
+const VSBData = ({ vsb }: { vsb: VSBCourse }) => {
+  const { course } = useVSB(vsb)
   const [idx, setIdx] = useState(0)
 
-  if (!data || !course.blocks || course.blocks.length === 0) return <></>
+  if (!vsb || !course.blocks || course.blocks.length === 0) return <></>
 
   return (
     <div className='mt-10 mb-4'>
@@ -61,6 +51,13 @@ const VSBData = ({ data }: { data: VSBCourse }) => {
             <Block block={block} key={block.crn} />
           ))}
       </div>
+
+      {/* <WeeklyView */}
+      {/* blocks={course.blocks.filter(block => */}
+      {/* course.combos[idx].includes(block.crn) */}
+      {/* )} */}
+      {/* height={32} */}
+      {/* /> */}
     </div>
   )
 }

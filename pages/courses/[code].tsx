@@ -18,7 +18,6 @@ import useUser from '@hooks/useUser'
 import ShareButton from '@components/course/ShareButton'
 import Notes from '@components/course/Notes'
 import PrereqsOf from '@components/course/PrereqsOf'
-import ReportForm from '@components/course/ReportForm'
 
 const Course = ({
   course,
@@ -57,7 +56,7 @@ const Course = ({
 
           <PrereqsOf prereqsOf={course.prereqsOf} />
 
-          <VSBData data={course.vsb} />
+          <VSBData vsb={course.vsb} />
 
           {/* <ReportForm /> */}
           {/* <div className='mt-10 outline-none outline-0'>

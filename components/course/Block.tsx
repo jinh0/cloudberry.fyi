@@ -10,8 +10,7 @@ import {
   UserGroupIcon,
 } from '@heroicons/react/24/outline'
 import { VSBBlock } from '@typing'
-import { useState } from 'react'
-import { useEffect } from 'react'
+import { NUM_TO_DAY } from '@utils/vsb'
 
 const Block = ({ block }: { block: VSBBlock }) => {
 
@@ -90,16 +89,6 @@ const minToStr = (time: number) => {
   return `${hours > 12 ? hours % 12 : hours}:${
     minutes < 10 ? '0' + String(minutes) : minutes
   } ${hours >= 12 ? 'PM' : 'AM'}`
-}
-
-const NUM_TO_DAY = {
-  2: 'Mon',
-  3: 'Tue',
-  4: 'Wed',
-  5: 'Thu',
-  6: 'Fri',
-  0: 'Sat',
-  1: 'Sun',
 }
 
 export default Block

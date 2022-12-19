@@ -1,5 +1,9 @@
 [
   {
+    "code": "aaaa-100",
+    "prereqOfs": []
+  },
+  {
     "code": "acct-351",
     "prereqOfs": [
       "acct-352"
@@ -205,6 +209,13 @@
     ]
   },
   {
+    "code": "acct-685",
+    "prereqOfs": [
+      "acct-695",
+      "acct-699"
+    ]
+  },
+  {
     "code": "acct-687",
     "prereqOfs": [
       "acct-695",
@@ -255,6 +266,19 @@
     "prereqOfs": [
       "epsc-525",
       "nutr-207"
+    ]
+  },
+  {
+    "code": "aebi-202",
+    "prereqOfs": [
+      "ansc-420",
+      "para-438"
+    ]
+  },
+  {
+    "code": "aebi-205",
+    "prereqOfs": [
+      "geog-370"
     ]
   },
   {
@@ -337,6 +361,12 @@
   {
     "code": "aehm-330",
     "prereqOfs": []
+  },
+  {
+    "code": "aema-100",
+    "prereqOfs": [
+      "bree-103"
+    ]
   },
   {
     "code": "aema-101",
@@ -1013,6 +1043,12 @@
     ]
   },
   {
+    "code": "ansc-330",
+    "prereqOfs": [
+      "ansc-433"
+    ]
+  },
+  {
     "code": "ansc-350",
     "prereqOfs": []
   },
@@ -1116,6 +1152,12 @@
     "prereqOfs": []
   },
   {
+    "code": "ansc-634",
+    "prereqOfs": [
+      "nutr-604"
+    ]
+  },
+  {
     "code": "ansc-636",
     "prereqOfs": []
   },
@@ -1192,6 +1234,12 @@
     "prereqOfs": []
   },
   {
+    "code": "anth-200",
+    "prereqOfs": [
+      "anth-343"
+    ]
+  },
+  {
     "code": "anth-201",
     "prereqOfs": [
       "anth-307",
@@ -1248,6 +1296,15 @@
     ]
   },
   {
+    "code": "anth-205",
+    "prereqOfs": [
+      "anth-308",
+      "anth-322",
+      "anth-327",
+      "anth-344"
+    ]
+  },
+  {
     "code": "anth-206",
     "prereqOfs": [
       "anth-308",
@@ -1296,6 +1353,10 @@
     ]
   },
   {
+    "code": "anth-214",
+    "prereqOfs": []
+  },
+  {
     "code": "anth-222",
     "prereqOfs": []
   },
@@ -1329,6 +1390,12 @@
   {
     "code": "anth-308",
     "prereqOfs": []
+  },
+  {
+    "code": "anth-310",
+    "prereqOfs": [
+      "redm-400"
+    ]
   },
   {
     "code": "anth-311",
@@ -1389,6 +1456,12 @@
     "prereqOfs": []
   },
   {
+    "code": "anth-336",
+    "prereqOfs": [
+      "anth-436"
+    ]
+  },
+  {
     "code": "anth-338",
     "prereqOfs": [
       "anth-436"
@@ -1407,6 +1480,30 @@
   {
     "code": "anth-344",
     "prereqOfs": []
+  },
+  {
+    "code": "anth-345",
+    "prereqOfs": [
+      "anth-413"
+    ]
+  },
+  {
+    "code": "anth-347",
+    "prereqOfs": [
+      "anth-413"
+    ]
+  },
+  {
+    "code": "anth-348",
+    "prereqOfs": [
+      "anth-413"
+    ]
+  },
+  {
+    "code": "anth-349",
+    "prereqOfs": [
+      "anth-418"
+    ]
   },
   {
     "code": "anth-352",
@@ -1550,6 +1647,12 @@
   {
     "code": "anth-428",
     "prereqOfs": []
+  },
+  {
+    "code": "anth-430",
+    "prereqOfs": [
+      "anth-440"
+    ]
   },
   {
     "code": "anth-436",
@@ -2853,6 +2956,12 @@
     "prereqOfs": []
   },
   {
+    "code": "atoc-210",
+    "prereqOfs": [
+      "geog-321"
+    ]
+  },
+  {
     "code": "atoc-214",
     "prereqOfs": [
       "atoc-315",
@@ -3252,7 +3361,9 @@
   },
   {
     "code": "bien-219",
-    "prereqOfs": []
+    "prereqOfs": [
+      "bien-450"
+    ]
   },
   {
     "code": "bien-267",
@@ -3334,6 +3445,10 @@
   },
   {
     "code": "bien-420",
+    "prereqOfs": []
+  },
+  {
+    "code": "bien-450",
     "prereqOfs": []
   },
   {
@@ -4618,6 +4733,12 @@
     "prereqOfs": []
   },
   {
+    "code": "bios-611",
+    "prereqOfs": [
+      "bios-612"
+    ]
+  },
+  {
     "code": "bios-612",
     "prereqOfs": []
   },
@@ -5373,6 +5494,12 @@
     "prereqOfs": []
   },
   {
+    "code": "bus2-463",
+    "prereqOfs": [
+      "bus2-501"
+    ]
+  },
+  {
     "code": "bus2-501",
     "prereqOfs": []
   },
@@ -5752,6 +5879,13 @@
     "prereqOfs": []
   },
   {
+    "code": "busa-693",
+    "prereqOfs": [
+      "busa-611",
+      "busa-613"
+    ]
+  },
+  {
     "code": "busa-693d1",
     "prereqOfs": [
       "busa-693d2"
@@ -5781,6 +5915,12 @@
   },
   {
     "code": "busa-698",
+    "prereqOfs": [
+      "busa-646"
+    ]
+  },
+  {
+    "code": "busa-699",
     "prereqOfs": [
       "busa-646"
     ]
@@ -6015,6 +6155,12 @@
       "cans-406",
       "cans-420",
       "cans-499"
+    ]
+  },
+  {
+    "code": "cans-202",
+    "prereqOfs": [
+      "relg-310"
     ]
   },
   {
@@ -6514,6 +6660,29 @@
     "prereqOfs": []
   },
   {
+    "code": "ccom-200",
+    "prereqOfs": [
+      "wcom-313",
+      "wcom-323",
+      "wcom-333"
+    ]
+  },
+  {
+    "code": "ccom-206",
+    "prereqOfs": [
+      "cive-432",
+      "ecse-201",
+      "ecse-426",
+      "ecse-456",
+      "ecse-458d1",
+      "ecse-458n1",
+      "ecse-478d1",
+      "ecse-478n1",
+      "ecse-498",
+      "mech-463d1"
+    ]
+  },
+  {
     "code": "ccom-207",
     "prereqOfs": [
       "cprl-224",
@@ -6522,8 +6691,10 @@
     ]
   },
   {
-    "code": "ccom-208",
-    "prereqOfs": []
+    "code": "ccom-314",
+    "prereqOfs": [
+      "wcom-414"
+    ]
   },
   {
     "code": "ccpa-601",
@@ -6672,6 +6843,15 @@
   {
     "code": "cctr-317",
     "prereqOfs": []
+  },
+  {
+    "code": "cctr-320",
+    "prereqOfs": [
+      "cctr-433",
+      "cctr-434",
+      "cctr-435",
+      "cctr-436"
+    ]
   },
   {
     "code": "cctr-325",
@@ -7232,6 +7412,15 @@
     "prereqOfs": []
   },
   {
+    "code": "cegl-106",
+    "prereqOfs": [
+      "ceen-201",
+      "ceen-202",
+      "ceen-211",
+      "ceen-212"
+    ]
+  },
+  {
     "code": "cegl-110",
     "prereqOfs": [
       "cegl-120"
@@ -7318,6 +7507,12 @@
     ]
   },
   {
+    "code": "cegl-228",
+    "prereqOfs": [
+      "cegl-238"
+    ]
+  },
+  {
     "code": "cegl-230",
     "prereqOfs": [
       "cegl-240"
@@ -7331,6 +7526,12 @@
     "code": "cegl-240",
     "prereqOfs": [
       "cegl-250"
+    ]
+  },
+  {
+    "code": "cegl-243",
+    "prereqOfs": [
+      "cegl-254"
     ]
   },
   {
@@ -7627,6 +7828,12 @@
     "prereqOfs": []
   },
   {
+    "code": "cent-300",
+    "prereqOfs": [
+      "cent-434"
+    ]
+  },
+  {
     "code": "cent-305",
     "prereqOfs": []
   },
@@ -7649,6 +7856,24 @@
   {
     "code": "cent-434",
     "prereqOfs": []
+  },
+  {
+    "code": "cesl-200",
+    "prereqOfs": [
+      "wcom-235"
+    ]
+  },
+  {
+    "code": "cesl-300",
+    "prereqOfs": [
+      "wcom-245"
+    ]
+  },
+  {
+    "code": "cesl-400",
+    "prereqOfs": [
+      "wcom-255"
+    ]
   },
   {
     "code": "cfin-200",
@@ -8424,6 +8649,13 @@
     "prereqOfs": []
   },
   {
+    "code": "chem-115",
+    "prereqOfs": [
+      "chem-287",
+      "chem-297"
+    ]
+  },
+  {
     "code": "chem-120",
     "prereqOfs": [
       "atoc-219",
@@ -8556,6 +8788,18 @@
     ]
   },
   {
+    "code": "chem-223",
+    "prereqOfs": [
+      "chem-214",
+      "chem-429",
+      "chem-434",
+      "chem-514",
+      "chem-574",
+      "chem-575",
+      "chem-585"
+    ]
+  },
+  {
     "code": "chem-224",
     "prereqOfs": []
   },
@@ -8584,12 +8828,34 @@
     ]
   },
   {
+    "code": "chem-243",
+    "prereqOfs": [
+      "atoc-519",
+      "chem-214",
+      "chem-400",
+      "chem-429",
+      "chem-512",
+      "chem-514",
+      "chem-519",
+      "chem-574",
+      "chem-575",
+      "chem-577",
+      "chem-585"
+    ]
+  },
+  {
     "code": "chem-244",
     "prereqOfs": []
   },
   {
     "code": "chem-253",
     "prereqOfs": []
+  },
+  {
+    "code": "chem-263",
+    "prereqOfs": [
+      "atoc-519"
+    ]
   },
   {
     "code": "chem-267",
@@ -8722,6 +8988,12 @@
       "chem-531",
       "chem-582",
       "chem-591"
+    ]
+  },
+  {
+    "code": "chem-382",
+    "prereqOfs": [
+      "chem-572"
     ]
   },
   {
@@ -9675,6 +9947,12 @@
     ]
   },
   {
+    "code": "clas-202",
+    "prereqOfs": [
+      "clas-404"
+    ]
+  },
+  {
     "code": "clas-203",
     "prereqOfs": [
       "clas-303",
@@ -9717,6 +9995,12 @@
   {
     "code": "clas-225",
     "prereqOfs": []
+  },
+  {
+    "code": "clas-230",
+    "prereqOfs": [
+      "clas-331"
+    ]
   },
   {
     "code": "clas-230d1",
@@ -10022,6 +10306,12 @@
     "code": "cmis-541",
     "prereqOfs": [
       "cmis-520"
+    ]
+  },
+  {
+    "code": "cmis-542",
+    "prereqOfs": [
+      "cmr2-570"
     ]
   },
   {
@@ -10886,6 +11176,12 @@
     ]
   },
   {
+    "code": "comp-335",
+    "prereqOfs": [
+      "ecse-428"
+    ]
+  },
+  {
     "code": "comp-345",
     "prereqOfs": []
   },
@@ -10905,6 +11201,13 @@
       "comp-652",
       "comp-654",
       "ecse-608"
+    ]
+  },
+  {
+    "code": "comp-361",
+    "prereqOfs": [
+      "comp-521",
+      "comp-533"
     ]
   },
   {
@@ -10988,6 +11291,12 @@
     ]
   },
   {
+    "code": "comp-435",
+    "prereqOfs": [
+      "comp-614"
+    ]
+  },
+  {
     "code": "comp-445",
     "prereqOfs": []
   },
@@ -11039,6 +11348,13 @@
   {
     "code": "comp-525",
     "prereqOfs": []
+  },
+  {
+    "code": "comp-526",
+    "prereqOfs": [
+      "comp-652",
+      "ecse-608"
+    ]
   },
   {
     "code": "comp-527",
@@ -11485,6 +11801,18 @@
     ]
   },
   {
+    "code": "coms-310j1",
+    "prereqOfs": [
+      "coms-301j2"
+    ]
+  },
+  {
+    "code": "coms-310j2",
+    "prereqOfs": [
+      "coms-301j3"
+    ]
+  },
+  {
     "code": "coms-320",
     "prereqOfs": [
       "coms-410",
@@ -11560,6 +11888,13 @@
       "coms-490",
       "coms-491",
       "coms-492"
+    ]
+  },
+  {
+    "code": "coms-365",
+    "prereqOfs": [
+      "coms-410",
+      "coms-425"
     ]
   },
   {
@@ -12272,6 +12607,12 @@
     "prereqOfs": []
   },
   {
+    "code": "cprl-320",
+    "prereqOfs": [
+      "cprl-322"
+    ]
+  },
+  {
     "code": "cprl-321",
     "prereqOfs": [
       "cprl-322"
@@ -12495,6 +12836,18 @@
     "prereqOfs": []
   },
   {
+    "code": "dent-106j1",
+    "prereqOfs": [
+      "dent-320j2"
+    ]
+  },
+  {
+    "code": "dent-106j2",
+    "prereqOfs": [
+      "dent-320j3"
+    ]
+  },
+  {
     "code": "dent-113",
     "prereqOfs": []
   },
@@ -12695,6 +13048,12 @@
   {
     "code": "dent-309j3",
     "prereqOfs": []
+  },
+  {
+    "code": "dent-310",
+    "prereqOfs": [
+      "dent-312"
+    ]
   },
   {
     "code": "dent-310j1",
@@ -13138,6 +13497,13 @@
     ]
   },
   {
+    "code": "dent-521",
+    "prereqOfs": [
+      "dent-522d1",
+      "dent-522d2"
+    ]
+  },
+  {
     "code": "dent-521d1",
     "prereqOfs": [
       "dent-521d2"
@@ -13146,6 +13512,13 @@
   {
     "code": "dent-521d2",
     "prereqOfs": []
+  },
+  {
+    "code": "dent-522",
+    "prereqOfs": [
+      "dent-523d1",
+      "dent-523d2"
+    ]
   },
   {
     "code": "dent-522d1",
@@ -13168,6 +13541,12 @@
     "prereqOfs": []
   },
   {
+    "code": "dent-524",
+    "prereqOfs": [
+      "dent-525"
+    ]
+  },
+  {
     "code": "dent-524d1",
     "prereqOfs": [
       "dent-524d2"
@@ -13185,6 +13564,12 @@
     ]
   },
   {
+    "code": "dent-526",
+    "prereqOfs": [
+      "dent-527"
+    ]
+  },
+  {
     "code": "dent-526d1",
     "prereqOfs": [
       "dent-526d2"
@@ -13199,6 +13584,12 @@
     "prereqOfs": [
       "dent-528d1",
       "dent-528d2"
+    ]
+  },
+  {
+    "code": "dent-528",
+    "prereqOfs": [
+      "dent-529"
     ]
   },
   {
@@ -13843,6 +14234,13 @@
     "prereqOfs": []
   },
   {
+    "code": "east-400",
+    "prereqOfs": [
+      "east-525",
+      "east-527"
+    ]
+  },
+  {
     "code": "east-420",
     "prereqOfs": [
       "east-421",
@@ -13855,6 +14253,14 @@
     "prereqOfs": []
   },
   {
+    "code": "east-430",
+    "prereqOfs": [
+      "east-530d1",
+      "east-556",
+      "east-557"
+    ]
+  },
+  {
     "code": "east-430d1",
     "prereqOfs": [
       "east-430d2",
@@ -13865,6 +14271,12 @@
     "code": "east-430d2",
     "prereqOfs": [
       "east-535"
+    ]
+  },
+  {
+    "code": "east-433",
+    "prereqOfs": [
+      "east-550"
     ]
   },
   {
@@ -14067,6 +14479,12 @@
   {
     "code": "east-540d2",
     "prereqOfs": []
+  },
+  {
+    "code": "east-543",
+    "prereqOfs": [
+      "east-544"
+    ]
   },
   {
     "code": "east-544",
@@ -14358,6 +14776,27 @@
     ]
   },
   {
+    "code": "econ-250",
+    "prereqOfs": [
+      "econ-330d1",
+      "econ-405",
+      "econ-406",
+      "econ-411",
+      "econ-416",
+      "econ-420",
+      "econ-434",
+      "econ-447",
+      "econ-459",
+      "econ-460",
+      "econ-461",
+      "econ-473",
+      "econ-510",
+      "econ-531",
+      "econ-546",
+      "envr-430"
+    ]
+  },
+  {
     "code": "econ-250d1",
     "prereqOfs": [
       "econ-250d2",
@@ -14388,6 +14827,15 @@
       "econ-453",
       "econ-454",
       "econ-581"
+    ]
+  },
+  {
+    "code": "econ-257",
+    "prereqOfs": [
+      "econ-337",
+      "econ-406",
+      "econ-462",
+      "econ-473"
     ]
   },
   {
@@ -14432,6 +14880,18 @@
     "prereqOfs": []
   },
   {
+    "code": "econ-306d1",
+    "prereqOfs": [
+      "econ-426"
+    ]
+  },
+  {
+    "code": "econ-306d2",
+    "prereqOfs": [
+      "econ-426"
+    ]
+  },
+  {
     "code": "econ-308",
     "prereqOfs": []
   },
@@ -14467,6 +14927,12 @@
   {
     "code": "econ-326",
     "prereqOfs": []
+  },
+  {
+    "code": "econ-330",
+    "prereqOfs": [
+      "econ-462"
+    ]
   },
   {
     "code": "econ-330d1",
@@ -14513,6 +14979,12 @@
   {
     "code": "econ-348",
     "prereqOfs": []
+  },
+  {
+    "code": "econ-352",
+    "prereqOfs": [
+      "econ-462"
+    ]
   },
   {
     "code": "econ-352d1",
@@ -15095,6 +15567,12 @@
     ]
   },
   {
+    "code": "ecse-291",
+    "prereqOfs": [
+      "ecse-334"
+    ]
+  },
+  {
     "code": "ecse-301",
     "prereqOfs": [
       "ecse-401"
@@ -15114,6 +15592,22 @@
     ]
   },
   {
+    "code": "ecse-304",
+    "prereqOfs": [
+      "bmde-502",
+      "bmde-660",
+      "ecse-412",
+      "ecse-415",
+      "ecse-435",
+      "ecse-509",
+      "ecse-511",
+      "ecse-512",
+      "ecse-513",
+      "ecse-515",
+      "ecse-538"
+    ]
+  },
+  {
     "code": "ecse-305",
     "prereqOfs": [
       "bmde-610",
@@ -15127,6 +15621,20 @@
       "ecse-517",
       "ecse-570",
       "ecse-608"
+    ]
+  },
+  {
+    "code": "ecse-306",
+    "prereqOfs": [
+      "bmde-660",
+      "ecse-305",
+      "ecse-334",
+      "ecse-412",
+      "ecse-415",
+      "ecse-456",
+      "ecse-517",
+      "ecse-538",
+      "ecse-597"
     ]
   },
   {
@@ -15176,6 +15684,30 @@
       "ecse-456",
       "ecse-539",
       "ecse-553"
+    ]
+  },
+  {
+    "code": "ecse-322",
+    "prereqOfs": [
+      "ecse-421",
+      "ecse-425",
+      "ecse-456",
+      "ecse-526",
+      "ecse-538",
+      "ecse-542",
+      "ecse-543",
+      "ecse-570"
+    ]
+  },
+  {
+    "code": "ecse-323",
+    "prereqOfs": [
+      "ecse-421",
+      "ecse-425",
+      "ecse-426",
+      "ecse-456",
+      "ecse-537",
+      "ecse-549"
     ]
   },
   {
@@ -15269,6 +15801,31 @@
     ]
   },
   {
+    "code": "ecse-351",
+    "prereqOfs": [
+      "ecse-533",
+      "ecse-543",
+      "ecse-597"
+    ]
+  },
+  {
+    "code": "ecse-352",
+    "prereqOfs": [
+      "ecse-405",
+      "ecse-423",
+      "ecse-430",
+      "ecse-451",
+      "ecse-524",
+      "ecse-527",
+      "ecse-535",
+      "ecse-540",
+      "ecse-571",
+      "ecse-572",
+      "ecse-593",
+      "ecse-596"
+    ]
+  },
+  {
     "code": "ecse-353",
     "prereqOfs": [
       "ecse-524"
@@ -15290,6 +15847,21 @@
       "ecse-572",
       "ecse-593",
       "ecse-596"
+    ]
+  },
+  {
+    "code": "ecse-361",
+    "prereqOfs": [
+      "ecse-463",
+      "ecse-464",
+      "ecse-465",
+      "ecse-466",
+      "ecse-468",
+      "ecse-522",
+      "ecse-549",
+      "ecse-562",
+      "ecse-563",
+      "ecse-565"
     ]
   },
   {
@@ -15350,9 +15922,22 @@
     ]
   },
   {
+    "code": "ecse-411",
+    "prereqOfs": [
+      "ecse-620",
+      "ecse-621"
+    ]
+  },
+  {
     "code": "ecse-412",
     "prereqOfs": [
       "ecse-523"
+    ]
+  },
+  {
+    "code": "ecse-414",
+    "prereqOfs": [
+      "ecse-518"
     ]
   },
   {
@@ -15418,6 +16003,18 @@
     "prereqOfs": []
   },
   {
+    "code": "ecse-431",
+    "prereqOfs": [
+      "ecse-609"
+    ]
+  },
+  {
+    "code": "ecse-432",
+    "prereqOfs": [
+      "ecse-678"
+    ]
+  },
+  {
     "code": "ecse-433",
     "prereqOfs": [
       "ecse-519"
@@ -15434,6 +16031,12 @@
   {
     "code": "ecse-439",
     "prereqOfs": []
+  },
+  {
+    "code": "ecse-443",
+    "prereqOfs": [
+      "ecse-507"
+    ]
   },
   {
     "code": "ecse-444",
@@ -15549,6 +16152,18 @@
     "prereqOfs": []
   },
   {
+    "code": "ecse-485",
+    "prereqOfs": [
+      "ecse-574"
+    ]
+  },
+  {
+    "code": "ecse-487",
+    "prereqOfs": [
+      "ecse-609"
+    ]
+  },
+  {
     "code": "ecse-496",
     "prereqOfs": [
       "ecse-497"
@@ -15633,6 +16248,12 @@
     "prereqOfs": []
   },
   {
+    "code": "ecse-514",
+    "prereqOfs": [
+      "ecse-608"
+    ]
+  },
+  {
     "code": "ecse-515",
     "prereqOfs": []
   },
@@ -15671,6 +16292,12 @@
     "prereqOfs": []
   },
   {
+    "code": "ecse-525",
+    "prereqOfs": [
+      "ecse-609"
+    ]
+  },
+  {
     "code": "ecse-526",
     "prereqOfs": [
       "comp-652"
@@ -15679,6 +16306,18 @@
   {
     "code": "ecse-527",
     "prereqOfs": []
+  },
+  {
+    "code": "ecse-528",
+    "prereqOfs": [
+      "ecse-518"
+    ]
+  },
+  {
+    "code": "ecse-529",
+    "prereqOfs": [
+      "ecse-626"
+    ]
   },
   {
     "code": "ecse-532",
@@ -15739,6 +16378,12 @@
   {
     "code": "ecse-546",
     "prereqOfs": []
+  },
+  {
+    "code": "ecse-548",
+    "prereqOfs": [
+      "ecse-648"
+    ]
   },
   {
     "code": "ecse-549",
@@ -16149,6 +16794,14 @@
     "prereqOfs": []
   },
   {
+    "code": "edec-207",
+    "prereqOfs": [
+      "cprl-224",
+      "cprl-226",
+      "cprl-321"
+    ]
+  },
+  {
     "code": "edec-208",
     "prereqOfs": []
   },
@@ -16317,6 +16970,13 @@
     ]
   },
   {
+    "code": "edec-261",
+    "prereqOfs": [
+      "edea-206",
+      "edea-208"
+    ]
+  },
+  {
     "code": "edec-262",
     "prereqOfs": []
   },
@@ -16401,6 +17061,12 @@
   {
     "code": "edec-302",
     "prereqOfs": []
+  },
+  {
+    "code": "edec-306",
+    "prereqOfs": [
+      "edec-404"
+    ]
   },
   {
     "code": "edec-308",
@@ -16711,6 +17377,12 @@
   {
     "code": "edee-340",
     "prereqOfs": []
+  },
+  {
+    "code": "edee-344",
+    "prereqOfs": [
+      "edec-403"
+    ]
   },
   {
     "code": "edee-345",
@@ -17302,8 +17974,45 @@
     ]
   },
   {
+    "code": "edfe-259",
+    "prereqOfs": [
+      "edfe-359"
+    ]
+  },
+  {
+    "code": "edfe-259d1",
+    "prereqOfs": [
+      "edfe-359"
+    ]
+  },
+  {
+    "code": "edfe-259d2",
+    "prereqOfs": [
+      "edfe-359"
+    ]
+  },
+  {
+    "code": "edfe-261",
+    "prereqOfs": [
+      "edfm-361",
+      "edum-394"
+    ]
+  },
+  {
     "code": "edfe-300",
     "prereqOfs": []
+  },
+  {
+    "code": "edfe-303",
+    "prereqOfs": [
+      "edfe-406"
+    ]
+  },
+  {
+    "code": "edfe-305",
+    "prereqOfs": [
+      "edfe-407"
+    ]
   },
   {
     "code": "edfe-306",
@@ -17338,6 +18047,20 @@
     "prereqOfs": [
       "edfe-459",
       "edsl-412"
+    ]
+  },
+  {
+    "code": "edfe-361",
+    "prereqOfs": [
+      "edfm-460",
+      "edum-402",
+      "edum-499"
+    ]
+  },
+  {
+    "code": "edfe-362",
+    "prereqOfs": [
+      "edum-402"
     ]
   },
   {
@@ -18371,6 +19094,20 @@
     "prereqOfs": []
   },
   {
+    "code": "edpc-697",
+    "prereqOfs": [
+      "edpc-786",
+      "edpc-786d1"
+    ]
+  },
+  {
+    "code": "edpc-698",
+    "prereqOfs": [
+      "edpc-786",
+      "edpc-786d1"
+    ]
+  },
+  {
     "code": "edpc-699",
     "prereqOfs": [
       "edpc-786",
@@ -18618,6 +19355,19 @@
   {
     "code": "edpe-609",
     "prereqOfs": []
+  },
+  {
+    "code": "edpe-611",
+    "prereqOfs": [
+      "edpe-625"
+    ]
+  },
+  {
+    "code": "edpe-615",
+    "prereqOfs": [
+      "edpe-620",
+      "edpe-623"
+    ]
   },
   {
     "code": "edpe-616",
@@ -19171,6 +19921,12 @@
     ]
   },
   {
+    "code": "edsl-255",
+    "prereqOfs": [
+      "edsl-315"
+    ]
+  },
+  {
     "code": "edsl-255d1",
     "prereqOfs": [
       "edfe-359",
@@ -19183,6 +19939,25 @@
     "prereqOfs": [
       "edfe-359",
       "edsl-315"
+    ]
+  },
+  {
+    "code": "edsl-259d1",
+    "prereqOfs": [
+      "edfe-359"
+    ]
+  },
+  {
+    "code": "edsl-259d2",
+    "prereqOfs": [
+      "edfe-359"
+    ]
+  },
+  {
+    "code": "edsl-260",
+    "prereqOfs": [
+      "edfm-361",
+      "edum-394"
     ]
   },
   {
@@ -19268,6 +20043,24 @@
   {
     "code": "edsl-390",
     "prereqOfs": []
+  },
+  {
+    "code": "edsl-391",
+    "prereqOfs": [
+      "edum-498"
+    ]
+  },
+  {
+    "code": "edsl-394",
+    "prereqOfs": [
+      "edum-499"
+    ]
+  },
+  {
+    "code": "edsl-402",
+    "prereqOfs": [
+      "edfm-460"
+    ]
   },
   {
     "code": "edsl-412",
@@ -21151,6 +21944,12 @@
     "prereqOfs": []
   },
   {
+    "code": "envb-430",
+    "prereqOfs": [
+      "envb-530"
+    ]
+  },
+  {
     "code": "envb-437",
     "prereqOfs": []
   },
@@ -21456,6 +22255,13 @@
     ]
   },
   {
+    "code": "epib-602",
+    "prereqOfs": [
+      "pphs-612",
+      "pphs-612d1"
+    ]
+  },
+  {
     "code": "epib-603",
     "prereqOfs": [
       "epib-627",
@@ -21724,6 +22530,12 @@
     "prereqOfs": []
   },
   {
+    "code": "epib-697",
+    "prereqOfs": [
+      "math-523"
+    ]
+  },
+  {
     "code": "epib-701",
     "prereqOfs": [
       "epib-706",
@@ -21796,6 +22608,17 @@
     "code": "epsc-201",
     "prereqOfs": [
       "epsc-334"
+    ]
+  },
+  {
+    "code": "epsc-203",
+    "prereqOfs": [
+      "atoc-373",
+      "epsc-373",
+      "epsc-460",
+      "epsc-460d1",
+      "epsc-510",
+      "geog-373"
     ]
   },
   {
@@ -21951,6 +22774,12 @@
   {
     "code": "epsc-445",
     "prereqOfs": []
+  },
+  {
+    "code": "epsc-451",
+    "prereqOfs": [
+      "epsc-561"
+    ]
   },
   {
     "code": "epsc-452",
@@ -22923,8 +23752,25 @@
     "prereqOfs": []
   },
   {
+    "code": "fdsc-110",
+    "prereqOfs": [
+      "aech-111"
+    ]
+  },
+  {
     "code": "fdsc-200",
     "prereqOfs": []
+  },
+  {
+    "code": "fdsc-211",
+    "prereqOfs": [
+      "ansc-234",
+      "ansc-324",
+      "fdsc-251",
+      "fdsc-515",
+      "fdsc-537",
+      "nutr-512"
+    ]
   },
   {
     "code": "fdsc-213",
@@ -23012,6 +23858,12 @@
   {
     "code": "fdsc-405",
     "prereqOfs": []
+  },
+  {
+    "code": "fdsc-425",
+    "prereqOfs": [
+      "fdsc-536"
+    ]
   },
   {
     "code": "fdsc-442",
@@ -23298,6 +24150,13 @@
   {
     "code": "figs-196",
     "prereqOfs": []
+  },
+  {
+    "code": "film-279",
+    "prereqOfs": [
+      "russ-397",
+      "russ-398"
+    ]
   },
   {
     "code": "film-499",
@@ -25275,6 +26134,18 @@
     ]
   },
   {
+    "code": "geog-306",
+    "prereqOfs": [
+      "envb-530"
+    ]
+  },
+  {
+    "code": "geog-307",
+    "prereqOfs": [
+      "envb-530"
+    ]
+  },
+  {
     "code": "geog-308",
     "prereqOfs": [
       "geog-535"
@@ -25485,6 +26356,12 @@
   {
     "code": "geog-425",
     "prereqOfs": []
+  },
+  {
+    "code": "geog-436",
+    "prereqOfs": [
+      "geog-502"
+    ]
   },
   {
     "code": "geog-451",
@@ -26178,6 +27055,39 @@
   {
     "code": "glis-605d2",
     "prereqOfs": []
+  },
+  {
+    "code": "glis-607",
+    "prereqOfs": [
+      "infs-656"
+    ]
+  },
+  {
+    "code": "glis-611",
+    "prereqOfs": [
+      "glis-604",
+      "glis-605",
+      "glis-605d1",
+      "glis-605d2",
+      "glis-689",
+      "infs-688",
+      "infs-688d1",
+      "infs-688d2"
+    ]
+  },
+  {
+    "code": "glis-617",
+    "prereqOfs": [
+      "infs-650",
+      "infs-657"
+    ]
+  },
+  {
+    "code": "glis-619",
+    "prereqOfs": [
+      "infs-673",
+      "infs-679"
+    ]
   },
   {
     "code": "glis-689",
@@ -27090,6 +28000,12 @@
     ]
   },
   {
+    "code": "hist-204",
+    "prereqOfs": [
+      "hist-224"
+    ]
+  },
+  {
     "code": "hist-205",
     "prereqOfs": [
       "clas-303",
@@ -27350,6 +28266,12 @@
     "prereqOfs": []
   },
   {
+    "code": "hist-225",
+    "prereqOfs": [
+      "hist-390"
+    ]
+  },
+  {
     "code": "hist-226",
     "prereqOfs": [
       "hist-302",
@@ -27368,6 +28290,13 @@
       "hist-388",
       "hist-597d1",
       "hist-597d2"
+    ]
+  },
+  {
+    "code": "hist-231",
+    "prereqOfs": [
+      "clas-304",
+      "clas-402"
     ]
   },
   {
@@ -27592,6 +28521,13 @@
   {
     "code": "hist-338",
     "prereqOfs": []
+  },
+  {
+    "code": "hist-339",
+    "prereqOfs": [
+      "hist-591d1",
+      "hist-591d2"
+    ]
   },
   {
     "code": "hist-340",
@@ -27998,6 +28934,13 @@
   {
     "code": "hist-446",
     "prereqOfs": []
+  },
+  {
+    "code": "hist-448",
+    "prereqOfs": [
+      "hist-591d1",
+      "hist-591d2"
+    ]
   },
   {
     "code": "hist-449",
@@ -28698,6 +29641,12 @@
   {
     "code": "hsed-701",
     "prereqOfs": []
+  },
+  {
+    "code": "hsed-702",
+    "prereqOfs": [
+      "hsed-701"
+    ]
   },
   {
     "code": "hsed-702d1",
@@ -30143,13 +31092,17 @@
     "code": "isla-221d1",
     "prereqOfs": [
       "isla-221d2",
-      "isla-322d1"
+      "isla-322",
+      "isla-322d1",
+      "isla-322d2"
     ]
   },
   {
     "code": "isla-221d2",
     "prereqOfs": [
-      "isla-322d1"
+      "isla-322",
+      "isla-322d1",
+      "isla-322d2"
     ]
   },
   {
@@ -30206,6 +31159,13 @@
   {
     "code": "isla-315",
     "prereqOfs": []
+  },
+  {
+    "code": "isla-320",
+    "prereqOfs": [
+      "isla-502",
+      "isla-512"
+    ]
   },
   {
     "code": "isla-322",
@@ -30436,6 +31396,34 @@
     "prereqOfs": []
   },
   {
+    "code": "isla-521d1",
+    "prereqOfs": [
+      "isla-322",
+      "isla-322d1",
+      "isla-322d2"
+    ]
+  },
+  {
+    "code": "isla-521d2",
+    "prereqOfs": [
+      "isla-322",
+      "isla-322d1",
+      "isla-322d2"
+    ]
+  },
+  {
+    "code": "isla-523d1",
+    "prereqOfs": [
+      "isla-524"
+    ]
+  },
+  {
+    "code": "isla-523d2",
+    "prereqOfs": [
+      "isla-524"
+    ]
+  },
+  {
     "code": "isla-524",
     "prereqOfs": [
       "isla-525"
@@ -30452,6 +31440,30 @@
   {
     "code": "isla-531",
     "prereqOfs": []
+  },
+  {
+    "code": "isla-532d1",
+    "prereqOfs": [
+      "isla-333d1"
+    ]
+  },
+  {
+    "code": "isla-532d2",
+    "prereqOfs": [
+      "isla-333d1"
+    ]
+  },
+  {
+    "code": "isla-533d1",
+    "prereqOfs": [
+      "isla-434d1"
+    ]
+  },
+  {
+    "code": "isla-533d2",
+    "prereqOfs": [
+      "isla-434d1"
+    ]
   },
   {
     "code": "isla-535d1",
@@ -30484,6 +31496,30 @@
     "prereqOfs": []
   },
   {
+    "code": "isla-541",
+    "prereqOfs": [
+      "isla-342d1"
+    ]
+  },
+  {
+    "code": "isla-542d1",
+    "prereqOfs": [
+      "isla-443d1"
+    ]
+  },
+  {
+    "code": "isla-542d2",
+    "prereqOfs": [
+      "isla-443d1"
+    ]
+  },
+  {
+    "code": "isla-544",
+    "prereqOfs": [
+      "isla-545"
+    ]
+  },
+  {
     "code": "isla-545",
     "prereqOfs": [
       "isla-546"
@@ -30492,6 +31528,24 @@
   {
     "code": "isla-546",
     "prereqOfs": []
+  },
+  {
+    "code": "isla-551",
+    "prereqOfs": [
+      "isla-352d1"
+    ]
+  },
+  {
+    "code": "isla-552d1",
+    "prereqOfs": [
+      "isla-553"
+    ]
+  },
+  {
+    "code": "isla-552d2",
+    "prereqOfs": [
+      "isla-553"
+    ]
   },
   {
     "code": "isla-553",
@@ -30618,6 +31672,12 @@
     "prereqOfs": []
   },
   {
+    "code": "isla-624",
+    "prereqOfs": [
+      "isla-525"
+    ]
+  },
+  {
     "code": "isla-632d1",
     "prereqOfs": [
       "isla-632d2",
@@ -30667,6 +31727,12 @@
     ]
   },
   {
+    "code": "isla-642",
+    "prereqOfs": [
+      "isla-642d2"
+    ]
+  },
+  {
     "code": "isla-642d1",
     "prereqOfs": [
       "isla-643d1"
@@ -30676,6 +31742,12 @@
     "code": "isla-642d2",
     "prereqOfs": [
       "isla-643d1"
+    ]
+  },
+  {
+    "code": "isla-643",
+    "prereqOfs": [
+      "isla-545"
     ]
   },
   {
@@ -30828,6 +31900,13 @@
     "code": "ital-210d2",
     "prereqOfs": [
       "ital-360"
+    ]
+  },
+  {
+    "code": "ital-215",
+    "prereqOfs": [
+      "ital-260",
+      "ital-265"
     ]
   },
   {
@@ -31283,6 +32362,12 @@
     "prereqOfs": []
   },
   {
+    "code": "jwst-200",
+    "prereqOfs": [
+      "jwst-340d1"
+    ]
+  },
+  {
     "code": "jwst-201",
     "prereqOfs": []
   },
@@ -31563,6 +32648,24 @@
   {
     "code": "jwst-377",
     "prereqOfs": []
+  },
+  {
+    "code": "jwst-380",
+    "prereqOfs": [
+      "jwst-480"
+    ]
+  },
+  {
+    "code": "jwst-380d1",
+    "prereqOfs": [
+      "jwst-481"
+    ]
+  },
+  {
+    "code": "jwst-380d2",
+    "prereqOfs": [
+      "jwst-481"
+    ]
   },
   {
     "code": "jwst-381",
@@ -32224,8 +33327,20 @@
     "prereqOfs": []
   },
   {
+    "code": "ling-230",
+    "prereqOfs": [
+      "inlg-330"
+    ]
+  },
+  {
     "code": "ling-260",
     "prereqOfs": []
+  },
+  {
+    "code": "ling-301",
+    "prereqOfs": [
+      "ling-455"
+    ]
   },
   {
     "code": "ling-315",
@@ -32293,6 +33408,12 @@
       "ling-460",
       "ling-461",
       "ling-565"
+    ]
+  },
+  {
+    "code": "ling-370",
+    "prereqOfs": [
+      "ling-485"
     ]
   },
   {
@@ -32840,6 +33961,14 @@
     "prereqOfs": []
   },
   {
+    "code": "math-112",
+    "prereqOfs": [
+      "biol-310",
+      "biol-373",
+      "musr-232"
+    ]
+  },
+  {
     "code": "math-122",
     "prereqOfs": [
       "econ-430",
@@ -32932,6 +34061,12 @@
   },
   {
     "code": "math-151",
+    "prereqOfs": [
+      "math-264"
+    ]
+  },
+  {
+    "code": "math-152",
     "prereqOfs": [
       "math-264"
     ]
@@ -33051,6 +34186,12 @@
   {
     "code": "math-228",
     "prereqOfs": []
+  },
+  {
+    "code": "math-233",
+    "prereqOfs": [
+      "chem-585"
+    ]
   },
   {
     "code": "math-235",
@@ -33255,6 +34396,12 @@
       "mech-341",
       "mech-419",
       "mime-567"
+    ]
+  },
+  {
+    "code": "math-270",
+    "prereqOfs": [
+      "ecse-303"
     ]
   },
   {
@@ -33514,6 +34661,19 @@
     ]
   },
   {
+    "code": "math-363",
+    "prereqOfs": [
+      "comp-360"
+    ]
+  },
+  {
+    "code": "math-366",
+    "prereqOfs": [
+      "math-566",
+      "math-595"
+    ]
+  },
+  {
     "code": "math-376",
     "prereqOfs": [
       "math-437",
@@ -33529,6 +34689,12 @@
   {
     "code": "math-378",
     "prereqOfs": []
+  },
+  {
+    "code": "math-381",
+    "prereqOfs": [
+      "bmde-503"
+    ]
   },
   {
     "code": "math-387",
@@ -33614,6 +34780,7 @@
     "code": "math-456",
     "prereqOfs": [
       "math-457",
+      "math-518",
       "math-583",
       "math-596"
     ]
@@ -33678,6 +34845,13 @@
     "prereqOfs": []
   },
   {
+    "code": "math-487",
+    "prereqOfs": [
+      "comp-553",
+      "math-553"
+    ]
+  },
+  {
     "code": "math-488",
     "prereqOfs": [
       "math-591",
@@ -33686,6 +34860,10 @@
   },
   {
     "code": "math-517",
+    "prereqOfs": []
+  },
+  {
+    "code": "math-518",
     "prereqOfs": []
   },
   {
@@ -34267,6 +35445,12 @@
     ]
   },
   {
+    "code": "mech-260",
+    "prereqOfs": [
+      "mech-463d1"
+    ]
+  },
+  {
     "code": "mech-261",
     "prereqOfs": [
       "mech-362",
@@ -34466,6 +35650,12 @@
   {
     "code": "mech-447",
     "prereqOfs": []
+  },
+  {
+    "code": "mech-452",
+    "prereqOfs": [
+      "mech-656"
+    ]
   },
   {
     "code": "mech-463d1",
@@ -34841,8 +36031,20 @@
     ]
   },
   {
+    "code": "mgcr-272",
+    "prereqOfs": [
+      "mgsc-605"
+    ]
+  },
+  {
     "code": "mgcr-273",
     "prereqOfs": []
+  },
+  {
+    "code": "mgcr-274",
+    "prereqOfs": [
+      "mgsc-605"
+    ]
   },
   {
     "code": "mgcr-293",
@@ -35497,6 +36699,12 @@
     "prereqOfs": []
   },
   {
+    "code": "mgsc-472",
+    "prereqOfs": [
+      "mgsc-603"
+    ]
+  },
+  {
     "code": "mgsc-479",
     "prereqOfs": []
   },
@@ -35754,6 +36962,16 @@
   {
     "code": "mhec-602",
     "prereqOfs": []
+  },
+  {
+    "code": "micr-230",
+    "prereqOfs": [
+      "ansc-350",
+      "ansc-420",
+      "fdsc-442",
+      "fdsc-545",
+      "micr-300"
+    ]
   },
   {
     "code": "micr-300",
@@ -36821,6 +38039,13 @@
     ]
   },
   {
+    "code": "mimm-386",
+    "prereqOfs": [
+      "mimm-498",
+      "mimm-499"
+    ]
+  },
+  {
     "code": "mimm-387",
     "prereqOfs": []
   },
@@ -37349,6 +38574,38 @@
     ]
   },
   {
+    "code": "muco-240",
+    "prereqOfs": [
+      "muco-460"
+    ]
+  },
+  {
+    "code": "muco-240d1",
+    "prereqOfs": [
+      "muco-373",
+      "muco-373",
+      "muco-374",
+      "muco-374",
+      "muhl-475",
+      "muth-202",
+      "muth-204",
+      "muth-475"
+    ]
+  },
+  {
+    "code": "muco-240d2",
+    "prereqOfs": [
+      "muco-373",
+      "muco-373",
+      "muco-374",
+      "muco-374",
+      "muhl-475",
+      "muth-202",
+      "muth-204",
+      "muth-475"
+    ]
+  },
+  {
     "code": "muco-241",
     "prereqOfs": [
       "muco-242"
@@ -37362,6 +38619,18 @@
     "code": "muco-245",
     "prereqOfs": [
       "muco-246"
+    ]
+  },
+  {
+    "code": "muco-245d1",
+    "prereqOfs": [
+      "muco-340d1"
+    ]
+  },
+  {
+    "code": "muco-245d2",
+    "prereqOfs": [
+      "muco-340d1"
     ]
   },
   {
@@ -37383,6 +38652,13 @@
     "prereqOfs": [
       "muco-360",
       "muco-460"
+    ]
+  },
+  {
+    "code": "muco-340",
+    "prereqOfs": [
+      "muco-440d1",
+      "muco-475"
     ]
   },
   {
@@ -37899,6 +39175,23 @@
     "prereqOfs": []
   },
   {
+    "code": "muhl-184",
+    "prereqOfs": [
+      "muco-373",
+      "muco-374",
+      "muhl-475",
+      "muth-426"
+    ]
+  },
+  {
+    "code": "muhl-185",
+    "prereqOfs": [
+      "muco-373",
+      "muco-374",
+      "muhl-475"
+    ]
+  },
+  {
     "code": "muhl-186",
     "prereqOfs": [
       "muco-373",
@@ -38330,6 +39623,12 @@
   {
     "code": "muin-452d2",
     "prereqOfs": []
+  },
+  {
+    "code": "muin-461",
+    "prereqOfs": [
+      "muin-560"
+    ]
   },
   {
     "code": "muin-462",
@@ -38806,8 +40105,20 @@
     "prereqOfs": []
   },
   {
+    "code": "mumt-232",
+    "prereqOfs": [
+      "musr-339"
+    ]
+  },
+  {
     "code": "mumt-250",
     "prereqOfs": []
+  },
+  {
+    "code": "mumt-300",
+    "prereqOfs": [
+      "musr-670d1"
+    ]
   },
   {
     "code": "mumt-301",
@@ -38891,6 +40202,30 @@
   {
     "code": "mumt-622",
     "prereqOfs": []
+  },
+  {
+    "code": "mumt-629",
+    "prereqOfs": [
+      "musr-631d1"
+    ]
+  },
+  {
+    "code": "mumt-668",
+    "prereqOfs": [
+      "musr-678"
+    ]
+  },
+  {
+    "code": "mumt-670d1",
+    "prereqOfs": [
+      "musr-671d1"
+    ]
+  },
+  {
+    "code": "mumt-670d2",
+    "prereqOfs": [
+      "musr-671d1"
+    ]
   },
   {
     "code": "mupd-135",
@@ -38977,6 +40312,13 @@
   {
     "code": "mupg-229",
     "prereqOfs": []
+  },
+  {
+    "code": "mupg-272",
+    "prereqOfs": [
+      "muen-580",
+      "mupg-372d1"
+    ]
   },
   {
     "code": "mupg-272d1",
@@ -39591,6 +40933,18 @@
     ]
   },
   {
+    "code": "musp-129",
+    "prereqOfs": [
+      "mugt-215"
+    ]
+  },
+  {
+    "code": "musp-131",
+    "prereqOfs": [
+      "mugt-358"
+    ]
+  },
+  {
     "code": "musp-140",
     "prereqOfs": [
       "muco-230",
@@ -39630,6 +40984,24 @@
       "muth-204",
       "muth-475",
       "muth-541"
+    ]
+  },
+  {
+    "code": "musp-229",
+    "prereqOfs": [
+      "muct-315",
+      "mugt-305"
+    ]
+  },
+  {
+    "code": "musp-231",
+    "prereqOfs": [
+      "muco-373",
+      "muco-374",
+      "muhl-475",
+      "muth-202",
+      "muth-204",
+      "muth-475"
     ]
   },
   {
@@ -39886,6 +41258,19 @@
     "prereqOfs": []
   },
   {
+    "code": "muth-110",
+    "prereqOfs": [
+      "mugt-215"
+    ]
+  },
+  {
+    "code": "muth-111",
+    "prereqOfs": [
+      "muco-260",
+      "mugt-215"
+    ]
+  },
+  {
     "code": "muth-150",
     "prereqOfs": [
       "muco-230",
@@ -39923,6 +41308,26 @@
     ]
   },
   {
+    "code": "muth-210",
+    "prereqOfs": [
+      "mugt-305",
+      "mugt-358"
+    ]
+  },
+  {
+    "code": "muth-211",
+    "prereqOfs": [
+      "muco-373",
+      "muco-374",
+      "muct-315",
+      "muhl-475",
+      "muth-202",
+      "muth-204",
+      "muth-426",
+      "muth-475"
+    ]
+  },
+  {
     "code": "muth-250",
     "prereqOfs": [
       "muco-373",
@@ -39949,8 +41354,20 @@
     ]
   },
   {
+    "code": "muth-301",
+    "prereqOfs": [
+      "muth-302"
+    ]
+  },
+  {
     "code": "muth-302",
     "prereqOfs": []
+  },
+  {
+    "code": "muth-303",
+    "prereqOfs": [
+      "muth-304"
+    ]
   },
   {
     "code": "muth-304",
@@ -40250,6 +41667,12 @@
     "prereqOfs": []
   },
   {
+    "code": "nrsc-330",
+    "prereqOfs": [
+      "ento-515"
+    ]
+  },
+  {
     "code": "nrsc-333",
     "prereqOfs": [
       "envb-500"
@@ -40258,6 +41681,12 @@
   {
     "code": "nrsc-405",
     "prereqOfs": []
+  },
+  {
+    "code": "nrsc-430",
+    "prereqOfs": [
+      "envr-544"
+    ]
   },
   {
     "code": "nrsc-451",
@@ -40638,6 +42067,12 @@
     ]
   },
   {
+    "code": "nur1-319",
+    "prereqOfs": [
+      "nur1-322"
+    ]
+  },
+  {
     "code": "nur1-320",
     "prereqOfs": [
       "nur1-434",
@@ -40822,6 +42257,18 @@
     "prereqOfs": []
   },
   {
+    "code": "nur2-511d1",
+    "prereqOfs": [
+      "nur1-548"
+    ]
+  },
+  {
+    "code": "nur2-511d2",
+    "prereqOfs": [
+      "nur1-548"
+    ]
+  },
+  {
     "code": "nur2-512",
     "prereqOfs": []
   },
@@ -40944,6 +42391,12 @@
     "prereqOfs": []
   },
   {
+    "code": "nur2-620",
+    "prereqOfs": [
+      "nur2-730"
+    ]
+  },
+  {
     "code": "nur2-621",
     "prereqOfs": []
   },
@@ -40959,6 +42412,12 @@
   },
   {
     "code": "nur2-624",
+    "prereqOfs": [
+      "nur2-780"
+    ]
+  },
+  {
+    "code": "nur2-625",
     "prereqOfs": [
       "nur2-780"
     ]
@@ -41557,6 +43016,13 @@
     "prereqOfs": []
   },
   {
+    "code": "nutr-446",
+    "prereqOfs": [
+      "nutr-311",
+      "nutr-409"
+    ]
+  },
+  {
     "code": "nutr-450",
     "prereqOfs": [
       "nutr-409"
@@ -41615,6 +43081,16 @@
   {
     "code": "nutr-512",
     "prereqOfs": []
+  },
+  {
+    "code": "nutr-513",
+    "prereqOfs": [
+      "nutr-611",
+      "nutr-612",
+      "nutr-613",
+      "nutr-614",
+      "nutr-615"
+    ]
   },
   {
     "code": "nutr-515",
@@ -41725,6 +43201,14 @@
   {
     "code": "nutr-626",
     "prereqOfs": []
+  },
+  {
+    "code": "nutr-628",
+    "prereqOfs": [
+      "nutr-629",
+      "nutr-629d1",
+      "nutr-629d2"
+    ]
   },
   {
     "code": "nutr-629",
@@ -41941,6 +43425,12 @@
     "prereqOfs": [
       "occ1-443",
       "occ1-450"
+    ]
+  },
+  {
+    "code": "occ1-335",
+    "prereqOfs": [
+      "phth-551"
     ]
   },
   {
@@ -42833,6 +44323,19 @@
     "prereqOfs": []
   },
   {
+    "code": "phgy-201",
+    "prereqOfs": [
+      "edkp-447",
+      "psyt-301"
+    ]
+  },
+  {
+    "code": "phgy-202",
+    "prereqOfs": [
+      "edkp-447"
+    ]
+  },
+  {
     "code": "phgy-209",
     "prereqOfs": [
       "anat-214",
@@ -43346,6 +44849,12 @@
     "prereqOfs": []
   },
   {
+    "code": "phil-370",
+    "prereqOfs": [
+      "phil-470"
+    ]
+  },
+  {
     "code": "phil-375",
     "prereqOfs": []
   },
@@ -43499,6 +45008,12 @@
   {
     "code": "phil-499n2",
     "prereqOfs": []
+  },
+  {
+    "code": "phil-507",
+    "prereqOfs": [
+      "phil-609"
+    ]
   },
   {
     "code": "phil-598",
@@ -43703,6 +45218,12 @@
     ]
   },
   {
+    "code": "phth-225",
+    "prereqOfs": [
+      "phth-554"
+    ]
+  },
+  {
     "code": "phth-245",
     "prereqOfs": [
       "phth-201",
@@ -43731,6 +45252,12 @@
     "prereqOfs": []
   },
   {
+    "code": "phth-338",
+    "prereqOfs": [
+      "phth-551"
+    ]
+  },
+  {
     "code": "phth-440",
     "prereqOfs": [
       "phth-554",
@@ -43755,6 +45282,17 @@
       "phth-561",
       "phth-571",
       "phth-662"
+    ]
+  },
+  {
+    "code": "phth-552",
+    "prereqOfs": [
+      "phth-571",
+      "phth-622",
+      "phth-641",
+      "phth-652",
+      "phth-662",
+      "poth-636"
     ]
   },
   {
@@ -44154,6 +45692,12 @@
     ]
   },
   {
+    "code": "phys-334",
+    "prereqOfs": [
+      "chem-534"
+    ]
+  },
+  {
     "code": "phys-339",
     "prereqOfs": [
       "phys-439"
@@ -44232,6 +45776,12 @@
   {
     "code": "phys-439",
     "prereqOfs": []
+  },
+  {
+    "code": "phys-446",
+    "prereqOfs": [
+      "phys-447"
+    ]
   },
   {
     "code": "phys-447",
@@ -44506,6 +46056,12 @@
     "prereqOfs": []
   },
   {
+    "code": "plnt-201",
+    "prereqOfs": [
+      "plnt-302"
+    ]
+  },
+  {
     "code": "plnt-203",
     "prereqOfs": []
   },
@@ -44688,6 +46244,22 @@
     ]
   },
   {
+    "code": "poli-211",
+    "prereqOfs": [
+      "poli-318",
+      "poli-328",
+      "poli-329",
+      "poli-330",
+      "poli-361",
+      "poli-369",
+      "poli-380",
+      "poli-381",
+      "poli-424",
+      "poli-431",
+      "poli-475"
+    ]
+  },
+  {
     "code": "poli-212",
     "prereqOfs": [
       "poli-316",
@@ -44753,6 +46325,12 @@
       "poli-333",
       "poli-367",
       "poli-368"
+    ]
+  },
+  {
+    "code": "poli-232",
+    "prereqOfs": [
+      "poli-333"
     ]
   },
   {
@@ -45448,6 +47026,12 @@
     "prereqOfs": []
   },
   {
+    "code": "poth-222",
+    "prereqOfs": [
+      "poth-620"
+    ]
+  },
+  {
     "code": "poth-225",
     "prereqOfs": [
       "phth-201",
@@ -45466,6 +47050,12 @@
       "phth-301d1",
       "phth-301d2",
       "phth-450"
+    ]
+  },
+  {
+    "code": "poth-260",
+    "prereqOfs": [
+      "poth-604"
     ]
   },
   {
@@ -45822,6 +47412,12 @@
     "prereqOfs": []
   },
   {
+    "code": "pphs-629",
+    "prereqOfs": [
+      "pphs-699"
+    ]
+  },
+  {
     "code": "pphs-630",
     "prereqOfs": []
   },
@@ -45982,6 +47578,20 @@
   {
     "code": "ppol-652",
     "prereqOfs": []
+  },
+  {
+    "code": "prac-147d1",
+    "prereqOfs": [
+      "lawg-210",
+      "prac-200"
+    ]
+  },
+  {
+    "code": "prac-147d2",
+    "prereqOfs": [
+      "lawg-210",
+      "prac-200"
+    ]
   },
   {
     "code": "prac-200",
@@ -46174,6 +47784,12 @@
     ]
   },
   {
+    "code": "psyc-214",
+    "prereqOfs": [
+      "psyc-499"
+    ]
+  },
+  {
     "code": "psyc-215",
     "prereqOfs": [
       "psyc-304",
@@ -46230,6 +47846,13 @@
     ]
   },
   {
+    "code": "psyc-308",
+    "prereqOfs": [
+      "psyt-500",
+      "psyt-505"
+    ]
+  },
+  {
     "code": "psyc-310",
     "prereqOfs": []
   },
@@ -46249,6 +47872,12 @@
   {
     "code": "psyc-315",
     "prereqOfs": []
+  },
+  {
+    "code": "psyc-316",
+    "prereqOfs": [
+      "psyc-530"
+    ]
   },
   {
     "code": "psyc-317",
@@ -46352,6 +47981,13 @@
   {
     "code": "psyc-353",
     "prereqOfs": []
+  },
+  {
+    "code": "psyc-380",
+    "prereqOfs": [
+      "psyc-535",
+      "psyc-539"
+    ]
   },
   {
     "code": "psyc-380d1",
@@ -46614,6 +48250,13 @@
   {
     "code": "psyc-535",
     "prereqOfs": []
+  },
+  {
+    "code": "psyc-536",
+    "prereqOfs": [
+      "psyc-531",
+      "psyc-541"
+    ]
   },
   {
     "code": "psyc-537",
@@ -47544,6 +49187,12 @@
     ]
   },
   {
+    "code": "relg-208",
+    "prereqOfs": [
+      "relg-573"
+    ]
+  },
+  {
     "code": "relg-210",
     "prereqOfs": []
   },
@@ -47746,6 +49395,12 @@
     "prereqOfs": []
   },
   {
+    "code": "relg-320",
+    "prereqOfs": [
+      "cath-310"
+    ]
+  },
+  {
     "code": "relg-321",
     "prereqOfs": []
   },
@@ -47811,6 +49466,12 @@
     ]
   },
   {
+    "code": "relg-342",
+    "prereqOfs": [
+      "relg-548"
+    ]
+  },
+  {
     "code": "relg-343",
     "prereqOfs": []
   },
@@ -47842,6 +49503,13 @@
   {
     "code": "relg-354",
     "prereqOfs": []
+  },
+  {
+    "code": "relg-357",
+    "prereqOfs": [
+      "relg-457d1",
+      "relg-669"
+    ]
   },
   {
     "code": "relg-357d1",
@@ -48751,6 +50419,12 @@
     "prereqOfs": []
   },
   {
+    "code": "russ-452",
+    "prereqOfs": [
+      "russ-453"
+    ]
+  },
+  {
     "code": "russ-453",
     "prereqOfs": []
   },
@@ -49307,6 +50981,12 @@
     "prereqOfs": []
   },
   {
+    "code": "soci-219",
+    "prereqOfs": [
+      "soci-322"
+    ]
+  },
+  {
     "code": "soci-222",
     "prereqOfs": [
       "soci-366",
@@ -49432,6 +51112,13 @@
   {
     "code": "soci-326",
     "prereqOfs": []
+  },
+  {
+    "code": "soci-328",
+    "prereqOfs": [
+      "anth-339",
+      "anth-418"
+    ]
   },
   {
     "code": "soci-330",
@@ -49641,6 +51328,12 @@
       "soci-621",
       "soci-622",
       "soci-623"
+    ]
+  },
+  {
+    "code": "soci-505",
+    "prereqOfs": [
+      "geog-512"
     ]
   },
   {
@@ -49929,6 +51622,12 @@
     "prereqOfs": []
   },
   {
+    "code": "surg-401",
+    "prereqOfs": [
+      "surg-403"
+    ]
+  },
+  {
     "code": "surg-402",
     "prereqOfs": []
   },
@@ -50039,6 +51738,12 @@
   {
     "code": "swrk-323d2",
     "prereqOfs": []
+  },
+  {
+    "code": "swrk-325",
+    "prereqOfs": [
+      "swrk-319"
+    ]
   },
   {
     "code": "swrk-326",
@@ -50808,6 +52513,12 @@
     "prereqOfs": []
   },
   {
+    "code": "urbp-606",
+    "prereqOfs": [
+      "urbp-690"
+    ]
+  },
+  {
     "code": "urbp-606d1",
     "prereqOfs": [
       "urbp-606d2"
@@ -51008,6 +52719,12 @@
     ]
   },
   {
+    "code": "urbp-702",
+    "prereqOfs": [
+      "urbp-704"
+    ]
+  },
+  {
     "code": "urbp-703",
     "prereqOfs": []
   },
@@ -51188,6 +52905,18 @@
     "prereqOfs": []
   },
   {
+    "code": "wild-200",
+    "prereqOfs": [
+      "plnt-302"
+    ]
+  },
+  {
+    "code": "wild-212",
+    "prereqOfs": [
+      "redm-400"
+    ]
+  },
+  {
     "code": "wild-302",
     "prereqOfs": []
   },
@@ -51197,6 +52926,12 @@
       "wild-350",
       "wild-401",
       "wild-420"
+    ]
+  },
+  {
+    "code": "wild-313",
+    "prereqOfs": [
+      "redm-400"
     ]
   },
   {
@@ -51591,1717 +53326,5 @@
   {
     "code": "yrfa-300",
     "prereqOfs": []
-  },
-  {
-    "code": "acct-685",
-    "prereqOfs": [
-      "acct-695",
-      "acct-699"
-    ]
-  },
-  {
-    "code": "fdsc-110",
-    "prereqOfs": [
-      "aech-111"
-    ]
-  },
-  {
-    "code": "fdsc-211",
-    "prereqOfs": [
-      "ansc-234",
-      "ansc-324",
-      "fdsc-251",
-      "fdsc-515",
-      "fdsc-537",
-      "nutr-512"
-    ]
-  },
-  {
-    "code": "micr-230",
-    "prereqOfs": [
-      "ansc-350",
-      "ansc-420",
-      "fdsc-442",
-      "fdsc-545",
-      "micr-300"
-    ]
-  },
-  {
-    "code": "aebi-202",
-    "prereqOfs": [
-      "ansc-420",
-      "para-438"
-    ]
-  },
-  {
-    "code": "ansc-330",
-    "prereqOfs": [
-      "ansc-433"
-    ]
-  },
-  {
-    "code": "anth-205",
-    "prereqOfs": [
-      "anth-308",
-      "anth-322",
-      "anth-327",
-      "anth-344"
-    ]
-  },
-  {
-    "code": "soci-328",
-    "prereqOfs": [
-      "anth-339",
-      "anth-418"
-    ]
-  },
-  {
-    "code": "anth-200",
-    "prereqOfs": [
-      "anth-343"
-    ]
-  },
-  {
-    "code": "anth-345",
-    "prereqOfs": [
-      "anth-413"
-    ]
-  },
-  {
-    "code": "anth-347",
-    "prereqOfs": [
-      "anth-413"
-    ]
-  },
-  {
-    "code": "anth-348",
-    "prereqOfs": [
-      "anth-413"
-    ]
-  },
-  {
-    "code": "anth-349",
-    "prereqOfs": [
-      "anth-418"
-    ]
-  },
-  {
-    "code": "anth-336",
-    "prereqOfs": [
-      "anth-436"
-    ]
-  },
-  {
-    "code": "anth-430",
-    "prereqOfs": [
-      "anth-440"
-    ]
-  },
-  {
-    "code": "epsc-203",
-    "prereqOfs": [
-      "atoc-373",
-      "epsc-373",
-      "epsc-460",
-      "epsc-460d1",
-      "epsc-510",
-      "geog-373"
-    ]
-  },
-  {
-    "code": "chem-243",
-    "prereqOfs": [
-      "atoc-519",
-      "chem-214",
-      "chem-400",
-      "chem-429",
-      "chem-512",
-      "chem-514",
-      "chem-519",
-      "chem-574",
-      "chem-575",
-      "chem-577",
-      "chem-585"
-    ]
-  },
-  {
-    "code": "chem-263",
-    "prereqOfs": [
-      "atoc-519"
-    ]
-  },
-  {
-    "code": "math-112",
-    "prereqOfs": [
-      "biol-310",
-      "biol-373",
-      "musr-232"
-    ]
-  },
-  {
-    "code": "bios-611",
-    "prereqOfs": [
-      "bios-612"
-    ]
-  },
-  {
-    "code": "ecse-304",
-    "prereqOfs": [
-      "bmde-502",
-      "bmde-660",
-      "ecse-412",
-      "ecse-415",
-      "ecse-435",
-      "ecse-509",
-      "ecse-511",
-      "ecse-512",
-      "ecse-513",
-      "ecse-515",
-      "ecse-538"
-    ]
-  },
-  {
-    "code": "math-381",
-    "prereqOfs": [
-      "bmde-503"
-    ]
-  },
-  {
-    "code": "ecse-306",
-    "prereqOfs": [
-      "bmde-660",
-      "ecse-305",
-      "ecse-334",
-      "ecse-412",
-      "ecse-415",
-      "ecse-456",
-      "ecse-517",
-      "ecse-538",
-      "ecse-597"
-    ]
-  },
-  {
-    "code": "aema-100",
-    "prereqOfs": [
-      "bree-103"
-    ]
-  },
-  {
-    "code": "bus2-463",
-    "prereqOfs": [
-      "bus2-501"
-    ]
-  },
-  {
-    "code": "busa-693",
-    "prereqOfs": [
-      "busa-611",
-      "busa-613"
-    ]
-  },
-  {
-    "code": "busa-699",
-    "prereqOfs": [
-      "busa-646"
-    ]
-  },
-  {
-    "code": "relg-320",
-    "prereqOfs": [
-      "cath-310"
-    ]
-  },
-  {
-    "code": "cctr-320",
-    "prereqOfs": [
-      "cctr-433",
-      "cctr-434",
-      "cctr-435",
-      "cctr-436"
-    ]
-  },
-  {
-    "code": "cegl-106",
-    "prereqOfs": [
-      "ceen-201",
-      "ceen-202",
-      "ceen-211",
-      "ceen-212"
-    ]
-  },
-  {
-    "code": "cegl-228",
-    "prereqOfs": [
-      "cegl-238"
-    ]
-  },
-  {
-    "code": "cegl-243",
-    "prereqOfs": [
-      "cegl-254"
-    ]
-  },
-  {
-    "code": "cent-300",
-    "prereqOfs": [
-      "cent-434"
-    ]
-  },
-  {
-    "code": "chem-223",
-    "prereqOfs": [
-      "chem-214",
-      "chem-429",
-      "chem-434",
-      "chem-514",
-      "chem-574",
-      "chem-575",
-      "chem-585"
-    ]
-  },
-  {
-    "code": "chem-115",
-    "prereqOfs": [
-      "chem-287",
-      "chem-297"
-    ]
-  },
-  {
-    "code": "phys-334",
-    "prereqOfs": [
-      "chem-534"
-    ]
-  },
-  {
-    "code": "chem-382",
-    "prereqOfs": [
-      "chem-572"
-    ]
-  },
-  {
-    "code": "math-233",
-    "prereqOfs": [
-      "chem-585"
-    ]
-  },
-  {
-    "code": "ccom-206",
-    "prereqOfs": [
-      "cive-432",
-      "ecse-201",
-      "ecse-426",
-      "ecse-456",
-      "ecse-458d1",
-      "ecse-458n1",
-      "ecse-478d1",
-      "ecse-478n1",
-      "ecse-498",
-      "mech-463d1"
-    ]
-  },
-  {
-    "code": "hist-231",
-    "prereqOfs": [
-      "clas-304",
-      "clas-402"
-    ]
-  },
-  {
-    "code": "clas-230",
-    "prereqOfs": [
-      "clas-331"
-    ]
-  },
-  {
-    "code": "clas-202",
-    "prereqOfs": [
-      "clas-404"
-    ]
-  },
-  {
-    "code": "cmis-542",
-    "prereqOfs": [
-      "cmr2-570"
-    ]
-  },
-  {
-    "code": "math-363",
-    "prereqOfs": [
-      "comp-360"
-    ]
-  },
-  {
-    "code": "comp-361",
-    "prereqOfs": [
-      "comp-521",
-      "comp-533"
-    ]
-  },
-  {
-    "code": "math-487",
-    "prereqOfs": [
-      "comp-553",
-      "math-553"
-    ]
-  },
-  {
-    "code": "comp-435",
-    "prereqOfs": [
-      "comp-614"
-    ]
-  },
-  {
-    "code": "comp-526",
-    "prereqOfs": [
-      "comp-652",
-      "ecse-608"
-    ]
-  },
-  {
-    "code": "coms-310j1",
-    "prereqOfs": [
-      "coms-301j2"
-    ]
-  },
-  {
-    "code": "coms-310j2",
-    "prereqOfs": [
-      "coms-301j3"
-    ]
-  },
-  {
-    "code": "coms-365",
-    "prereqOfs": [
-      "coms-410",
-      "coms-425"
-    ]
-  },
-  {
-    "code": "edec-207",
-    "prereqOfs": [
-      "cprl-224",
-      "cprl-226",
-      "cprl-321"
-    ]
-  },
-  {
-    "code": "cprl-320",
-    "prereqOfs": [
-      "cprl-322"
-    ]
-  },
-  {
-    "code": "dent-310",
-    "prereqOfs": [
-      "dent-312"
-    ]
-  },
-  {
-    "code": "dent-106j1",
-    "prereqOfs": [
-      "dent-320j2"
-    ]
-  },
-  {
-    "code": "dent-106j2",
-    "prereqOfs": [
-      "dent-320j3"
-    ]
-  },
-  {
-    "code": "dent-521",
-    "prereqOfs": [
-      "dent-522d1",
-      "dent-522d2"
-    ]
-  },
-  {
-    "code": "dent-522",
-    "prereqOfs": [
-      "dent-523d1",
-      "dent-523d2"
-    ]
-  },
-  {
-    "code": "dent-524",
-    "prereqOfs": [
-      "dent-525"
-    ]
-  },
-  {
-    "code": "dent-526",
-    "prereqOfs": [
-      "dent-527"
-    ]
-  },
-  {
-    "code": "dent-528",
-    "prereqOfs": [
-      "dent-529"
-    ]
-  },
-  {
-    "code": "east-400",
-    "prereqOfs": [
-      "east-525",
-      "east-527"
-    ]
-  },
-  {
-    "code": "east-430",
-    "prereqOfs": [
-      "east-530d1",
-      "east-556",
-      "east-557"
-    ]
-  },
-  {
-    "code": "east-543",
-    "prereqOfs": [
-      "east-544"
-    ]
-  },
-  {
-    "code": "east-433",
-    "prereqOfs": [
-      "east-550"
-    ]
-  },
-  {
-    "code": "econ-250",
-    "prereqOfs": [
-      "econ-330d1",
-      "econ-405",
-      "econ-406",
-      "econ-411",
-      "econ-416",
-      "econ-420",
-      "econ-434",
-      "econ-447",
-      "econ-459",
-      "econ-460",
-      "econ-461",
-      "econ-473",
-      "econ-510",
-      "econ-531",
-      "econ-546",
-      "envr-430"
-    ]
-  },
-  {
-    "code": "econ-257",
-    "prereqOfs": [
-      "econ-337",
-      "econ-406",
-      "econ-462",
-      "econ-473"
-    ]
-  },
-  {
-    "code": "econ-306d1",
-    "prereqOfs": [
-      "econ-426"
-    ]
-  },
-  {
-    "code": "econ-306d2",
-    "prereqOfs": [
-      "econ-426"
-    ]
-  },
-  {
-    "code": "econ-330",
-    "prereqOfs": [
-      "econ-462"
-    ]
-  },
-  {
-    "code": "econ-352",
-    "prereqOfs": [
-      "econ-462"
-    ]
-  },
-  {
-    "code": "math-270",
-    "prereqOfs": [
-      "ecse-303"
-    ]
-  },
-  {
-    "code": "ecse-291",
-    "prereqOfs": [
-      "ecse-334"
-    ]
-  },
-  {
-    "code": "ecse-352",
-    "prereqOfs": [
-      "ecse-405",
-      "ecse-423",
-      "ecse-430",
-      "ecse-451",
-      "ecse-524",
-      "ecse-527",
-      "ecse-535",
-      "ecse-540",
-      "ecse-571",
-      "ecse-572",
-      "ecse-593",
-      "ecse-596"
-    ]
-  },
-  {
-    "code": "ecse-322",
-    "prereqOfs": [
-      "ecse-421",
-      "ecse-425",
-      "ecse-456",
-      "ecse-526",
-      "ecse-538",
-      "ecse-542",
-      "ecse-543",
-      "ecse-570"
-    ]
-  },
-  {
-    "code": "ecse-323",
-    "prereqOfs": [
-      "ecse-421",
-      "ecse-425",
-      "ecse-426",
-      "ecse-456",
-      "ecse-537",
-      "ecse-549"
-    ]
-  },
-  {
-    "code": "comp-335",
-    "prereqOfs": [
-      "ecse-428"
-    ]
-  },
-  {
-    "code": "ecse-361",
-    "prereqOfs": [
-      "ecse-463",
-      "ecse-464",
-      "ecse-465",
-      "ecse-466",
-      "ecse-468",
-      "ecse-522",
-      "ecse-549",
-      "ecse-562",
-      "ecse-563",
-      "ecse-565"
-    ]
-  },
-  {
-    "code": "ecse-443",
-    "prereqOfs": [
-      "ecse-507"
-    ]
-  },
-  {
-    "code": "ecse-414",
-    "prereqOfs": [
-      "ecse-518"
-    ]
-  },
-  {
-    "code": "ecse-528",
-    "prereqOfs": [
-      "ecse-518"
-    ]
-  },
-  {
-    "code": "ecse-351",
-    "prereqOfs": [
-      "ecse-533",
-      "ecse-543",
-      "ecse-597"
-    ]
-  },
-  {
-    "code": "ecse-485",
-    "prereqOfs": [
-      "ecse-574"
-    ]
-  },
-  {
-    "code": "ecse-514",
-    "prereqOfs": [
-      "ecse-608"
-    ]
-  },
-  {
-    "code": "ecse-525",
-    "prereqOfs": [
-      "ecse-609"
-    ]
-  },
-  {
-    "code": "ecse-487",
-    "prereqOfs": [
-      "ecse-609"
-    ]
-  },
-  {
-    "code": "ecse-431",
-    "prereqOfs": [
-      "ecse-609"
-    ]
-  },
-  {
-    "code": "ecse-411",
-    "prereqOfs": [
-      "ecse-620",
-      "ecse-621"
-    ]
-  },
-  {
-    "code": "ecse-529",
-    "prereqOfs": [
-      "ecse-626"
-    ]
-  },
-  {
-    "code": "ecse-548",
-    "prereqOfs": [
-      "ecse-648"
-    ]
-  },
-  {
-    "code": "ecse-432",
-    "prereqOfs": [
-      "ecse-678"
-    ]
-  },
-  {
-    "code": "edec-261",
-    "prereqOfs": [
-      "edea-206",
-      "edea-208"
-    ]
-  },
-  {
-    "code": "edee-344",
-    "prereqOfs": [
-      "edec-403"
-    ]
-  },
-  {
-    "code": "edec-306",
-    "prereqOfs": [
-      "edec-404"
-    ]
-  },
-  {
-    "code": "edsl-259d1",
-    "prereqOfs": [
-      "edfe-359"
-    ]
-  },
-  {
-    "code": "edsl-259d2",
-    "prereqOfs": [
-      "edfe-359"
-    ]
-  },
-  {
-    "code": "edfe-259",
-    "prereqOfs": [
-      "edfe-359"
-    ]
-  },
-  {
-    "code": "edfe-259d1",
-    "prereqOfs": [
-      "edfe-359"
-    ]
-  },
-  {
-    "code": "edfe-259d2",
-    "prereqOfs": [
-      "edfe-359"
-    ]
-  },
-  {
-    "code": "edfe-303",
-    "prereqOfs": [
-      "edfe-406"
-    ]
-  },
-  {
-    "code": "edfe-305",
-    "prereqOfs": [
-      "edfe-407"
-    ]
-  },
-  {
-    "code": "edsl-260",
-    "prereqOfs": [
-      "edfm-361",
-      "edum-394"
-    ]
-  },
-  {
-    "code": "edfe-261",
-    "prereqOfs": [
-      "edfm-361",
-      "edum-394"
-    ]
-  },
-  {
-    "code": "edsl-402",
-    "prereqOfs": [
-      "edfm-460"
-    ]
-  },
-  {
-    "code": "edfe-361",
-    "prereqOfs": [
-      "edfm-460",
-      "edum-402",
-      "edum-499"
-    ]
-  },
-  {
-    "code": "phgy-201",
-    "prereqOfs": [
-      "edkp-447",
-      "psyt-301"
-    ]
-  },
-  {
-    "code": "phgy-202",
-    "prereqOfs": [
-      "edkp-447"
-    ]
-  },
-  {
-    "code": "edpc-697",
-    "prereqOfs": [
-      "edpc-786",
-      "edpc-786d1"
-    ]
-  },
-  {
-    "code": "edpc-698",
-    "prereqOfs": [
-      "edpc-786",
-      "edpc-786d1"
-    ]
-  },
-  {
-    "code": "edpe-615",
-    "prereqOfs": [
-      "edpe-620",
-      "edpe-623"
-    ]
-  },
-  {
-    "code": "edpe-611",
-    "prereqOfs": [
-      "edpe-625"
-    ]
-  },
-  {
-    "code": "edsl-255",
-    "prereqOfs": [
-      "edsl-315"
-    ]
-  },
-  {
-    "code": "edfe-362",
-    "prereqOfs": [
-      "edum-402"
-    ]
-  },
-  {
-    "code": "edsl-391",
-    "prereqOfs": [
-      "edum-498"
-    ]
-  },
-  {
-    "code": "edsl-394",
-    "prereqOfs": [
-      "edum-499"
-    ]
-  },
-  {
-    "code": "nrsc-330",
-    "prereqOfs": [
-      "ento-515"
-    ]
-  },
-  {
-    "code": "envb-430",
-    "prereqOfs": [
-      "envb-530"
-    ]
-  },
-  {
-    "code": "geog-306",
-    "prereqOfs": [
-      "envb-530"
-    ]
-  },
-  {
-    "code": "geog-307",
-    "prereqOfs": [
-      "envb-530"
-    ]
-  },
-  {
-    "code": "nrsc-430",
-    "prereqOfs": [
-      "envr-544"
-    ]
-  },
-  {
-    "code": "epsc-451",
-    "prereqOfs": [
-      "epsc-561"
-    ]
-  },
-  {
-    "code": "fdsc-425",
-    "prereqOfs": [
-      "fdsc-536"
-    ]
-  },
-  {
-    "code": "atoc-210",
-    "prereqOfs": [
-      "geog-321"
-    ]
-  },
-  {
-    "code": "aebi-205",
-    "prereqOfs": [
-      "geog-370"
-    ]
-  },
-  {
-    "code": "geog-436",
-    "prereqOfs": [
-      "geog-502"
-    ]
-  },
-  {
-    "code": "soci-505",
-    "prereqOfs": [
-      "geog-512"
-    ]
-  },
-  {
-    "code": "glis-611",
-    "prereqOfs": [
-      "glis-604",
-      "glis-605",
-      "glis-605d1",
-      "glis-605d2",
-      "glis-689",
-      "infs-688",
-      "infs-688d1",
-      "infs-688d2"
-    ]
-  },
-  {
-    "code": "hist-204",
-    "prereqOfs": [
-      "hist-224"
-    ]
-  },
-  {
-    "code": "hist-225",
-    "prereqOfs": [
-      "hist-390"
-    ]
-  },
-  {
-    "code": "hist-339",
-    "prereqOfs": [
-      "hist-591d1",
-      "hist-591d2"
-    ]
-  },
-  {
-    "code": "hist-448",
-    "prereqOfs": [
-      "hist-591d1",
-      "hist-591d2"
-    ]
-  },
-  {
-    "code": "hsed-702",
-    "prereqOfs": [
-      "hsed-701"
-    ]
-  },
-  {
-    "code": "glis-617",
-    "prereqOfs": [
-      "infs-650",
-      "infs-657"
-    ]
-  },
-  {
-    "code": "glis-607",
-    "prereqOfs": [
-      "infs-656"
-    ]
-  },
-  {
-    "code": "glis-619",
-    "prereqOfs": [
-      "infs-673",
-      "infs-679"
-    ]
-  },
-  {
-    "code": "ling-230",
-    "prereqOfs": [
-      "inlg-330"
-    ]
-  },
-  {
-    "code": "isla-521d1",
-    "prereqOfs": [
-      "isla-322d1"
-    ]
-  },
-  {
-    "code": "isla-521d2",
-    "prereqOfs": [
-      "isla-322d1"
-    ]
-  },
-  {
-    "code": "isla-532d1",
-    "prereqOfs": [
-      "isla-333d1"
-    ]
-  },
-  {
-    "code": "isla-532d2",
-    "prereqOfs": [
-      "isla-333d1"
-    ]
-  },
-  {
-    "code": "isla-541",
-    "prereqOfs": [
-      "isla-342d1"
-    ]
-  },
-  {
-    "code": "isla-551",
-    "prereqOfs": [
-      "isla-352d1"
-    ]
-  },
-  {
-    "code": "isla-533d1",
-    "prereqOfs": [
-      "isla-434d1"
-    ]
-  },
-  {
-    "code": "isla-533d2",
-    "prereqOfs": [
-      "isla-434d1"
-    ]
-  },
-  {
-    "code": "isla-542d1",
-    "prereqOfs": [
-      "isla-443d1"
-    ]
-  },
-  {
-    "code": "isla-542d2",
-    "prereqOfs": [
-      "isla-443d1"
-    ]
-  },
-  {
-    "code": "isla-320",
-    "prereqOfs": [
-      "isla-502",
-      "isla-512"
-    ]
-  },
-  {
-    "code": "isla-523d1",
-    "prereqOfs": [
-      "isla-524"
-    ]
-  },
-  {
-    "code": "isla-523d2",
-    "prereqOfs": [
-      "isla-524"
-    ]
-  },
-  {
-    "code": "isla-624",
-    "prereqOfs": [
-      "isla-525"
-    ]
-  },
-  {
-    "code": "isla-544",
-    "prereqOfs": [
-      "isla-545"
-    ]
-  },
-  {
-    "code": "isla-643",
-    "prereqOfs": [
-      "isla-545"
-    ]
-  },
-  {
-    "code": "isla-552d1",
-    "prereqOfs": [
-      "isla-553"
-    ]
-  },
-  {
-    "code": "isla-552d2",
-    "prereqOfs": [
-      "isla-553"
-    ]
-  },
-  {
-    "code": "isla-642",
-    "prereqOfs": [
-      "isla-642d2"
-    ]
-  },
-  {
-    "code": "ital-215",
-    "prereqOfs": [
-      "ital-260",
-      "ital-265"
-    ]
-  },
-  {
-    "code": "jwst-200",
-    "prereqOfs": [
-      "jwst-340d1"
-    ]
-  },
-  {
-    "code": "jwst-380",
-    "prereqOfs": [
-      "jwst-480"
-    ]
-  },
-  {
-    "code": "jwst-380d1",
-    "prereqOfs": [
-      "jwst-481"
-    ]
-  },
-  {
-    "code": "jwst-380d2",
-    "prereqOfs": [
-      "jwst-481"
-    ]
-  },
-  {
-    "code": "prac-147d1",
-    "prereqOfs": [
-      "lawg-210",
-      "prac-200"
-    ]
-  },
-  {
-    "code": "prac-147d2",
-    "prereqOfs": [
-      "lawg-210",
-      "prac-200"
-    ]
-  },
-  {
-    "code": "ling-301",
-    "prereqOfs": [
-      "ling-455"
-    ]
-  },
-  {
-    "code": "ling-370",
-    "prereqOfs": [
-      "ling-485"
-    ]
-  },
-  {
-    "code": "math-152",
-    "prereqOfs": [
-      "math-264"
-    ]
-  },
-  {
-    "code": "epib-697",
-    "prereqOfs": [
-      "math-523"
-    ]
-  },
-  {
-    "code": "math-366",
-    "prereqOfs": [
-      "math-566",
-      "math-595"
-    ]
-  },
-  {
-    "code": "mech-260",
-    "prereqOfs": [
-      "mech-463d1"
-    ]
-  },
-  {
-    "code": "mech-452",
-    "prereqOfs": [
-      "mech-656"
-    ]
-  },
-  {
-    "code": "mgsc-472",
-    "prereqOfs": [
-      "mgsc-603"
-    ]
-  },
-  {
-    "code": "mgcr-272",
-    "prereqOfs": [
-      "mgsc-605"
-    ]
-  },
-  {
-    "code": "mgcr-274",
-    "prereqOfs": [
-      "mgsc-605"
-    ]
-  },
-  {
-    "code": "mimm-386",
-    "prereqOfs": [
-      "mimm-498",
-      "mimm-499"
-    ]
-  },
-  {
-    "code": "muth-111",
-    "prereqOfs": [
-      "muco-260",
-      "mugt-215"
-    ]
-  },
-  {
-    "code": "muco-245d1",
-    "prereqOfs": [
-      "muco-340d1"
-    ]
-  },
-  {
-    "code": "muco-245d2",
-    "prereqOfs": [
-      "muco-340d1"
-    ]
-  },
-  {
-    "code": "muhl-184",
-    "prereqOfs": [
-      "muco-373",
-      "muco-374",
-      "muhl-475",
-      "muth-426"
-    ]
-  },
-  {
-    "code": "muhl-185",
-    "prereqOfs": [
-      "muco-373",
-      "muco-374",
-      "muhl-475"
-    ]
-  },
-  {
-    "code": "muth-211",
-    "prereqOfs": [
-      "muco-373",
-      "muco-374",
-      "muct-315",
-      "muhl-475",
-      "muth-202",
-      "muth-204",
-      "muth-426",
-      "muth-475"
-    ]
-  },
-  {
-    "code": "muco-240d1",
-    "prereqOfs": [
-      "muco-373",
-      "muco-373",
-      "muco-374",
-      "muco-374",
-      "muhl-475",
-      "muth-202",
-      "muth-204",
-      "muth-475"
-    ]
-  },
-  {
-    "code": "muco-240d2",
-    "prereqOfs": [
-      "muco-373",
-      "muco-373",
-      "muco-374",
-      "muco-374",
-      "muhl-475",
-      "muth-202",
-      "muth-204",
-      "muth-475"
-    ]
-  },
-  {
-    "code": "musp-231",
-    "prereqOfs": [
-      "muco-373",
-      "muco-374",
-      "muhl-475",
-      "muth-202",
-      "muth-204",
-      "muth-475"
-    ]
-  },
-  {
-    "code": "muco-340",
-    "prereqOfs": [
-      "muco-440d1",
-      "muco-475"
-    ]
-  },
-  {
-    "code": "muco-240",
-    "prereqOfs": [
-      "muco-460"
-    ]
-  },
-  {
-    "code": "musp-229",
-    "prereqOfs": [
-      "muct-315",
-      "mugt-305"
-    ]
-  },
-  {
-    "code": "mupg-272",
-    "prereqOfs": [
-      "muen-580",
-      "mupg-372d1"
-    ]
-  },
-  {
-    "code": "muth-110",
-    "prereqOfs": [
-      "mugt-215"
-    ]
-  },
-  {
-    "code": "musp-129",
-    "prereqOfs": [
-      "mugt-215"
-    ]
-  },
-  {
-    "code": "muth-210",
-    "prereqOfs": [
-      "mugt-305",
-      "mugt-358"
-    ]
-  },
-  {
-    "code": "musp-131",
-    "prereqOfs": [
-      "mugt-358"
-    ]
-  },
-  {
-    "code": "muin-461",
-    "prereqOfs": [
-      "muin-560"
-    ]
-  },
-  {
-    "code": "mumt-232",
-    "prereqOfs": [
-      "musr-339"
-    ]
-  },
-  {
-    "code": "mumt-629",
-    "prereqOfs": [
-      "musr-631d1"
-    ]
-  },
-  {
-    "code": "mumt-300",
-    "prereqOfs": [
-      "musr-670d1"
-    ]
-  },
-  {
-    "code": "mumt-670d1",
-    "prereqOfs": [
-      "musr-671d1"
-    ]
-  },
-  {
-    "code": "mumt-670d2",
-    "prereqOfs": [
-      "musr-671d1"
-    ]
-  },
-  {
-    "code": "mumt-668",
-    "prereqOfs": [
-      "musr-678"
-    ]
-  },
-  {
-    "code": "muth-301",
-    "prereqOfs": [
-      "muth-302"
-    ]
-  },
-  {
-    "code": "muth-303",
-    "prereqOfs": [
-      "muth-304"
-    ]
-  },
-  {
-    "code": "nur1-319",
-    "prereqOfs": [
-      "nur1-322"
-    ]
-  },
-  {
-    "code": "nur2-511d1",
-    "prereqOfs": [
-      "nur1-548"
-    ]
-  },
-  {
-    "code": "nur2-511d2",
-    "prereqOfs": [
-      "nur1-548"
-    ]
-  },
-  {
-    "code": "nur2-620",
-    "prereqOfs": [
-      "nur2-730"
-    ]
-  },
-  {
-    "code": "nur2-625",
-    "prereqOfs": [
-      "nur2-780"
-    ]
-  },
-  {
-    "code": "nutr-446",
-    "prereqOfs": [
-      "nutr-311",
-      "nutr-409"
-    ]
-  },
-  {
-    "code": "ansc-634",
-    "prereqOfs": [
-      "nutr-604"
-    ]
-  },
-  {
-    "code": "nutr-513",
-    "prereqOfs": [
-      "nutr-611",
-      "nutr-612",
-      "nutr-613",
-      "nutr-614",
-      "nutr-615"
-    ]
-  },
-  {
-    "code": "nutr-628",
-    "prereqOfs": [
-      "nutr-629",
-      "nutr-629d1",
-      "nutr-629d2"
-    ]
-  },
-  {
-    "code": "phil-370",
-    "prereqOfs": [
-      "phil-470"
-    ]
-  },
-  {
-    "code": "phil-507",
-    "prereqOfs": [
-      "phil-609"
-    ]
-  },
-  {
-    "code": "occ1-335",
-    "prereqOfs": [
-      "phth-551"
-    ]
-  },
-  {
-    "code": "phth-338",
-    "prereqOfs": [
-      "phth-551"
-    ]
-  },
-  {
-    "code": "phth-225",
-    "prereqOfs": [
-      "phth-554"
-    ]
-  },
-  {
-    "code": "phth-552",
-    "prereqOfs": [
-      "phth-571",
-      "phth-622",
-      "phth-641",
-      "phth-652",
-      "phth-662",
-      "poth-636"
-    ]
-  },
-  {
-    "code": "phys-446",
-    "prereqOfs": [
-      "phys-447"
-    ]
-  },
-  {
-    "code": "plnt-201",
-    "prereqOfs": [
-      "plnt-302"
-    ]
-  },
-  {
-    "code": "wild-200",
-    "prereqOfs": [
-      "plnt-302"
-    ]
-  },
-  {
-    "code": "poli-211",
-    "prereqOfs": [
-      "poli-318",
-      "poli-328",
-      "poli-329",
-      "poli-330",
-      "poli-361",
-      "poli-369",
-      "poli-380",
-      "poli-381",
-      "poli-424",
-      "poli-431",
-      "poli-475"
-    ]
-  },
-  {
-    "code": "poli-232",
-    "prereqOfs": [
-      "poli-333"
-    ]
-  },
-  {
-    "code": "poth-260",
-    "prereqOfs": [
-      "poth-604"
-    ]
-  },
-  {
-    "code": "poth-222",
-    "prereqOfs": [
-      "poth-620"
-    ]
-  },
-  {
-    "code": "epib-602",
-    "prereqOfs": [
-      "pphs-612",
-      "pphs-612d1"
-    ]
-  },
-  {
-    "code": "pphs-629",
-    "prereqOfs": [
-      "pphs-699"
-    ]
-  },
-  {
-    "code": "psyc-214",
-    "prereqOfs": [
-      "psyc-499"
-    ]
-  },
-  {
-    "code": "psyc-316",
-    "prereqOfs": [
-      "psyc-530"
-    ]
-  },
-  {
-    "code": "psyc-536",
-    "prereqOfs": [
-      "psyc-531",
-      "psyc-541"
-    ]
-  },
-  {
-    "code": "psyc-380",
-    "prereqOfs": [
-      "psyc-535",
-      "psyc-539"
-    ]
-  },
-  {
-    "code": "psyc-308",
-    "prereqOfs": [
-      "psyt-500",
-      "psyt-505"
-    ]
-  },
-  {
-    "code": "anth-310",
-    "prereqOfs": [
-      "redm-400"
-    ]
-  },
-  {
-    "code": "wild-212",
-    "prereqOfs": [
-      "redm-400"
-    ]
-  },
-  {
-    "code": "wild-313",
-    "prereqOfs": [
-      "redm-400"
-    ]
-  },
-  {
-    "code": "cans-202",
-    "prereqOfs": [
-      "relg-310"
-    ]
-  },
-  {
-    "code": "relg-357",
-    "prereqOfs": [
-      "relg-457d1",
-      "relg-669"
-    ]
-  },
-  {
-    "code": "relg-342",
-    "prereqOfs": [
-      "relg-548"
-    ]
-  },
-  {
-    "code": "relg-208",
-    "prereqOfs": [
-      "relg-573"
-    ]
-  },
-  {
-    "code": "film-279",
-    "prereqOfs": [
-      "russ-397",
-      "russ-398"
-    ]
-  },
-  {
-    "code": "russ-452",
-    "prereqOfs": [
-      "russ-453"
-    ]
-  },
-  {
-    "code": "soci-219",
-    "prereqOfs": [
-      "soci-322"
-    ]
-  },
-  {
-    "code": "surg-401",
-    "prereqOfs": [
-      "surg-403"
-    ]
-  },
-  {
-    "code": "swrk-325",
-    "prereqOfs": [
-      "swrk-319"
-    ]
-  },
-  {
-    "code": "urbp-606",
-    "prereqOfs": [
-      "urbp-690"
-    ]
-  },
-  {
-    "code": "urbp-702",
-    "prereqOfs": [
-      "urbp-704"
-    ]
-  },
-  {
-    "code": "cesl-200",
-    "prereqOfs": [
-      "wcom-235"
-    ]
-  },
-  {
-    "code": "cesl-300",
-    "prereqOfs": [
-      "wcom-245"
-    ]
-  },
-  {
-    "code": "cesl-400",
-    "prereqOfs": [
-      "wcom-255"
-    ]
-  },
-  {
-    "code": "ccom-200",
-    "prereqOfs": [
-      "wcom-313",
-      "wcom-323",
-      "wcom-333"
-    ]
-  },
-  {
-    "code": "ccom-314",
-    "prereqOfs": [
-      "wcom-414"
-    ]
   }
 ]
