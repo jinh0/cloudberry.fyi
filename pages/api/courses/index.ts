@@ -6,30 +6,41 @@ import { CourseType } from '@typing'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import courses from 'utils/courses'
 import Fuse from 'fuse.js'
-import { create, insert, search as searchDb } from '@lyrasearch/lyra'
+// import { create, insert, search as searchDb } from '@lyrasearch/lyra'
+// import { Document } from 'flexsearch'
 
-// const fuse = new Fuse<CourseType>(courses, {
-// includeScore: true,
-// keys: ['code', 'name'],
-// isCaseSensitive: false,
+// const db = new Document({
+//   document: {
+//     id: 'id',
+//     index: [
+//       {
+//         field: 'name',
+//       },
+//       {
+//         field: 'code',
+//       },
+//     ],
+//   },
 // })
 
-const db = create({
-  schema: {
-    code: 'string',
-    name: 'string',
-  },
+// courses.forEach(course => db.add({ ...course, id: course.code }))
+
+const fuse = new Fuse<CourseType>(courses, {
+  includeScore: true,
+  keys: ['code', 'name'],
+  isCaseSensitive: false,
 })
 
-for (const course of courses) {
-  insert(db, course)
-}
+// const db = create({
+//   schema: {
+//     code: 'string',
+//     name: 'string',
+//   },
+// })
 
-// insert(db, courses[0])
-
-// insertBatch(db, courses, { batchSize: 15000 })
-
-// console.log(db.docs)
+// for (const course of courses) {
+//   insert(db, course)
+// }
 
 export default function handler(
   req: NextApiRequest,
@@ -52,41 +63,41 @@ export default function handler(
 
   console.time('query')
 
-  const results = {
-    results: searchDb(db, {
-      term: search,
-      properties: ['name', 'code'],
-      tolerance: 10,
-      limit: 10,
-    }).hits.map(x => x.document),
-  } as { results: CourseType[] }
+  // const results = searchDb(db, {
+  //   term: search,
+  //   properties: ['code', 'name'],
+  //   tolerance: 7,
+  //   limit: 10,
+  // }).hits
 
-  // const results = {
-  // results: fuse
-  // .search(
-  // {
-  // $and: [
-  // // semesters filter
-  // semester &&
-  // semester !== 'fall|winter' && {
-  // $or: semester
-  // .split('|')
-  // .map(x => ({ 'terms.term': `="${x}"` })),
-  // },
-  // // subjects filter
-  // subjects && {
-  // $or: subjects
-  // .split(',')
-  // .map(subject => ({ code: `^="${subject}"` })),
-  // },
-  // // search text
-  // search && { $or: [{ code: search }, { name: search }] },
-  // ].filter(x => x),
-  // },
-  // { limit: 10 }
-  // )
-  // .map(x => x.item),
-  // }
+  // console.log(results)
+
+  const results = {
+    results: fuse
+      .search(
+        {
+          $and: [
+            // semesters filter
+            // semester &&
+            // semester !== 'fall|winter' && {
+            // $or: semester
+            // .split('|')
+            // .map(x => ({ 'terms.term': `="${x}"` })),
+            // },
+            // subjects filter
+            subjects && {
+              $or: subjects
+                .split(',')
+                .map(subject => ({ code: `^="${subject}"` })),
+            },
+            // search text
+            search && { $or: [{ code: search }, { name: search }] },
+          ].filter(x => x),
+        },
+        { limit: 10 }
+      )
+      .map(x => x.item),
+  }
 
   console.timeEnd('query')
 
