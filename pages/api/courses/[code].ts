@@ -6,6 +6,15 @@ import { CourseType } from '@typing'
 import { NextApiRequest, NextApiResponse } from 'next'
 import courses from 'utils/courses'
 
+export async function getStaticPaths() {
+  return {
+    paths: courses.map(({ code }) => ({
+      params: { code: code.toLowerCase() },
+    })),
+    fallback: false,
+  }
+}
+
 export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<
