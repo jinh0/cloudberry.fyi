@@ -3,7 +3,7 @@
  */
 
 import { CourseType } from '@typing'
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest } from 'next'
 import courses from 'utils/courses'
 import Fuse from 'fuse.js'
 
@@ -38,8 +38,6 @@ export default function handler(req: NextApiRequest) {
     })
   }
 
-  console.time('query')
-
   const results = {
     results: fuse
       .search(
@@ -58,8 +56,6 @@ export default function handler(req: NextApiRequest) {
       )
       .map(x => x.item),
   }
-
-  console.timeEnd('query')
 
   return new Response(JSON.stringify(results), {
     status: 200,
