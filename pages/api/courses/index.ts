@@ -14,7 +14,7 @@ const fuse = new Fuse<CourseType>(courses, {
 })
 
 export const config = {
-  runtime: 'edge',
+  runtime: 'experimental-edge',
 }
 
 export default function handler(req: NextApiRequest) {
