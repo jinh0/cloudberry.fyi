@@ -7,7 +7,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import courses from 'utils/courses'
 
 export const config = {
-  runtine: 'edge',
+  runtime: 'edge',
 }
 
 export default function handler(
