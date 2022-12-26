@@ -5,6 +5,10 @@
 import { NextApiRequest } from 'next'
 import courses from 'utils/courses'
 
+export const config = {
+  runtime: 'experimental-edge',
+}
+
 export default function handler(req: NextApiRequest) {
   return new Response(
     JSON.stringify(courses.find(x => x.code.toLowerCase() === req.query.code)),
