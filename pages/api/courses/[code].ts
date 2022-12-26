@@ -2,13 +2,8 @@
  * [code].ts: Get individual course data by code
  */
 
-import { CourseType } from '@typing'
-import { NextApiRequest, NextApiResponse } from 'next'
+import { NextApiRequest } from 'next'
 import courses from 'utils/courses'
-
-export const config = {
-  runtime: 'experimental-edge',
-}
 
 export default function handler(req: NextApiRequest) {
   return new Response(
