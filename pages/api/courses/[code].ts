@@ -10,18 +10,14 @@ export const config = {
   runtime: 'edge',
 }
 
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<
-    { status: number; result: CourseType } | { status: number; error: string }
-  >
-) {
+export default function handler(req: NextApiRequest) {
   return new Response(
     JSON.stringify(courses.find(x => x.code.toLowerCase() === req.query.code)),
     {
       status: 200,
       headers: {
         'content-type': 'application/json',
+        'cache-control': 'public, s-maxage=1200, stale-while-revalidate=600',
       },
     }
   )

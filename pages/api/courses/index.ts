@@ -6,24 +6,6 @@ import { CourseType } from '@typing'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import courses from 'utils/courses'
 import Fuse from 'fuse.js'
-// import { create, insert, search as searchDb } from '@lyrasearch/lyra'
-// import { Document } from 'flexsearch'
-
-// const db = new Document({
-//   document: {
-//     id: 'id',
-//     index: [
-//       {
-//         field: 'name',
-//       },
-//       {
-//         field: 'code',
-//       },
-//     ],
-//   },
-// })
-
-// courses.forEach(course => db.add({ ...course, id: course.code }))
 
 const fuse = new Fuse<CourseType>(courses, {
   includeScore: true,
@@ -31,21 +13,11 @@ const fuse = new Fuse<CourseType>(courses, {
   isCaseSensitive: false,
 })
 
-// const db = create({
-//   schema: {
-//     code: 'string',
-//     name: 'string',
-//   },
-// })
+export const config = {
+  runtime: 'edge',
+}
 
-// for (const course of courses) {
-//   insert(db, course)
-// }
-
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<{ results: CourseType[] } | { error: string }>
-) {
+export default function handler(req: NextApiRequest) {
   const { search, subjects, semester } = req.query as {
     search: string
     subjects: string
@@ -58,33 +30,21 @@ export default function handler(
     (!subjects || subjects === '') &&
     (!semester || semester === '')
   ) {
-    return res.status(200).json({ results: courses.slice(0, 10) })
+    return new Response(JSON.stringify({ results: courses.slice(0, 10) }), {
+      status: 200,
+      headers: {
+        'content-type': 'application/json',
+      },
+    })
   }
 
   console.time('query')
-
-  // const results = searchDb(db, {
-  //   term: search,
-  //   properties: ['code', 'name'],
-  //   tolerance: 7,
-  //   limit: 10,
-  // }).hits
-
-  // console.log(results)
 
   const results = {
     results: fuse
       .search(
         {
           $and: [
-            // semesters filter
-            // semester &&
-            // semester !== 'fall|winter' && {
-            // $or: semester
-            // .split('|')
-            // .map(x => ({ 'terms.term': `="${x}"` })),
-            // },
-            // subjects filter
             subjects && {
               $or: subjects
                 .split(',')
@@ -101,5 +61,10 @@ export default function handler(
 
   console.timeEnd('query')
 
-  return res.status(200).json(results)
+  return new Response(JSON.stringify(results), {
+    status: 200,
+    headers: {
+      'content-type': 'application/json',
+    },
+  })
 }
