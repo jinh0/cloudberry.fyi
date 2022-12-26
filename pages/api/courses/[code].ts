@@ -6,13 +6,8 @@ import { CourseType } from '@typing'
 import { NextApiRequest, NextApiResponse } from 'next'
 import courses from 'utils/courses'
 
-export async function getStaticPaths() {
-  return {
-    paths: courses.map(({ code }) => ({
-      params: { code: code.toLowerCase() },
-    })),
-    fallback: false,
-  }
+export const config = {
+  runtine: 'edge',
 }
 
 export default function handler(
@@ -21,10 +16,13 @@ export default function handler(
     { status: number; result: CourseType } | { status: number; error: string }
   >
 ) {
-  return res.status(200).json({
-    status: 200,
-    result: courses.find(
-      course => course.code.toLowerCase() === req.query.code
-    ),
-  })
+  return new Response(
+    JSON.stringify(courses.find(x => x.code.toLowerCase() === req.query.code)),
+    {
+      status: 200,
+      headers: {
+        'content-type': 'application/json',
+      },
+    }
+  )
 }
