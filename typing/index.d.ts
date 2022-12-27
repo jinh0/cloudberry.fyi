@@ -35,7 +35,6 @@ export type CourseType = {
   description: string
   prerequisites: string[]
   credits: number
-  extra: string[]
   notes: Note[]
   terms: Term[]
 }
