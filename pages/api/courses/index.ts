@@ -13,11 +13,10 @@ const fuse = new Fuse<CourseType>(courses, {
   isCaseSensitive: false,
 })
 
-// export const config = {
-//   runtime: 'experimental-edge',
-// }
-
-export default function handler(req: NextApiRequest) {
+export default function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<{ results: CourseType[] } | { error: string }>
+) {
   const { search, subjects, semester } = req.query as {
     search: string
     subjects: string
@@ -30,12 +29,7 @@ export default function handler(req: NextApiRequest) {
     (!subjects || subjects === '') &&
     (!semester || semester === '')
   ) {
-    return new Response(JSON.stringify({ results: courses.slice(0, 10) }), {
-      status: 200,
-      headers: {
-        'content-type': 'application/json',
-      },
-    })
+    return res.status(200).json({ results: courses.slice(0, 10) })
   }
 
   console.time('query')
@@ -61,10 +55,5 @@ export default function handler(req: NextApiRequest) {
 
   console.timeEnd('query')
 
-  return new Response(JSON.stringify(results), {
-    status: 200,
-    headers: {
-      'content-type': 'application/json',
-    },
-  })
+  return res.status(200).json(results)
 }
