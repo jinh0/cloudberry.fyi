@@ -32,7 +32,7 @@ const Course = ({
 
   return (
     <Main title={`${format(code)} | Cloudberry`} content={course.description}>
-      <div className='flex flex-row'>
+      <div className='flex flex-row w-full'>
         <div className='lg:w-3/5 text-base lg:text-lg'>
           <GoBack />
           <Title>
