@@ -46,7 +46,7 @@ const Main = ({
       <div className='w-screen h-full'>
         <div className='min-h-screen pb-16 flex flex-col'>
           <Navbar />
-          <div className='px-6 lg:px-20 py-4 md:py-6 overflow-auto flex-grow flex'>
+          <div className='px-6 lg:px-20 py-4 md:py-6 overflow-auto flex-grow flex flex-col'>
             {children}
           </div>
         </div>
