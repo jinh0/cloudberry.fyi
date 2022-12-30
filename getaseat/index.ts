@@ -1,11 +1,8 @@
 import { createTransport } from 'nodemailer'
 import dotenv from 'dotenv'
-import { getCourse } from '@utils/vsbScraper'
-import { db, firestore } from '@utils/firebase'
+import { getCourse } from '../utils/vsbScraper'
+import { db } from '../utils/firebase'
 import {
-  collection,
-  CollectionReference,
-  doc,
   getDocs,
   query,
   QueryDocumentSnapshot,
@@ -13,7 +10,7 @@ import {
   updateDoc,
   where,
 } from 'firebase/firestore'
-import { Safe, VSBCourse, WaiterType } from '@typing'
+import { Safe, VSBCourse, WaiterType } from '../typing'
 
 dotenv.config()
 
