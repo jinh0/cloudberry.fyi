@@ -3,9 +3,14 @@
  * Firebase app instance + auth + database
  */
 
+import { UserType, Waiter } from '@typing'
 import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
-import { getFirestore } from 'firebase/firestore'
+import {
+  collection,
+  CollectionReference,
+  getFirestore,
+} from 'firebase/firestore'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDDDqI5v2qKMPuo5lQ_BnP6hEyWboEsCrc',
@@ -19,7 +24,12 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig)
 
+export const firestore = getFirestore(app)
+
+export const db = {
+  users: collection(firestore, 'users') as CollectionReference<UserType>,
+  waiters: collection(firestore, 'waiters') as CollectionReference<Waiter>,
+}
 export const auth = getAuth(app)
-export const db = getFirestore(app)
 
 export default app

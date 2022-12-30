@@ -49,7 +49,7 @@ const GoogleAnalytics = () => {
 const App = ({ Component, pageProps }: AppProps) => {
   const [loggedIn] = useAuthState(auth)
   const [user, loading, error] = useDocument(
-    loggedIn ? doc(db, 'users', loggedIn.uid) : null
+    loggedIn ? doc(db.users, loggedIn.uid) : null
   )
 
   return (
