@@ -9,7 +9,7 @@ export type SemesterOption = {
 export type WaiterType = {
   uid: string
   email: string
-  code: Uppercase<string>
+  code: string
   crn: `${number}`
   ctime: Timestamp
   ftime: Timestamp

@@ -1,8 +1,11 @@
 import { createTransport } from 'nodemailer'
 import dotenv from 'dotenv'
 import { getCourse } from '@utils/vsbScraper'
-import { db } from '@utils/firebase'
+import { db, firestore } from '@utils/firebase'
 import {
+  collection,
+  CollectionReference,
+  doc,
   getDocs,
   query,
   QueryDocumentSnapshot,
@@ -27,14 +30,12 @@ let transporter = createTransport({
 processAllPending()
 
 async function processAllPending() {
-  const mem = new Map<Uppercase<string>, VSBCourse>()
+  const mem = new Map<string, VSBCourse>()
 
-  async function getCachedCourse(
-    code: Uppercase<string>
-  ): Promise<Safe<VSBCourse>> {
+  async function getCachedCourse(code: string): Promise<Safe<VSBCourse>> {
     if (mem.has(code)) return { isOk: true, result: mem.get(code) }
 
-    const course = await getCourse(code)
+    const course = await getCourse(code as Uppercase<string>)
 
     if (!course.isOk) return { isOk: false }
 
@@ -67,11 +68,11 @@ async function alertWaiter({
   crn,
   waiter,
 }: {
-  code: Uppercase<string>
+  code: string
   crn: string
   waiter: QueryDocumentSnapshot<WaiterType>
 }): Promise<Safe<void>> {
-  const display = (code: Uppercase<string>) => code.replace('-', ' ')
+  const display = (code: string) => code.replace('-', ' ')
 
   const { email } = waiter.data()
 

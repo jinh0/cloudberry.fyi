@@ -14,7 +14,7 @@ export default async function handler(
 
   console.log('code', code)
 
-  const vsbData = await getCourse(code as string)
+  const vsbData = await getCourse(code as Uppercase<string>)
 
   console.log('vsbData', vsbData)
 
