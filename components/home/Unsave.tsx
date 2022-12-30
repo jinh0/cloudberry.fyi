@@ -16,7 +16,7 @@ const Unsave = ({ code }: { code: string }) => {
   }
 
   const removeFromSavedCourses = async (): Promise<void> => {
-    const { saved } = user.data() as UserType
+    const { saved } = user.data()
 
     await updateDoc(user.ref, {
       saved: saved.filter(savedCode => savedCode !== code),

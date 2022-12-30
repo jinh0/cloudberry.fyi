@@ -17,7 +17,7 @@ const Saved = () => {
     return <div className='hidden lg:w-1/3 lg:pl-12'></div>
   }
 
-  const { saved } = user.data() as UserType
+  const { saved } = user.data()
 
   return (
     <div className='hidden lg:block lg:w-1/3 lg:pl-12'>

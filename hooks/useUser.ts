@@ -4,7 +4,7 @@ import { useContext } from 'react'
 
 function useUser() {
   const { user } = useContext(UserContext)
-  return { user, data: user?.data() as UserType }
+  return { user, data: user?.data() }
 }
 
 export default useUser

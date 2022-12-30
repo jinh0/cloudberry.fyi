@@ -2,6 +2,7 @@
  * @file User data context
  */
 
+import { UserType } from '@typing'
 import {
   DocumentData,
   DocumentSnapshot,
@@ -13,7 +14,7 @@ import { createContext } from 'react'
  * Context containing Firebase user data
  */
 const UserContext = createContext<{
-  user: DocumentSnapshot<DocumentData>
+  user: DocumentSnapshot<UserType>
   loading: boolean
   error: FirestoreError
 } | null>(null)

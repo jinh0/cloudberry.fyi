@@ -34,7 +34,7 @@ const UserInfo = () => {
   if (loading) return <div>Loading...</div>
   if (error || !user) return <div>Something went wrong.</div>
 
-  const { name, email, saved, completed, current } = user.data() as UserType
+  const { name, email, saved, completed, current } = user.data()
 
   return (
     <div className='flex flex-col'>
