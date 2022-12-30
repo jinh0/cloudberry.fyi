@@ -28,7 +28,7 @@ const PrereqsOf = ({ prereqsOf }: { prereqsOf: string[] }) => {
               <Link href={`/courses/${code}`}>
                 <>
                   <span className='font-semibold'>{format(code)}:</span>{' '}
-                  {lookup.find(x => x.code === code)}
+                  {lookup.get(code)}
                 </>
               </Link>
             </div>
