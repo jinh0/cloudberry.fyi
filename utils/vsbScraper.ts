@@ -42,8 +42,9 @@ const fetchFromVSB = async (courseCode: string) => {
 
   const response = await fetch(url, {
     headers: {
+      'Accept-Encoding': '',
       'User-Agent':
-        'Mozilla/5.0 (Macintosh; Inr4tel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36',
+        'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0',
     },
   })
 
