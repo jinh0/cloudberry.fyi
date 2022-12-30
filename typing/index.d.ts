@@ -1,5 +1,3 @@
-import { Timestamp } from 'firebase/firestore'
-
 export type SemesterOption = {
   id: number
   name: string
