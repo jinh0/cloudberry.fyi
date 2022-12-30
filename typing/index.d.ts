@@ -4,6 +4,15 @@ export type SemesterOption = {
   value: 'fall' | 'winter' | 'fall|winter'
 }
 
+export type Waiter = {
+  uid: string
+  email: string
+  code: Uppercase<string>
+  crn: number
+  date: Date
+  status: 'pending' | 'completed'
+}
+
 export type SearchContextType = {
   query: string
   setQuery: Dispatch<SetStateAction<string>>
