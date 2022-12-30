@@ -1,15 +1,18 @@
+import { Timestamp } from 'firebase/firestore'
+
 export type SemesterOption = {
   id: number
   name: string
   value: 'fall' | 'winter' | 'fall|winter'
 }
 
-export type Waiter = {
+export type WaiterType = {
   uid: string
   email: string
   code: Uppercase<string>
-  crn: number
-  date: Date
+  crn: `${number}`
+  ctime: Timestamp
+  ftime: Timestamp
   status: 'pending' | 'completed'
 }
 
@@ -59,18 +62,6 @@ export type UserType = {
 
 export type BlockType = { day: string; t1: number; t2: number }
 
-export type VSBType = {
-  code: string
-  type: string
-  section: string
-  location: string
-  crn: string
-  remainingSeats: number
-  waitlistRem: number
-  waitlistCap: number
-  schedule: Array<BlockType>
-}
-
 export type VSBTime = {
   day: string
   t1: number
@@ -92,7 +83,7 @@ export type VSBBlock = {
 }
 
 export type VSBCourse = {
-  code: string
+  code: Uppercase<string>
   blocks: VSBBlock[]
   combos: string[][]
 }

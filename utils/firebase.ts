@@ -3,7 +3,7 @@
  * Firebase app instance + auth + database
  */
 
-import { UserType, Waiter } from '@typing'
+import { UserType, WaiterType } from '@typing'
 import { initializeApp } from 'firebase/app'
 import { getAuth } from 'firebase/auth'
 import {
@@ -28,7 +28,7 @@ export const firestore = getFirestore(app)
 
 export const db = {
   users: collection(firestore, 'users') as CollectionReference<UserType>,
-  waiters: collection(firestore, 'waiters') as CollectionReference<Waiter>,
+  waiters: collection(firestore, 'waiters') as CollectionReference<WaiterType>,
 }
 export const auth = getAuth(app)
 

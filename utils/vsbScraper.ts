@@ -8,7 +8,9 @@ import { JSDOM } from 'jsdom'
 /**
  * Get course data from VSB
  */
-export const getCourse = async (code: string): Promise<Safe<VSBCourse>> => {
+export const getCourse = async (
+  code: Uppercase<string>
+): Promise<Safe<VSBCourse>> => {
   try {
     const response = await fetchFromVSB(code)
     const { blocks, combos } = await parse(response)

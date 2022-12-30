@@ -13,7 +13,7 @@ const getVSBInfo = async () => {
 
   // Loop through all courses and get relevant data
   for (let i = 0; i < codes.length; i++) {
-    let code = codes[i]
+    let code = codes[i] as Uppercase<string>
     let course = await getCourse(code)
 
     if (course.isOk) {
