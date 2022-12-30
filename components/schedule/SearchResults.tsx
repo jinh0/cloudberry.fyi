@@ -7,7 +7,7 @@ const SearchResults = () => {
   return (
     <div className='mt-4'>
       {scheduleCourses.map(code => (
-        <p>{code}</p>
+        <p key={code}>{code}</p>
       ))}
     </div>
   )

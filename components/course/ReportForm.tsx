@@ -36,7 +36,9 @@ const ReportForm = () => {
     <div>
       <p>Report inaccurate information</p>
 
-      {error && <div className='text-red-500'>THERE'S AN ERROR YOU IDIOT</div>}
+      {error && (
+        <div className='text-red-500'>THERE{"'"}S AN ERROR YOU IDIOT</div>
+      )}
 
       <form onSubmit={submit}>
         <input

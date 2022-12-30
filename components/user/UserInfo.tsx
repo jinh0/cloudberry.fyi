@@ -49,7 +49,7 @@ const UserInfo = () => {
         <p className='text-2xl mb-4'>Saved Courses</p>
 
         <div className='flex flex-row gap-x-4 overflow-x-auto snap-x snap-mandatory'>
-          {saved && saved.map(code => <CourseCard code={code} />)}
+          {saved && saved.map(code => <CourseCard key={code} code={code} />)}
         </div>
       </div>
 
@@ -57,7 +57,8 @@ const UserInfo = () => {
         <p className='text-2xl mb-4'>Completed Courses</p>
 
         <div className='flex flex-row gap-x-4 overflow-x-auto snap-x snap-mandatory'>
-          {completed && completed.map(code => <CourseCard code={code} />)}
+          {completed &&
+            completed.map(code => <CourseCard key={code} code={code} />)}
         </div>
       </div>
 
@@ -65,7 +66,8 @@ const UserInfo = () => {
         <p className='text-2xl mb-4'>Currently Taking</p>
 
         <div className='flex flex-row gap-x-4 overflow-x-auto snap-x snap-mandatory'>
-          {current && current.map(code => <CourseCard code={code} />)}
+          {current &&
+            current.map(code => <CourseCard key={code} code={code} />)}
         </div>
       </div>
     </div>

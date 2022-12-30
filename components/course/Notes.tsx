@@ -5,7 +5,7 @@ const Notes = ({ notes }: { notes: Note[] }) => {
   // Adds links to a bullet point
   const withLinks = (point: Note) => {
     return point.links.reduce(
-      (acc, link) =>
+      (acc, link, redIdx) =>
         acc.flatMap(content => {
           if (!(typeof content === 'string')) return [content]
 
@@ -23,7 +23,11 @@ const Notes = ({ notes }: { notes: Note[] }) => {
 
           return [
             before,
-            <NotesLink href={convertLink(link.href)} text={link.text} />,
+            <NotesLink
+              key={redIdx}
+              href={convertLink(link.href)}
+              text={link.text}
+            />,
             after,
           ]
         }),
@@ -37,9 +41,11 @@ const Notes = ({ notes }: { notes: Note[] }) => {
 
     if (typeof words[0] === 'string' && words[0].startsWith('Prerequisite')) {
       return (
-        [<span className='font-semibold mr-1'>Prerequisites: </span>] as Array<
-          string | JSX.Element
-        >
+        [
+          <span key={words[0]} className='font-semibold mr-1'>
+            Prerequisites:{' '}
+          </span>,
+        ] as Array<string | JSX.Element>
       ).concat(words)
     }
 
