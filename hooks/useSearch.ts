@@ -11,8 +11,10 @@ type Search = {
 }
 
 async function getCourses(search: Search) {
+  const found = courses.find(course => course.name === search.query)
+
   return {
-    results: [courses.find(course => course.name === search.query)],
+    results: found ? [found] : [],
   }
 
   // const data = await fetch(
