@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import { CourseType, SearchContextType, SemesterOption } from '@typing'
 import { Subject } from '@utils/subjects'
 import { useEffect, useState } from 'react'
+import courses from 'utils/courses'
 
 type Search = {
   query: string
@@ -10,12 +11,14 @@ type Search = {
 }
 
 async function getCourses(search: Search) {
-  const data = await fetch(
-    `/api/courses?search=${search.query}&subjects=${search.subjects.join(
-      ','
-    )}&semester=${search.semester}`
-  )
-  return data.json()
+  return {
+    results: [courses.find(course => course.name === search.query)],
+  }
+
+  // const data = await fetch(
+  //   `/api/courses?search=${search.query}&subjects=${search.subjects.join(',')}`
+  // )
+  // return data.json()
 }
 
 function useSearch(): SearchContextType {
