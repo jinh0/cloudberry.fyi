@@ -2,7 +2,7 @@ import { MagnifyingGlassIcon } from '@heroicons/react/24/solid'
 import useSearchInput from '@hooks/useSearchInput'
 
 const SearchBar = () => {
-  const { input, setInput, onSubmit } = useSearchInput()
+  const { input, setInput, onSubmit, setQuery } = useSearchInput()
 
   return (
     <form
@@ -12,7 +12,10 @@ const SearchBar = () => {
       <MagnifyingGlassIcon className='w-6 h-6 mr-2 text-gray-400' />
       <input
         value={input}
-        onChange={evt => setInput(evt.target.value)}
+        onChange={evt => {
+          setInput(evt.target.value)
+          setQuery(evt.target.value)
+        }}
         className='outline-none w-full px-2 text-black'
         placeholder='Search for a course...'
         autoFocus

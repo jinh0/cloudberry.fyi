@@ -11,10 +11,17 @@ type Search = {
 }
 
 async function getCourses(search: Search) {
-  const found = courses.find(course => course.name === search.query)
+  const found = courses.filter(
+    course =>
+      course.code
+        .toLowerCase()
+        .replace('-', ' ')
+        .startsWith(search.query.toLowerCase()) ||
+      course.name.toLowerCase().includes(search.query.toLowerCase())
+  )
 
   return {
-    results: found ? [found] : [],
+    results: found,
   }
 
   // const data = await fetch(

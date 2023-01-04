@@ -20,7 +20,7 @@ function useSearchInput() {
     localStorage.setItem('query', input)
   }
 
-  return { input, setInput, onSubmit }
+  return { input, setInput, onSubmit, setQuery }
 }
 
 export default useSearchInput
