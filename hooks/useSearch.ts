@@ -21,7 +21,7 @@ async function getCourses(search: Search) {
   )
 
   return {
-    results: found,
+    results: found.slice(0, 10),
   }
 
   // const data = await fetch(
