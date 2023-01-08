@@ -1,6 +1,9 @@
 import { WaiterType, Safe } from '@typing'
 import { QueryDocumentSnapshot } from 'firebase-admin/firestore'
 import { createTransport } from 'nodemailer'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 let transporter = createTransport({
   host: 'smtp.gmail.com',
@@ -21,6 +24,7 @@ export async function alertWaiter({
   crn: string
   waiter: QueryDocumentSnapshot<WaiterType>
 }): Promise<Safe<void>> {
+  console.log(process.env.GMAIL_PASSWORD)
   const display = (code: string) => code.replace('-', ' ')
 
   const { email } = waiter.data()
@@ -36,6 +40,8 @@ export async function alertWaiter({
         code
       )} has an availability. Have a good day.`,
     })
+
+    console.log(`Alerted ${email} about ${code}`)
 
     return { isOk: true, result: null }
   } catch {

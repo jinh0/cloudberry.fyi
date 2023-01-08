@@ -22,14 +22,17 @@ export async function processAllPending() {
   let pendingWaiters = await getPendingWaiters()
 
   pendingWaiters.forEach(async waiter => {
-    const { code, crn } = waiter.data()
+    const { code, crn, email } = waiter.data()
+    console.log('Email: ', email, 'Code: ', code)
+
     const course = await getCachedCourse(code)
     if (!course.isOk) return
 
     const vsb = course.result
     const block = vsb.blocks.find(block => block.crn === crn)
-    console.log('got the block!')
-    if (block && block.remainingSeats > 0) {
+    console.log('Remaining seats: ', block.remainingSeats)
+    if (block.remainingSeats > 0) {
+      console.log('hello?')
       const { isOk } = await alertWaiter({ code, crn, waiter })
       if (isOk) updateWaiter(waiter.ref)
     }

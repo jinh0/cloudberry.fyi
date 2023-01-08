@@ -20,6 +20,7 @@ export async function getPendingWaiters() {
 }
 
 export async function updateWaiter(waiter: DocumentReference<WaiterType>) {
+  console.log('Update waiter!')
   await waiter.update({
     status: 'completed',
     ftime: Timestamp.now(),
