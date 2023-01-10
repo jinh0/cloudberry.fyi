@@ -3,6 +3,7 @@
  */
 
 import UserContext from '@contexts/UserContext'
+import { BookmarkIcon } from '@heroicons/react/24/outline'
 import useCourse from '@hooks/useCourse'
 import { useQuery } from '@tanstack/react-query'
 import { CourseType, UserType } from '@typing'
@@ -22,7 +23,10 @@ const Saved = () => {
   return (
     <div className='hidden lg:block lg:w-1/3 lg:pl-12'>
       <div className='text-2xl font-medium flex flex-row items-center mb-4'>
-        <div>Your Saved Courses</div>
+        <div className='flex flex-row items-center'>
+          <BookmarkIcon className='w-7 h-7 mr-1.5' />
+          <span>Saved Courses</span>
+        </div>
       </div>
 
       <div>
