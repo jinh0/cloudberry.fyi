@@ -1,5 +1,5 @@
 import SearchContext from '@contexts/SearchContext'
-import { useState, useContext, useEffect, FormEvent } from 'react'
+import { useState, useContext, useEffect, FormEvent, ChangeEvent } from 'react'
 
 function useSearchInput() {
   const { setQuery } = useContext(SearchContext)
@@ -10,7 +10,7 @@ function useSearchInput() {
     const stored = localStorage.getItem('query')
     setInput(stored ? stored : '')
     setQuery(stored ? stored : '')
-  }, [setInput])
+  }, [setInput, setQuery])
 
   // Submission function
   const onSubmit = (evt: FormEvent) => {
@@ -20,7 +20,13 @@ function useSearchInput() {
     localStorage.setItem('query', input)
   }
 
-  return { input, setInput, onSubmit, setQuery }
+  const onChange = (evt: ChangeEvent<HTMLInputElement>) => {
+    setInput(evt.target.value)
+    setQuery(evt.target.value)
+    localStorage.setItem('query', evt.target.value)
+  }
+
+  return { input, setInput, onSubmit, onChange }
 }
 
 export default useSearchInput
