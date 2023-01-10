@@ -11,9 +11,9 @@ import {
 } from '@heroicons/react/24/outline'
 import { VSBBlock } from '@typing'
 import { NUM_TO_DAY } from '@utils/vsb'
+import GetASeat from './GetASeat'
 
-const Block = ({ block }: { block: VSBBlock }) => {
-
+const Block = ({ code, block }: { code: string; block: VSBBlock }) => {
   return (
     <div className='mb-8'>
       <p className='mb-4 flex flex-row items-center'>
@@ -21,6 +21,8 @@ const Block = ({ block }: { block: VSBBlock }) => {
         <span className='text-lg text-gray-700'>
           {block.teachers.join('; ')}
         </span>
+
+        {block.remainingSeats <= 0 && <GetASeat code={code} block={block} />}
       </p>
       <div className='flex flex-row items-center flex-wrap mb-4 text-base lg:text-lg gap-y-2'>
         <div className='flex flex-row items-center text-gray-800 pr-3 mr-3 border-r'>
@@ -31,7 +33,6 @@ const Block = ({ block }: { block: VSBBlock }) => {
               ? 'No Location'
               : block.locations.join('; ')}
           </div>
-
         </div>
         <div className='flex flex-row items-center text-gray-800 pr-3 mr-3 border-r'>
           <ClipboardIcon className='w-5 h-5 mr-2' />

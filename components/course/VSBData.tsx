@@ -48,7 +48,7 @@ const VSBData = ({ vsb }: { vsb: VSBCourse }) => {
         {course.blocks
           .filter(block => course.combos[idx].includes(block.crn))
           .map(block => (
-            <Block block={block} key={block.crn} />
+            <Block code={course.code} block={block} key={block.crn} />
           ))}
       </div>
 
