@@ -23,7 +23,10 @@ async function getCourses(search: Search) {
         .toLowerCase()
         .replace('-', ' ')
         .startsWith(search.query.toLowerCase()) ||
-        course.name.toLowerCase().includes(search.query.toLowerCase()))
+        course.name
+          .toLowerCase()
+          .replace(/\r/g, '')
+          .includes(search.query.toLowerCase()))
   )
 
   return {
