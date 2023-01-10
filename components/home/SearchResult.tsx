@@ -10,16 +10,16 @@ const SearchResult = ({ initCourses }: { initCourses: CourseType[] }) => {
   if (error)
     return <div className='mt-10 text-gray-600'>Something went wrong.</div>
 
-  if (isLoading)
-    return (
-      <div className='mt-10'>
-        <p className='text-gray-600 text-sm pb-4'>Searching...</p>
-        <p className='border-b'></p>
+  // if (isLoading)
+  //   return (
+  //     <div className='mt-10'>
+  //       <p className='text-gray-600 text-sm pb-4'>Searching...</p>
+  //       <p className='border-b'></p>
 
-        <LoadingCourse />
-        <LoadingCourse />
-      </div>
-    )
+  //       <LoadingCourse />
+  //       <LoadingCourse />
+  //     </div>
+  //   )
 
   // If search is empty, then return the default course list
   if (query === '' && subjects.length === 0) {
@@ -32,8 +32,6 @@ const SearchResult = ({ initCourses }: { initCourses: CourseType[] }) => {
     )
   }
 
-  const { results } = data
-
   return (
     <div className='mt-10'>
       {query && (
@@ -43,7 +41,7 @@ const SearchResult = ({ initCourses }: { initCourses: CourseType[] }) => {
       )}
       <p className='border-b'></p>
 
-      <CourseList courses={results} />
+      <CourseList courses={data ? data.results : []} />
     </div>
   )
 }
