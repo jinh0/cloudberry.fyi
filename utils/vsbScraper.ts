@@ -151,6 +151,4 @@ async function main() {
   else console.log('not found')
 }
 
-// main()
-
 export {}
