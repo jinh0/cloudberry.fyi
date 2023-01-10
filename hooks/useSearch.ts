@@ -6,36 +6,32 @@ import courses from 'utils/courses'
 
 type Search = {
   query: string
-  subjects: string[]
+  subjects: Uppercase<string>[]
   semester: string
 }
 
 async function getCourses(search: Search) {
   const found = courses.filter(
     course =>
-      course.code
+      (search.subjects.length > 0
+        ? search.subjects.some(subject => course.code.startsWith(subject))
+        : true) &&
+      (course.code
         .toLowerCase()
         .replace('-', ' ')
         .startsWith(search.query.toLowerCase()) ||
-      course.name.toLowerCase().includes(search.query.toLowerCase())
+        course.name.toLowerCase().includes(search.query.toLowerCase()))
   )
 
   return {
     results: found.slice(0, 10),
   }
-
-  // const data = await fetch(
-  //   `/api/courses?search=${search.query}&subjects=${search.subjects.join(',')}`
-  // )
-  // return data.json()
 }
 
 function useSearch(): SearchContextType {
   const [query, setQuery] = useState('')
   const [subjects, setSubjects] = useState<Subject[]>([])
   const [semester, setSemester] = useState<SemesterOption>(null)
-
-  // console.log({ query, subjects, semester: semester ? semester.id : -1 })
 
   const { data, isLoading, error, refetch } = useQuery<{
     results: CourseType[]
