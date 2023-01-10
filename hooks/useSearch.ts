@@ -13,6 +13,9 @@ type Search = {
 async function getCourses(search: Search) {
   const found = courses.filter(
     course =>
+      search.semester
+        .split('|')
+        .some(sem => course.terms.some(term => term.term === sem)) &&
       (search.subjects.length > 0
         ? search.subjects.some(subject => course.code.startsWith(subject))
         : true) &&
