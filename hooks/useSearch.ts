@@ -26,7 +26,10 @@ async function getCourses(search: Search) {
         course.name
           .toLowerCase()
           .replace(/\r/g, '')
-          .includes(search.query.toLowerCase()))
+          .includes(search.query.toLowerCase()) ||
+        course.terms.some(term =>
+          term.instructors.some(teacher => teacher.includes(search.query))
+        ))
   )
 
   return {

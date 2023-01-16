@@ -57,31 +57,6 @@ const Course = ({
           <PrereqsOf prereqsOf={course.prereqsOf} />
 
           <VSBData vsb={course.vsb} />
-
-          {/* <ReportForm /> */}
-          {/* <div className='mt-10 outline-none outline-0'>
-            <Tab.Group>
-              <Tab.List>
-                <Tab className='outline-none text-xl mr-8'>Overview</Tab>
-                <Tab className='outline-none text-xl mr-8'>
-                  Winter 2023 Schedule
-                </Tab>
-              </Tab.List>
-              <Tab.Panels>
-                <Tab.Panel className='outline-none'>
-                  <div className='mt-10'>
-                    <p className='text-2xl mb-4'>Overview</p>
-                    <p>{course.description}</p>
-                  </div>
-
-                  <Notes notes={course.notes} />
-                </Tab.Panel>
-                <Tab.Panel className='outline-none'>
-                  <VSBData data={course.vsb} />
-                </Tab.Panel>
-              </Tab.Panels>
-            </Tab.Group>
-          </div> */}
         </div>
       </div>
     </Main>
