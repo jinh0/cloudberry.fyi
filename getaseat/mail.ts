@@ -24,7 +24,7 @@ export async function alertWaiter({
   crn: string
   waiter: QueryDocumentSnapshot<WaiterType>
 }): Promise<Safe<void>> {
-  console.log(process.env.GMAIL_PASSWORD)
+  console.log('GMAIL ', process.env.GMAIL_PASSWORD)
   const display = (code: string) => code.replace('-', ' ')
 
   const { email } = waiter.data()
