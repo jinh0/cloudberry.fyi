@@ -6,7 +6,6 @@ import Saved from '@components/home/Saved'
 import { initCourses } from 'utils/courses'
 import useSearch from '@hooks/useSearch'
 import SearchResult from '@components/home/SearchResult'
-import RmvSaved from '@components/home/Unsave'
 
 const Home = ({ initCourses }: { initCourses: CourseType[] }) => {
   const search = useSearch()
