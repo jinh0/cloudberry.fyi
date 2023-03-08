@@ -13,6 +13,7 @@ type Search = {
 async function getCourses(search: Search) {
   const found = courses.filter(
     course =>
+      // TODO: Clean up this mess
       search.semester
         .split('|')
         .some(sem => course.terms.some(term => term.term === sem)) &&
