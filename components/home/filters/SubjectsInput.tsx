@@ -1,15 +1,8 @@
-import SearchContext from '@contexts/SearchContext'
 import { Combobox } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/24/solid'
 import subjectsData, { Subject } from '@utils/subjects'
 import Fuse from 'fuse.js'
-import {
-  Dispatch,
-  SetStateAction,
-  useContext,
-  useEffect,
-  useState,
-} from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 
 const fuse = new Fuse(subjectsData, {
   keys: ['code', 'title'],
