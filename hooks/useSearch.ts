@@ -41,6 +41,7 @@ function useSearch(): SearchContextType {
   const [query, setQuery] = useState('')
   const [subjects, setSubjects] = useState<Subject[]>([])
   const [semester, setSemester] = useState<SemesterOption>(null)
+  const [prevData, setPrevData] = useState([])
 
   const { data, isLoading, error, refetch } = useQuery<{
     results: CourseType[]
@@ -55,7 +56,12 @@ function useSearch(): SearchContextType {
         semester: semester ? semester.value : 'fall|winter',
         subjects: subjects.map(x => x.code),
       }),
+    placeholderData: { results: prevData },
   })
+
+  useEffect(() => {
+    if (data.results) setPrevData(data.results)
+  }, [data])
 
   // Refetch course data when any part of the search changes
   useEffect(() => {
