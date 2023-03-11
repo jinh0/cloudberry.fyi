@@ -50,15 +50,20 @@ const Course = ({
 
 const CourseHeading = ({ course, code, user }) => {
   return (
-    <div className='space-y-3'>
+    <div className='space-y-4'>
       <div className='text-2xl md:text-3xl mt-4 flex flex-row items-center'>
         <span>
           <span className='font-semibold mr-2'>{displayCode(code)}</span>
-          <span>{course.name}</span>
+          <span className='mr-2'>{course.name}</span>
+          <span className='font-light text-gray-700'>
+            ({String(course.credits)}{' '}
+            {course.credits !== 1 ? 'credits' : 'credit'})
+          </span>
         </span>
         <ShareButton />
       </div>
 
+      {/*
       <div className='text-gray-700 text-base flex flex-row flex-wrap gap-x-2 items-center'>
         <div>
           {String(course.credits)} {course.credits !== 1 ? 'credits' : 'credit'}
@@ -68,6 +73,7 @@ const CourseHeading = ({ course, code, user }) => {
         <div className='w-1 h-1 rounded-full bg-gray-700'></div>
         <div>Faculty of Science</div>
       </div>
+      */}
 
       <Semesters terms={course.terms} />
 
