@@ -31,20 +31,6 @@ const Course = ({ course }: { course: CourseType }) => {
 
       {/* Description */}
       <p className='mt-2'>{course.description}</p>
-
-      {/* Prerequisites */}
-      {/* <div className='mt-2'>
-        {course.prerequisites.length > 0 && (
-          <>
-            <span className='font-semibold'>Prerequisites: </span>
-            <span>
-              {course.prerequisites
-                .map(prereq => prereq.toUpperCase().replace('-', ' '))
-                .join(', ')}
-            </span>
-          </>
-        )}
-      </div> */}
     </div>
   )
 }

@@ -56,7 +56,7 @@ const Semester = ({
   }
 
   return (
-    <div className='flex flex-row mb-2 items-center'>
+    <div className='flex flex-row items-center'>
       <Pill className={color(sem.term)} hasBorder={false}>
         <div className='mr-2'>{icon(sem.term)}</div>
 

@@ -13,14 +13,14 @@ const VSBData = ({ vsb }: { vsb: VSBCourse }) => {
   if (!vsb || !course.blocks || course.blocks.length === 0) return <></>
 
   return (
-    <div className='mt-10 mb-4'>
-      <div className='mb-6 flex flex-row items-center gap-4'>
-        <div className='text-2xl flex items-center'>Schedule</div>
+    <div className='mt-12 mb-4'>
+      <div className='pb-3 mb-4 flex flex-row items-center gap-4 border-b'>
+        <div className='text-2xl font-medium flex items-center'>Schedule</div>
 
         {course.blocks.length > 1 && (
           <div className='flex flex-row items-center gap-4'>
             <button
-              className='p-2 rounded-xl bg-gray-50'
+              className='p-2 rounded-full bg-gray-50'
               onClick={() => {
                 if (idx > 0) setIdx(idx - 1)
                 else setIdx(course.combos.length - 1)
@@ -29,10 +29,10 @@ const VSBData = ({ vsb }: { vsb: VSBCourse }) => {
               <ArrowLeftIcon className='w-4 h-4' />
             </button>
             <div className='text-xl'>
-              {idx + 1} of {course.combos.length}
+              {idx + 1} / {course.combos.length}
             </div>
             <button
-              className='p-2 rounded-xl bg-gray-50'
+              className='p-2 rounded-full bg-gray-50'
               onClick={() => {
                 if (idx < course.combos.length - 1) setIdx(idx + 1)
                 else setIdx(0)
