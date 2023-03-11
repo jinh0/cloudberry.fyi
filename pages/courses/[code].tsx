@@ -48,13 +48,13 @@ const Course = ({
               <div>
                 {String(course.credits)}{' '}
                 {course.credits !== 1 ? 'credits' : 'credit'}
-                {user && <Actions code={code} />}
               </div>
               <div className='w-1 h-1 rounded-full bg-gray-700'></div>
               <div>{subjectsData[course.code.split('-')[0]]}</div>
               <div className='w-1 h-1 rounded-full bg-gray-700'></div>
               <div>Faculty of Science</div>
             </div>
+            {user && <Actions code={code} />}
           </div>
           <div className='mt-10'>
             <p className='text-2xl font-medium pb-3 mb-4 border-b'>Overview</p>
