@@ -51,13 +51,6 @@ const VSBData = ({ vsb }: { vsb: VSBCourse }) => {
             <Block code={course.code} block={block} key={block.crn} />
           ))}
       </div>
-
-      {/* <WeeklyView */}
-      {/* blocks={course.blocks.filter(block => */}
-      {/* course.combos[idx].includes(block.crn) */}
-      {/* )} */}
-      {/* height={32} */}
-      {/* /> */}
     </div>
   )
 }

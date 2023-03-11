@@ -2,9 +2,7 @@
  * [code].tsx: Individual course page at /courses/[code]
  */
 
-import GoBack from '@components/GoBack'
 import Main from '@components/Main'
-import Title from '@components/Title'
 import { useRouter } from 'next/router'
 import { CourseType, VSBCourse } from '@typing'
 import Actions from '@components/course/Actions'
@@ -19,6 +17,7 @@ import ShareButton from '@components/course/ShareButton'
 import Notes from '@components/course/Notes'
 import PrereqsOf from '@components/course/PrereqsOf'
 import subjectsData from '@utils/subjects.json'
+import { displayCode, formatDesc } from '@utils/formatting'
 
 const Course = ({
   course,
@@ -29,11 +28,9 @@ const Course = ({
   const { code } = router.query as { code: string }
   const { user } = useUser()
 
-  const format = (code: string) => code?.replace('-', ' ').toUpperCase()
-
   return (
     <Main
-      title={`${format(code)} ${course.name} | Cloudberry`}
+      title={`${displayCode(code)} ${course.name} | Cloudberry`}
       content={course.description}
     >
       <div className='flex flex-row w-full'>
@@ -41,7 +38,7 @@ const Course = ({
           <div className='space-y-4'>
             <div className='text-2xl md:text-3xl mt-4 flex flex-row items-center'>
               <span>
-                <span className='font-semibold mr-2'>{format(code)}</span>
+                <span className='font-semibold mr-2'>{displayCode(code)}</span>
                 <span>{course.name}</span>
               </span>
               <ShareButton />
@@ -61,7 +58,7 @@ const Course = ({
           </div>
           <div className='mt-10'>
             <p className='text-2xl font-medium pb-3 mb-4 border-b'>Overview</p>
-            <p>{course.description}</p>
+            <p>{formatDesc(course.description, code)}</p>
           </div>
           <Notes notes={course.notes} />
           <PrereqsOf prereqsOf={course.prereqsOf} />

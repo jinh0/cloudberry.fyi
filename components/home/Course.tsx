@@ -6,6 +6,7 @@ import { CourseType } from 'typing'
 import Semester from '@components/Semester'
 import NotOffered from '@components/NotOffered'
 import CourseHeading from './CourseHeading'
+import { formatDesc } from '@utils/formatting'
 
 const Course = ({ course }: { course: CourseType }) => {
   return (
@@ -30,7 +31,7 @@ const Course = ({ course }: { course: CourseType }) => {
       </div>
 
       {/* Description */}
-      <p className='mt-2'>{course.description}</p>
+      <p className='mt-2'>{formatDesc(course.description, course.code)}</p>
     </div>
   )
 }
