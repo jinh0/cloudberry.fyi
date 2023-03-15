@@ -54,13 +54,13 @@ const SubjectsInput = ({
           </Combobox.Button>
         </div>
 
-        <Combobox.Options className='absolute bg-white border rounded-xl p-1 mt-2 w-72 h-56 overflow-auto shadow'>
+        <Combobox.Options className='absolute bg-white border rounded-xl py-1 mt-2 w-72 h-56 overflow-auto shadow'>
           {filteredSubjects.map(({ code, title }, idx) => (
             <Combobox.Option key={idx} value={{ code, title }}>
               {({ selected, active }) => (
                 <div
                   className={
-                    'cursor-pointer hover:bg-violet-500 hover:text-white p-2 rounded-xl' +
+                    'cursor-pointer hover:bg-violet-500 hover:text-white px-4 py-2' +
                     (!selected && active ? ' bg-violet-500 text-white' : '')
                   }
                 >

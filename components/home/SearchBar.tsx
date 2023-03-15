@@ -6,7 +6,7 @@ const SearchBar = () => {
 
   return (
     <form
-      className='mb-2 text-3xl py-2 flex flex-row items-center text-gray-600'
+      className='mb-2 text-2xl md:text-3xl py-2 flex flex-row items-center text-gray-600'
       onSubmit={onSubmit}
     >
       <MagnifyingGlassIcon className='w-6 h-6 mr-2 text-gray-400' />
