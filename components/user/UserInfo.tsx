@@ -1,6 +1,6 @@
 import UserContext from '@contexts/UserContext'
 import useCourse from '@hooks/useCourse'
-import { UserType } from '@typing'
+import Link from 'next/link'
 import { useContext } from 'react'
 
 const CourseCard = ({ code }: { code: string }) => {
@@ -49,7 +49,16 @@ const UserInfo = () => {
         <p className='text-2xl mb-4'>Saved Courses</p>
 
         <div className='flex flex-row gap-x-4 overflow-x-auto snap-x snap-mandatory'>
-          {saved && saved.map(code => <CourseCard key={code} code={code} />)}
+          {saved &&
+            saved.map(code => (
+              <Link
+                key={code}
+                href={`/courses/${code}`}
+                className='flex flex-row gap-x-4 '
+              >
+                {<CourseCard code={code} />}
+              </Link>
+            ))}
         </div>
       </div>
 
@@ -58,7 +67,15 @@ const UserInfo = () => {
 
         <div className='flex flex-row gap-x-4 overflow-x-auto snap-x snap-mandatory'>
           {completed &&
-            completed.map(code => <CourseCard key={code} code={code} />)}
+            completed.map(code => (
+              <Link
+                key={code}
+                href={`/courses/${code}`}
+                className='flex flex-row gap-x-4 '
+              >
+                {<CourseCard code={code} />}
+              </Link>
+            ))}
         </div>
       </div>
 
@@ -67,7 +84,15 @@ const UserInfo = () => {
 
         <div className='flex flex-row gap-x-4 overflow-x-auto snap-x snap-mandatory'>
           {current &&
-            current.map(code => <CourseCard key={code} code={code} />)}
+            current.map(code => (
+              <Link
+                key={code}
+                href={`/courses/${code}`}
+                className='flex flex-row gap-x-4 '
+              >
+                {<CourseCard code={code} />}
+              </Link>
+            ))}
         </div>
       </div>
     </div>
