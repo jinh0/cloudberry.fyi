@@ -8,7 +8,9 @@ import {
   UserIcon,
   UserPlusIcon,
   UserGroupIcon,
+  CheckIcon,
 } from '@heroicons/react/24/outline'
+import { Tooltip } from '@mantine/core'
 import { VSBBlock } from '@typing'
 import { NUM_TO_DAY } from '@utils/vsb'
 import { useEffect, useState } from 'react'
@@ -55,18 +57,28 @@ const Block = ({ code, block }: { code: string; block: VSBBlock }) => {
             setCopied(true)
           }}
         >
-          <ClipboardIcon className='w-5 h-5 mr-2' />
-          <button className='border-none rounded hover:bg-slate-100'>
-            <div>
-              {copied ? (
-                <div className='hover:bg-slate-200 border-none rounded shadow-sm'>
-                  CRN: {block.crn}
-                </div>
-              ) : (
-                <div className=''>CRN: {block.crn}</div>
-              )}
-            </div>
-          </button>
+          <Tooltip
+            label={copied ? 'Copied!' : 'Copy CRN'}
+            color='dark'
+            withArrow
+            arrowPosition='center'
+          >
+            <button className='border-none rounded-md w-35 h-8 leading-8 hover:bg-slate-100 0 px-2 -mx-2'>
+              <div>
+                {copied ? (
+                  <div className='border-none rounded flex items-center'>
+                    <CheckIcon className='w-5 h-5 mr-2 text-green-700' />
+                    CRN: {block.crn}
+                  </div>
+                ) : (
+                  <div className='flex items-center'>
+                    <ClipboardIcon className='w-5 h-5 mr-2' />
+                    CRN: {block.crn}
+                  </div>
+                )}
+              </div>
+            </button>
+          </Tooltip>
         </div>
 
         {block.remainingSeats > 0 && (
