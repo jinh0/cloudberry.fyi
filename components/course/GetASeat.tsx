@@ -16,6 +16,12 @@ function GetASeat({ code, block }: { code: string; block: VSBBlock }) {
 
   const [waiting, setWaiting] = useState(false)
 
+  useEffect(() => {
+    setWaiting(
+      waiter && waiter?.exists() && waiter?.data().status === 'pending'
+    )
+  }, [waiter])
+
   const submit = async () => {
     if (user) {
       await setDoc(doc(db.waiters, `${user.id}-${code}`), {
@@ -41,13 +47,8 @@ function GetASeat({ code, block }: { code: string; block: VSBBlock }) {
       unsubmit()
       setWaiting(false)
     } else {
-      //student not on waitlist
-      if (waiter && waiter?.exists() && waiter?.data().status === 'pending') {
-        setWaiting(true)
-      } else {
-        submit()
-        setWaiting(true)
-      }
+      submit()
+      setWaiting(true)
     }
   }
 
