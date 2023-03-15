@@ -57,6 +57,16 @@ export type UserType = {
   saved: string[] | null
   completed: string[] | null
   current: string[] | null
+  degree?: DegreeCourse[]
+}
+
+export type SemesterType = 'fall' | 'winter' | 'summer'
+
+export type DegreeCourse = {
+  code: string
+  title: string
+  semester: SemesterType
+  year: number
 }
 
 export type BlockType = { day: string; t1: number; t2: number }
