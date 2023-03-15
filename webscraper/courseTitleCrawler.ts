@@ -8,14 +8,11 @@
 
 import fs from 'fs'
 import { load } from 'cheerio'
-import prompt from 'prompt-sync'
-
-const input = prompt()
 
 // DISCLAIMER: You need to make the year folder before running the script
 
 async function main() {
-  const year = Number(input('What year?: '))
+  const year = Number(process.argv[2])
 
   const data = await getCourses(year)
   saveCourseData(year, data)

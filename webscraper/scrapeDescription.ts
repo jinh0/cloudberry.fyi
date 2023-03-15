@@ -72,6 +72,8 @@ async function fetchCourses(year: number) {
 
   const updatedCourses = []
 
+  console.log('Working...', Number(process.argv[2]))
+
   let i = 0
   for (const course of courses) {
     const linked = await fetchCourse(course.code, year)
@@ -94,4 +96,4 @@ async function fetchCourses(year: number) {
   )
 }
 
-fetchCourses(2020)
+fetchCourses(Number(process.argv[2]))

@@ -2,6 +2,9 @@ import requests
 from bs4 import BeautifulSoup
 import json
 import re
+import sys
+
+
 def get_course(code: str, year: int):
     # defining dictionary for a course
     full_course = {
@@ -59,7 +62,7 @@ def get_course(code: str, year: int):
             return False
 
     # determine department and faculty
-    def department(doc):  
+    def department(doc):
         info = str(offered_by(doc))
         info = info[:-1]
         info = info.split(":")
@@ -75,9 +78,8 @@ def get_course(code: str, year: int):
         description = description.lstrip()
         return description
 
-
     # determine extra info and restrictions
-    def extra_info(doc):        
+    def extra_info(doc):
         try:
             extra = str(doc.find_all("ul", {"class": "catalog-notes"})[-1].get_text())
             extra = re.split("\n\n", extra)
@@ -86,8 +88,9 @@ def get_course(code: str, year: int):
         except IndexError:
             extra = []
         return extra
+
     # determine instructors for each term
-    def find_instructors(doc):    
+    def find_instructors(doc):
         instruct = str(doc.find("p", "catalog-instructors").get_text())
         instruct = re.split("[:;()]", instruct)
         instruct.remove(instruct[0])
@@ -119,12 +122,13 @@ def get_course(code: str, year: int):
             dict = {"term": "summer", "instructors": []}
             dict_list.append(dict)
         return dict_list, terms
+
     # terms = ['fall', 'winter', 'summer']
 
     # terms_dict = { fall: [], winter: [], summer: [] }
     def terms_dictionary(doc):
         terms_dict = {}
-        for term in finding_terms(doc)[1]: 
+        for term in finding_terms(doc)[1]:
             terms_dict[term] = []
 
         curr_instructors = []
@@ -138,10 +142,13 @@ def get_course(code: str, year: int):
 
     # convert terms_dict into our preferred list format
     def pref_dict_format(dict_list):
-        dict_list = [{"term": term, "instructors": terms_dictionary(doc)[term]} for term in terms_dictionary(doc)]
+        dict_list = [
+            {"term": term, "instructors": terms_dictionary(doc)[term]}
+            for term in terms_dictionary(doc)
+        ]
         return dict_list
 
-    def credits_counter(doc):  
+    def credits_counter(doc):
         cred = 0
         if course_code_credits(doc)[2].isdigit() == True:
             cred = int(course_code_credits(doc)[2])
@@ -162,9 +169,10 @@ def get_course(code: str, year: int):
     full_course["department"] = department(doc)[0]
     full_course["faculty"] = department(doc)[1]
     full_course["terms"] = pref_dict_format(terms_dictionary(doc))
- 
+
     # adding course dictionary to list of all courses
     return full_course
+
 
 def get_all_courses(year: int):
     course_list = []
@@ -175,15 +183,15 @@ def get_all_courses(year: int):
 
         for idx, code in enumerate(course_titles):
             try:
-              course_list.append(get_course(code, year))
+                course_list.append(get_course(code, year))
 
-              print(code)
+                print(code)
 
-              if idx % 1000 == 0:
-                  print(f"Course {idx}: ", code)
+                if idx % 1000 == 0:
+                    print(f"Course {idx}: ", code)
 
-                  with open(f"{year}/course-data.json", "w") as outfile:
-                      json.dump(course_list, outfile, indent=2)
+                    with open(f"{year}/course-data.json", "w") as outfile:
+                        json.dump(course_list, outfile, indent=2)
             except Exception as e:
                 with open(f"{year}/errors-courses.txt", "a+") as outfile:
                     outfile.write(f"{code},{str(e)}\n")
@@ -194,10 +202,14 @@ def get_all_courses(year: int):
         json.dump(course_list, outfile, indent=2)
 
 
-course = input("Course code (or 'all'): ")
-year = int(input("Year: "))
+# USAGE:
+# python3 main.py <year>
+# python3 main.py <year> <course-code>
 
-if course == 'all':
+year = int(sys.argv[1])
+course = None if len(sys.argv) < 3 else sys.argv[2]
+
+if not course:
     get_all_courses(year)
 else:
     print(json.dumps(get_course(course, year), indent=2))

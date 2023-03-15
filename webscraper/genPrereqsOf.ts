@@ -1,13 +1,10 @@
 import { CourseType } from '@typing'
 import { readFileSync, writeFileSync } from 'fs'
-import prompt from 'prompt-sync'
-
-const input = prompt()
 
 main()
 
 async function main() {
-  const year = Number(input('What year?: '))
+  const year = Number(process.argv[2])
   generate(year)
 }
 
