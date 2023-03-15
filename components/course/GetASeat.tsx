@@ -58,24 +58,19 @@ function GetASeat({ code, block }: { code: string; block: VSBBlock }) {
 
   return (
     <>
-      {!loading && user && (
-        <button
-          onClick={handleClick}
-          className='rounded-full ml-4 px-3 py-1 transition border border-transparent bg-yellow-100 text-yellow-600 flex flex-row items-center'
-        >
-          {waiting ? (
-            <>
-              <BellAlertIcon className='w-6 h-6' />
-              <div className='ml-2'>Waiting</div>
-            </>
-          ) : (
-            <>
-              <BellIcon className='w-6 h-6' />
-              <div className='ml-2'>Get a Seat!</div>
-            </>
-          )}
-        </button>
-      )}
+      <button onClick={handleClick}>
+        {waiting ? (
+          <div className='rounded-full ml-4 px-3 py-1 transition border border-transparent text-yellow-600 bg-yellow-100 flex flex-row items-center'>
+            <BellAlertIcon className='w-6 h-6' />
+            <div className='ml-2'>Waiting</div>
+          </div>
+        ) : (
+          <div className='rounded-full ml-4 px-3 py-1 transition border border-yellow-600 hover:bg-yellow-100 text-yellow-600 flex flex-row items-center'>
+            <BellIcon className='w-6 h-6' />
+            <div className='ml-2'>Get a Seat!</div>
+          </div>
+        )}
+      </button>
     </>
   )
 }
