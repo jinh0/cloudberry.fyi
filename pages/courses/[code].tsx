@@ -4,7 +4,7 @@
 
 import Main from '@components/Main'
 import { useRouter } from 'next/router'
-import { CourseType, VSBCourse } from '@typing'
+import { CourseType, UserType, VSBCourse } from '@typing'
 import Actions from '@components/course/Actions'
 
 import courses from 'utils/courses'
@@ -18,6 +18,7 @@ import Notes from '@components/course/Notes'
 import PrereqsOf from '@components/course/PrereqsOf'
 import subjectsData from '@utils/subjects.json'
 import { displayCode, formatDesc } from '@utils/formatting'
+import { DocumentSnapshot } from 'firebase/firestore'
 
 const Course = ({
   course,
@@ -48,7 +49,15 @@ const Course = ({
   )
 }
 
-const CourseHeading = ({ course, code, user }) => {
+const CourseHeading = ({
+  course,
+  code,
+  user,
+}: {
+  course: CourseType
+  code: string
+  user: DocumentSnapshot<UserType>
+}) => {
   return (
     <div className='space-y-4'>
       <div className='text-2xl md:text-3xl mt-4 flex flex-row items-center'>
@@ -68,7 +77,7 @@ const CourseHeading = ({ course, code, user }) => {
         <div className='w-1 h-1 rounded-full bg-gray-700'></div>
         <div>{subjectsData[course.code.split('-')[0]]}</div>
         <div className='w-1 h-1 rounded-full bg-gray-700'></div>
-        <div>Faculty of Science</div>
+        <div>{course.faculty}</div>
       </div>
 
       {user && <Actions code={code} />}
