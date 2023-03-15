@@ -1,32 +1,8 @@
 import UserContext from '@contexts/UserContext'
 import useCourse from '@hooks/useCourse'
-import { UserType } from '@typing'
+import Link from 'next/link'
 import { useContext } from 'react'
-
-const CourseCard = ({ code }: { code: string }) => {
-  const format = (code: string) => code?.replace('-', ' ').toUpperCase()
-
-  const { data, isLoading } = useCourse(code)
-
-  if (isLoading) {
-    return (
-      <div className='border rounded-lg p-2 mb-4'>
-        <div className='w-full bg-gray-100 text-transparent select-none rounded-full animate-pulse'>
-          XXX
-        </div>
-      </div>
-    )
-  }
-
-  const course = data.result
-
-  return (
-    <div className='w-60 border rounded-lg p-2 px-4 flex-shrink-0 snap-start'>
-      <p className='font-semibold'>{format(course.code)}</p>
-      <p className=''>{course.name}</p>
-    </div>
-  )
-}
+import CourseCard from './CourseCard'
 
 const UserInfo = () => {
   const { user, loading, error } = useContext(UserContext)
