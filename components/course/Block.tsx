@@ -11,9 +11,23 @@ import {
 } from '@heroicons/react/24/outline'
 import { VSBBlock } from '@typing'
 import { NUM_TO_DAY } from '@utils/vsb'
+import { useEffect, useState } from 'react'
 import GetASeat from './GetASeat'
 
 const Block = ({ code, block }: { code: string; block: VSBBlock }) => {
+  const [copied, setCopied] = useState(false)
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (copied) setCopied(false)
+    }, 275)
+    return () => clearTimeout(timeout)
+  }, [copied])
+
+  const copyText = text => {
+    navigator.clipboard.writeText(text)
+  }
+
   return (
     <div className='mb-8'>
       <p className='mb-4 flex flex-row items-center'>
@@ -34,9 +48,25 @@ const Block = ({ code, block }: { code: string; block: VSBBlock }) => {
               : block.locations.join('; ')}
           </div>
         </div>
-        <div className='flex flex-row items-center text-gray-800 pr-3 mr-3 border-r'>
+        <div
+          className='flex flex-row items-center text-gray-800 pr-3 mr-3 border-r'
+          onClick={() => {
+            copyText(block.crn)
+            setCopied(true)
+          }}
+        >
           <ClipboardIcon className='w-5 h-5 mr-2' />
-          <div>CRN: {block.crn}</div>
+          <button className='border-none rounded hover:bg-slate-100'>
+            <div>
+              {copied ? (
+                <div className='hover:bg-slate-200 border-none rounded shadow-sm'>
+                  CRN: {block.crn}
+                </div>
+              ) : (
+                <div className=''>CRN: {block.crn}</div>
+              )}
+            </div>
+          </button>
         </div>
 
         {block.remainingSeats > 0 && (
