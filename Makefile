@@ -7,7 +7,7 @@ scrape_courses:
 		echo "Directory does not exist. Creating one."; \
 		mkdir "$(year)"; \
 	fi; \
-	ts-node courseTitleCrawler.ts "$(year)" \
-	python3 main.py "$(year)" \
-	ts-node genPrereqsOf.ts "$(year)" \
-	ts-node scrapeDescription.ts "$(year)"
+	ts-node courseTitleCrawler.ts "$(year)"; \
+	python3 main.py "$(year)"; \
+	ts-node genPrereqsOf.ts "$(year)"; \
+	ts-node scrapeDescription.ts "$(year)";
