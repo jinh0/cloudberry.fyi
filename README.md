@@ -46,4 +46,4 @@ Main libraries: React, Next.js, Firebase, TailwindCSS
 ```
 
 ## Good Courses to Test On
-- Math-314, Math-133, Math-140, Acct-699, Cprl-610, Dent-101J2, Comp-204, Biol-112, Wcom-333, Phil-375
+- Math-314, Math-133, Math-140, Acct-699, Cprl-610, Dent-101J2, Comp-204, Biol-112, Wcom-333, Phil-375, Biol-102, CENG-221D1
