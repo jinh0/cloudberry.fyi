@@ -18,7 +18,7 @@ def get_course(code: str, year: int):
             "department",
             "faculty",
             "terms",
-            "credits",
+            "credits"
         ]
     }
 
@@ -39,13 +39,17 @@ def get_course(code: str, year: int):
     def offered_by(doc):
         label = doc.find(class_="meta").findChild("p").text
         return label
+        print(doc)
 
     # finding course code, course name, and credits
     def course_code_credits(doc):
         code_title_credits = []
         course_code_name = doc.title.get_text()
         course_code_list = re.split("[|()]", course_code_name)
-        new_credits = course_code_list[1].replace("credits", "")
+        if "credits" in course_code_list[1]:
+            new_credits = course_code_list[1].replace("credits", "")
+        elif "credit" in course_code_list[1]:
+            new_credits = course_code_list[1].replace("credit", "")
         course_code = code
         code_title_credits.append(str(course_code))
         code_title_credits.append(str(course_code_list[0][9:]))
