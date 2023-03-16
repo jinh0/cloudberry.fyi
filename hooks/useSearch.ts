@@ -11,12 +11,14 @@ type Search = {
 }
 
 async function getCourses(search: Search) {
+  console.log(search.semester)
   const found = courses.filter(
     course =>
       // TODO: Clean up this mess
-      search.semester
-        .split('|')
-        .some(sem => course.terms.some(term => term.term === sem)) &&
+      (course.terms.length === 0 ||
+        search.semester
+          .split('|')
+          .some(sem => course.terms.some(term => term.term === sem))) &&
       (search.subjects.length > 0
         ? search.subjects.some(subject => course.code.startsWith(subject))
         : true) &&
