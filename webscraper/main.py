@@ -39,7 +39,6 @@ def get_course(code: str, year: int):
     def offered_by(doc):
         label = doc.find(class_="meta").findChild("p").text
         return label
-        print(doc)
 
     # finding course code, course name, and credits
     def course_code_credits(doc):
