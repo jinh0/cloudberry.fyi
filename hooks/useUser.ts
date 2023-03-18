@@ -1,5 +1,4 @@
 import UserContext from '@contexts/UserContext'
-import { UserType } from '@typing'
 import { useContext } from 'react'
 
 function useUser() {

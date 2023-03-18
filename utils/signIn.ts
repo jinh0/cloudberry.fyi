@@ -30,6 +30,7 @@ export function signIn(router: NextRouter) {
           saved: [],
           completed: [],
           current: [],
+          degree: [],
         })
       }
 
