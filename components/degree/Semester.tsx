@@ -1,8 +1,10 @@
 import SemesterContext, {
   SemesterProps,
 } from '@contexts/degree/SemesterContext'
+import useUser from '@hooks/useUser'
 import { SemesterType } from '@typing'
-import { useState } from 'react'
+import { updateDoc } from 'firebase/firestore'
+import { useEffect, useState } from 'react'
 import AddCourse from './AddCourse'
 import CourseList from './CourseList'
 
@@ -17,9 +19,25 @@ function formatTitle(year: number, semester: SemesterType) {
 const Semester = ({
   year,
   semester,
-  courses: initCourses,
-}: Omit<SemesterProps, 'setCourses'>) => {
-  const [courses, setCourses] = useState(initCourses)
+}: {
+  year: number
+  semester: SemesterType
+}) => {
+  const { user } = useUser()
+
+  const [courses, setCourses] = useState(
+    user.data().degree.filter(x => x.year === year && x.semester === semester)
+  )
+
+  useEffect(() => {
+    const { degree } = user.data()
+
+    updateDoc(user.ref, {
+      degree: degree
+        .filter(x => x.year !== year || x.semester !== semester)
+        .concat(courses),
+    })
+  }, [courses])
 
   return (
     <SemesterContext.Provider value={{ year, semester, courses, setCourses }}>

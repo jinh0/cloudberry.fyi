@@ -19,9 +19,9 @@ const Year = ({ year }: { year: number }) => {
   ]
 
   return (
-    <div className='flex flex-row gap-x-8'>
-      <Semester year={year} semester='fall' courses={courses} />
-      <Semester year={year} semester='winter' courses={courses} />
+    <div className='flex flex-col md:flex-row gap-y-8 gap-x-8'>
+      <Semester year={year} semester='fall' />
+      <Semester year={year} semester='winter' />
     </div>
   )
 }
