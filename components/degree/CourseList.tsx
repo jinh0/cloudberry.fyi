@@ -18,7 +18,7 @@ const CourseList = () => {
       {courses.map(course => (
         <div
           key={course.code}
-          className='border px-4 py-2 rounded-xl flex flex-row justify-between'
+          className='border px-4 py-2 rounded-xl flex flex-row justify-between group'
         >
           <Link className='w-full' href={`/courses/${course.code}`}>
             <div className='font-semibold'>{displayCode(course.code)}</div>
@@ -26,10 +26,10 @@ const CourseList = () => {
           </Link>
 
           <Button
-            className='border-none rounded-full hover:bg-red-50 hover:text-red-600 text-gray-500'
+            className='border-none rounded-full opacity-0 group-hover:opacity-100 hover:bg-red-50 hover:text-red-600 text-gray-500'
             onClick={onClick(course)}
           >
-            <TrashIcon className='w-6 h-6' />
+            <TrashIcon className='  w-6 h-6' />
           </Button>
         </div>
       ))}
