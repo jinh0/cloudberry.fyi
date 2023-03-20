@@ -10,17 +10,6 @@ const SearchResult = ({ initCourses }: { initCourses: CourseType[] }) => {
   if (error)
     return <div className='mt-10 text-gray-600'>Something went wrong.</div>
 
-  // If search is empty, then return the default course list
-  if (query === '' && subjects.length === 0) {
-    return (
-      <div className='mt-10'>
-        <p className='border-b'></p>
-
-        <CourseList courses={initCourses} nextCursor={1} />
-      </div>
-    )
-  }
-
   return (
     <div className='mt-10'>
       {query && (
