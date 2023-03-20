@@ -1,3 +1,5 @@
+import { InfiniteData } from '@tanstack/react-query'
+
 export type SemesterOption = {
   id: number
   name: string
@@ -23,10 +25,24 @@ export type SearchContextType = {
   setSemester: Dispatch<SetStateAction<SemesterOption>>
   isLoading: boolean
   error: unknown
-  data: { results: CourseType[] }
+  data: InfiniteData<{
+    results: CourseType[]
+    nextCursor: number
+    numOfResults: number
+  }>
   refetch: <TPageData>(
     options?: RefetchOptions & RefetchQueryFilters<TPageData>
   ) => Promise<QueryObserverResult<{ results: CourseType[] }, unknown>>
+  fetchNextPage: (options?: FetchNextPageOptions) => Promise<
+    InfiniteQueryObserverResult<
+      {
+        results: CourseType[]
+        nextCursor: number
+      },
+      unknown
+    >
+  >
+  hasNextPage: boolean
 }
 
 export type Term = {
