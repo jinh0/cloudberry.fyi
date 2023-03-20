@@ -4,7 +4,8 @@ import { useContext } from 'react'
 import CourseList from './CourseList'
 
 const SearchResult = ({ initCourses }: { initCourses: CourseType[] }) => {
-  const { query, subjects, error, data } = useContext(SearchContext)
+  const { query, subjects, error, data, fetchNextPage, hasNextPage } =
+    useContext(SearchContext)
 
   if (error)
     return <div className='mt-10 text-gray-600'>Something went wrong.</div>
@@ -15,7 +16,7 @@ const SearchResult = ({ initCourses }: { initCourses: CourseType[] }) => {
       <div className='mt-10'>
         <p className='border-b'></p>
 
-        <CourseList courses={initCourses} />
+        <CourseList courses={initCourses} nextCursor={1} />
       </div>
     )
   }
@@ -24,12 +25,26 @@ const SearchResult = ({ initCourses }: { initCourses: CourseType[] }) => {
     <div className='mt-10'>
       {query && (
         <p className='text-gray-600 text-sm pb-4'>
-          Results for <span className='font-semibold'>{query}</span>.
+          Found {data && data.pages.flatMap(x => x.numOfResults)[0]} results for{' '}
+          <span className='font-semibold'>{query}</span>.
         </p>
       )}
       <p className='border-b'></p>
 
-      <CourseList courses={data ? data.results : []} />
+      <CourseList
+        courses={data ? data.pages.flatMap(x => x.results) : []}
+        nextCursor={data ? Math.max(...data.pages.map(x => x.nextCursor)) : 1}
+      />
+
+      {hasNextPage && (
+        <button
+          className='w-full mt-4 border rounded-xl py-2 text-gray-600 hover:bg-gray-50 transition border-dashed'
+          onClick={() => fetchNextPage()}
+          disabled={!hasNextPage}
+        >
+          Load more courses...
+        </button>
+      )}
     </div>
   )
 }

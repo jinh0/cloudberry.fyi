@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query'
+import { useInfiniteQuery, useQuery } from '@tanstack/react-query'
 import { CourseType, SearchContextType, SemesterOption } from '@typing'
 import { Subject } from '@utils/subjects'
 import { useEffect, useState } from 'react'
@@ -8,6 +8,7 @@ type Search = {
   query: string
   subjects: Uppercase<string>[]
   semester: string
+  pageParam: number
 }
 
 async function getCourses(search: Search) {
@@ -34,9 +35,13 @@ async function getCourses(search: Search) {
           term.instructors.some(teacher => teacher.includes(search.query))
         ))
   )
+  console.log(found.length, search.pageParam + 10)
 
   return {
-    results: found.slice(0, 10),
+    numOfResults: found.length,
+    results: found.slice(search.pageParam, search.pageParam + 10),
+    nextCursor:
+      found.length <= search.pageParam + 10 ? undefined : search.pageParam + 10,
   }
 }
 
@@ -44,26 +49,27 @@ function useSearch(): SearchContextType {
   const [query, setQuery] = useState('')
   const [subjects, setSubjects] = useState<Subject[]>([])
   const [semester, setSemester] = useState<SemesterOption>(null)
-  const [prevData, setPrevData] = useState([])
+  const [prevData, setPrevData] = useState(null)
 
-  const { data, isLoading, error, refetch } = useQuery<{
-    results: CourseType[]
-  }>({
-    queryKey: [
-      'search',
-      { query, subjects, semester: semester ? semester.id : -1 },
-    ],
-    queryFn: () =>
-      getCourses({
-        query,
-        semester: semester ? semester.value : 'fall|winter',
-        subjects: subjects.map(x => x.code),
-      }),
-    placeholderData: { results: prevData },
-  })
+  const { data, isLoading, error, refetch, fetchNextPage, hasNextPage } =
+    useInfiniteQuery({
+      queryKey: [
+        'search',
+        { query, subjects, semester: semester ? semester.id : -1 },
+      ],
+      queryFn: ({ pageParam = 0 }) =>
+        getCourses({
+          query,
+          pageParam,
+          semester: semester ? semester.value : 'fall|winter',
+          subjects: subjects.map(x => x.code),
+        }),
+      getNextPageParam: (lastPage, _) => lastPage.nextCursor,
+      placeholderData: prevData,
+    })
 
   useEffect(() => {
-    if (data.results) setPrevData(data.results)
+    if (data) setPrevData(data)
   }, [data])
 
   // Refetch course data when any part of the search changes
@@ -91,6 +97,8 @@ function useSearch(): SearchContextType {
     isLoading,
     error,
     refetch,
+    fetchNextPage,
+    hasNextPage,
   }
 }
 
