@@ -1,11 +1,27 @@
 import UserContext from '@contexts/UserContext'
-import useCourse from '@hooks/useCourse'
-import Link from 'next/link'
-import { useContext } from 'react'
+import { db } from '@utils/firebase'
+import { getDocs, query, where } from 'firebase/firestore'
+import { useContext, useEffect, useState } from 'react'
 import CourseCard from './CourseCard'
 
 const UserInfo = () => {
   const { user, loading, error } = useContext(UserContext)
+
+  const [waitingCourses, setWaitingCourses] = useState([])
+
+  useEffect(() => {
+    if (user) {
+      const queryCourses = query(db.waiters, where('uid', '==', user.id))
+
+      getDocs(queryCourses).then(querySnapshot => {
+        const data = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data(),
+        }))
+        setWaitingCourses(data.filter(course => course.status === 'pending'))
+      })
+    }
+  }, [user])
 
   if (loading) return <div>Loading...</div>
   if (error || !user) return <div>Something went wrong.</div>
@@ -44,6 +60,16 @@ const UserInfo = () => {
         <div className='flex flex-row gap-x-4 overflow-x-auto snap-x snap-mandatory'>
           {current &&
             current.map(code => <CourseCard key={code} code={code} />)}
+        </div>
+      </div>
+
+      <div className='mt-8'>
+        <p className='text-2xl mb-4'>Wait Listed</p>
+        <div className='flex flex-row gap-x-4 overflow-x-auto snap-x snap-mandatory'>
+          {waitingCourses &&
+            waitingCourses.map(course => (
+              <CourseCard key={course.id} code={course.code} />
+            ))}
         </div>
       </div>
     </div>
