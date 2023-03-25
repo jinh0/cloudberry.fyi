@@ -15,3 +15,13 @@ export function formatDesc(desc: string, code: string) {
 export function linkCode(code: string) {
   return code.replace(' ', '-').toLowerCase()
 }
+
+// Minutes -> 10:23 AM
+export function displayTime(time: number) {
+  const hours = Math.floor(time / 60)
+  const minutes = time % 60
+
+  return `${hours > 12 ? hours % 12 : hours}:${
+    minutes < 10 ? '0' + String(minutes) : minutes
+  } ${hours >= 12 ? 'PM' : 'AM'}`
+}
