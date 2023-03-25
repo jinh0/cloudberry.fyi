@@ -17,9 +17,10 @@ const Block = ({ block }: { block: VSBTime & { name: string } }) => {
 
   return (
     <div
-      className={`border rounded-lg top-\[${Math.floor(
-        ((block.t2 - block.t1) / height) * 100
-      )}%\] relative`}
+      className='border rounded-lg relative'
+      style={{
+        top: `${Math.floor(((block.t2 - block.t1) / height) * 100)}%`,
+      }}
     >
       <div>{block.name}</div>
       <div>
