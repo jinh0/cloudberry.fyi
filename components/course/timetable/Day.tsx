@@ -21,8 +21,7 @@ const Day = ({ num, blocks }: { num: number; blocks: VSBBlock[] }) => {
       <div className='w-full text-center'>{NUM_TO_DAY[num][0]}</div>
 
       <div
-        className={`w-full border-r flex-1 relative
-      `}
+        className='w-full border-r flex-1 relative'
         style={{
           background: `repeating-linear-gradient(
             to bottom,
