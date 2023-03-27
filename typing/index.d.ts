@@ -60,6 +60,7 @@ export type CourseType = {
   name: string
   faculty: string
   description: string
+  department: string
   prerequisites: string[]
   credits: number
   notes: Note[]

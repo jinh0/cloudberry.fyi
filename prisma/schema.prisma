@@ -11,19 +11,23 @@ datasource db {
 }
 
 model Course {
-  @@map("courses")
-
   id String @id @default(auto()) @map("_id") @db.ObjectId
 
-  code  String
-  title String
-  year  Int
+  code    String
+  title   String
+  year    Int
+  credits Float
 
   faculty     String
+  department  String
   description String
 
   prerequisites String[] @default([])
+
+  notes Note[]
   terms Term[]
+
+  @@map("courses")
 }
 
 enum Semester {
@@ -35,4 +39,14 @@ enum Semester {
 type Term {
   term        Semester
   instructors String[]
+}
+
+type Note {
+  content String
+  links   Link[]
+}
+
+type Link {
+  href String
+  text String
 }
