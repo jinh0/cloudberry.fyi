@@ -1,9 +1,8 @@
-import { useInfiniteQuery, useQuery } from '@tanstack/react-query'
+import CoursesContext from '@contexts/CoursesContext'
+import { useInfiniteQuery } from '@tanstack/react-query'
 import { CourseType, SearchContextType, SemesterOption } from '@typing'
 import { Subject } from '@utils/subjects'
-import { useEffect, useState } from 'react'
-
-const courses = []
+import { useContext, useEffect, useState } from 'react'
 
 type Search = {
   query: string
@@ -12,41 +11,11 @@ type Search = {
   pageParam: number
 }
 
-async function getCourses(search: Search) {
-  console.log(search.semester)
-  const found = courses.filter(
-    course =>
-      // TODO: Clean up this mess
-      (course.terms.length === 0 ||
-        search.semester
-          .split('|')
-          .some(sem => course.terms.some(term => term.term === sem))) &&
-      (search.subjects.length > 0
-        ? search.subjects.some(subject => course.code.startsWith(subject))
-        : true) &&
-      (course.code
-        .toLowerCase()
-        .replace('-', ' ')
-        .startsWith(search.query.toLowerCase()) ||
-        course.title
-          .toLowerCase()
-          .replace(/\r/g, '')
-          .includes(search.query.toLowerCase()) ||
-        course.terms.some(term =>
-          term.instructors.some(teacher => teacher.includes(search.query))
-        ))
-  )
-  console.log(found.length, search.pageParam + 10)
-
-  return {
-    numOfResults: found.length,
-    results: found.slice(search.pageParam, search.pageParam + 10),
-    nextCursor:
-      found.length <= search.pageParam + 10 ? undefined : search.pageParam + 10,
-  }
-}
-
 function useSearch(): SearchContextType {
+  const { courses } = useContext(CoursesContext)
+
+  const getCourses = createCourseSearch(courses)
+
   const [query, setQuery] = useState('')
   const [subjects, setSubjects] = useState<Subject[]>([])
   const [semester, setSemester] = useState<SemesterOption>(null)
@@ -100,6 +69,44 @@ function useSearch(): SearchContextType {
     refetch,
     fetchNextPage,
     hasNextPage,
+  }
+}
+
+function findCourse(search: Search) {
+  return (course: CourseType) =>
+    // TODO: Clean up this mess
+    (course.terms.length === 0 ||
+      search.semester
+        .split('|')
+        .some(sem => course.terms.some(term => term.term === sem))) &&
+    (search.subjects.length > 0
+      ? search.subjects.some(subject => course.code.startsWith(subject))
+      : true) &&
+    (course.code
+      .toLowerCase()
+      .replace('-', ' ')
+      .startsWith(search.query.toLowerCase()) ||
+      course.title
+        .toLowerCase()
+        .replace(/\r/g, '')
+        .includes(search.query.toLowerCase()) ||
+      course.terms.some(term =>
+        term.instructors.some(teacher => teacher.includes(search.query))
+      ))
+}
+
+function createCourseSearch(courses: CourseType[]) {
+  return (search: Search) => {
+    const found = courses.filter(findCourse(search))
+
+    return {
+      numOfResults: found.length,
+      results: found.slice(search.pageParam, search.pageParam + 10),
+      nextCursor:
+        found.length <= search.pageParam + 10
+          ? undefined
+          : search.pageParam + 10,
+    }
   }
 }
 

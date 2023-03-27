@@ -1,12 +1,11 @@
 import Main from '@components/Main'
-import Search from '@components/home/Search'
-import SearchContext from '@contexts/SearchContext'
 import { CourseType } from '@typing'
 import Saved from '@components/home/Saved'
 import { initCourses } from 'utils/courses'
 import useSearch from '@hooks/useSearch'
-import SearchResult from '@components/home/SearchResult'
 import prisma from '@db/client'
+import CoursesContext from '@contexts/CoursesContext'
+import SearchContainer from '@components/home/SearchContainer'
 
 const Home = ({
   initCourses,
@@ -17,20 +16,17 @@ const Home = ({
 }) => {
   console.log(testCourses)
 
-  const search = useSearch()
-
   return (
-    <Main>
-      <div className='w-full flex flex-row'>
-        <div className='lg:w-2/3'>
-          <SearchContext.Provider value={search}>
-            <Search />
-            <SearchResult initCourses={initCourses} />
-          </SearchContext.Provider>
+    <CoursesContext.Provider value={{ courses: testCourses }}>
+      <Main>
+        <div className='w-full flex flex-row'>
+          <div className='lg:w-2/3'>
+            <SearchContainer initCourses={testCourses} />
+          </div>
+          <Saved />
         </div>
-        <Saved />
-      </div>
-    </Main>
+      </Main>
+    </CoursesContext.Provider>
   )
 }
 
