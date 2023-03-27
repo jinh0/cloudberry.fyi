@@ -6,8 +6,11 @@ const ScheduleHeader = () => {
   const { course, comboNum, setComboNum } = useContext(VSBContext)
 
   return (
-    <div className='pb-3 flex flex-row items-center gap-4 border-b'>
-      <div className='text-2xl font-medium flex items-center'>Schedule</div>
+    <div className='pb-3 flex flex-row flex-wrap items-center gap-4 border-b'>
+      <div className='text-2xl flex items-center'>
+        <span className='font-medium'>Schedule</span>&nbsp;&nbsp;
+        <span className='font-light'>Winter 2023</span>
+      </div>
 
       {course.blocks.length > 1 && (
         <div className='flex flex-row items-center gap-4'>
