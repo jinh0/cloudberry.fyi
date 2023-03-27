@@ -2,7 +2,8 @@ import { useInfiniteQuery, useQuery } from '@tanstack/react-query'
 import { CourseType, SearchContextType, SemesterOption } from '@typing'
 import { Subject } from '@utils/subjects'
 import { useEffect, useState } from 'react'
-import courses from 'utils/courses'
+
+const courses = []
 
 type Search = {
   query: string
