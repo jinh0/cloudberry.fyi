@@ -1,11 +1,7 @@
 import { VSBTime } from '@typing'
 import { displayTime } from '@utils/formatting'
-import { useContext } from 'react'
-import { HeightContext } from './Timetable'
 
 const Block = ({ block }: { block: VSBTime & { name: string } }) => {
-  const { height } = useContext(HeightContext)
-
   return (
     <div
       className='bg-pink-50 px-2 py-1 absolute w-full text-sm'
@@ -15,8 +11,11 @@ const Block = ({ block }: { block: VSBTime & { name: string } }) => {
       }}
     >
       <div className='text-pink-700 font-bold'>{block.name}</div>
-      <div className='text-pink-500'>
-        {displayTime(block.t1)} - {displayTime(block.t2)}
+      <div className='text-pink-600'>
+        {displayTime(block.t1)}{' '}
+        <span className='hidden lg:inline-block'>
+          &minus; {displayTime(block.t2)}
+        </span>
       </div>
     </div>
   )

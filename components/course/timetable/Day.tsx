@@ -1,6 +1,4 @@
 import { VSBBlock } from '@typing'
-import { useContext } from 'react'
-import { HeightContext } from './Timetable'
 import Block from './Block'
 
 const NUM_TO_DAY = {
@@ -12,8 +10,6 @@ const NUM_TO_DAY = {
 }
 
 const Day = ({ num, blocks }: { num: number; blocks: VSBBlock[] }) => {
-  const { height } = useContext(HeightContext)
-
   const todaysSchedule = blocks.flatMap(x =>
     x.schedule
       .filter(y => y.day === String(num + 1))
