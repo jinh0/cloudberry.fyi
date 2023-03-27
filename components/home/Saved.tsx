@@ -62,7 +62,7 @@ const SavedCourse = ({ code }) => {
           </div>
         </div>
         <div className='text-base font-normal text-gray-700'>
-          {data.result.name}
+          {data.result.title}
         </div>
       </div>
     </Link>

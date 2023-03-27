@@ -31,7 +31,7 @@ const Course = ({
 
   return (
     <Main
-      title={`${displayCode(code)} ${course.name} | Cloudberry`}
+      title={`${displayCode(code)} ${course.title} | Cloudberry`}
       content={course.description}
     >
       <div className='flex flex-row w-full'>
@@ -63,7 +63,7 @@ const CourseHeading = ({
       <div className='text-2xl md:text-3xl mt-4 flex flex-row items-center'>
         <span>
           <span className='font-semibold mr-2'>{displayCode(code)}</span>
-          <span className=''>{course.name}</span>
+          <span className=''>{course.title}</span>
         </span>
         <ShareButton />
       </div>

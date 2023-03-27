@@ -25,7 +25,7 @@ const CourseCard = ({ code }: { code: string }) => {
     >
       <div className='w-60 border rounded-lg p-2 px-4 flex-shrink-0 snap-start'>
         <p className='font-semibold'>{format(course.code)}</p>
-        <p className=''>{course.name}</p>
+        <p className=''>{course.title}</p>
       </div>
     </Link>
   )
