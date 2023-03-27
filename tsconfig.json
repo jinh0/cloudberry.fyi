@@ -9,7 +9,8 @@
       "@utils/*": ["utils/*"],
       "@contexts/*": ["contexts/*"],
       "@hooks/*": ["hooks/*"],
-      "@getaseat/*": ["getaseat/*"]
+      "@getaseat/*": ["getaseat/*"],
+      "@db/*": ["db/*"],
     },
     "allowJs": true,
     "skipLibCheck": true,

@@ -13,7 +13,7 @@ datasource db {
 model Course {
   id String @id @default(auto()) @map("_id") @db.ObjectId
 
-  code    String
+  code    String @unique
   title   String
   year    Int
   credits Float

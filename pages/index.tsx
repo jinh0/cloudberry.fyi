@@ -6,8 +6,17 @@ import Saved from '@components/home/Saved'
 import { initCourses } from 'utils/courses'
 import useSearch from '@hooks/useSearch'
 import SearchResult from '@components/home/SearchResult'
+import prisma from '@db/client'
 
-const Home = ({ initCourses }: { initCourses: CourseType[] }) => {
+const Home = ({
+  initCourses,
+  testCourses,
+}: {
+  initCourses: CourseType[]
+  testCourses: CourseType[]
+}) => {
+  console.log(testCourses)
+
   const search = useSearch()
 
   return (
@@ -26,9 +35,12 @@ const Home = ({ initCourses }: { initCourses: CourseType[] }) => {
 }
 
 export async function getStaticProps() {
+  const testCourses = await prisma.course.findMany({ take: 10 })
+
   return {
     props: {
       initCourses,
+      testCourses,
     },
   }
 }
