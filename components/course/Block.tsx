@@ -12,6 +12,7 @@ import {
 } from '@heroicons/react/24/outline'
 import { Tooltip } from '@mantine/core'
 import { VSBBlock } from '@typing'
+import { displayTime } from '@utils/formatting'
 import { NUM_TO_DAY } from '@utils/vsb'
 import { useEffect, useState } from 'react'
 import GetASeat from './GetASeat'
@@ -117,21 +118,12 @@ const Block = ({ code, block }: { code: string; block: VSBBlock }) => {
         {block.schedule.map((timeblock, idx) => (
           <div key={idx}>
             <span className='font-medium'>{NUM_TO_DAY[timeblock.day]}:</span>{' '}
-            {minToStr(timeblock.t1)} - {minToStr(timeblock.t2)}
+            {displayTime(timeblock.t1)} - {displayTime(timeblock.t2)}
           </div>
         ))}
       </div>
     </div>
   )
-}
-
-const minToStr = (time: number) => {
-  const hours = Math.floor(time / 60)
-  const minutes = time % 60
-
-  return `${hours > 12 ? hours % 12 : hours}:${
-    minutes < 10 ? '0' + String(minutes) : minutes
-  } ${hours >= 12 ? 'PM' : 'AM'}`
 }
 
 export default Block
