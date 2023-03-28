@@ -14,7 +14,7 @@ const Home = ({ initCourses }: { initCourses: CourseType[] }) => {
       const res = await fetch('/course-data.json')
       return await res.json()
     },
-    initialData: initCourses,
+    placeholderData: initCourses,
   })
 
   return (
