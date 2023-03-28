@@ -1,15 +1,22 @@
-// Honestly, this is a little useless right now, but
-// as the filters get more complicated, it might be more helpful?
-
-import Filters from './Filters'
+import SearchContext from '@contexts/SearchContext'
+import SearchResult from '@components/home/SearchResult'
+import useSearch from '@hooks/useSearch'
+import { CourseType } from '@typing'
 import SearchBar from './SearchBar'
+import Filters from './Filters'
 
-const Search = () => {
+const Search = ({ initCourses }: { initCourses: CourseType[] }) => {
+  const search = useSearch()
+
   return (
-    <div>
-      <SearchBar />
-      <Filters />
-    </div>
+    <SearchContext.Provider value={search}>
+      <div>
+        <SearchBar />
+        <Filters />
+      </div>
+
+      <SearchResult initCourses={initCourses} />
+    </SearchContext.Provider>
   )
 }
 
