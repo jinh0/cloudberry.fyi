@@ -1,27 +1,29 @@
 import Main from '@components/Main'
 import { CourseType } from '@typing'
 import Saved from '@components/home/Saved'
-import { initCourses } from 'utils/courses'
 import useSearch from '@hooks/useSearch'
 import prisma from '@db/client'
 import CoursesContext from '@contexts/CoursesContext'
-import SearchContainer from '@components/home/SearchContainer'
+import Search from '@components/home/Search'
+import { useQuery } from '@tanstack/react-query'
 
-const Home = ({
-  initCourses,
-  testCourses,
-}: {
-  initCourses: CourseType[]
-  testCourses: CourseType[]
-}) => {
-  console.log(testCourses)
+const Home = ({ initCourses }: { initCourses: CourseType[] }) => {
+  const { data: courses, isLoading } = useQuery({
+    queryKey: ['allcourses'],
+    queryFn: async (): Promise<CourseType[]> => {
+      const res = await fetch('/course-data.json')
+      return await res.json()
+    },
+    initialData: initCourses,
+  })
 
   return (
-    <CoursesContext.Provider value={{ courses: testCourses }}>
+    <CoursesContext.Provider value={{ courses }}>
       <Main>
         <div className='w-full flex flex-row'>
           <div className='lg:w-2/3'>
-            <SearchContainer initCourses={testCourses} />
+            {isLoading && <div>Loading...</div>}
+            <Search initCourses={initCourses} />
           </div>
           <Saved />
         </div>
@@ -31,12 +33,11 @@ const Home = ({
 }
 
 export async function getStaticProps() {
-  const testCourses = await prisma.course.findMany({ take: 10 })
+  const initCourses = await prisma.course.findMany({ take: 10 })
 
   return {
     props: {
       initCourses,
-      testCourses,
     },
   }
 }
