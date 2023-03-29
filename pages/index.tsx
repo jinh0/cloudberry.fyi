@@ -1,7 +1,6 @@
 import Main from '@components/Main'
 import { CourseType } from '@typing'
 import Saved from '@components/home/Saved'
-import useSearch from '@hooks/useSearch'
 import prisma from '@db/client'
 import CoursesContext from '@contexts/CoursesContext'
 import Search from '@components/home/Search'
@@ -18,7 +17,7 @@ const Home = ({ initCourses }: { initCourses: CourseType[] }) => {
   })
 
   return (
-    <CoursesContext.Provider value={{ courses }}>
+    <CoursesContext.Provider value={{ courses, isLoading }}>
       <Main>
         <div className='w-full flex flex-row'>
           <div className='lg:w-2/3'>
