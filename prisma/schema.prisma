@@ -1,0 +1,52 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("MONGODB_URI")
+}
+
+model Course {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  code    String @unique
+  title   String
+  year    Int
+  credits Float
+
+  faculty     String
+  department  String
+  description String
+
+  prerequisites String[] @default([])
+
+  notes Note[]
+  terms Term[]
+
+  @@map("courses")
+}
+
+enum Semester {
+  fall
+  winter
+  summer
+}
+
+type Term {
+  term        Semester
+  instructors String[]
+}
+
+type Note {
+  content String
+  links   Link[]
+}
+
+type Link {
+  href String
+  text String
+}

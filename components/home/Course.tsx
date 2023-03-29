@@ -19,7 +19,7 @@ const Course = ({ course }: { course: CourseType }) => {
         }
       >
         {/* Course Heading: Code + Name */}
-        <CourseHeading code={course.code} name={course.name} />
+        <CourseHeading code={course.code} name={course.title} />
 
         {/* Semesters */}
         <div className='mb-4'>
