@@ -45,7 +45,7 @@ function useSearch(): SearchContextType {
   // Refetch course data when any part of the search changes
   useEffect(() => {
     refetch()
-  }, [subjects, query, semester])
+  }, [subjects, query, semester, courses, refetch])
 
   useEffect(() => {
     try {

@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build:db": "npx tsx db/build.ts",
+    "build": "npm run build:db && next build",
     "start": "next start",
     "lint": "next lint"
   },
