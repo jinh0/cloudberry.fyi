@@ -4,7 +4,7 @@
 
 import { CourseType } from '@typing'
 import { NextApiRequest, NextApiResponse } from 'next'
-import courses from 'utils/courses'
+import courses from '@public/course-data.json'
 
 export async function getStaticPaths() {
   return {
@@ -23,7 +23,7 @@ export default function handler(
 ) {
   return res.status(200).json({
     status: 200,
-    result: courses.find(
+    result: (courses as any).find(
       course => course.code.toLowerCase() === req.query.code
     ),
   })
