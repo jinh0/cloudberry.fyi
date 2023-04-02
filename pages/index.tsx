@@ -4,17 +4,10 @@ import Saved from '@components/home/Saved'
 import prisma from '@db/client'
 import CoursesContext from '@contexts/CoursesContext'
 import Search from '@components/home/Search'
-import { useQuery } from '@tanstack/react-query'
+import useCourses from '@hooks/useCourses'
 
 const Home = ({ initCourses }: { initCourses: CourseType[] }) => {
-  const { data: courses, isLoading } = useQuery({
-    queryKey: ['allcourses'],
-    queryFn: async (): Promise<CourseType[]> => {
-      const res = await fetch('/course-data.json')
-      return await res.json()
-    },
-    placeholderData: initCourses,
-  })
+  const { courses, isLoading } = useCourses(initCourses)
 
   return (
     <CoursesContext.Provider value={{ courses, isLoading }}>
