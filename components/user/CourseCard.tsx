@@ -1,9 +1,10 @@
 import Link from 'next/link'
 import { displayCode } from '@utils/formatting'
-import useLookup from '@hooks/useLookup'
+import { useContext } from 'react'
+import LookupContext from '@contexts/LookupContext'
 
 const CourseCard = ({ code }: { code: string }) => {
-  const { lookup, isLoading } = useLookup()
+  const { lookup, isLoading } = useContext(LookupContext)
 
   if (isLoading) {
     return (
