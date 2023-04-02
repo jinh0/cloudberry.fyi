@@ -9,6 +9,11 @@ When you first clone the repository, you have to install all the dependencies.
 npm install
 ```
 
+We use `prisma` to access the database. Run the following to initialize prisma.
+```
+npx prisma db push
+```
+
 And then, to start the website, do
 ```
 npm run dev
