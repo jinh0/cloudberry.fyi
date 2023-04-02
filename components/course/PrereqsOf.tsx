@@ -1,8 +1,11 @@
-import lookup from '@utils/lookup'
 import Link from 'next/link'
 import { useState } from 'react'
 
-const PrereqsOf = ({ prereqsOf }: { prereqsOf: string[] }) => {
+const PrereqsOf = ({
+  prereqsOf,
+}: {
+  prereqsOf: Array<{ code: Lowercase<string>; title: string }>
+}) => {
   const [opened, setOpened] = useState(false)
   const format = (code: string) => code.replace('-', ' ').toUpperCase()
 
@@ -23,12 +26,12 @@ const PrereqsOf = ({ prereqsOf }: { prereqsOf: string[] }) => {
 
       {opened && (
         <ul className='mt-2 flex flex-col gap-y-2 pl-6 list-disc'>
-          {prereqsOf.map(code => (
-            <li key={code} className='w-fit'>
-              <Link href={`/courses/${code}`}>
+          {prereqsOf.map(course => (
+            <li key={course.code} className='w-fit'>
+              <Link href={`/courses/${course.code}`}>
                 <>
-                  <span className='font-semibold'>{format(code)}</span>{' '}
-                  {lookup.get(code)}
+                  <span className='font-semibold'>{format(course.code)}</span>{' '}
+                  {course.title}
                 </>
               </Link>
             </li>
