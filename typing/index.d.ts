@@ -129,3 +129,7 @@ export type Children = JSX.Element | string | Array<JSX.Element | string>
 declare module 'utils/courses' {
   const value: Map<string, CourseType[]>
 }
+
+declare module 'public/full-data.json' {
+  const value: CourseType[]
+}

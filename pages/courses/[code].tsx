@@ -2,9 +2,9 @@
  * [code].tsx: Individual course page at /courses/[code]
  */
 
-import courses from '@utils/courses'
 import vsbCourses from '@utils/vsb'
 import prereqsOf from 'public/prereqs-of.json'
+import courseData from 'public/full-data.json'
 
 import { displayCode } from '@utils/formatting'
 
@@ -48,6 +48,8 @@ const Course = ({
     </Main>
   )
 }
+
+const courses = courseData as CourseType[]
 
 export async function getStaticPaths() {
   return {

@@ -1,5 +1,5 @@
 import prisma from './client'
-import { saveFullData } from './build/fullData'
+import { saveFullData, saveHomeData } from './build/fullData'
 import { saveLookup } from './build/lookup'
 import { savePrereqsOf } from './build/prereqs'
 
@@ -13,6 +13,7 @@ async function main() {
   })
 
   saveFullData(courses)
+  saveHomeData(courses)
   saveLookup(courses)
   savePrereqsOf(courses)
 }
