@@ -4,15 +4,10 @@ import { Autocomplete } from '@mui/joy'
 import { useContext, useState } from 'react'
 import Button from './Button'
 
-import lookup from '@utils/lookup'
 import { displayCode } from '@utils/formatting'
+import LookupContext from '@contexts/LookupContext'
 
 type CourseOption = { code: string; title: string }
-
-const courses = Array.from(lookup.entries()).map(([code, title]) => ({
-  code,
-  title,
-}))
 
 const AddCourse = () => {
   const [opened, setOpened] = useState(false)
@@ -23,6 +18,17 @@ const AddCourse = () => {
     semester,
     year,
   } = useContext(SemesterContext)
+
+  const { lookup, isLoading } = useContext(LookupContext)
+
+  if (isLoading) return <></>
+
+  const courses = Array.from(Object.entries(lookup)).map(
+    ([code, title]: [Uppercase<string>, string]) => ({
+      code,
+      title,
+    })
+  )
 
   function filterOptions(options: CourseOption[], { inputValue }) {
     return inputValue === ''
