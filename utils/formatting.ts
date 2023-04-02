@@ -1,5 +1,9 @@
 import subjectsData from '@utils/subjects.json'
 
+export function capitalize(s: string) {
+  return s.length === 0 ? '' : s[0].toUpperCase() + s.slice(1)
+}
+
 export function displayCode(code: string) {
   return code?.replace('-', ' ').toUpperCase()
 }

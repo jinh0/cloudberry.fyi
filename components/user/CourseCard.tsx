@@ -1,10 +1,9 @@
-import useCourse from '@hooks/useCourse'
 import Link from 'next/link'
+import { displayCode } from '@utils/formatting'
+import useLookup from '@hooks/useLookup'
 
 const CourseCard = ({ code }: { code: string }) => {
-  const format = (code: string) => code?.replace('-', ' ').toUpperCase()
-
-  const { data, isLoading } = useCourse(code)
+  const { lookup, isLoading } = useLookup()
 
   if (isLoading) {
     return (
@@ -16,7 +15,7 @@ const CourseCard = ({ code }: { code: string }) => {
     )
   }
 
-  const course = data.result
+  const title = lookup[code.toUpperCase()]
 
   return (
     <Link
@@ -24,8 +23,8 @@ const CourseCard = ({ code }: { code: string }) => {
       className='flex flex-row gap-x-4 '
     >
       <div className='w-60 border rounded-lg p-2 px-4 flex-shrink-0 snap-start'>
-        <p className='font-semibold'>{format(course.code)}</p>
-        <p className=''>{course.title}</p>
+        <p className='font-semibold'>{displayCode(code)}</p>
+        <p>{title}</p>
       </div>
     </Link>
   )
