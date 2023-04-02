@@ -1,8 +1,0 @@
-CCOM-208,'NoneType' object has no attribute 'text'
-CPRL-610,'NoneType' object has no attribute 'text'
-CPRL-620,'NoneType' object has no attribute 'text'
-CPRL-631,'NoneType' object has no attribute 'text'
-CPRL-633,'NoneType' object has no attribute 'text'
-CPRL-641,'NoneType' object has no attribute 'text'
-CPRL-690,'NoneType' object has no attribute 'text'
-CPRL-691,'NoneType' object has no attribute 'text'
