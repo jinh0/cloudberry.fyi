@@ -1,19 +1,23 @@
 import { useContext, useState } from 'react'
-import lookup from '@utils/lookup'
 import { Combobox } from '@headlessui/react'
-import vsbCourses from '@utils/vsb'
 import ScheduleContext from '@contexts/ScheduleContext'
-
-const courses = Array.from(lookup.entries()).map(([code, title]) => ({
-  code,
-  title,
-}))
+import LookupContext from '@contexts/LookupContext'
 
 function Search() {
   const [query, setQuery] = useState('')
   const [selectedCourse, setSelected] = useState(null)
-
   const { scheduleCourses, setCourses } = useContext(ScheduleContext)
+
+  const { lookup, isLoading } = useContext(LookupContext)
+
+  if (isLoading) return <div>...</div>
+
+  const courses = Array.from(Object.entries(lookup)).map(
+    ([code, title]: [Uppercase<string>, string]) => ({
+      code,
+      title,
+    })
+  )
 
   const display = (code: string) => code.replace('-', ' ').toUpperCase()
   const undo = (code: string) => code.replace(' ', '-').toLowerCase()
