@@ -2,15 +2,15 @@
  * [code].tsx: Individual course page at /courses/[code]
  */
 
+import courses from 'utils/courses'
+import prereqsOf from 'public/prereqs-of.json'
+
 import Main from '@components/Main'
 import { useRouter } from 'next/router'
 import { CourseType, UserType, VSBCourse } from '@typing'
 import Actions from '@components/course/Actions'
-
-import courses from 'utils/courses'
 import VSBData from '@components/course/VSBData'
 import vsbCourses from '@utils/vsb'
-import prereqsOf from '@utils/prereqsOf'
 import Semesters from '@components/course/Semesters'
 import useUser from '@hooks/useUser'
 import ShareButton from '@components/course/ShareButton'
@@ -112,16 +112,14 @@ export async function getStaticProps({ params }: { params: { code: string } }) {
     course => course.code.toLowerCase() === params.code.toLowerCase()
   )
 
-  const prereqsOfData = prereqsOf.find(
-    course => course.code.toLowerCase() === params.code.toLowerCase()
-  )
+  const prereqsOfData = prereqsOf[params.code.toLowerCase()]
 
   return {
     props: {
       course: {
         ...eCalendarData,
         vsb: vsbData ? vsbData : null,
-        prereqsOf: prereqsOfData.prereqOfs,
+        prereqsOf: prereqsOfData ? prereqsOfData : [],
       },
     },
   }

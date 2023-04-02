@@ -3,6 +3,7 @@
 /getaseat/serviceAccountKey.json
 /getaseat/.env
 
+/public/prereqs-of.json
 /public/course-data.json
 /public/lookup.json
 
