@@ -8,21 +8,28 @@ const WeeklyView = () => {
   return <div className='w-full md:w-1/2 border flex-grow'></div>
 }
 
-const Schedule = () => {
+const Scheduler = () => {
   const [blocks, setBlocks] = useState([])
   const [scheduleCourses, setCourses] = useState([])
 
   return (
-    <Main>
-      <ScheduleContext.Provider value={{ scheduleCourses, setCourses }}>
-        <div className='w-full flex flex-col md:flex-row md:flex-wrap'>
-          <div className='w-full md:w-1/2'>
-            <Search />
-            <SearchResults />
-          </div>
-          <WeeklyView />
+    <ScheduleContext.Provider value={{ scheduleCourses, setCourses }}>
+      <div className='w-full flex flex-col md:flex-row md:flex-wrap'>
+        <div className='w-full md:w-1/2'>
+          <Search />
+          <SearchResults />
         </div>
-      </ScheduleContext.Provider>
+        <WeeklyView />
+      </div>
+    </ScheduleContext.Provider>
+  )
+}
+
+const Schedule = () => {
+  return (
+    <Main>
+      Coming soon!
+      {/* <Scheduler /> */}
     </Main>
   )
 }

@@ -1,2 +1,0 @@
-CANS-402,'NoneType' object has no attribute 'findChild'
-CANS-402,'NoneType' object has no attribute 'findChild'

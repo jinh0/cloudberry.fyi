@@ -18,7 +18,7 @@ const NavItem = ({
     <Link href={href}>
       <div
         className={
-          'first:pl-0 text-base lg:text-lg font-medium px-4 lg:px-6 cursor-pointer py-2 hover:text-black transition duration-200 rounded-full ' +
+          'first:pl-0 text-base lg:text-lg font-medium px-4 lg:px-6 cursor-pointer py-2 hover:text-black transition duration-200 ' +
           (active ? 'text-black' : 'text-slate-600')
         }
       >

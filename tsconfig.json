@@ -9,7 +9,9 @@
       "@utils/*": ["utils/*"],
       "@contexts/*": ["contexts/*"],
       "@hooks/*": ["hooks/*"],
-      "@getaseat/*": ["getaseat/*"]
+      "@getaseat/*": ["getaseat/*"],
+      "@db/*": ["db/*"],
+      "@public/*": ["public/*"]
     },
     "allowJs": true,
     "skipLibCheck": true,
@@ -25,6 +27,11 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/api/courses/index.js"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "pages/api/courses/index.js"
+  ],
   "exclude": ["node_modules"]
 }
