@@ -13,9 +13,18 @@ import {
 import { Tooltip } from '@mantine/core'
 import { VSBBlock } from '@typing'
 import { displayTime } from '@utils/formatting'
-import { NUM_TO_DAY } from '@utils/vsb'
 import { useEffect, useState } from 'react'
 import GetASeat from './GetASeat'
+
+const NUM_TO_DAY = {
+  2: 'Monday',
+  3: 'Tuesday',
+  4: 'Wednesday',
+  5: 'Thursday',
+  6: 'Friday',
+  0: 'Saturday',
+  1: 'Sunday',
+}
 
 const Block = ({ code, block }: { code: string; block: VSBBlock }) => {
   const [copied, setCopied] = useState(false)
