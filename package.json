@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "npm run build:db && next dev",
     "build:db": "npx tsx db/build.ts",
-    "build": "npm run build:db && next build",
+    "build": "npx prisma db push && npm run build:db && next build",
     "start": "next start",
     "lint": "next lint"
   },
