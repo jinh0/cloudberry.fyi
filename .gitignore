@@ -7,6 +7,7 @@
 /public/course-data.json
 /public/full-data.json
 /public/lookup.json
+/public/vsb-data.json
 
 # dependencies
 /node_modules

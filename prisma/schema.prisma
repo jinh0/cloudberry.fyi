@@ -50,3 +50,35 @@ type Link {
   href String
   text String
 }
+
+// VSB
+
+model Vsb {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  code String
+  blocks VSBBlock[]
+  combos Json
+
+  @@map("vsb")
+}
+
+type VSBBlock {
+  type String
+  display String
+  teachers String[]
+  locations String[]
+  section String
+  crn String
+  campus String
+  remainingSeats Int
+  waitlistRem Int
+  waitlistCap Int
+  schedule VSBTime[]
+}
+
+type VSBTime {
+  day String
+  t1 Int
+  t2 Int
+}

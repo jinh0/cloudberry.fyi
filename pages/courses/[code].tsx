@@ -2,7 +2,7 @@
  * [code].tsx: Individual course page at /courses/[code]
  */
 
-import vsbCourses from '@utils/vsb'
+import vsbCourses from 'public/vsb-data.json'
 import prereqsOf from 'public/prereqs-of.json'
 import courseData from 'public/full-data.json'
 import lookup from 'public/lookup.json'
