@@ -9,23 +9,31 @@ import { JSDOM } from 'jsdom'
  * Get course data from VSB
  */
 export const getCourse = async (
-  code: Uppercase<string>
+  code: Uppercase<string>,
+  term: string
 ): Promise<Safe<VSBCourse>> => {
   try {
-    const response = await fetchFromVSB(code)
-    const { blocks, combos } = await parse(response)
+    // 1. Fetch XML body from VSB API
+    const response = await fetchVSB(code, term)
 
+    // 2. Parse XML
+    const parsedDoc = await parse(response)
+    if (!parsedDoc) return { isOk: false }
+
+    const { blocks, combos } = parsedDoc
+
+    // 3. If nothing is wrong, return the parsed data
     return {
       isOk: true,
       result: { blocks: getUnique(blocks), code, combos },
     }
   } catch (error) {
-    console.log('VSB error:', error)
+    console.log('error', error)
     return { isOk: false }
   }
 }
 
-const fetchFromVSB = async (courseCode: string) => {
+const fetchVSB = async (courseCode: string, term: string) => {
   // Weird time anti-bot thing VSB does
   const nWindow = () => {
     let f8b0 = ['\x26\x74\x3D', '\x26\x65\x3D']
@@ -36,8 +44,8 @@ const fetchFromVSB = async (courseCode: string) => {
 
   // Converts current time to milliseconds
   let currTime = new Date().getTime()
-  let term = 202301
 
+  // Produce the API URL
   let url = `https://vsb.mcgill.ca/vsb/getclassdata.jsp?term=${term}&course_1_0=${courseCode}&rq_1_0=null${nWindow()}&nouser=1&_=${currTime}`
 
   const response = await fetch(url, {
@@ -59,7 +67,10 @@ const parse = async (
   const doc = dom.window.document
 
   // If there exists at least one error, then early return not ok
-  if (doc.querySelectorAll('error').length > 0) return null
+  if (doc.querySelectorAll('error').length > 0) {
+    console.log('Found error in VSB:', doc.querySelector('error').textContent)
+    return null
+  }
 
   // Parsing starts here:
   const uselections = Array.from(doc.querySelectorAll('uselection'))
@@ -130,7 +141,10 @@ const parse = async (
   }
 }
 
-const getUnique = (blocks: VSBBlock[]) => {
+/**
+ * Returns the unique blocks by CRN
+ */
+function getUnique(blocks: VSBBlock[]) {
   const uniqueBlocks: VSBBlock[] = []
   const crns = new Set()
   blocks.forEach(block => {
@@ -145,10 +159,12 @@ const getUnique = (blocks: VSBBlock[]) => {
 }
 
 async function main() {
-  const data = await getCourse('MATH-340')
+  const data = await getCourse('COMP-202', '202305')
 
   if (data.isOk) console.log(data.result)
   else console.log('not found')
 }
+
+// main()
 
 export {}

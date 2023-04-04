@@ -9,6 +9,8 @@
 /public/lookup.json
 /public/vsb-data.json
 
+/webscraper/data/
+
 # dependencies
 /node_modules
 /.pnp

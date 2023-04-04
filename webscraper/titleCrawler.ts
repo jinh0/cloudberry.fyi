@@ -2,27 +2,19 @@
  * @file Web scraper that goes through eCalendar to
  *   retrieve all the course codes for a specified year.
  *
- * @author McGill Enhanced
- * @author Jinho Yoon
+ * Original code written by: McGill Enhanced
+ * Modified for cloudberry by: Jinho Yoon
  */
 
 import fs from 'fs'
 import { load } from 'cheerio'
 
-// DISCLAIMER: You need to make the year folder before running the script
-
-async function main() {
-  const year = Number(process.argv[2])
-
-  const data = await getCourses(year)
-  saveCourseData(year, data)
-}
-
-main()
-
-async function saveCourseData(year: number, data: Record<string, string>) {
+export async function saveTitleData(
+  year: number,
+  data: Record<string, string>
+) {
   fs.writeFile(
-    `${year}/course-titles.json`,
+    `webscraper/data/${year}/course-titles.json`,
     JSON.stringify(data, null, 4),
     err => {
       if (!err) {
@@ -34,7 +26,9 @@ async function saveCourseData(year: number, data: Record<string, string>) {
   )
 }
 
-async function getCourses(year: number): Promise<Record<string, string>> {
+export async function crawlCourseTitles(
+  year: number
+): Promise<Record<string, string>> {
   let results = {}
 
   // Go over all pages listing McGill courses
@@ -73,7 +67,7 @@ async function retrievePage(
     let success = false
 
     // Find all links that match the course URL
-    $('a').each((index, value) => {
+    $('a').each((_, value) => {
       const el = $(value)
       const url = el.attr('href')
       if (url) {
