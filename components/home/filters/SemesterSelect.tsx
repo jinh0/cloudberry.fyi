@@ -71,9 +71,9 @@ const SemesterSelect = () => {
   const { semester, setSemester } = useContext(SearchContext)
 
   return (
-    <div className='relative mr-2'>
+    <div className='relative mr-2 z-10'>
       <Listbox value={semester} onChange={setSemester}>
-        <div className='flex flex-row items-start'>
+        <div className='flex flex-row  items-start'>
           {semester && semesterStyles[semester.id]}
           {!semester && (
             <Listbox.Button
