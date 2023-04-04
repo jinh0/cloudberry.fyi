@@ -64,6 +64,7 @@ model Vsb {
   combos Json
 
   @@map("vsb")
+  @@unique([code, year, semester])
 }
 
 type VSBBlock {

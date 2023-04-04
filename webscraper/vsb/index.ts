@@ -29,8 +29,24 @@ export async function getVSBInfo(
     if (course.isOk) {
       console.log(code, ' fetched')
 
-      prisma.vsb.create({
-        data: { ...course.result, year: 2022, semester: 'summer' },
+      await prisma.vsb.upsert({
+        create: {
+          ...course.result,
+          year: 2022,
+          semester: 'summer',
+        },
+        update: {
+          ...course.result,
+          year: 2022,
+          semester: 'summer',
+        },
+        where: {
+          code_year_semester: {
+            code,
+            year,
+            semester,
+          },
+        },
       })
     }
 
