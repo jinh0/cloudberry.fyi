@@ -12,7 +12,7 @@ export default async function handler(
 ) {
   const { code } = req.query
 
-  const vsbData = await getCourse(code as Uppercase<string>)
+  const vsbData = await getCourse(code as Uppercase<string>, '01')
   console.log('vsbData', vsbData)
 
   if (!vsbData.isOk)
