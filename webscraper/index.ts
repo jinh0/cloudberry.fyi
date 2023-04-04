@@ -14,7 +14,7 @@ async function main(year: number) {
   if (!existsSync(`webscraper/data/${year}/course-titles.json`)) {
     // Fetch course titles
     const titles = await crawlCourseTitles(year)
-    saveTitleData(year, titles)
+    await saveTitleData(year, titles)
   } else {
     console.log('Course titles already exist. Not scraping them.')
   }

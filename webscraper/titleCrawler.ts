@@ -6,23 +6,16 @@
  * Modified for cloudberry by: Jinho Yoon
  */
 
-import fs from 'fs'
 import { load } from 'cheerio'
+import { writeFile } from 'fs/promises'
 
 export async function saveTitleData(
   year: number,
   data: Record<string, string>
 ) {
-  fs.writeFile(
+  await writeFile(
     `webscraper/data/${year}/course-titles.json`,
-    JSON.stringify(data, null, 4),
-    err => {
-      if (!err) {
-        console.log('Saved all data in output-coursetitles.json')
-      } else {
-        console.error('Error occurred while trying to save the output file')
-      }
-    }
+    JSON.stringify(data)
   )
 }
 
