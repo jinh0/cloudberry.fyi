@@ -109,6 +109,8 @@ export type VSBBlock = {
 }
 
 export type VSBCourse = {
+  year: number
+  semester: SemesterType
   code: Uppercase<string>
   blocks: VSBBlock[]
   combos: string[][]
