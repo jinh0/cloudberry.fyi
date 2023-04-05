@@ -26,7 +26,14 @@ export const getCourse = async (
     // 3. If nothing is wrong, return the parsed data
     return {
       isOk: true,
-      result: { blocks: getUnique(blocks), code, combos },
+      result: {
+        blocks: getUnique(blocks),
+        code,
+        combos,
+        year: 2022,
+        // TODO: FIX THIS
+        semester: 'summer',
+      },
     }
   } catch (error) {
     console.log('error', error)
