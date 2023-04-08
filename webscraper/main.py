@@ -18,7 +18,7 @@ def get_course(code: str, year: int):
             "department",
             "faculty",
             "terms",
-            "credits"
+            "credits",
         ]
     }
 

@@ -32,13 +32,13 @@ export async function getVSBInfo(
       await prisma.vsb.upsert({
         create: {
           ...course.result,
-          year: 2022,
-          semester: 'summer',
+          year,
+          semester,
         },
         update: {
           ...course.result,
-          year: 2022,
-          semester: 'summer',
+          year,
+          semester,
         },
         where: {
           code_year_semester: {
