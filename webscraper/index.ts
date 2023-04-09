@@ -65,9 +65,10 @@ async function main() {
         f.toString()
       )
 
-      Object.entries(courseTitles).forEach(async ([code, _]) => {
+      for (const [code, _] of Object.entries(courseTitles)) {
         await scrapeCourse(year, code.toLowerCase())
-      })
+        await new Promise(r => setTimeout(r, 100));
+      }
 
       break
   }

@@ -17,7 +17,6 @@ export async function scrapeCourse(
   code: Lowercase<string>
 ): Promise<Partial<CourseType>> {
   let url = `https://www.mcgill.ca/study/${year}-${year + 1}/courses/${code}`
-  // console.log(url)
 
   const res = await fetch(url, { headers })
   const response = await res.text()
@@ -29,6 +28,8 @@ export async function scrapeCourse(
 
   console.log(code, title, credits, creditType)
 
+  parseMeta(doc)
+
   return {
     code: code.toUpperCase(),
     title,
@@ -37,33 +38,42 @@ export async function scrapeCourse(
 }
 
 function parseHeading(doc: Document) {
-  const heading = doc.querySelector('#page-title').textContent.trim()
+  /*
+
+  Code: ^\w+\s+\w+
+
+  */
+
+  let heading = doc.querySelector('#page-title').textContent.trim()
+  heading = heading.replaceAll(/\r?\n|\r/g, '')
+
+  const creditsMatch = heading.match(/\(\d+(\.\d+)?\s+(credits?|CE units?)\)/g)
+  
+  let [credits, creditType] = [0, 'credits']
+  if (creditsMatch) {
+    if (creditsMatch.length === 1) {
+      const creditsStr = creditsMatch[0].replaceAll('(', '').replaceAll(')', '')
+      const tokens = creditsStr.split(' ')
+
+      credits = Number(tokens[0])
+      creditType = tokens.slice(1).join(' ')
+
+      if (creditType === 'credit')
+        creditType = 'credits'
+
+      if (creditType === 'CE unit')
+        creditType = 'CE units'
+
+      heading = heading.replaceAll(creditsMatch[0], '')
+    }
+  }
 
   // This is under the assumption that the heading is of the following format:
   // The code is the first two words
-  // Credits are at the end in parentheses "(3 credits)"
   // The rest is the course title
-  const [codeAndTitle, _, ...rest] = heading.split('(').map(x => x.trim())
-
-  if (rest.length > 0) {
-    console.log("there's an issue", heading)
-    throw new Error()
-  }
-
+  const codeAndTitle = heading
   const tokens = codeAndTitle.split(' ')
-  const [code, title] = [`${tokens[0]}-${tokens[1]}`, tokens.slice(2).join(' ')]
-
-  let [credits, creditType] = [0, 'credits']
-
-  const creditsMatch = heading.match(/\(\d+(\.\d+)?\s+credit[a-z]*\)/g)
-
-  if (creditsMatch && creditsMatch.length > 0) {
-    const creditsTokens = creditsMatch.slice(1, -1).join('').split(' ')
-    credits = Number(creditsTokens[0])
-    creditType = creditsTokens[1]
-  }
-
-  creditTypes.add(creditType)
+  const [code, title] = [`${tokens[0]}-${tokens[1]}`, tokens.slice(2).join(' ').trim()]
 
   return {
     code,
@@ -71,4 +81,16 @@ function parseHeading(doc: Document) {
     credits,
     creditType,
   }
+}
+
+function parseMeta(doc: Document) {
+  const meta = doc.querySelector('.meta').textContent.trim()
+
+  // Department:
+  // (?<=Offered by: ).*(?=\()
+
+  // Faculty:
+  // (?<=Offered by:.*\().*(?=\))
+
+  console.log(meta)
 }
