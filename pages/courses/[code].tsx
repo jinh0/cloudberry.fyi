@@ -12,7 +12,7 @@ import { displayCode } from '@utils/formatting'
 import { useRouter } from 'next/router'
 import useUser from '@hooks/useUser'
 
-import { CourseType, VSBCourse } from '@typing'
+import { CourseType, SemesterType, VSBCourse } from '@typing'
 
 import Main from '@components/Main'
 import VSBData from '@components/course/VSBData'
@@ -22,12 +22,14 @@ import CourseHeading from '@components/course/CourseHeading'
 import Overview from '@components/course/Overview'
 import useLookup from '@hooks/useLookup'
 import LookupContext from '@contexts/LookupContext'
+import prisma from '@db/client'
 
 const Course = ({
   course,
 }: {
   course: CourseType & {
     vsb: VSBCourse
+    vsbs: Array<{ year: number; semester: SemesterType; vsb: VSBCourse }>
     prereqsOf: Array<{ code: Lowercase<string>; title: string }>
   }
 }) => {
@@ -51,7 +53,7 @@ const Course = ({
             <Notes notes={course.notes} />
             <PrereqsOf prereqsOf={course.prereqsOf} />
 
-            <VSBData vsb={course.vsb} />
+            <VSBData vsb={course.vsb} vsbs={course.vsbs} />
           </div>
         </div>
       </LookupContext.Provider>
@@ -86,10 +88,36 @@ export async function getStaticProps({ params }: { params: { code: string } }) {
     title: lookup[x.toUpperCase()],
   }))
 
+  const winter = await prisma.vsb.findFirst({
+    where: {
+      code: params.code.toUpperCase(),
+      year: 2022,
+      semester: 'winter',
+    },
+  })
+
+  const summer = await prisma.vsb.findFirst({
+    where: {
+      code: params.code.toUpperCase(),
+      year: 2022,
+      semester: 'summer',
+    },
+  })
+
   return {
     props: {
       course: {
         ...courseData,
+        vsbs: [
+          {
+            semester: 'winter',
+            vsb: winter,
+          },
+          {
+            semester: 'summer',
+            vsb: summer,
+          },
+        ].filter(x => x.vsb !== null),
         vsb: vsbData ? vsbData : null,
         prereqsOf: prereqs ? prereqPopulated : [],
       },

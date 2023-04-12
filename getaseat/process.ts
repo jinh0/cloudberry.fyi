@@ -9,7 +9,7 @@ export async function processAllPending() {
   async function getCachedCourse(code: string): Promise<Safe<VSBCourse>> {
     if (mem.has(code)) return { isOk: true, result: mem.get(code) }
 
-    const course = await getCourse(code as Uppercase<string>)
+    const course = await getCourse(code as Uppercase<string>, '05')
 
     if (!course.isOk) return { isOk: false }
 

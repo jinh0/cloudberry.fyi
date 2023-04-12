@@ -2,6 +2,7 @@
  * @file vsb_scraper.ts: Scrapes VSB API for course data
  */
 
+import prisma from '@db/client'
 import { Safe, VSBBlock, VSBCourse } from '@typing'
 import { JSDOM } from 'jsdom'
 
@@ -25,7 +26,14 @@ export const getCourse = async (
     // 3. If nothing is wrong, return the parsed data
     return {
       isOk: true,
-      result: { blocks: getUnique(blocks), code, combos },
+      result: {
+        blocks: getUnique(blocks),
+        code,
+        combos,
+        year: 2022,
+        // TODO: FIX THIS
+        semester: 'summer',
+      },
     }
   } catch (error) {
     console.log('error', error)
@@ -115,12 +123,14 @@ const parse = async (
           block.timeblockids.includes(timeblockId)
         )
 
-        // Remove the ID of the timeblock before adding it into our block
-        matchingBlock.schedule.push({
-          day: formattedTime.day,
-          t1: formattedTime.t1,
-          t2: formattedTime.t2,
-        })
+        // For some reason, sometimes there are time blocks that are never shown / used.
+        if (matchingBlock)
+          // Remove the ID of the timeblock before adding it into our block
+          matchingBlock.schedule.push({
+            day: formattedTime.day,
+            t1: formattedTime.t1,
+            t2: formattedTime.t2,
+          })
       })
 
       // Add CRN combinations
@@ -159,10 +169,58 @@ function getUnique(blocks: VSBBlock[]) {
 }
 
 async function main() {
-  const data = await getCourse('COMP-202', '202305')
+  const x = [
+    'ANAE-301',
+    'DENT-320',
+    'DENT-309',
+    'DENT-323',
+    'DENT-583',
+    'FMED-301',
+    'FMT4-013',
+    'FMT4-018',
+    'INDS-125J3',
+    'INDS-122',
+    'INDS-124J3',
+    'INDS-125',
+    'INDS-222',
+    'INDS-224',
+    'INDS-224J3',
+    'INDS-300',
+    'INDS-322',
+    'INDS-323',
+    'INDS-423J3',
+    'INDS-423',
+    'PAED-301',
+    'PHAR-390',
+    'PHAR-598',
+  ]
 
-  if (data.isOk) console.log(data.result)
-  else console.log('not found')
+  x.forEach(async (code: Uppercase<string>) => {
+    const data = await getCourse(code, '202305')
+
+    if (data.isOk) {
+      console.log(data.result)
+      await prisma.vsb.upsert({
+        create: {
+          ...data.result,
+          year: 2022,
+          semester: 'summer',
+        },
+        update: {
+          ...data.result,
+          year: 2022,
+          semester: 'summer',
+        },
+        where: {
+          code_year_semester: {
+            code,
+            year: 2022,
+            semester: 'summer',
+          },
+        },
+      })
+    } else console.log('not found')
+  })
 }
 
 // main()
