@@ -34,7 +34,7 @@ export async function scrapeCourse(
   const notes = parseNotes(doc)
   const prerequisites = parsePrerequisites(doc, year)
 
-  console.log(prerequisites)
+  console.log(code, prerequisites)
 
   return {
     code: code.toUpperCase(),
@@ -62,8 +62,8 @@ class Option<T> {
     return new Option(val)
   }
 
-  val() {
-    return this._val
+  val(def: T) {
+    return this._val ? this._val : def
   }
 
   map<U>(f: (val: T) => U): Option<U> {
@@ -74,29 +74,23 @@ class Option<T> {
 }
 
 function parsePrerequisites(doc: Document, year: number): string[] {
-  const list = doc.querySelector('.catalog-notes')
-  if (!list) return []
-
-  const points = Array.from(list.querySelectorAll('li'))
-  const prereqPoint = points.find(point =>
-    point.textContent.startsWith('Prerequisite')
-  )
-
-  if (prereqPoint) {
-    const links = Array.from(prereqPoint.querySelectorAll('a'))
-
-    return links
-      .map(link => {
-        if (link.href.startsWith(`/study/${year}-${year + 1}/courses/`)) {
-          return link.href.split(`/study/${year}-${year + 1}/courses/`)[1]
-        }
-
-        return null
-      })
-      .filter(link => link)
-  }
-
-  return []
+  return Option.from(doc)
+    .map(doc => doc.querySelector('.catalog-notes'))
+    .map(list => Array.from(list.querySelectorAll('li')))
+    .map(points =>
+      points.find(point => point.textContent.startsWith('Prerequisite'))
+    )
+    .map(point => Array.from(point.querySelectorAll('a')))
+    .map(links =>
+      links
+        .map(link =>
+          link.href.startsWith(`/study/${year}-${year + 1}/courses/`)
+            ? link.href.split(`/study/${year}-${year + 1}/courses/`)[1]
+            : null
+        )
+        .filter(link => link)
+    )
+    .val([])
 }
 
 function parseNotes(doc: Document): Note[] {
