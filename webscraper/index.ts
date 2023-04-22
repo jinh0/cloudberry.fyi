@@ -67,7 +67,7 @@ async function main() {
 
       for (const [code, _] of Object.entries(courseTitles)) {
         await scrapeCourse(year, code.toLowerCase())
-        await new Promise(r => setTimeout(r, 100));
+        await new Promise(r => setTimeout(r, 10))
       }
 
       break

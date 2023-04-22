@@ -1,4 +1,6 @@
-import { CourseType } from '@typing'
+import { Term } from '@prisma/client'
+import { CourseType, Note, SemesterType } from '@typing'
+import { capitalize } from '@utils/formatting'
 import { JSDOM } from 'jsdom'
 
 const headers = {
@@ -15,7 +17,7 @@ const creditTypes = new Set()
 export async function scrapeCourse(
   year: number,
   code: Lowercase<string>
-): Promise<Partial<CourseType>> {
+): Promise<CourseType> {
   let url = `https://www.mcgill.ca/study/${year}-${year + 1}/courses/${code}`
 
   const res = await fetch(url, { headers })
@@ -25,47 +27,163 @@ export async function scrapeCourse(
   const doc = dom.window.document
 
   const { title, credits, creditType } = parseHeading(doc)
+  const { department, faculty } = parseMeta(doc)
+  const description = parseDescr(doc)
+  const terms = parseTerms(doc)
+  const instructors = parseInstructors(doc, terms)
+  const notes = parseNotes(doc)
+  const prerequisites = parsePrerequisites(doc, year)
 
-  console.log(code, title, credits, creditType)
-
-  parseMeta(doc)
+  console.log(prerequisites)
 
   return {
     code: code.toUpperCase(),
     title,
     credits,
+    department,
+    prerequisites,
+    faculty,
+    description,
+    terms: instructors,
+    notes,
   }
 }
 
+class Option<T> {
+  _val: T
+  ok: boolean
+
+  constructor(val: T) {
+    this._val = val
+    this.ok = val === null || val === undefined ? true : false
+  }
+
+  static from<T>(val: T) {
+    return new Option(val)
+  }
+
+  val() {
+    return this._val
+  }
+
+  map<U>(f: (val: T) => U): Option<U> {
+    if (this._val === null || this._val === undefined) return new Option(null)
+
+    return new Option(f(this._val))
+  }
+}
+
+function parsePrerequisites(doc: Document, year: number): string[] {
+  const list = doc.querySelector('.catalog-notes')
+  if (!list) return []
+
+  const points = Array.from(list.querySelectorAll('li'))
+  const prereqPoint = points.find(point =>
+    point.textContent.startsWith('Prerequisite')
+  )
+
+  if (prereqPoint) {
+    const links = Array.from(prereqPoint.querySelectorAll('a'))
+
+    return links
+      .map(link => {
+        if (link.href.startsWith(`/study/${year}-${year + 1}/courses/`)) {
+          return link.href.split(`/study/${year}-${year + 1}/courses/`)[1]
+        }
+
+        return null
+      })
+      .filter(link => link)
+  }
+
+  return []
+}
+
+function parseNotes(doc: Document): Note[] {
+  const list = doc.querySelector('.catalog-notes')
+
+  if (!list) return []
+
+  const points = Array.from(list.querySelectorAll('li'))
+
+  return points.map(li => ({
+    content: li.textContent.trim(),
+    links: Array.from(li.querySelectorAll('a')).map(({ href, text }) => ({
+      href,
+      text,
+    })),
+  }))
+}
+
+function parseInstructors(doc: Document, terms: SemesterType[]) {
+  let instructors = doc
+    .querySelector('.node-catalog > .content > .catalog-instructors')
+    ?.textContent.trim()
+    .slice('Instructors:'.length)
+    .trim()
+
+  const result: Term[] = []
+
+  for (const term of terms) {
+    const exp = new RegExp(`.*(?=\(${capitalize(term)}\))`, 'g')
+    const replaceExp = new RegExp(`.*\(${capitalize(term)}\)`, 'g')
+    const match = instructors.match(exp)
+
+    if (!match) continue
+
+    instructors = instructors.replace(replaceExp, '').slice(1).trim()
+
+    const termInstructors = match[0]
+      .slice(0, -1)
+      .split(';')
+      .map(x => x.trim())
+
+    result.push({
+      term,
+      instructors: termInstructors,
+    })
+  }
+
+  return result
+}
+
+function parseTerms(doc: Document) {
+  const termsString = doc
+    .querySelector('.node-catalog > .content > .catalog-terms')
+    ?.textContent.trim()
+    .toLowerCase()
+
+  if (!termsString) return []
+
+  const terms: Array<SemesterType> = ['fall', 'winter', 'summer']
+
+  return terms.filter(x => termsString.includes(x))
+}
+
+function parseDescr(doc: Document) {
+  const descr = doc.querySelector('.node-catalog > .content > p')
+
+  if (!descr || descr.className !== '') return ''
+
+  return descr.textContent.trim().replaceAll(/\r?\n|\r/g, '')
+}
+
 function parseHeading(doc: Document) {
-  /*
+  let heading = doc
+    .querySelector('#page-title')
+    .textContent.trim()
+    .replaceAll(/\r?\n|\r/g, '')
 
-  Code: ^\w+\s+\w+
+  const creditStr = heading.match(/\(\d+(\.\d+)?\s+(credits?|CE units?)\)/g)
 
-  */
-
-  let heading = doc.querySelector('#page-title').textContent.trim()
-  heading = heading.replaceAll(/\r?\n|\r/g, '')
-
-  const creditsMatch = heading.match(/\(\d+(\.\d+)?\s+(credits?|CE units?)\)/g)
-  
   let [credits, creditType] = [0, 'credits']
-  if (creditsMatch) {
-    if (creditsMatch.length === 1) {
-      const creditsStr = creditsMatch[0].replaceAll('(', '').replaceAll(')', '')
-      const tokens = creditsStr.split(' ')
+  if (creditStr) {
+    let tokens = creditStr[0].slice(1, -1).split(' ')
 
-      credits = Number(tokens[0])
-      creditType = tokens.slice(1).join(' ')
+    credits = Number(tokens[0])
+    creditType = tokens.slice(1).join(' ')
 
-      if (creditType === 'credit')
-        creditType = 'credits'
-
-      if (creditType === 'CE unit')
-        creditType = 'CE units'
-
-      heading = heading.replaceAll(creditsMatch[0], '')
-    }
+    heading = heading.replaceAll(creditStr[0], '')
   }
 
   // This is under the assumption that the heading is of the following format:
@@ -73,7 +191,10 @@ function parseHeading(doc: Document) {
   // The rest is the course title
   const codeAndTitle = heading
   const tokens = codeAndTitle.split(' ')
-  const [code, title] = [`${tokens[0]}-${tokens[1]}`, tokens.slice(2).join(' ').trim()]
+  const [code, title] = [
+    `${tokens[0]}-${tokens[1]}`,
+    tokens.slice(2).join(' ').trim(),
+  ]
 
   return {
     code,
@@ -92,5 +213,13 @@ function parseMeta(doc: Document) {
   // Faculty:
   // (?<=Offered by:.*\().*(?=\))
 
-  console.log(meta)
+  // From my testing, there is ALWAYS a department / faculty pair
+
+  const department = meta.match(/(?<=Offered by: ).*(?=\()/g)[0]
+  const faculty = meta.match(/(?<=Offered by:.*\().*(?=\))/g)[0]
+
+  return {
+    department,
+    faculty,
+  }
 }
