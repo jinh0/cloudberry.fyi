@@ -1,5 +1,5 @@
 import { Term } from '@prisma/client'
-import { CourseType, Note, SemesterType } from '@typing'
+import { CourseType, Note, Maybe, SemesterType } from '@typing'
 import { capitalize } from '@utils/formatting'
 import { JSDOM } from 'jsdom'
 
@@ -49,32 +49,8 @@ export async function scrapeCourse(
   }
 }
 
-class Option<T> {
-  _val: T
-  ok: boolean
-
-  constructor(val: T) {
-    this._val = val
-    this.ok = val === null || val === undefined ? true : false
-  }
-
-  static from<T>(val: T) {
-    return new Option(val)
-  }
-
-  val(def: T) {
-    return this._val ? this._val : def
-  }
-
-  map<U>(f: (val: T) => U): Option<U> {
-    if (this._val === null || this._val === undefined) return new Option(null)
-
-    return new Option(f(this._val))
-  }
-}
-
 function parsePrerequisites(doc: Document, year: number): string[] {
-  return Option.from(doc)
+  return Maybe.from(doc)
     .map(doc => doc.querySelector('.catalog-notes'))
     .map(list => Array.from(list.querySelectorAll('li')))
     .map(points =>
