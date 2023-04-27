@@ -54,6 +54,7 @@ export async function getStaticProps({
 
   return {
     props: {
+      year,
       course: {
         ...course,
         vsbs: vsbs.map(x => ({ semester: x.semester, vsb: x })),

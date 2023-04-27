@@ -28,34 +28,42 @@ const NavItem = ({
   )
 }
 
-const Navbar = () => {
+const Navbar = ({ year }: { year: number }) => {
   const { pathname } = useRouter()
   const auth = getAuth(app)
   const [user, loading] = useAuthState(auth)
 
   const path = pathname.split('/')
 
+  const homePath = year === 2022 ? '/' : `/study/${year}-${year + 1}`
+
   return (
     <div className='flex flex-row sticky top-0 z-50 bg-white bg-opacity-60 backdrop-blur-md w-full px-6 lg:px-20 py-2.5 border-b items-center select-none justify-between truncate transition-all'>
       <div className='flex flex-row items-center'>
-        <Link href='/'>
-          <div className='flex flex-row items-center cursor-pointer'>
+        <Link href={homePath}>
+          <div className='flex flex-row items-center cursor-pointer gap-x-2 md:pr-4 md:border-r md:mr-4'>
             {/* <AcademicCapIcon className='w-8 h-8 text-mcgill mr-4 lg:mr-2' /> */}
             <img
               src='/cloudberry-final.svg'
-              className='w-10 h-10 mr-4 lg:mr-2'
+              className='w-10 h-10 mr-2 lg:mr-0'
+              alt='Logo'
             />
-            <p className='hidden lg:inline-block text-xl font-bold text-mcgill pr-4 border-r mr-4'>
+            <p className='hidden lg:inline-block text-xl font-bold text-mcgill'>
               Cloudberry
             </p>
+            {/* <p className='text-xl text-gray-600'>
+              {year}-{year + 1}
+            </p> */}
           </div>
         </Link>
 
         <div className='hidden md:flex md:flex-row md:items-center'>
           <NavItem
             title='Course Search'
-            href='/'
-            active={pathname === '/' || path[1] === 'courses'}
+            href={homePath}
+            active={
+              pathname === '/' || path[1] === 'courses' || path[1] === 'study'
+            }
           />
           <NavItem
             title='My Degree'
@@ -70,7 +78,11 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className='w-fit flex flex-row items-center'>
+      <div className='w-fit flex flex-row items-center gap-x-4'>
+        <div className='text-slate-600'>
+          Fall {year} - Summer {year + 1}
+        </div>
+
         {loading ? (
           <></>
         ) : user ? (

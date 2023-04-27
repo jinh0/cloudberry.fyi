@@ -14,11 +14,13 @@ import Overview from '@components/course/Overview'
 
 const Code = ({
   course,
+  year,
 }: {
   course: CourseType & {
     vsbs: Array<{ year: number; semester: SemesterType; vsb: VSBCourse }>
     prereqsOf: Array<{ code: Lowercase<string>; title: string }>
   }
+  year: number
 }) => {
   const router = useRouter()
   const { code } = router.query as { code: string }
@@ -26,6 +28,7 @@ const Code = ({
 
   return (
     <Main
+      year={year}
       title={`${displayCode(code)} ${course.title} | Cloudberry`}
       content={course.description}
     >

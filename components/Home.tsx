@@ -18,7 +18,7 @@ export default function Home({
   return (
     <YearContext.Provider value={year}>
       <CoursesContext.Provider value={{ courses, isLoading }}>
-        <Main>
+        <Main year={year}>
           <div className='w-full flex flex-row'>
             <div className='lg:w-2/3'>
               <Search initCourses={initCourses} />
