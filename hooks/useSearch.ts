@@ -29,7 +29,7 @@ function useSearch(): SearchContextType {
       ],
       queryFn: ({ pageParam = 0 }) =>
         getCourses({
-          query,
+          query: query.trim(),
           pageParam,
           semester: semester ? semester.value : 'fall|winter',
           subjects: subjects.map(x => x.code),

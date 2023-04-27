@@ -15,7 +15,7 @@ const SearchResult = ({ initCourses }: { initCourses: CourseType[] }) => {
       {query && (
         <p className='text-gray-600 text-sm pb-4'>
           Found {data && data.pages.flatMap(x => x.numOfResults)[0]} results for{' '}
-          <span className='font-semibold'>{query}</span>.
+          <span className='font-semibold'>{query.trim()}</span>.
         </p>
       )}
       <p className='border-b'></p>
