@@ -25,7 +25,7 @@ const CourseHeading = ({
         <ShareButton />
       </div>
 
-      <Semesters terms={course.terms} />
+      <Semesters terms={course.terms} year={course.year} />
 
       <div className='text-gray-700 text-base flex flex-row flex-wrap gap-x-2 items-center'>
         <div>

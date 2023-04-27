@@ -6,10 +6,8 @@ import ScheduleHeader from './ScheduleHeader'
 import Timetable from './timetable/Timetable'
 
 const VSBData = ({
-  vsb,
   vsbs,
 }: {
-  vsb: VSBCourse
   vsbs: Array<{ year: number; semester: SemesterType; vsb: VSBCourse }>
 }) => {
   const semesters = vsbs.map(x => x.semester)
@@ -19,10 +17,9 @@ const VSBData = ({
 
   const [comboNum, setComboNum] = useState(0)
 
-  if (!vsb || semesters.length === 0) return <></>
+  if (vsbs.length === 0 || semesters.length === 0) return <></>
 
   const course = vsbs.find(x => x.semester === semester).vsb
-  console.log(course, semester)
 
   if (!course.blocks || course.blocks.length === 0) return <></>
 

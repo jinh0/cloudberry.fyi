@@ -3,24 +3,33 @@ import { saveFullData, saveHomeData } from './build/fullData'
 import { saveLookup } from './build/lookup'
 import { savePrereqsOf } from './build/prereqs'
 import { saveVSB } from './build/vsb'
+import { initDir } from './helper'
 
 main()
 
 async function main() {
+  initialize()
+  build(2021)
+  build(2022)
+  saveVSB()
+}
+
+function initialize() {
+  initDir('public/data')
+  initDir('public/data/2022')
+  initDir('public/data/2021')
+}
+
+async function build(year: number) {
   const courses = await prisma.course.findMany({
-    where: {
-      year: 2022,
-    },
-    orderBy: {
-      code: 'asc',
-    },
+    where: { year },
+    orderBy: { code: 'asc' },
   })
 
-  saveFullData(courses)
-  saveHomeData(courses)
-  saveLookup(courses)
-  savePrereqsOf(courses)
-  saveVSB()
+  saveFullData(courses, year)
+  saveHomeData(courses, year)
+  saveLookup(courses, year)
+  savePrereqsOf(courses, year)
 }
 
 export {}
