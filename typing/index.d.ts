@@ -136,7 +136,7 @@ declare module 'public/full-data.json' {
   const value: CourseType[]
 }
 
-class Maybe<T> {
+export class Maybe<T> {
   _val: T
   ok: boolean
 

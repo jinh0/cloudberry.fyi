@@ -34,8 +34,6 @@ export async function scrapeCourse(
   const notes = parseNotes(doc)
   const prerequisites = parsePrerequisites(doc, year)
 
-  console.log(code, prerequisites)
-
   return {
     code: code.toUpperCase(),
     title,
@@ -70,19 +68,19 @@ function parsePrerequisites(doc: Document, year: number): string[] {
 }
 
 function parseNotes(doc: Document): Note[] {
-  const list = doc.querySelector('.catalog-notes')
-
-  if (!list) return []
-
-  const points = Array.from(list.querySelectorAll('li'))
-
-  return points.map(li => ({
-    content: li.textContent.trim(),
-    links: Array.from(li.querySelectorAll('a')).map(({ href, text }) => ({
-      href,
-      text,
-    })),
-  }))
+  return Maybe.from(doc)
+    .map(doc => doc.querySelector('.catalog-notes'))
+    .map(list => Array.from(list.querySelectorAll('li')))
+    .map(points =>
+      points.map(li => ({
+        content: li.textContent.trim(),
+        links: Array.from(li.querySelectorAll('a')).map(({ href, text }) => ({
+          href,
+          text,
+        })),
+      }))
+    )
+    .val([])
 }
 
 function parseInstructors(doc: Document, terms: SemesterType[]) {

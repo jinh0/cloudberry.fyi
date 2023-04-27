@@ -52,7 +52,9 @@ async function main() {
       if (args.length > 4) {
         const code = args[4]
 
-        await scrapeCourse(year, code.toLowerCase())
+        const data = await scrapeCourse(year, code.toLowerCase())
+
+        console.log(JSON.stringify(data, null, 2))
 
         return
       }
@@ -66,7 +68,10 @@ async function main() {
       )
 
       for (const [code, _] of Object.entries(courseTitles)) {
-        await scrapeCourse(year, code.toLowerCase())
+        const data = await scrapeCourse(year, code.toLowerCase())
+
+        console.log(JSON.stringify(data, null, 2))
+
         await new Promise(r => setTimeout(r, 10))
       }
 
