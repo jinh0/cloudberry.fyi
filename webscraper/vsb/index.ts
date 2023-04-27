@@ -1,6 +1,5 @@
 import prisma from '@db/client'
 import { getCourse } from '@utils/vsbScraper'
-import fs from 'fs'
 
 const sleep = (milliseconds: number) => {
   return new Promise(resolve => setTimeout(resolve, milliseconds))
@@ -18,6 +17,22 @@ export async function getVSBInfo(
 
   const yearSem = `${semester === 'fall' ? year : year + 1}${semNum[semester]}`
 
+  const courseList = await prisma.course.findMany({
+    where: {
+      year,
+      terms: {
+        some: {
+          term: semester,
+        },
+      },
+    },
+    select: {
+      code: true,
+    },
+  })
+
+  console.log(courseList)
+
   const data = require(`webscraper/data/${year}/course-titles.json`)
   const codes = Object.keys(data)
 
@@ -32,13 +47,13 @@ export async function getVSBInfo(
       await prisma.vsb.upsert({
         create: {
           ...course.result,
-          year: 2022,
-          semester: 'summer',
+          year,
+          semester,
         },
         update: {
           ...course.result,
-          year: 2022,
-          semester: 'summer',
+          year,
+          semester,
         },
         where: {
           code_year_semester: {
@@ -50,6 +65,6 @@ export async function getVSBInfo(
       })
     }
 
-    await sleep(100)
+    await sleep(50)
   }
 }

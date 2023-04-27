@@ -13,10 +13,11 @@ datasource db {
 model Course {
   id String @id @default(auto()) @map("_id") @db.ObjectId
 
-  code    String @unique
+  code    String
   title   String
   year    Int
   credits Float
+  creditType String?
 
   faculty     String
   department  String
@@ -28,6 +29,7 @@ model Course {
   terms Term[]
 
   @@map("courses")
+  @@unique([code, year])
 }
 
 enum Semester {

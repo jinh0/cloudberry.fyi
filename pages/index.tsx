@@ -25,7 +25,10 @@ const Home = ({ initCourses }: { initCourses: CourseType[] }) => {
 }
 
 export async function getStaticProps() {
-  const initCourses = await prisma.course.findMany({ take: 10 })
+  const initCourses = await prisma.course.findMany({
+    take: 10,
+    where: { year: 2022 },
+  })
 
   return {
     props: {

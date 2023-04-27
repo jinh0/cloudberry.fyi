@@ -63,6 +63,7 @@ export type CourseType = {
   department: string
   prerequisites: string[]
   credits: number
+  creditType?: 'ce-unit' | 'credit'
   notes: Note[]
   terms: Term[]
 }
@@ -134,4 +135,28 @@ declare module 'utils/courses' {
 
 declare module 'public/full-data.json' {
   const value: CourseType[]
+}
+
+export class Maybe<T> {
+  _val: T
+  ok: boolean
+
+  constructor(val: T) {
+    this._val = val
+    this.ok = val === null || val === undefined ? true : false
+  }
+
+  static from<T>(val: T) {
+    return new Maybe(val)
+  }
+
+  val(def: T) {
+    return this._val ? this._val : def
+  }
+
+  map<U>(f: (val: T) => U): Maybe<U> {
+    if (this._val === null || this._val === undefined) return new Maybe(null)
+
+    return new Maybe(f(this._val))
+  }
 }
