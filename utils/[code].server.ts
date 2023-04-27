@@ -28,7 +28,6 @@ export async function getStaticProps({
       },
     },
   })
-  console.log(course)
 
   const vsbs = await prisma.vsb.findMany({
     where: {
