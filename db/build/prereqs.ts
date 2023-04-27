@@ -1,9 +1,14 @@
 import { Course } from '@prisma/client'
 import { writeFile } from 'fs/promises'
 
-export async function savePrereqsOf(courses: Course[]) {
+export async function savePrereqsOf(courses: Course[], year: number) {
+  const file =
+    year === 2022
+      ? 'public/prereqs-of.json'
+      : `public/data/${year}/prereqs-of.json`
+
   const prereqsOf = generateList(courses)
-  await writeFile('public/prereqs-of.json', JSON.stringify(prereqsOf))
+  await writeFile(file, JSON.stringify(prereqsOf))
 }
 
 function generateList(courses: Course[]) {
