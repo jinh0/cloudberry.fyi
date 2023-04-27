@@ -1,4 +1,4 @@
-interface String {
-  toUpperCase(): Uppercase<string>
-  toLowerCase(): Lowercase<string>
-}
+// interface String {
+//   toUpperCase(): Uppercase<string>
+//   toLowerCase(): Lowercase<string>
+// }

@@ -12,11 +12,9 @@ const headers = {
     'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0',
 }
 
-const creditTypes = new Set()
-
 export async function scrapeCourse(
   year: number,
-  code: Lowercase<string>
+  code: string
 ): Promise<CourseType> {
   let url = `https://www.mcgill.ca/study/${year}-${year + 1}/courses/${code}`
 
@@ -35,9 +33,10 @@ export async function scrapeCourse(
   const prerequisites = parsePrerequisites(doc, year)
 
   return {
-    code: code.toUpperCase(),
+    code: code.toUpperCase() as Uppercase<string>,
     title,
     credits,
+    creditType,
     department,
     prerequisites,
     faculty,
@@ -136,7 +135,12 @@ function parseDescr(doc: Document) {
   return descr.textContent.trim().replaceAll(/\r?\n|\r/g, '')
 }
 
-function parseHeading(doc: Document) {
+function parseHeading(doc: Document): {
+  code: string
+  title: string
+  credits: number
+  creditType: 'ce-unit' | 'credit'
+} {
   let heading = doc
     .querySelector('#page-title')
     .textContent.trim()
@@ -164,11 +168,13 @@ function parseHeading(doc: Document) {
     tokens.slice(2).join(' ').trim(),
   ]
 
+  const finalCreditType = creditType === 'CE units' ? 'ce-unit' : 'credit'
+
   return {
     code,
     title,
     credits,
-    creditType,
+    creditType: finalCreditType,
   }
 }
 

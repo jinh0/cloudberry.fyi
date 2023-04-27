@@ -63,6 +63,7 @@ export type CourseType = {
   department: string
   prerequisites: string[]
   credits: number
+  creditType?: 'ce-unit' | 'credit'
   notes: Note[]
   terms: Term[]
 }
