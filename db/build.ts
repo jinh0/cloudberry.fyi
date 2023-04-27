@@ -8,6 +8,9 @@ main()
 
 async function main() {
   const courses = await prisma.course.findMany({
+    where: {
+      year: 2022,
+    },
     orderBy: {
       code: 'asc',
     },
