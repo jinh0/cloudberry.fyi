@@ -17,7 +17,7 @@ model Course {
   title   String
   year    Int
   credits Float
-  creditType String
+  creditType String?
 
   faculty     String
   department  String
