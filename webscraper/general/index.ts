@@ -183,8 +183,8 @@ function parseMeta(doc: Document) {
 
   // From my testing, there is ALWAYS a department / faculty pair
 
-  const department = meta.match(/(?<=Offered by: ).*(?=\()/g)[0]
-  const faculty = meta.match(/(?<=Offered by:.*\().*(?=\))/g)[0]
+  const department = meta.match(/(?<=Offered by: ).*(?=\()/g)[0].trim()
+  const faculty = meta.match(/(?<=Offered by:.*\().*(?=\))/g)[0].trim()
 
   return {
     department,
