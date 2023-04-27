@@ -34,6 +34,7 @@ export async function scrapeCourse(
 
   return {
     code: code.toUpperCase() as Uppercase<string>,
+    year,
     title,
     credits,
     creditType,
