@@ -1,5 +1,5 @@
 import { existsSync } from 'fs'
-import { mkdir, readFile, writeFile } from 'fs/promises'
+import { appendFile, mkdir, readFile, writeFile } from 'fs/promises'
 import { crawlCourseTitles, saveTitleData } from './titleCrawler'
 import { getVSBInfo } from './vsb'
 import { scrapeCourse } from './general'
@@ -67,10 +67,17 @@ async function main() {
         f.toString()
       )
 
+      let i = 0
       for (const [code, _] of Object.entries(courseTitles)) {
-        const data = await scrapeCourse(year, code.toLowerCase())
+        i++
+        if (i % 100 === 0) console.log('Course', i)
 
-        console.log(JSON.stringify(data, null, 2))
+        try {
+          const data = await scrapeCourse(year, code.toLowerCase())
+          // console.log(JSON.stringify(data, null, 2))
+        } catch (err) {
+          await log(`${code},${err.message}`)
+        }
 
         await new Promise(r => setTimeout(r, 10))
       }
@@ -79,6 +86,10 @@ async function main() {
   }
 
   console.log('Webscraper finished.')
+}
+
+async function log(err: string) {
+  await appendFile('error.txt', err + '\n')
 }
 
 export {}
