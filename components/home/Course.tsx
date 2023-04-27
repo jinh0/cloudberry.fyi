@@ -9,9 +9,14 @@ import CourseHeading from './CourseHeading'
 import { formatDesc, linkCode } from '@utils/formatting'
 import Link from 'next/link'
 
-const Course = ({ course }: { course: CourseType }) => {
+const Course = ({ course, year }: { course: CourseType; year: number }) => {
+  const link =
+    year === 2022
+      ? `/courses/${linkCode(course.code)}`
+      : `/study/${year}-${year + 1}/courses/${linkCode(course.code)}`
+
   return (
-    <Link href={`/courses/${linkCode(course.code)}`}>
+    <Link href={link}>
       <div
         className={
           'border-b py-6 text-lg group ' +
