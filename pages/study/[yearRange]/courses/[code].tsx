@@ -1,8 +1,6 @@
 import Code from '@components/Code'
-import { getPaths, getStaticProps } from '@utils/[code].server'
+import { getStaticProps } from '@utils/[code].server'
 
-export const getStaticPaths = getPaths(2021)
-
-export { getStaticProps }
+export const getServerSideProps = getStaticProps
 
 export default Code
