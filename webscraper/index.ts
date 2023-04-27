@@ -3,6 +3,7 @@ import { appendFile, mkdir, readFile, writeFile } from 'fs/promises'
 import { crawlCourseTitles, saveTitleData } from './titleCrawler'
 import { getVSBInfo } from './vsb'
 import { scrapeCourse } from './general'
+import prisma from '@db/client'
 
 const helpText = `
 usage: tsx webscraper [year] [option]
@@ -46,7 +47,7 @@ async function main() {
       if (!existsSync(`webscraper/data/${year}/course-titles.json`))
         return console.log('Error: course title data does not exist.')
 
-      getVSBInfo(year, 'summer')
+      await getVSBInfo(year, 'summer')
       break
     case 'general':
       if (args.length > 4) {
@@ -54,6 +55,11 @@ async function main() {
 
         const data = await scrapeCourse(year, code.toLowerCase())
 
+        console.log(
+          `Link: https://www.mcgill.ca/study/${year}-${
+            year + 1
+          }/courses/${code}`
+        )
         console.log(JSON.stringify(data, null, 2))
 
         return
@@ -70,13 +76,29 @@ async function main() {
       let i = 0
       for (const [code, _] of Object.entries(courseTitles)) {
         i++
-        if (i % 100 === 0) console.log('Course', i)
+        if (i % 10 === 0) console.log(`Course ${i}: ${code}`)
 
         try {
           const data = await scrapeCourse(year, code.toLowerCase())
-          // console.log(JSON.stringify(data, null, 2))
+
+          await prisma.course.upsert({
+            where: {
+              code_year: {
+                code: code.toLowerCase(),
+                year,
+              },
+            },
+            create: {
+              ...data,
+              year,
+            },
+            update: {
+              ...data,
+              year,
+            },
+          })
         } catch (err) {
-          await log(`${code},${err.message}`)
+          await log(`${code},${year},${err.message}`)
         }
 
         await new Promise(r => setTimeout(r, 10))
