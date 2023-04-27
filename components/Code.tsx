@@ -38,7 +38,7 @@ const Code = ({
 
           <Overview {...{ course, code }} />
           <Notes notes={course.notes} />
-          <PrereqsOf prereqsOf={course.prereqsOf} />
+          <PrereqsOf year={year} prereqsOf={course.prereqsOf} />
 
           <VSBData vsbs={course.vsbs} />
         </div>
