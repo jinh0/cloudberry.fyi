@@ -30,7 +30,9 @@ const Course = ({ course, year }: { course: CourseType; year: number }) => {
         <div className='mb-4'>
           <div className='flex flex-row text-base flex-wrap'>
             {course.terms.length > 0 ? (
-              course.terms.map((sem, ind) => <Semester sem={sem} key={ind} />)
+              course.terms.map((sem, ind) => (
+                <Semester key={ind} sem={sem} year={year} />
+              ))
             ) : (
               <NotOffered />
             )}

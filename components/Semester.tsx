@@ -14,14 +14,16 @@ import Pill from './Pill'
 const Semester = ({
   sem,
   showInstructor = false,
+  year,
 }: {
   sem: { term: 'fall' | 'winter' | 'summer'; instructors: string[] }
   showInstructor?: boolean
+  year: number
 }) => {
   const convert = {
-    fall: 'Fall 2022',
-    winter: 'Winter 2023',
-    summer: 'Summer 2023',
+    fall: `Fall ${year}`,
+    winter: `Winter ${year + 1}`,
+    summer: `Summer ${year + 1}`,
   }
 
   // TODO: Just combine all color, icon, and border into one dictionary

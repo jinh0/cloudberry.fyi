@@ -58,6 +58,7 @@ export type Note = {
 export type CourseType = {
   code: Uppercase<string>
   title: string
+  year: number
   faculty: string
   description: string
   department: string
