@@ -26,10 +26,10 @@ async function build(year: number) {
     orderBy: { code: 'asc' },
   })
 
-  saveFullData(courses, year)
-  saveHomeData(courses, year)
-  saveLookup(courses, year)
-  savePrereqsOf(courses, year)
+  await saveFullData(courses, year)
+  await saveHomeData(courses, year)
+  await saveLookup(courses, year)
+  await savePrereqsOf(courses, year)
 }
 
 export {}
