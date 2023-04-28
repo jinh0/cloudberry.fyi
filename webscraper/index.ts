@@ -44,10 +44,12 @@ async function main() {
       await saveTitleData(year, titles)
       break
     case 'vsb':
-      if (!existsSync(`webscraper/data/${year}/course-titles.json`))
-        return console.log('Error: course title data does not exist.')
+      if (args.length < 4) break
 
-      await getVSBInfo(year, 'summer')
+      if (args[4] !== 'summer' && args[4] !== 'winter' && args[4] !== 'fall')
+        break
+
+      await getVSBInfo(year, args[4])
       break
     case 'general':
       if (args.length > 4) {
@@ -73,41 +75,49 @@ async function main() {
         f.toString()
       )
 
-      let i = 0
-      for (const [code, _] of Object.entries(courseTitles)) {
-        i++
-        if (i % 10 === 0) console.log(`Course ${i}: ${code}`)
+      const codes = Object.entries(courseTitles).map(x => x[0])
 
-        try {
-          const data = await scrapeCourse(year, code.toLowerCase())
+      for (let i = 0; i < codes.length; i += 75) {
+        console.log(`Course ${i}: ${codes[i]}`)
 
-          await prisma.course.upsert({
-            where: {
-              code_year: {
-                code: code.toLowerCase(),
-                year,
-              },
-            },
-            create: {
-              ...data,
-              year,
-            },
-            update: {
-              ...data,
-              year,
-            },
-          })
-        } catch (err) {
-          await log(`${code},${year},${err.message}`)
-        }
+        const list = codes
+          .slice(i, i + 75)
+          .map(code => saveCourse(year, code.toLowerCase()))
 
-        await new Promise(r => setTimeout(r, 10))
+        await Promise.all(list)
       }
 
       break
   }
 
   console.log('Webscraper finished.')
+}
+
+async function saveCourse(year: number, code: string) {
+  try {
+    const data = await scrapeCourse(year, code.toLowerCase())
+
+    await prisma.course.upsert({
+      where: {
+        code_year: {
+          code: code.toUpperCase(),
+          year,
+        },
+      },
+      create: {
+        ...data,
+        year,
+      },
+      update: {
+        ...data,
+        year,
+      },
+    })
+
+    // console.log('done', code)
+  } catch (err) {
+    await log(`${code},${year},${err.message}`)
+  }
 }
 
 async function log(err: string) {

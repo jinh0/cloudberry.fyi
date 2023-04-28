@@ -3,7 +3,7 @@
  */
 
 import prisma from '@db/client'
-import { Safe, VSBBlock, VSBCourse } from '@typing'
+import { Safe, SemesterType, VSBBlock, VSBCourse } from '@typing'
 import { JSDOM } from 'jsdom'
 
 /**
@@ -11,11 +11,22 @@ import { JSDOM } from 'jsdom'
  */
 export const getCourse = async (
   code: Uppercase<string>,
-  term: string
+  year: number,
+  semester: SemesterType
 ): Promise<Safe<VSBCourse>> => {
   try {
+    const semNum = {
+      fall: '09',
+      winter: '01',
+      summer: '05',
+    }
+
+    const termString = `${semester === 'fall' ? year : year + 1}${
+      semNum[semester]
+    }`
+
     // 1. Fetch XML body from VSB API
-    const response = await fetchVSB(code, term)
+    const response = await fetchVSB(code, termString)
 
     // 2. Parse XML
     const parsedDoc = await parse(response)
@@ -27,12 +38,11 @@ export const getCourse = async (
     return {
       isOk: true,
       result: {
+        year,
+        semester,
         blocks: getUnique(blocks),
         code,
         combos,
-        year: 2022,
-        // TODO: FIX THIS
-        semester: 'summer',
       },
     }
   } catch (error) {
@@ -196,7 +206,7 @@ async function main() {
   ]
 
   x.forEach(async (code: Uppercase<string>) => {
-    const data = await getCourse(code, '202305')
+    const data = await getCourse(code, 2023, 'summer')
 
     if (data.isOk) {
       console.log(data.result)

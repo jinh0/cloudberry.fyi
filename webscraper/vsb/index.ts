@@ -9,15 +9,7 @@ export async function getVSBInfo(
   year: number,
   semester: 'fall' | 'winter' | 'summer'
 ) {
-  const semNum = {
-    fall: '09',
-    winter: '01',
-    summer: '05',
-  }
-
-  const yearSem = `${semester === 'fall' ? year : year + 1}${semNum[semester]}`
-
-  const courseList = await prisma.course.findMany({
+  const courses = await prisma.course.findMany({
     where: {
       year,
       terms: {
@@ -31,33 +23,31 @@ export async function getVSBInfo(
     },
   })
 
-  console.log(courseList)
-
-  const data = require(`webscraper/data/${year}/course-titles.json`)
-  const codes = Object.keys(data)
-
   // Loop through all courses and get relevant data
-  for (let i = 0; i < codes.length; i++) {
-    let code = codes[i] as Uppercase<string>
-    let course = await getCourse(code, yearSem)
+  for (const course of courses) {
+    const vsb = await getCourse(
+      course.code as Uppercase<string>,
+      year,
+      semester
+    )
 
-    if (course.isOk) {
-      console.log(code, ' fetched')
+    if (vsb.isOk) {
+      console.log(course.code, ' fetched')
 
       await prisma.vsb.upsert({
         create: {
-          ...course.result,
+          ...vsb.result,
           year,
           semester,
         },
         update: {
-          ...course.result,
+          ...vsb.result,
           year,
           semester,
         },
         where: {
           code_year_semester: {
-            code,
+            code: course.code,
             year,
             semester,
           },
@@ -65,6 +55,6 @@ export async function getVSBInfo(
       })
     }
 
-    await sleep(50)
+    await sleep(10)
   }
 }
