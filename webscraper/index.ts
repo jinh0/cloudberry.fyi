@@ -77,11 +77,11 @@ async function main() {
 
       const codes = Object.entries(courseTitles).map(x => x[0])
 
-      for (let i = 0; i < codes.length; i += 75) {
+      for (let i = 0; i < codes.length; i += 100) {
         console.log(`Course ${i}: ${codes[i]}`)
 
         const list = codes
-          .slice(i, i + 75)
+          .slice(i, i + 100)
           .map(code => saveCourse(year, code.toLowerCase()))
 
         await Promise.all(list)
