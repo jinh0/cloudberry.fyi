@@ -7,6 +7,7 @@ export async function getStaticPaths() {
       { params: { yearRange: '2021-2022' } },
       { params: { yearRange: '2020-2021' } },
       { params: { yearRange: '2019-2020' } },
+      { params: { yearRange: '2018-2019' } },
     ],
     fallback: false,
   }
