@@ -54,7 +54,10 @@ export async function getStaticProps({
       course: {
         ...course,
         vsbs: vsbs.map(x => ({ semester: x.semester, vsb: x })),
-        prereqsOf: prereqs,
+        prereqsOf: prereqs.map(x => ({
+          code: x.code.toLowerCase(),
+          title: x.title,
+        })),
       },
     },
   }
