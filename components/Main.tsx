@@ -14,7 +14,7 @@ const Main = ({
   year?: number
   title?: string
   content?: string
-  children?: JSX.Element | JSX.Element[] | string
+  children?: Array<JSX.Element | string> | JSX.Element | string
 }) => {
   return (
     <>
