@@ -42,7 +42,7 @@ const Block = ({ code, block }: { code: string; block: VSBBlock }) => {
 
   return (
     <div className='mb-8'>
-      <p className='mb-4 flex flex-row items-center'>
+      <p className='mb-4 flex flex-row items-center flex-wrap'>
         <span className='text-xl font-medium mr-3'>{block.display}</span>
         <span className='text-lg text-gray-700'>
           {block.teachers.join('; ')}
