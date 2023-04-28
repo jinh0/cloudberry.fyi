@@ -18,6 +18,7 @@ export async function getStaticProps({
 }: {
   params: { code: string; yearRange?: string }
 }) {
+  console.log(process.cwd(), params)
   const year = params.yearRange ? Number(params.yearRange.split('-')[0]) : 2022
 
   const course = await prisma.course.findUnique({
