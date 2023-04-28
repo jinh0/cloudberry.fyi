@@ -3,7 +3,10 @@ import prisma from '@db/client'
 
 export async function getStaticPaths() {
   return {
-    paths: [{ params: { yearRange: '2021-2022' } }],
+    paths: [
+      { params: { yearRange: '2021-2022' } },
+      { params: { yearRange: '2020-2021' } },
+    ],
     fallback: false,
   }
 }
