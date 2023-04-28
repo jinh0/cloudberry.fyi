@@ -79,7 +79,7 @@ const Navbar = ({ year }: { year: number }) => {
       </div>
 
       <div className='w-fit flex flex-row items-center gap-x-4'>
-        <div className='text-slate-600'>
+        <div className='hidden md:inline-block text-slate-600'>
           Fall {year} - Summer {year + 1}
         </div>
 
