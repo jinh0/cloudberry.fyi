@@ -9,6 +9,7 @@ main()
 
 async function main() {
   initialize()
+  build(2019)
   build(2020)
   build(2021)
   build(2022)
@@ -20,6 +21,7 @@ function initialize() {
   initDir('public/data/2022')
   initDir('public/data/2021')
   initDir('public/data/2020')
+  initDir('public/data/2019')
 }
 
 async function build(year: number) {
