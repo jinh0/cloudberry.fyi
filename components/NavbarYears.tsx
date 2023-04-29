@@ -6,8 +6,6 @@ export default function NavbarYears({ currentYear }: { currentYear: number }) {
 
   const { pathname, query } = useRouter()
 
-  console.log(pathname, query)
-
   if (
     (pathname.startsWith('/courses/') || pathname.startsWith('/study/')) &&
     query.code &&
