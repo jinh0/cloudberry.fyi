@@ -26,6 +26,18 @@ const Code = ({
   const { code } = router.query as { code: string }
   const { user } = useUser()
 
+  console.log(course)
+
+  if (!course.code)
+    return (
+      <Main year={year} title={`${displayCode(code)} | Cloudberry`}>
+        <div>
+          Course {displayCode(code)} does not exist for the academic year of{' '}
+          {`${year}-${year + 1}`}.
+        </div>
+      </Main>
+    )
+
   return (
     <Main
       year={year}
