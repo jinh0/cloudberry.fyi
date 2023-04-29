@@ -22,7 +22,7 @@ export default function NavbarYears({ currentYear }: { currentYear: number }) {
                 href={
                   year === 2022
                     ? `/courses/${(query.code as string).toLowerCase()}`
-                    : `/study/${year}-${year + 1}/${(
+                    : `/study/${year}-${year + 1}/courses/${(
                         query.code as string
                       ).toLowerCase()}`
                 }
@@ -36,7 +36,7 @@ export default function NavbarYears({ currentYear }: { currentYear: number }) {
                 href={
                   year === 2022
                     ? `/courses/${(query.code as string).toLowerCase()}`
-                    : `/study/${year}-${year + 1}/${(
+                    : `/study/${year}-${year + 1}/courses/${(
                         query.code as string
                       ).toLowerCase()}`
                 }
