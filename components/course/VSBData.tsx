@@ -15,11 +15,17 @@ const VSBData = ({
     semesters.length === 0 ? null : semesters[0]
   )
 
+  console.log(vsbs)
+
   const [comboNum, setComboNum] = useState(0)
 
   if (vsbs.length === 0 || semesters.length === 0) return <></>
 
-  const course = vsbs.find(x => x.semester === semester).vsb
+  const foundVsb = vsbs.find(x => x.semester === semester)
+
+  if (!foundVsb) return <></>
+
+  const course = foundVsb.vsb
 
   if (!course.blocks || course.blocks.length === 0) return <></>
 
