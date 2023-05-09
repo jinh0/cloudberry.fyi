@@ -39,7 +39,7 @@ const Navbar = ({ year }: { year: number }) => {
 
   const path = pathname.split('/')
 
-  const homePath = year === CURRENT_YEAR ? '/' : range(year)
+  const homePath = year === CURRENT_YEAR ? '/' : `/study/${range(year)}`
 
   return (
     <>
