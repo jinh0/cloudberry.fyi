@@ -26,7 +26,6 @@ const Code = ({
   const { code } = router.query as { code: string }
   const { user } = useUser()
 
-  console.log(router, year, course)
   if (!course.code)
     return (
       <Main year={year} title={`${displayCode(code)} | Cloudberry`}>

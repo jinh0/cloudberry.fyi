@@ -15,8 +15,6 @@ const VSBData = ({
     semesters.length === 0 ? null : semesters[0]
   )
 
-  console.log(vsbs)
-
   const [comboNum, setComboNum] = useState(0)
 
   if (vsbs.length === 0 || semesters.length === 0) return <></>
