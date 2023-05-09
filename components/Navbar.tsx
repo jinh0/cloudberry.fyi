@@ -5,6 +5,9 @@ import { getAuth } from 'firebase/auth'
 import app from '@utils/firebase'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import NavbarYears from './NavbarYears'
+import { CURRENT_YEAR } from '@utils/constants'
+import { range } from '@utils/formatting'
+import Image from 'next/image'
 
 const NavItem = ({
   title,
@@ -36,7 +39,7 @@ const Navbar = ({ year }: { year: number }) => {
 
   const path = pathname.split('/')
 
-  const homePath = year === 2022 ? '/' : `/study/${year}-${year + 1}`
+  const homePath = year === CURRENT_YEAR ? '/' : range(year)
 
   return (
     <>
@@ -45,11 +48,10 @@ const Navbar = ({ year }: { year: number }) => {
           <Link href={homePath}>
             <div className='flex flex-row items-center cursor-pointer gap-x-2 md:pr-4 md:border-r md:mr-4'>
               {/* <AcademicCapIcon className='w-8 h-8 text-mcgill mr-4 lg:mr-2' /> */}
-              <img
-                src='/cloudberry-final.svg'
-                className='w-10 h-10 mr-2 lg:mr-0'
-                alt='Logo'
-              />
+
+              <div className='w-10 h-10 mr-2 lg:mr-0 relative'>
+                <Image fill src='/cloudberry-final.svg' alt='Logo' />
+              </div>
               <p className='hidden lg:inline-block text-xl font-bold text-mcgill'>
                 Cloudberry
               </p>
