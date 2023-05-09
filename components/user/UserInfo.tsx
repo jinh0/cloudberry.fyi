@@ -42,18 +42,19 @@ const UserInfo = () => {
         </p>
 
         <CourseList name='Saved' courses={saved} />
-        <CourseList name='Completed' courses={completed} />
-        <CourseList name='Currently Taking' courses={current} />
+        {/* <CourseList name='Completed' courses={completed} />
+        <CourseList name='Currently Taking' courses={current} /> */}
 
-        <div className='mt-8'>
-          <p className='text-2xl mb-4'>Waitlisted Courses</p>
-          <div className='flex flex-row gap-x-4 overflow-x-auto snap-x snap-mandatory'>
-            {waitingCourses &&
-              waitingCourses.map(course => (
+        {waitingCourses.length > 0 && (
+          <div className='mt-8'>
+            <p className='text-2xl mb-4'>Waitlisted Courses</p>
+            <div className='flex flex-row gap-x-4 overflow-x-auto snap-x snap-mandatory'>
+              {waitingCourses.map(course => (
                 <CourseCard key={course.id} code={course.code} />
               ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </LookupContext.Provider>
   )
