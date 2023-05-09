@@ -1,3 +1,4 @@
+import { courseLink } from '@utils/links'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
@@ -17,13 +18,7 @@ export default function NavbarYears({ currentYear }: { currentYear: number }) {
           year === currentYear ? (
             <div key={year} className='font-semibold text-slate-800'>
               <Link
-                href={
-                  year === 2022
-                    ? `/courses/${(query.code as string).toLowerCase()}`
-                    : `/study/${year}-${year + 1}/courses/${(
-                        query.code as string
-                      ).toLowerCase()}`
-                }
+                href={courseLink(year, (query.code as string).toLowerCase())}
               >
                 {year}-{year + 1}
               </Link>
@@ -31,13 +26,7 @@ export default function NavbarYears({ currentYear }: { currentYear: number }) {
           ) : (
             <div key={year} className='text-slate-600'>
               <Link
-                href={
-                  year === 2022
-                    ? `/courses/${(query.code as string).toLowerCase()}`
-                    : `/study/${year}-${year + 1}/courses/${(
-                        query.code as string
-                      ).toLowerCase()}`
-                }
+                href={courseLink(year, (query.code as string).toLowerCase())}
               >
                 {year}-{year + 1}
               </Link>

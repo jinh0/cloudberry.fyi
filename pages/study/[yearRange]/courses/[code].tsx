@@ -12,7 +12,7 @@ export async function getStaticPaths() {
         yearRange: '2023-2024',
       },
     })),
-    fallback: true,
+    fallback: 'blocking',
   }
 }
 

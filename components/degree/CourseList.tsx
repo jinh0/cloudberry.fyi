@@ -5,6 +5,8 @@ import { displayCode } from '@utils/formatting'
 import Link from 'next/link'
 import { useContext } from 'react'
 import Button from './Button'
+import { courseLink } from '@utils/links'
+import { CURRENT_YEAR } from '@utils/constants'
 
 const CourseList = () => {
   const { courses, setCourses } = useContext(SemesterContext)
@@ -20,7 +22,10 @@ const CourseList = () => {
           key={course.code}
           className='border px-4 py-2 rounded-xl flex flex-row justify-between group'
         >
-          <Link className='w-full' href={`/courses/${course.code}`}>
+          <Link
+            className='w-full'
+            href={courseLink(CURRENT_YEAR, course.code.toLowerCase())}
+          >
             <div className='font-semibold'>{displayCode(course.code)}</div>
             <div>{course.title}</div>
           </Link>

@@ -8,15 +8,11 @@ import NotOffered from '@components/NotOffered'
 import CourseHeading from './CourseHeading'
 import { formatDesc, linkCode } from '@utils/formatting'
 import Link from 'next/link'
+import { courseLink } from '@utils/links'
 
 const Course = ({ course, year }: { course: CourseType; year: number }) => {
-  const link =
-    year === 2022
-      ? `/courses/${linkCode(course.code)}`
-      : `/study/${year}-${year + 1}/courses/${linkCode(course.code)}`
-
   return (
-    <Link href={link}>
+    <Link href={courseLink(year, course.code.toLowerCase())}>
       <div
         className={
           'border-b py-6 text-lg group ' +
