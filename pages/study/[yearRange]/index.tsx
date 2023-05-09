@@ -1,14 +1,14 @@
 import Home from '@components/Home'
 import prisma from '@db/client'
+import { COURSE_YEARS } from '@utils/constants'
 
 export async function getStaticPaths() {
   return {
-    paths: [
-      { params: { yearRange: '2021-2022' } },
-      { params: { yearRange: '2020-2021' } },
-      { params: { yearRange: '2019-2020' } },
-      { params: { yearRange: '2018-2019' } },
-    ],
+    paths: COURSE_YEARS.map(year => ({
+      params: {
+        yearRange: `${year}-${year + 1}`,
+      },
+    })),
     fallback: false,
   }
 }

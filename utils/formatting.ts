@@ -8,6 +8,10 @@ export function displayCode(code: string) {
   return code?.replace('-', ' ').toUpperCase()
 }
 
+export function range(year: number) {
+  return `${year}-${year + 1}`
+}
+
 export function formatDesc(desc: string, code: string) {
   const subject = subjectsData[code.toUpperCase().split('-')[0]] + ' : '
 
