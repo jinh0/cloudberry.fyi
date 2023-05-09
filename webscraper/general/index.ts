@@ -97,7 +97,14 @@ function parseInstructors(doc: Document, terms: SemesterType[]) {
     const replaceExp = new RegExp(`.*\(${capitalize(term)}\)`, 'g')
     const match = instructors.match(exp)
 
-    if (!match) continue
+    if (!match) {
+      result.push({
+        term,
+        instructors: [],
+      })
+
+      continue
+    }
 
     instructors = instructors.replace(replaceExp, '').slice(1).trim()
 
