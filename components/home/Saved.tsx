@@ -8,6 +8,9 @@ import { BookmarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import { useContext } from 'react'
 import Unsave from './Unsave'
+import { range } from '@utils/formatting'
+import { CURRENT_YEAR } from '@utils/constants'
+import { courseLink } from '@utils/links'
 
 const Saved = () => {
   const { user, loading, error } = useContext(UserContext)
@@ -56,7 +59,7 @@ const SavedCourse = ({ code }: { code: Lowercase<string> }) => {
   if (!course) return <></>
 
   return (
-    <Link href={`/courses/${code}`}>
+    <Link href={courseLink(CURRENT_YEAR, code)}>
       <div className='group border border-inherit rounded-lg p-2 mb-4'>
         <div className='flex flex-row items-center justify-between'>
           <div className='text-lg font-medium'>{format(course.code)}</div>

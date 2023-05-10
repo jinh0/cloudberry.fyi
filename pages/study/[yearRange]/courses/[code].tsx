@@ -8,11 +8,11 @@ export async function getStaticPaths() {
   return {
     paths: courses.map(course => ({
       params: {
-        code: course.code,
+        code: course.code.toLowerCase(),
         yearRange: '2023-2024',
       },
     })),
-    fallback: true,
+    fallback: 'blocking',
   }
 }
 

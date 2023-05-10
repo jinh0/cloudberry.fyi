@@ -3,27 +3,20 @@ import { saveFullData, saveHomeData } from './build/fullData'
 import { saveLookup } from './build/lookup'
 import { savePrereqsOf } from './build/prereqs'
 import { saveVSB } from './build/vsb'
-import { initDir } from './helper'
+import { createDir } from './helper'
+import { COURSE_YEARS } from '@utils/constants'
 
 main()
 
 async function main() {
-  initialize()
-  build(2018)
-  build(2019)
-  build(2020)
-  build(2021)
-  build(2022)
-  saveVSB()
-}
+  createDir('public/data')
 
-function initialize() {
-  initDir('public/data')
-  initDir('public/data/2022')
-  initDir('public/data/2021')
-  initDir('public/data/2020')
-  initDir('public/data/2019')
-  initDir('public/data/2018')
+  COURSE_YEARS.forEach(async year => {
+    createDir(`public/data/${year}`)
+    await build(year)
+  })
+
+  saveVSB()
 }
 
 async function build(year: number) {

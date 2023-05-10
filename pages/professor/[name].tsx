@@ -13,12 +13,6 @@ export async function getStaticPaths() {
     },
   })
 
-  console.log(
-    Array.from(
-      new Set(courses.flatMap(x => x.terms.flatMap(y => y.instructors)))
-    )
-  )
-
   return {
     paths: [],
     fallback: 'blocking',

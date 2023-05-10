@@ -15,19 +15,9 @@ const Notes = ({ notes }: { notes: Note[] }) => {
           const before = content.slice(0, idx)
           const after = content.slice(idx + link.text.length)
 
-          const convertLink = (href: string) => {
-            if (!href.startsWith('/study/2022-2023/courses/')) return href
-
-            return '/courses/' + href.split('/study/2022-2023/courses/')[1]
-          }
-
           return [
             before,
-            <NotesLink
-              key={redIdx}
-              href={convertLink(link.href)}
-              text={link.text}
-            />,
+            <NotesLink key={redIdx} href={link.href} text={link.text} />,
             after,
           ]
         }),

@@ -2,6 +2,8 @@ import Link from 'next/link'
 import { displayCode } from '@utils/formatting'
 import { useContext } from 'react'
 import LookupContext from '@contexts/LookupContext'
+import { courseLink } from '@utils/links'
+import { CURRENT_YEAR } from '@utils/constants'
 
 const CourseCard = ({ code }: { code: string }) => {
   const { lookup, isLoading } = useContext(LookupContext)
@@ -20,7 +22,7 @@ const CourseCard = ({ code }: { code: string }) => {
 
   return (
     <Link
-      href={`/courses/${code.toLowerCase()}`}
+      href={courseLink(CURRENT_YEAR, code.toLowerCase())}
       className='flex flex-row gap-x-4 '
     >
       <div className='w-60 border rounded-lg p-2 px-4 flex-shrink-0 snap-start'>
