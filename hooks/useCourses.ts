@@ -9,9 +9,9 @@ function useCourses(initCourses: CourseType[] = [], year: number) {
         year === 2022 ? '/course-data.json' : `/data/${year}/course-data.json`
 
       const res = await fetch(file)
-      return await res.json()
+      return (await res.json()).filter(x => x.code !== 'AAAA-100')
     },
-    placeholderData: initCourses,
+    placeholderData: initCourses.filter(x => x.code !== 'AAAA-100'),
   })
 
   return { courses, isLoading }
