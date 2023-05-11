@@ -6,8 +6,10 @@ import ScheduleHeader from './ScheduleHeader'
 import Timetable from './timetable/Timetable'
 
 const VSBData = ({
+  year,
   vsbs,
 }: {
+  year: number
   vsbs: Array<{ year: number; semester: SemesterType; vsb: VSBCourse }>
 }) => {
   const semesters = vsbs.map(x => x.semester)
@@ -32,7 +34,7 @@ const VSBData = ({
       value={{ course, comboNum, setComboNum, semester, setSemester }}
     >
       <div className='mt-12 mb-4 space-y-4'>
-        <ScheduleHeader semesters={semesters} />
+        <ScheduleHeader year={year} semesters={semesters} />
         <Timetable />
         <Blocks />
       </div>

@@ -50,7 +50,7 @@ const Code = ({
           <Notes notes={course.notes} />
           <PrereqsOf year={year} prereqsOf={course.prereqsOf} />
 
-          <VSBData vsbs={course.vsbs} />
+          <VSBData year={year} vsbs={course.vsbs} />
         </div>
       </div>
     </Main>

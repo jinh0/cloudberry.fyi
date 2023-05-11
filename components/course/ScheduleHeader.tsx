@@ -6,10 +6,16 @@ import {
   ArrowsUpDownIcon,
 } from '@heroicons/react/24/solid'
 import { SemesterType } from '@typing'
-import { capitalize } from '@utils/formatting'
+import { capitalize, displayYear } from '@utils/formatting'
 import { useContext } from 'react'
 
-const ScheduleHeader = ({ semesters }: { semesters: SemesterType[] }) => {
+const ScheduleHeader = ({
+  year,
+  semesters,
+}: {
+  year: number
+  semesters: SemesterType[]
+}) => {
   const { course, comboNum, setComboNum, semester, setSemester } =
     useContext(VSBContext)
 
@@ -21,7 +27,9 @@ const ScheduleHeader = ({ semesters }: { semesters: SemesterType[] }) => {
           <Listbox value={semester} onChange={setSemester}>
             <Listbox.Button className='border-transparent border px-4 outline-none'>
               <div className='flex flex-row items-center gap-x-3'>
-                <div>{capitalize(semester)} 2023</div>
+                <div>
+                  {capitalize(semester)} {displayYear(year, semester)}
+                </div>
                 <ArrowsUpDownIcon className='w-6 h-6 text-gray-600' />
               </div>
             </Listbox.Button>
@@ -32,7 +40,7 @@ const ScheduleHeader = ({ semesters }: { semesters: SemesterType[] }) => {
                   className='py-2 px-4 hover:bg-blue-50 hover:text-blue-600 outline-none'
                   key={idx}
                 >
-                  {capitalize(sem)} 2023
+                  {capitalize(sem)} {displayYear(year, sem)}
                 </Listbox.Option>
               ))}
             </Listbox.Options>
