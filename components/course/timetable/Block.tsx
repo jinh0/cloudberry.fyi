@@ -12,7 +12,7 @@ const Block = ({ block }: { block: VSBTime & { name: string } }) => {
     >
       <div className='text-pink-700 font-bold'>{block.name}</div>
       {block.t2 - block.t1 > 50 && (
-        <div className='text-pink-600 overflow-auto whitespace-nowrap'>
+        <div className='text-pink-600 overflow-auto'>
           {displayTime(block.t1)} &minus; {displayTime(block.t2)}
         </div>
       )}
