@@ -118,6 +118,8 @@ export type VSBCourse = {
   combos: string[][]
 }
 
+export type VSBFullCourse = VSBCourse & { title: string; description: string }
+
 /**
  * "Safe" type: Forces you to check whether
  * the object exists or not (like strict null check)
