@@ -49,7 +49,6 @@ const Main = ({
             {children}
           </div>
         </div>
-
         <Footer />
       </div>
     </>

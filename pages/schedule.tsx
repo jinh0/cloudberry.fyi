@@ -5,37 +5,27 @@ import ScheduleContext from '@contexts/ScheduleContext'
 import useLookup from '@hooks/useLookup'
 import { useState } from 'react'
 import Main from '../components/Main'
+import { useQuery } from '@tanstack/react-query'
+import { VSBFullCourse } from '@typing'
+import Timetable from '@components/schedule/Timetable'
 
-const WeeklyView = () => {
-  return <div className='w-full md:w-1/2 border flex-grow'></div>
-}
-
-const Scheduler = () => {
-  const lookup = useLookup()
-
-  const [blocks, setBlocks] = useState([])
-  const [scheduleCourses, setCourses] = useState([])
+const Schedule = () => {
+  const [scheduleCourses, setCourses] = useState<VSBFullCourse[]>([])
 
   return (
-    <LookupContext.Provider value={lookup}>
+    <Main>
       <ScheduleContext.Provider value={{ scheduleCourses, setCourses }}>
-        <div className='w-full flex flex-col md:flex-row md:flex-wrap'>
+        <div className='h-full w-full flex flex-col md:flex-row space-x-8'>
           <div className='w-full md:w-1/2'>
+            <div className='mb-2'>Fall 2023</div>
             <Search />
             <SearchResults />
           </div>
-          <WeeklyView />
+          <div className='w-full md:w-1/2 h-full'>
+            <Timetable courses={scheduleCourses} />
+          </div>
         </div>
       </ScheduleContext.Provider>
-    </LookupContext.Provider>
-  )
-}
-
-const Schedule = () => {
-  return (
-    <Main>
-      Coming soon!
-      {/* <Scheduler /> */}
     </Main>
   )
 }

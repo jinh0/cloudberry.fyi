@@ -118,7 +118,17 @@ export type VSBCourse = {
   combos: string[][]
 }
 
-export type VSBFullCourse = VSBCourse & { title: string; description: string }
+export type Palette = {
+  color: string
+  bg: string
+  fg1: string
+  fg2: string
+}
+
+export type VSBFullCourse = VSBCourse & {
+  title: string
+  description: string
+} & { palette: Palette }
 
 /**
  * "Safe" type: Forces you to check whether

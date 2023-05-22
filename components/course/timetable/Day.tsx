@@ -1,4 +1,4 @@
-import { VSBBlock } from '@typing'
+import { Palette, VSBBlock } from '@typing'
 import Block from './Block'
 
 const NUM_TO_DAY = {
@@ -9,11 +9,17 @@ const NUM_TO_DAY = {
   5: 'Friday',
 }
 
-const Day = ({ num, blocks }: { num: number; blocks: VSBBlock[] }) => {
+const Day = ({
+  num,
+  blocks,
+}: {
+  num: number
+  blocks: Array<VSBBlock & { palette: Palette }>
+}) => {
   const todaysSchedule = blocks.flatMap(x =>
     x.schedule
       .filter(y => y.day === String(num + 1))
-      .map(y => ({ ...y, name: x.display }))
+      .map(y => ({ ...y, name: x.display, palette: x.palette }))
   )
 
   return (
