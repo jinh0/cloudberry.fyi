@@ -36,7 +36,7 @@ export async function alertWaiter({
       subject: `${display(
         code
       )} (CRN: ${crn}) has an available seat. Register now.`,
-      text: `Hi! You requested an alert for when ${display(
+      text: `Hi! ${display(code)} (CRN ${crn}) has a seat available. You requested an alert for when ${display(
         code
       )} has an availability. Have a good day.`,
     })

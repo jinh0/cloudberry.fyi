@@ -78,6 +78,7 @@ type VSBBlock {
   crn String
   campus String
   remainingSeats Int
+  capacity Int @default(-1)
   waitlistRem Int
   waitlistCap Int
   schedule VSBTime[]
