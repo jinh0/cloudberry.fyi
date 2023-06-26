@@ -6,7 +6,7 @@ const Collapsible = ({ header, children }) => {
     <Disclosure defaultOpen={true}>
       {({ open }) => (
         <>
-          <Disclosure.Button className='w-full flex flex-row justify-between items-center text-2xl font-medium py-2 mb-2 transition'>
+          <Disclosure.Button className='w-full flex flex-row justify-between items-center text-2xl font-medium py-2 transition'>
             <div className='flex flex-row items-center'>{header}</div>
 
             {open ? (
