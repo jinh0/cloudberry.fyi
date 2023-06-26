@@ -41,9 +41,9 @@ const UserInfo = () => {
           <span className='font-bold'>Email:</span> {email}
         </p>
 
-        <CourseList name='Saved' courses={saved} />
+        {/* <CourseList name='Saved' courses={saved} />
         <CourseList name='Completed' courses={completed} />
-        <CourseList name='Currently Taking' courses={current} />
+        <CourseList name='Currently Taking' courses={current} /> */}
 
         <div className='mt-8'>
           <p className='text-2xl mb-4'>Waitlisted Courses</p>
