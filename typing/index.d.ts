@@ -7,6 +7,7 @@ export type SemesterOption = {
 }
 
 export type WaiterType = {
+  id: string
   uid: string
   email: string
   code: string

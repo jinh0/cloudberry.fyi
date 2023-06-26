@@ -5,6 +5,7 @@ import ShareButton from '@components/course/ShareButton'
 import { DocumentSnapshot } from 'firebase/firestore'
 import { CourseType, UserType } from '@typing'
 import { displayCode } from '@utils/formatting'
+import SaveButton from './SaveButton'
 
 const CourseHeading = ({
   course,
@@ -22,7 +23,10 @@ const CourseHeading = ({
           <span className='font-semibold mr-2'>{displayCode(code)}</span>
           <span className=''>{course.title}</span>
         </span>
-        <ShareButton />
+
+        <SaveButton code={code} />
+
+        {/* <ShareButton /> */}
       </div>
 
       <Semesters terms={course.terms} year={course.year} />
@@ -37,7 +41,7 @@ const CourseHeading = ({
         <div>{course.faculty}</div>
       </div>
 
-      {user && <Actions code={code} />}
+      {/* {user && <Actions code={code} />} */}
     </div>
   )
 }

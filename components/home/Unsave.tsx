@@ -29,14 +29,14 @@ const Unsave = ({ code }: { code: string }) => {
 
   return (
     <button
-      className='border-none rounded px-1 py-1 flex flex-row items-center transition duration-100'
+      className='border-none rounded px-1 py-1 flex flex-row items-center transition duration-100 hover:text-black text-gray-500'
       onClick={event => {
         removeFromSavedCourses()
         dontGo(event)
       }}
     >
       <div className=''>
-        <XMarkIcon className='w-5 h-5 text-gray-500' />
+        <XMarkIcon className='w-6 h-6' />
       </div>
     </button>
   )

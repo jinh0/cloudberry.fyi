@@ -1,4 +1,3 @@
-import UserContext from '@contexts/UserContext'
 import {
   BookmarkIcon,
   CheckBadgeIcon,
@@ -10,8 +9,7 @@ import {
   PencilIcon as PencilSolidIcon,
 } from '@heroicons/react/24/solid'
 import { updateDoc } from 'firebase/firestore'
-import { Children, UserType } from '@typing'
-import { useContext } from 'react'
+import { Children } from '@typing'
 import useUser from '@hooks/useUser'
 
 const Button = ({
