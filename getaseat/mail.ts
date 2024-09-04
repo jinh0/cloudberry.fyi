@@ -34,17 +34,18 @@ export async function alertWaiter({
       from: 'cloudberry.fyi@gmail.com',
       to: email,
       subject: `${display(
-        code
+        code,
       )} (CRN: ${crn}) has an available seat. Register now.`,
       text: `Hi! ${display(code)} (CRN ${crn}) has a seat available. You requested an alert for when ${display(
-        code
+        code,
       )} has an availability. Have a good day.`,
     })
 
     console.log(`Alerted ${email} about ${code}`)
 
     return { isOk: true, result: null }
-  } catch {
+  } catch (err) {
+    console.log('NOT OK', err)
     return { isOk: false }
   }
 }
