@@ -15,6 +15,7 @@ export type WaiterType = {
   ctime: Timestamp
   ftime: Timestamp
   status: 'pending' | 'completed'
+  type?: 'waitlist'
 }
 
 export type SearchContextType = {
