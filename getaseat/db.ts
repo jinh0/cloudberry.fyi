@@ -34,7 +34,7 @@ export const Waiter = {
     code,
     crn,
   }: Partial<WaiterType>): Promise<DocumentReference<WaiterType>> {
-    const attrs: WaiterType = {
+    const attrs = {
       uid,
       email,
       code,
@@ -42,7 +42,7 @@ export const Waiter = {
       status: 'pending',
       ctime: Timestamp.now(),
       ftime: null,
-    }
+    } as WaiterType
 
     return await waiters.add(attrs)
   },
