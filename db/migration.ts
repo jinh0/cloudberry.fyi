@@ -1,3 +1,4 @@
+import { CURRENT_YEAR } from '@utils/constants';
 import prisma from './client'
 
 async function migrate() {
@@ -5,7 +6,7 @@ async function migrate() {
 
   const vsbs = await prisma.vsb.findMany({
     where: {
-      year: 2023
+      year: CURRENT_YEAR
     }
   });
 
