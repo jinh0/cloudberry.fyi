@@ -32,7 +32,7 @@ export function displayTime(time: number) {
 
   return `${hours > 12 ? hours % 12 : hours}:${
     minutes < 10 ? '0' + String(minutes) : minutes
-  } ${hours >= 12 ? 'PM' : 'AM'}`
+  }`
 }
 
 export function displayYear(year: number, semester: SemesterType) {

@@ -1,70 +1,70 @@
-import { useContext, useState } from 'react'
-import { Combobox } from '@headlessui/react'
 import ScheduleContext from '@contexts/ScheduleContext'
-import LookupContext from '@contexts/LookupContext'
+import { Autocomplete } from '@mui/joy'
+import { useQuery } from '@tanstack/react-query'
+import { VSBCourse, VSBFullCourse } from '@typing'
+import { COURSE_COLORS } from '@utils/colors'
+import { displayCode } from '@utils/formatting'
+import { useContext, useState } from 'react'
 
 function Search() {
-  const [query, setQuery] = useState('')
-  const [selectedCourse, setSelected] = useState(null)
   const { scheduleCourses, setCourses } = useContext(ScheduleContext)
 
-  const { lookup, isLoading } = useContext(LookupContext)
+  const { data, isLoading } = useQuery({
+    queryKey: ['vsb', 'fall'],
+    queryFn: async () => {
+      const res = await fetch('/data/vsb/fall.json')
+      const courses = (await res.json()) as unknown as VSBFullCourse[]
 
-  if (isLoading) return <div>...</div>
+      return courses.filter(x => x.code !== 'AAAA-100')
+    },
+  })
 
-  const courses = Array.from(Object.entries(lookup)).map(
-    ([code, title]: [Uppercase<string>, string]) => ({
-      code,
-      title,
-    })
-  )
+  if (isLoading) return <div>Loading...</div>
 
-  const display = (code: string) => code.replace('-', ' ').toUpperCase()
-  const undo = (code: string) => code.replace(' ', '-').toLowerCase()
+  const filterOptions = (
+    courses: VSBFullCourse[],
+    { inputValue }: { inputValue: string }
+  ) => {
+    console.log(inputValue)
+    return courses
+      .filter(
+        course =>
+          course.code
+            .toLowerCase()
+            .replace('-', ' ')
+            .startsWith(inputValue.toLowerCase()) ||
+          course.title
+            .toLowerCase()
+            .replace(/\r/g, '')
+            .includes(inputValue.toLowerCase())
+      )
+      .slice(0, 10)
+  }
 
-  const filteredCourses =
-    query === ''
-      ? courses.slice(0, 10)
-      : courses
-          .filter(
-            x =>
-              x.code.replace('-', ' ').startsWith(query.toLowerCase()) ||
-              x.title.toLowerCase().includes(query.toLowerCase())
-          )
-          .slice(0, 10)
-
-  const onChange = (val: string) => {
-    setCourses(scheduleCourses.concat(undo(val)))
-    setSelected(val)
+  const onChange = (_, val: VSBFullCourse) => {
+    if (val && !scheduleCourses.find(x => x.code === val.code))
+      setCourses(
+        scheduleCourses.concat({
+          ...val,
+          palette: COURSE_COLORS[scheduleCourses.length % COURSE_COLORS.length],
+        })
+      )
   }
 
   return (
     <div>
-      <Combobox value={selectedCourse} onChange={onChange}>
-        <Combobox.Input
-          className='w-96 border rounded-full py-2 px-6 outline-none'
-          autoFocus
-          placeholder='Search for a course...'
-          onChange={event => setQuery(event.target.value)}
-        />
-        {filteredCourses.length > 0 ? (
-          <Combobox.Options className='border rounded-xl w-fit px-6 mt-2'>
-            {filteredCourses.map(course => (
-              <Combobox.Option
-                key={course.code}
-                value={course.code.replace('-', ' ').toUpperCase()}
-              >
-                <span className='font-semibold'>
-                  {course.code.replace('-', ' ').toUpperCase()}:
-                </span>{' '}
-                {course.title}
-              </Combobox.Option>
-            ))}
-          </Combobox.Options>
-        ) : (
-          <></>
-        )}
-      </Combobox>
+      <Autocomplete
+        onChange={onChange as any}
+        options={data}
+        clearOnBlur={true}
+        clearOnEscape={true}
+        filterOptions={filterOptions}
+        getOptionLabel={(option: VSBFullCourse) =>
+          `${displayCode(option.code)}: ${option.title}`
+        }
+        placeholder='Choose a course...'
+        autoHighlight={true}
+      />
     </div>
   )
 }
