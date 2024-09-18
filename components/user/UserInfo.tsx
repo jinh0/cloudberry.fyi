@@ -1,35 +1,19 @@
 import LookupContext from '@contexts/LookupContext'
 import UserContext from '@contexts/UserContext'
 import useLookup from '@hooks/useLookup'
-import { db } from '@utils/firebase'
-import { getDocs, query, where } from 'firebase/firestore'
 import { useContext, useEffect, useState } from 'react'
 import CourseCard from './CourseCard'
-import CourseList from './CourseList'
+import useWaiting from '@hooks/useWaiting'
 
 const UserInfo = () => {
   const { user, loading, error } = useContext(UserContext)
-  const [waitingCourses, setWaitingCourses] = useState([])
   const { lookup, isLoading: isLookupLoading } = useLookup()
-
-  useEffect(() => {
-    if (user) {
-      const queryCourses = query(db.waiters, where('uid', '==', user.id))
-
-      getDocs(queryCourses).then(querySnapshot => {
-        const data = querySnapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data(),
-        }))
-        setWaitingCourses(data.filter(course => course.status === 'pending'))
-      })
-    }
-  }, [user])
+  const { waitingCourses } = useWaiting(user)
 
   if (loading) return <div>Loading...</div>
   if (error || !user) return <div>Something went wrong.</div>
 
-  const { name, email, saved, completed, current } = user.data()
+  const { name, email } = user.data()
 
   return (
     <LookupContext.Provider value={{ lookup, isLoading: isLookupLoading }}>
@@ -41,9 +25,9 @@ const UserInfo = () => {
           <span className='font-bold'>Email:</span> {email}
         </p>
 
-        <CourseList name='Saved' courses={saved} />
+        {/* <CourseList name='Saved' courses={saved} />
         <CourseList name='Completed' courses={completed} />
-        <CourseList name='Currently Taking' courses={current} />
+        <CourseList name='Currently Taking' courses={current} /> */}
 
         <div className='mt-8'>
           <p className='text-2xl mb-4'>Waitlisted Courses</p>

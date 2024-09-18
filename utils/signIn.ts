@@ -12,6 +12,34 @@ provider.setCustomParameters({
   login_hint: 'john.doe@mail.mcgill.ca', // Restricts sign-in's to McGill emails
 })
 
+export function signInNoRedirect() {
+  signInWithPopup(auth, provider)
+    .then(async result => {
+      // User is signed in.
+      const { user } = result
+
+      // Get document associated with user
+      const docRef = await getDoc(doc(db, 'users', user.uid))
+
+      // If document doesn't exist, i.e., first time signing in,
+      // create a document for the user
+      if (!docRef.exists()) {
+        await setDoc(doc(db, 'users', user.uid), {
+          name: user.displayName,
+          email: user.email,
+          saved: [],
+          completed: [],
+          current: [],
+          degree: [],
+        })
+      }
+    })
+    .catch(error => {
+      // Handle error.
+      console.log(error)
+    })
+}
+
 export function signIn(router: NextRouter) {
   signInWithPopup(auth, provider)
     .then(async result => {

@@ -22,6 +22,7 @@ export async function saveTitleData(
 export async function crawlCourseTitles(
   year: number
 ): Promise<Record<string, string>> {
+  let startTime = performance.now()
   let results = {}
 
   // Go over all pages listing McGill courses
@@ -36,6 +37,7 @@ export async function crawlCourseTitles(
   }
 
   console.log('Done! Final page index: ' + pageIndex)
+  console.log('Took ' + (performance.now() - startTime) + ' seconds')
 
   return results
 }

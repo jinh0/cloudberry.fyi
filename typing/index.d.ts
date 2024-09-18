@@ -7,6 +7,7 @@ export type SemesterOption = {
 }
 
 export type WaiterType = {
+  id: string
   uid: string
   email: string
   code: string
@@ -14,6 +15,7 @@ export type WaiterType = {
   ctime: Timestamp
   ftime: Timestamp
   status: 'pending' | 'completed'
+  type?: 'waitlist'
 }
 
 export type SearchContextType = {

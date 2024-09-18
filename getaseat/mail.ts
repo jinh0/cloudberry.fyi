@@ -24,7 +24,7 @@ export async function alertWaiter({
   crn: string
   waiter: QueryDocumentSnapshot<WaiterType>
 }): Promise<Safe<void>> {
-  console.log('GMAIL ', process.env.GMAIL_PASSWORD)
+  // console.log('GMAIL ', process.env.GMAIL_PASSWORD)
   const display = (code: string) => code.replace('-', ' ')
 
   const { email } = waiter.data()
@@ -34,17 +34,18 @@ export async function alertWaiter({
       from: 'cloudberry.fyi@gmail.com',
       to: email,
       subject: `${display(
-        code
+        code,
       )} (CRN: ${crn}) has an available seat. Register now.`,
-      text: `Hi! You requested an alert for when ${display(
-        code
+      text: `Hi! ${display(code)} (CRN ${crn}) has a seat available. You requested an alert for when ${display(
+        code,
       )} has an availability. Have a good day.`,
     })
 
     console.log(`Alerted ${email} about ${code}`)
 
     return { isOk: true, result: null }
-  } catch {
+  } catch (err) {
+    console.log('NOT OK', err)
     return { isOk: false }
   }
 }

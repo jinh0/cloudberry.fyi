@@ -8,6 +8,7 @@ import NavbarYears from './NavbarYears'
 import { CURRENT_YEAR } from '@utils/constants'
 import { range } from '@utils/formatting'
 import Image from 'next/image'
+import { signInNoRedirect } from '@utils/signIn'
 
 const NavItem = ({
   title,
@@ -69,6 +70,8 @@ const Navbar = ({ year }: { year: number }) => {
                 pathname === '/' || path[1] === 'courses' || path[1] === 'study'
               }
             />
+
+            {/*             
             <NavItem
               title='My Degree'
               href='/my-degree'
@@ -79,6 +82,7 @@ const Navbar = ({ year }: { year: number }) => {
               href='/schedule'
               active={pathname === '/schedule'}
             />
+            */}
           </div>
         </div>
 
@@ -96,14 +100,15 @@ const Navbar = ({ year }: { year: number }) => {
               </div>
             </Link>
           ) : (
-            <Link href='/signin'>
-              <div className='flex flex-row items-center'>
-                <div className='font-medium rounded-full cursor-pointer bg-yellow-100 hover:bg-yellow-200 transition px-6 py-2 text-yellow-700 flex flex-row items-center'>
-                  <ArrowRightIcon className='w-5 h-5 mr-4' />
-                  <p>Sign in with McGill</p>
-                </div>
+            <div
+              className='flex flex-row items-center'
+              onClick={() => signInNoRedirect()}
+            >
+              <div className='font-medium rounded-full cursor-pointer bg-yellow-100 hover:bg-yellow-200 transition px-6 py-2 text-yellow-700 flex flex-row items-center'>
+                <ArrowRightIcon className='w-5 h-5 mr-4' />
+                <p>Sign in with McGill</p>
               </div>
-            </Link>
+            </div>
           )}
         </div>
       </div>

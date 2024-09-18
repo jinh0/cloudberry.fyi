@@ -32,7 +32,7 @@ function GetASeat({ code, block }: { code: string; block: VSBBlock }) {
         status: 'pending',
         ctime: Timestamp.now(),
         ftime: null,
-      })
+      } as any)
     }
   }
 
